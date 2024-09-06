@@ -14,10 +14,10 @@
         <div class="col-12 mt-2">
             <div class="row" style="padding: 1em; border-radius: 10px;">
                 <div class="col-lg-6 float-left">
-                    <h3>Crear Nuevo Tour en Inglés</h3>
+                    <h3 class="text-primary">Crear Nuevo Tour en Inglés</h3>
                 </div>
                 <div class="col-lg-6">
-                    <a href="{{ route('tours.index') }}" class="btn btn-primary float-right">Volver</a>
+                    <a href="{{ route('tours.index') }}" class="btn btn-danger btn-sm float-right">Volver</a>
                 </div>
             </div>
             <form action="{{ route('tours.store') }}" method="post" enctype="multipart/form-data" class="bg-light">

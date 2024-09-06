@@ -16,9 +16,9 @@
 
 <body id="page-top">
     <div id="wrapper">
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+        <ul class="navbar-nav bg-primary sidebar sidebar-dark accordion" id="accordionSidebar">
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('index') }}">
-                <img src="{{ asset('img/Logo-blanco-andean.png') }}" width="100%" style="padding: 0.6em">
+                <img src="{{ asset('img/logo-pachatusan-trek.png') }}" width="100%" style="padding: 0.6em">
             </a>
             <hr class="sidebar-divider">
             <div class="sidebar-heading">
@@ -185,7 +185,7 @@
                                 </form>
                             </div>
                         </li>                                                
-                        <li class="nav-item no-arrow mx-1">
+                        {{-- <li class="nav-item no-arrow mx-1">
                             <ul class="navbar-nav ms-auto">
                                 <li class="nav-item dropdown">
                                     <a class="nav-link mr-4" href="#" role="button" data-bs-toggle="dropdown"
@@ -205,7 +205,7 @@
                                     </form>
                                 </li>
                             </ul>
-                        </li>
+                        </li> --}}
                     </ul>
                 </nav>
                 <div class="container-fluid">
