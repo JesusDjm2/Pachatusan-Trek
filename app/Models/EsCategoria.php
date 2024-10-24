@@ -15,7 +15,7 @@ class EsCategoria extends Model
     ];
     public function tours()
     {
-        return $this->belongsToMany(Estour::class, 'estour_categoria', 'categoria_id', 'tour_id' );
+        return $this->belongsToMany(Estour::class, 'estour_categoria', 'categoria_id', 'tour_id');
     }
 
 }

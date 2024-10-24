@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<dwsync>
+<file name="Authenticate.php" server="216.246.47.134" local="133701179534253201" remote="133742574000000000" Dst="0" />
+<file name="EncryptCookies.php" server="216.246.47.134" local="133701179533837368" remote="133742574000000000" Dst="0" />
+<file name="RedirectIfAuthenticated.php" server="216.246.47.134" local="133701179533195844" remote="133742574000000000" Dst="0" />
+<file name="TrimStrings.php" server="216.246.47.134" local="133701179533647072" remote="133742574000000000" Dst="0" />
+<file name="PreventRequestsDuringMaintenance.php" server="216.246.47.134" local="133701179534453572" remote="133742574000000000" Dst="0" />
+<file name="TrustHosts.php" server="216.246.47.134" local="133701179534728948" remote="133742574000000000" Dst="0" />
+<file name="TrustProxies.php" server="216.246.47.134" local="133701179533431626" remote="133742574000000000" Dst="0" />
+<file name="VerifyCsrfToken.php" server="216.246.47.134" local="133701179534032692" remote="133742574000000000" Dst="0" />
+</dwsync>

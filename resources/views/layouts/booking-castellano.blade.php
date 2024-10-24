@@ -1,79 +1,70 @@
 <!-----Booking---------->
 <div class="fondo-book">
-    <h3 class="text-center">Solicitar Información</h4>
-    <form action="{{ route('mensaje02') }}" method="post" role="form" class="book1">
+    <h3 class="text-center mb-3">Solicitar información</h3>
+    <form action="{{ route('mensaje01') }}" method="post" role="form" class="book1">
         @csrf
-        <div class="form-row">
-            <br>
-            <div class="form-group col-lg-6">
+        <div class="row">
+            <div class="col-lg-6 mb-2">
                 <span class="form-label">Nombre:</span>
-                <input type="text" name="name" required class="form-control" placeholder="Requerido*"
+                <input type="text" name="name" required class="form-control form-control-sm" placeholder="Required*"
                     data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
             </div>
-            <div class="form-group col-lg-6">
+            <div class="col-lg-6 mb-2">
                 <span class="form-label">E-Mail:</span>
-                <input type="email" class="form-control" required name="email" id="email"
-                    placeholder="Requerido*" data-rule="email" data-msg="Please enter a valid email" />
+                <input type="email" class="form-control form-control-sm" required name="email" id="email"
+                    placeholder="Required*" data-rule="email" data-msg="Please enter a valid email" />
                 <div class="validation"></div>
             </div>
-        </div>
-        <div class="form-row">
-            <div class="form-group col-lg-6">
+            <div class="col-lg-6 mb-2">
                 <span class="form-label">Adultos:</span>
-                <input class="form-control" name="adultos" id="adultos" type="number" placeholder="0"
+                <input class="form-control form-control-sm" name="adultos" id="adultos" type="number" placeholder="0"
                     data-error="Valid email is required.">
                 <div class="validation"></div>
             </div>
-            <div class="form-group col-lg-6">
+            <div class="col-lg-6 mb-2">
                 <span class="form-label">Niños:</span>
-                <input class="form-control" name="child" id="child" type="number" placeholder="0"
+                <input class="form-control form-control-sm" name="child" id="child" type="number" placeholder="0"
                     data-error="Valid email is required.">
                 <div class="validation"></div>
             </div>
-        </div>
-        <div class="form-row">
-            <div class="form-group col-lg-12">
-                <span class="form-label">Fecha Arrivo:</span>
-                <input class="form-control" name="da" id="da" type="date">
+            <div class="col-lg-6 mb-2">
+                <span class="form-label">Fecha de llegada:</span>
+                <input class="form-control form-control-sm" name="da" id="da" type="date">
                 <div class="validation"></div>
             </div>
-            <div class="form-group col-lg-12">
+            <div class="col-lg-6 mb-2">
                 <span class="form-label">Tour:</span>
-                <input type="text" name="name" value="{{$tour->nombre}}" readonly/>
+                <input type="text" name="tour" required class="form-control form-control-sm" value="{{ $tour->nombre }}" readonly>
             </div>
-        </div>
-        <div class="form-row">
-            <div class="form-group col-lg-12">
+            <div class="col-lg-12 mb-2">
                 <span class="form-label">Mensaje:</span>
-                <textarea class="form-control" name="mensaje" id="mensaje" rows="5" data-rule="required"
-                    data-msg="Please write something for us" placeholder="Escriba acá su mensaje:"></textarea>
+                <textarea class="form-control form-control-sm" name="mensaje" id="mensaje" rows="3" data-rule="required"
+                    data-msg="Write here your message." placeholder="Mensaje..."></textarea>
                 <div class="validation"></div>
             </div>
-        </div>
-        <div class="form-group col-lg-12">
-            <p id="checkmark" style="color:#fff;display: none; text-align:center; transition: opacity 0.5s ease">
-                Respuesta correcta! &#10004;</p>
-            <div id="captcha" style="opacity: 1; transition: opacity 0.5s ease;">
-                <span for="suma">Resolver Captcha antes de enviar:</span><br>
-                <span id="num1"></span> + <span id="num2"></span> =
-                <span>
-                    <input type="number" id="respuesta" name="respuesta" required style="width: 120px; color:#000">
-                </span>
-                <span>
-                    <button type="button" id="verificar"
-                        style="background:#fff; color:#000;border:1px solid grey">Verificar</button>
-                </span>
-                <input type="hidden" id="valorCorrecto" name="valorCorrecto">
+            <div class="col-lg-12">
+                <p id="checkmark" style="color:#fff;display: none; text-align:center; transition: opacity 0.5s ease">
+                    ¡Respuesta correcta! &#10004;</p>
+                <div id="captcha" class="text-center" style="opacity: 1; transition: opacity 0.5s ease;">
+                    <span for="suma"><i> Resuelva el Captcha antes de enviar:</i></span><br>
+                    <span id="num1"></span> <span>+</span> <span id="num2"></span> <span>=</span>
+                    <span>
+                        <input type="number" id="respuesta" name="respuesta" required style="width: 120px; color:#000">
+                    </span>
+                    <span>
+                        <button type="button" id="verificar"
+                            style="background:#fff; color:#000;border:1px solid grey">verificar</button>
+                    </span>
+                    <input type="hidden" id="valorCorrecto" name="valorCorrecto">
+                </div>
+            </div>
+            <div class="text-center mt-2">
+                <input class="btn btn-sm btn-info" type="submit" name="submit" value="Enviar" disabled />
             </div>
         </div>
-        <center>
-            <input id="botondjm2" type="submit" name="submit" value="Enviar" />
-        </center><br>
     </form>
-
     <script>
         var intentos = 0;
-
         function generarSumaAleatoria() {
             var num1 = Math.floor(Math.random() * 12) + 3;
             var num2 = Math.floor(Math.random() * (15 - num1)) + num1;

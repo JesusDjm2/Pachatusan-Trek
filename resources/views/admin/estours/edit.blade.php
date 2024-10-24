@@ -4,10 +4,19 @@
     <div class="row">
         <div class="col-lg-12">
             @if (session('status'))
-                <div class="text-success">
-                    <div class="alert alert-danger" role="alert">
-                        {{ session('status') }}
-                    </div>
+                <div class="alert alert-danger" role="alert">
+                    {{ session('status') }}
+                </div>
+            @endif
+
+            <!-- Mostrar errores de validación -->
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
                 </div>
             @endif
         </div>
@@ -28,31 +37,25 @@
                     <div class="col-lg-5 mt-3">
                         <label for="nombre" class="form-label">Nombre del Tour:</label>
                         <input type="text" id="nombre" name="nombre" class="form-control" required
-                            value="{{ $tour->nombre }}">
+                            value="{{ old('nombre', $tour->nombre) }}">
                         @error('nombre')
                             <div class="alert alert-danger mt-2">{{ $message }}</div>
                         @enderror
                     </div>
+                    
                     <div class="col-lg-4 mt-3">
                         <label for="recorrido" class="form-label">Recorrido:</label>
                         <input type="text" id="recorrido" name="recorrido" class="form-control" required
-                            value="{{ $tour->recorrido }}">
+                            value="{{ old('recorrido', $tour->recorrido) }}">
                         @error('recorrido')
                             <div class="alert alert-danger mt-2">{{ $message }}</div>
                         @enderror
                     </div>
-                    <div class="col-lg-2 mt-3">
-                        <label for="precio" class="form-label">Precio:</label>
-                        <input type="text" id="precio" name="precio" class="form-control" required
-                            value="{{ $tour->precio }}">
-                        @error('precio')
-                            <div class="alert alert-danger mt-2">{{ $message }}</div>
-                        @enderror
-                    </div>
-                    <div class="col-lg-1 mt-3">
+                    
+                    <div class="col-lg-3 mt-3">
                         <label for="dias" class="form-label">Días:</label>
                         <input type="number" id="dias" name="dias" class="form-control" required
-                            value="{{ $tour->dias }}">
+                            value="{{ old('dias', $tour->dias) }}">
                         @error('dias')
                             <div class="alert alert-danger mt-2">{{ $message }}</div>
                         @enderror
@@ -64,7 +67,8 @@
                             <option value="">Seleccione un Tour en inglés</option>
                             @foreach ($entours as $entour)
                                 <option value="{{ $entour->id }}"
-                                    {{ $entour->id == $tour->relacionado_id ? 'selected' : '' }}>{{ $entour->nombre }}
+                                    {{ old('relacionado_id', $tour->relacionado_id) == $entour->id ? 'selected' : '' }}>
+                                    {{ $entour->nombre }}
                                 </option>
                             @endforeach
                         </select>
@@ -72,17 +76,16 @@
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
                     </div>
-
+                    
                     <div class="col-lg-12 mt-3">
-                        <label for="descripcionCorta" class="form-label">Descripción corta: <small
-                                class="text-success">(Max. 25
-                                palabras)</small></label>
+                        <label for="descripcionCorta" class="form-label">Descripción corta: <small class="text-success">(Max. 25 palabras)</small></label>
                         <input type="text" id="descripcionCorta" name="descripcionCorta" class="form-control" required
-                            maxlength="255" value="{{ $tour->descripcionCorta }}">
+                            maxlength="255" value="{{ old('descripcionCorta', $tour->descripcionCorta) }}">
                         @error('descripcionCorta')
                             <div class="alert alert-danger mt-2">{{ $message }}</div>
                         @enderror
                     </div>
+                    
                     <div class="col-lg-3 mt-3">
                         <label for="imgThumb" class="form-label">Imagen Thumb: <small
                                 class="text-success">(420x280)</small></label>
@@ -103,10 +106,7 @@
                         <img id="imgFullPreview" src="{{ asset($tour->imgFull) }}"
                             style="max-width: 100%; margin-top: 10px; width: 100%; object-fit: cover">
                     </div>
-                    <div class="col-lg-6 mt-3">
-                        <label for="mapa" class="form-label">Mapa del tour:</label>
-                        <textarea class="ckeditor form-control" name="mapa" id="mapa"><{{ $tour->mapa }}</textarea>
-                    </div>
+
                     <div class="col-lg-12 mt-3">
                         <label for="presentacion" class="form-label">Contenido Inicial:</label>
                         <textarea class="ckeditor form-control" name="presentacion" id="presentacion" value="{{ old('presentacion') }}">{{ $tour->presentacion }}</textarea>
@@ -149,7 +149,8 @@
                                     <input class="form-check-input" type="checkbox" id="categoria{{ $id }}"
                                         name="categorias[]" value="{{ $id }}"
                                         @if ($tour->categorias->contains($id)) checked @endif>
-                                    <label class="form-check-label" for="categoria{{ $id }}">{{ $nombre }}</label>
+                                    <label class="form-check-label"
+                                        for="categoria{{ $id }}">{{ $nombre }}</label>
                                 </div>
                             @endforeach
                         </div>
@@ -166,7 +167,7 @@
                             <div class="alert alert-danger mt-2">{{ $message }}</div>
                         @enderror
                     </div>
-                    
+
                     <div class="col-lg-12 mt-3">
                         <label for="slug" class="form-label">Slug:</label>
                         <input type="text" id="slug" name="slug" class="form-control" required
@@ -175,7 +176,7 @@
                             <div class="alert alert-danger mt-2">{{ $message }}</div>
                         @enderror
                     </div>
-                    
+
                     <script>
                         const slugInput = document.getElementById('slug');
                         slugInput.addEventListener('input', function() {
@@ -184,10 +185,6 @@
                             this.value = slugValue;
                         });
                     </script>
-                    
-                    
-
-                    <!-- Resto de los campos de edición -->
 
                 </div>
                 <button class="btn btn-primary mt-4" type="submit">Guardar cambios</button>

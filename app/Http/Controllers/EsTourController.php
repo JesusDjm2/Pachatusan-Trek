@@ -7,6 +7,7 @@ use App\Models\Estour;
 use App\Models\Tour;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rule;
 
 class EsTourController extends Controller
 {
@@ -27,14 +28,12 @@ class EsTourController extends Controller
             'nombre' => 'required|unique:estours',
             'recorrido' => 'required',
             'dias' => 'required|integer',
-            'precio' => 'required',
             'imgThumb' => 'required|max:2048',
             'imgFull' => 'required|max:2048',
             'descripcionCorta' => 'required',
             'presentacion' => 'required',
             'itinerario' => 'required',
             'incluye' => 'required',
-            'mapa' => 'nullable',
             'importante' => 'required',
             'slug' => 'required|unique:estours',
             'keywords' => 'required',
@@ -45,7 +44,6 @@ class EsTourController extends Controller
         $tour->nombre = $request->input('nombre');
         $tour->recorrido = $request->input('recorrido');
         $tour->dias = $request->input('dias');
-        $tour->precio = $request->input('precio');
 
         if ($request->hasFile('imgThumb')) {
             $img = $request->file('imgThumb');
@@ -62,16 +60,7 @@ class EsTourController extends Controller
             $img->move($rutaImg, $imgFull);
             $tour->imgFull = $imgFull;
         }
-        $tour->mapa=$request->get('mapa');
-        /* if ($request->hasFile('mapa')) {
-            $rutaMapa = "img/mapa/";
-            $mapa = $request->file('mapa');
-            $mapaTour = $rutaMapa . $mapa->getClientOriginalName();
-            $mapa->move($rutaMapa, $mapaTour);
-            $tour->mapa = $mapaTour;
-        } else {
-            $tour->mapa = null; 
-        } */
+
 
         $tour->descripcionCorta = $request->input('descripcionCorta');
         $tour->presentacion = $request->input('presentacion');
@@ -95,20 +84,18 @@ class EsTourController extends Controller
         $categorias = EsCategoria::pluck('nombre', 'id');
         return view('admin.estours.edit', compact('tour', 'categorias', 'entours'));
     }
-    public function update(Request $request, $id)
+    /* public function update(Request $request, $id)
     {
         $request->validate([
             'nombre' => 'required',
             'recorrido' => 'required',
             'dias' => 'required|integer',
-            'precio' => 'required',
             'imgThumb' => 'sometimes|required|max:2048',
             'imgFull' => 'sometimes|required|max:2048',
             'descripcionCorta' => 'required',
             'presentacion' => 'required',
             'itinerario' => 'required',
             'incluye' => 'required',
-            'mapa' => 'nullable',
             'importante' => 'required',
             'slug' => 'required|unique:tours,slug,' . $id,
             'keywords' => 'required',
@@ -119,32 +106,23 @@ class EsTourController extends Controller
         $tour->nombre = $request->input('nombre');
         $tour->recorrido = $request->input('recorrido');
         $tour->dias = $request->input('dias');
-        $tour->precio = $request->input('precio');
 
         if ($request->hasFile('imgThumb')) {
             $img = $request->file('imgThumb');
-            $rutaImg = "img/Thumbs/";
-            $imgThumb = $rutaImg . $img->getClientOriginalName();
+            $rutaImg = public_path('img/Thumbs');
+            $imgThumb = $img->getClientOriginalName();
             $img->move($rutaImg, $imgThumb);
-            $tour->imgThumb = $imgThumb;
+            $tour->imgThumb = 'img/Thumbs/' . $imgThumb;
         }
 
         if ($request->hasFile('imgFull')) {
             $img = $request->file('imgFull');
-            $rutaImg = "img/Fondos/";
-            $imgFull = $rutaImg . $img->getClientOriginalName();
+            $rutaImg = public_path('img/Fondos');
+            $imgFull = $img->getClientOriginalName();
             $img->move($rutaImg, $imgFull);
-            $tour->imgFull = $imgFull;
+            $tour->imgFull = 'img/Fondos/' . $imgFull;
         }
-        $tour->mapa=$request->get('mapa');
-        /* if ($request->hasFile('mapa')) {
-            $rutaMapa = "img/mapa/";
-            $mapa = $request->file('mapa');
-            $mapaTour = $rutaMapa . $mapa->getClientOriginalName();
-            $mapa->move($rutaMapa, $mapaTour);
-            $tour->mapa = $mapaTour;
-        }
- */
+        
         $tour->descripcionCorta = $request->input('descripcionCorta');
         $tour->presentacion = $request->input('presentacion');
         $tour->itinerario = $request->input('itinerario');
@@ -160,14 +138,79 @@ class EsTourController extends Controller
         $tour->categorias()->sync($categorias);
 
         return redirect()->route('estours.index')->with('success', 'Tour actualizado exitosamente!');
-    }
+    } */
 
+    public function update(Request $request, $id)
+    {
+        // Validación
+        $request->validate([
+            'nombre' => 'required',
+            'recorrido' => 'required',
+            'dias' => 'required|integer',
+            'imgThumb' => 'sometimes|required|max:2048',
+            'imgFull' => 'sometimes|required|max:2048',
+            'descripcionCorta' => 'required',
+            'presentacion' => 'required',
+            'itinerario' => 'required',
+            'incluye' => 'required',
+            'importante' => 'required',
+            'slug' => [
+                'required',
+                Rule::unique('tours')->ignore($id), 
+            ],
+            'keywords' => 'required',
+            'relacionado_id' => 'required|exists:tours,id',
+        ]);
+
+        // Encontrar el tour
+        $tour = Estour::findOrFail($id);
+        $tour->nombre = $request->input('nombre');
+        $tour->recorrido = $request->input('recorrido');
+        $tour->dias = $request->input('dias');
+
+        // Manejo de imágenes
+        if ($request->hasFile('imgThumb')) {
+            $img = $request->file('imgThumb');
+            $rutaImg = public_path('img/Thumbs');
+            $imgThumb = $img->getClientOriginalName();
+            $img->move($rutaImg, $imgThumb);
+            $tour->imgThumb = 'img/Thumbs/' . $imgThumb;
+        }
+
+        if ($request->hasFile('imgFull')) {
+            $img = $request->file('imgFull');
+            $rutaImg = public_path('img/Fondos');
+            $imgFull = $img->getClientOriginalName();
+            $img->move($rutaImg, $imgFull);
+            $tour->imgFull = 'img/Fondos/' . $imgFull;
+        }
+
+        // Actualizar campos
+        $tour->descripcionCorta = $request->input('descripcionCorta');
+        $tour->presentacion = $request->input('presentacion');
+        $tour->itinerario = $request->input('itinerario');
+        $tour->incluye = $request->input('incluye');
+        $tour->importante = $request->input('importante');
+        $tour->keywords = $request->input('keywords');
+        $tour->slug = $request->input('slug');
+        $tour->relacionado_id = $request->input('relacionado_id');
+
+        // Guardar tour
+        $tour->save();
+
+        // Sincronizar categorías
+        $categorias = $request->input('categorias');
+        $tour->categorias()->sync($categorias);
+
+        // Redirección con éxito
+        return redirect()->route('estours.index')->with('success', 'Tour actualizado exitosamente!');
+    }
     public function show($slug)
-    { 
+    {
         $tour = Estour::where('slug', $slug)->firstOrFail();
         $tours = Estour::where('id', '!=', $tour->id)->orderByDesc('updated_at')->get();
-        $entour= Tour::findOrFail($tour->relacionado_id);
-        $categorias= EsCategoria::all();
+        $entour = Tour::findOrFail($tour->relacionado_id);
+        $categorias = EsCategoria::all();
         return view('admin.estours.show', compact('tour', 'tours', 'entour', 'categorias'));
     }
     public function destroy($id)
@@ -178,9 +221,6 @@ class EsTourController extends Controller
         }
         if (Storage::exists($tour->imgFull)) {
             Storage::delete($tour->imgFull);
-        }
-        if (Storage::exists($tour->mapa)) {
-            Storage::delete($tour->mapa);
         }
 
         $tour->categorias()->detach();

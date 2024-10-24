@@ -4,10 +4,19 @@
     <div class="row">
         <div class="col-lg-12">
             @if (session('status'))
-                <div class="text-success">
-                    <div class="alert alert-danger" role="alert">
-                        {{ session('status') }}
-                    </div>
+                <div class="alert alert-danger" role="alert">
+                    {{ session('status') }}
+                </div>
+            @endif
+
+            <!-- Mostrar errores de validación -->
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
                 </div>
             @endif
         </div>
@@ -25,7 +34,7 @@
                 <div class="row">
                     <div class="col-lg-5 mt-3">
                         <label for="nombre" class="form-label">Nombre del Tour:</label>
-                        <input type="text" id="nombre" name="nombre" class="form-control" required
+                        <input type="text" id="nombre" name="nombre" class="form-control form-control-sm" required
                             value="{{ old('nombre') }}">
                         @error('nombre')
                             <div class="alert alert-danger mt-2">{{ $message }}</div>
@@ -33,32 +42,24 @@
                     </div>
                     <div class="col-lg-4 mt-3">
                         <label for="recorrido" class="form-label">Recorrido:</label>
-                        <input type="text" id="recorrido" name="recorrido" class="form-control" required
+                        <input type="text" id="recorrido" name="recorrido" class="form-control form-control-sm" required
                             value="{{ old('recorrido') }}">
                         @error('recorrido')
                             <div class="alert alert-danger mt-2">{{ $message }}</div>
                         @enderror
                     </div>
-                    <div class="col-lg-2 mt-3">
-                        <label for="precio" class="form-label">Precio:</label>
-                        <input type="text" id="precio" name="precio" class="form-control" required
-                            value="{{ old('precio') }}">
-                        @error('precio')
-                            <div class="alert alert-danger mt-2">{{ $message }}</div>
-                        @enderror
-                    </div>
-                    <div class="col-lg-1 mt-3">
+                    <div class="col-lg-3 mt-3">
                         <label for="dias" class="form-label">Días:</label>
-                        <input type="number" id="dias" name="dias" class="form-control" required
+                        <input type="number" id="dias" name="dias" class="form-control form-control-sm" required
                             value="{{ old('dias') }}">
                         @error('dias')
                             <div class="alert alert-danger mt-2">{{ $message }}</div>
                         @enderror
                     </div>
 
-                    <div class="col-lg-12 mt-3">
+                    <div class="col-lg-5 mt-3">
                         <label for="relacionado_id">Relación de Tour en inglés:</label>
-                        <select name="relacionado_id" id="relacionado_id" class="form-control" required>
+                        <select name="relacionado_id" id="relacionado_id" class="form-control form-control-sm" required>
                             <option value="">Seleccione un Tour en inglés</option>
                             @foreach ($entours as $entour)
                                 @if (!$entour->estour)
@@ -69,14 +70,15 @@
                         @error('relacionado_id')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
-                    </div>                 
+                    </div>
 
-                    <div class="col-lg-12 mt-3">
+                    <div class="col-lg-7 mt-3">
                         <label for="descripcionCorta" class="form-label">Descripción corta: <small
                                 class="text-success">(Max. 25
                                 palabras)</small></label>
-                        <input type="text" id="descripcionCorta" name="descripcionCorta" class="form-control" required
-                            maxlength="255" value="{{ old('descripcionCorta') }}">
+                        <input type="text" id="descripcionCorta" name="descripcionCorta"
+                            class="form-control form-control-sm" required maxlength="255"
+                            value="{{ old('descripcionCorta') }}">
                         @error('descripcionCorta')
                             <div class="alert alert-danger mt-2">{{ $message }}</div>
                         @enderror
@@ -84,7 +86,8 @@
                     <div class="col-lg-4 mt-3">
                         <label for="imgThumb" class="form-label">Imagen Thumb: <small
                                 class="text-success">(420x280)</small></label>
-                        <input type="file" id="imgThumb" name="imgThumb" class="form-control" accept="image/*" required>
+                        <input type="file" id="imgThumb" name="imgThumb" class="form-control form-control-sm"
+                            accept="image/*" required>
                         @error('imgThumb')
                             <div class="alert alert-danger mt-2">{{ $message }}</div>
                         @enderror
@@ -94,30 +97,25 @@
                     <div class="col-lg-4 mt-3">
                         <label for="imgFull" class="form-label">Imagen Full: <small
                                 class="text-success">(1920x1080)</small></label>
-                        <input type="file" id="imgFull" name="imgFull" class="form-control" accept="image/*" required>
+                        <input type="file" id="imgFull" name="imgFull" class="form-control form-control-sm"
+                            accept="image/*" required>
                         @error('imgFull')
                             <div class="alert alert-danger mt-2">{{ $message }}</div>
                         @enderror
                         <img id="imgFullPreview" src="#" alt="Preview"
                             style="display: none; max-width: 100%; margin-top: 10px; width: 100%; height: 220px; object-fit: cover">
                     </div>
-                    <div class="col-lg-4 mt-3">
-                        <label for="mapa" class="form-label">Mapa del tour:</label>
-                        <textarea name="mapa" id="mapa" class="ckefitor form-control"></textarea>
-                    </div>
 
                     <div class="col-lg-12 mt-3">
                         <label for="presentacion" class="form-label">Contenido Inicial:</label>
-                        <textarea class="ckeditor form-control" name="presentacion" id="presentacion" value="{{ old('presentacion') }}">
-
-                        </textarea>
+                        <textarea name="presentacion" id="presentacion" class="ckeditor form-control">{{ old('presentacion') }}</textarea>
                         @error('presentacion')
                             <div class="alert alert-danger mt-2">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="col-lg-12 mt-3">
                         <label for="itinerario" class="form-label">Itinerario:</label>
-                        <textarea class="ckeditor form-control" name="itinerario" id="itinerario"></textarea>
+                        <textarea class="ckeditor form-control" name="itinerario" id="itinerario">{{ old('itinerario') }}</textarea>
                         @error('itinerario')
                             <div class="alert alert-danger mt-2">{{ $message }}</div>
                         @enderror
@@ -125,25 +123,29 @@
                     <script type="text/javascript">
                         document.addEventListener("DOMContentLoaded", function() {
                             const itinerarioValue = {!! json_encode(old('itinerario')) !!};
-                            CKEDITOR.instances['itinerario'].setData(itinerarioValue);
+                            if (itinerarioValue) {
+                                CKEDITOR.instances['itinerario'].setData(itinerarioValue);
+                            }
                         });
                     </script>
+                    
 
                     <div class="col-lg-6 mt-3">
                         <label for="incluye" class="form-label">Incluye:</label>
-                        <textarea class="ckeditor form-control" name="incluye" id="incluye" value="{{ old('incluye') }}"></textarea>
+                        <textarea class="ckeditor form-control" name="incluye" id="incluye">{{ old('incluye') }}</textarea>
                         @error('incluye')
                             <div class="alert alert-danger mt-2">{{ $message }}</div>
                         @enderror
                     </div>
+                    
                     <div class="col-lg-6 mt-3">
                         <label for="importante" class="form-label">Importante: <small>Solo listas</small></label>
-                        <textarea class="ckeditor form-control" name="importante" id="importante" value="{{ old('importante') }}"></textarea>
+                        <textarea class="ckeditor form-control" name="importante" id="importante">{{ old('importante') }}</textarea>
                         @error('importante')
                             <div class="alert alert-danger mt-2">{{ $message }}</div>
                         @enderror
                     </div>
-
+                    
                     <div class="col-lg-12 mt-3">
                         <label for="categorias">Categorías:</label><br>
                         <div class="checkbox-inline">
@@ -165,8 +167,8 @@
                     <div class="col-lg-12 mt-3">
                         <label for="keywords" class="form-label">Keywords: <small class="text-success">(Separar cada
                                 palabra/frase por una coma)</small></label>
-                        <input type="text" id="keywords" name="keywords" class="form-control" required
-                            value="{{ old('keywords') }}">
+                        <input type="text" id="keywords" name="keywords" class="form-control form-control-sm"
+                            required value="{{ old('keywords') }}">
                         @error('keywords')
                             <div class="alert alert-danger mt-2">{{ $message }}</div>
                         @enderror
@@ -174,8 +176,8 @@
 
                     <div class="col-lg-12 mt-3">
                         <label for="slug" class="form-label">Slug:</label>
-                        <input type="text" id="slug" name="slug" class="form-control" required
-                            value="{{ old('slug') }}">
+                        <input type="text" id="slug" name="slug" class="form-control form-control-sm"
+                            required value="{{ old('slug') }}">
                         @error('slug')
                             <div class="alert alert-danger mt-2">{{ $message }}</div>
                         @enderror
@@ -188,7 +190,7 @@
                             const slugValue = originalValue.replace(/\s/g, '-');
                             this.value = slugValue;
                         });
-                    </script>                    
+                    </script>
                 </div>
                 <button class="btn btn-primary mt-4" type="submit">Guardar</button>
                 <a href="{{ route('tours.index') }}" class="btn btn-secondary mt-4 float-right">Cancelar</a>
@@ -225,9 +227,6 @@
             showPreview(this, document.getElementById('imgFullPreview'));
         });
 
-        document.getElementById('mapa').addEventListener('change', function() {
-            showPreview(this, document.getElementById('mapaPreview'));
-        });
     </script>
 
 @endsection

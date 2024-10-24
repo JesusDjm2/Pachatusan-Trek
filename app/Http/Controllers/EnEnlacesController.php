@@ -12,79 +12,104 @@ class EnEnlacesController extends Controller
 {
     public function index()
     {
-        $tours = Tour::latest()->take(4)->get();
-        $tours2 = Tour::whereNotIn('id', $tours->pluck('id'))->latest()->get();
-        $blogs = Enblog::latest()->take(4)->get();
-        return view('index', compact('blogs', 'tours', 'tours2'));
-    }
-    public function around()
-    {
-        $tours = Tour::whereHas('categorias', function ($query) {
-            $query->where('nombre', 'Around Perú');
-        })->get();
-        return view('around', compact('tours'));
-    }
-    public function experiences()
-    {
-        $tours = Tour::whereHas('categorias', function ($query) {
-            $query->where('nombre', 'Exclusive Tours');
-        })->get();
-        return view('experiences', compact('tours'));
-    }
-    public function adventures()
-    {
-        $tours = Tour::whereHas('categorias', function ($query) {
-            $query->where('nombre', 'Adventure tours');
-        })->get();
-        return view('adventures', compact('tours'));
-    }
-    public function blog()
-    {
-        $lastBlog = Enblog::latest('updated_at')->first();
-        $blogs = Enblog::where('updated_at', '<', $lastBlog->updated_at)
-            ->latest('updated_at')
+        $tours = Tour::orderBy('updated_at', 'desc')
+            ->orderBy('created_at', 'desc')
+            ->take(11)
             ->get();
-        return view('blog', compact('lastBlog', 'blogs'));
+
+        $firstTours = $tours->take(3); 
+        $nextTours = $tours->slice(3, 8); 
+
+        return view('index', compact('firstTours', 'nextTours'));
     }
+    public function treks()
+    {
+        $tours = Tour::whereHas('categorias', function ($query) {
+            $query->whereRaw('LOWER(nombre) = ?', ['treks']);
+        })->get();
+
+        return view('admin.tours.treks', compact('tours'));
+    }
+    public function expeditions()
+    {
+        $tours = Tour::whereHas('categorias', function ($query) {
+            $query->whereRaw('LOWER(nombre) = ?', ['expeditions']);
+        })->get();
+
+        return view('admin.tours.expeditions', compact('tours'));
+    }
+    public function entours()
+    {
+        $tours = Tour::whereHas('categorias', function ($query) {
+            $query->whereRaw('LOWER(nombre) = ?', ['tours']);
+        })->get();
+
+        return view('admin.tours.tours', compact('tours'));
+    }
+
     public function about()
     {
         return view('about');
     }
-    public function testimonials()
+    public function contact()
     {
-        return view('testimonials');
+        return view('contact');
     }
-    public function terms()
+    public function certificates()
     {
-        return view('terms-conditions-aet');
+        return view('certificates');
     }
-    public function faqs()
+    public function social()
     {
-        return view('faqs');
+        return view('social-projects');
+    }
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+
+        $tours = Tour::where('nombre', 'LIKE', "%{$query}%")
+            ->get();
+        return view('admin.tours.buscador', compact('tours', 'query'));
     }
 
+
+
+    /*  public function testimonials()
+     {
+         return view('testimonials');
+     }
+     public function terms()
+     {
+         return view('terms-conditions-aet');
+     }
+     public function faqs()
+     {
+         return view('faqs');
+     } */
+
+
     //Tours en español
-    public function esIndex()
+    public function inicio()
     {
         $tours = Estour::latest()->take(4)->get();
         $tours2 = Estour::whereNotIn('id', $tours->pluck('id'))->latest()->get();
-        $blogs = Esblog::latest()->take(4)->get();
-        return view('index-castellano', compact('blogs', 'tours', 'tours2'));
+        /* $blogs = Esblog::latest()->take(4)->get(); */
+        return view('inicio', compact('tours', 'tours2'));
     }
-    public function experiencias()
+    public function expediciones()
     {
         $tours = Estour::all();
-        return view('experiencias', compact('tours'));
+        return view('admin.estours.expediciones', compact('tours'));
     }
-    public function alrededor()
+    public function trekses()
     {
         $tours = Estour::all();
-        return view('alrededor-de-peru', compact('tours'));
+        return view('admin.estours.treks', compact('tours'));
     }
-    public function caminatas()
+    public function tourses()
     {
         $tours = Estour::all();
-        return view('caminatas-peru', compact('tours'));
+        return view('admin.estours.tours', compact('tours'));
     }
     public function bloges()
     {
@@ -94,16 +119,29 @@ class EnEnlacesController extends Controller
             ->get();
         return view('blog-castellano', compact('lastBlog', 'blogs'));
     }
-    public function preguntas()
+    public function certificados()
     {
-        return view('preguntas-frecuentes');
+        return view('certificados');
     }
     public function nosotros()
     {
         return view('nosotros');
     }
-    public function testimonios()
+    public function proyectos()
     {
-        return view('testimonios');
+        return view('proyectos-sociales');
+    }
+    public function contacto()
+    {
+        return view('contacto');
+    }
+
+    public function searches(Request $request)
+    {
+        $query = $request->input('query');
+
+        $tours = Estour::where('nombre', 'LIKE', "%{$query}%")
+            ->get();
+        return view('admin.estours.buscador', compact('tours', 'query'));
     }
 }

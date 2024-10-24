@@ -42,15 +42,7 @@
                             <div class="alert alert-danger mt-2">{{ $message }}</div>
                         @enderror
                     </div>
-                    <div class="col-lg-2 mt-3">
-                        <label for="precio" class="form-label">Precio:</label>
-                        <input type="text" id="precio" name="precio" class="form-control" required
-                            value="{{old('precio', $tour->precio) }}">
-
-                        @error('precio')
-                            <div class="alert alert-danger mt-2">{{ $message }}</div>
-                        @enderror
-                    </div>
+                   
                     <div class="col-lg-1 mt-3">
                         <label for="dias" class="form-label">Días:</label>
                         <input type="number" id="dias" name="dias" class="form-control" required
@@ -97,18 +89,7 @@
                             style="width: 100%; height: 220px; object-fit: cover">
                     </div>
 
-                    <div class="col-lg-4 mt-3">
-                        <label for="mapa" class="form-label">Mapa del tour:</label>
-                        <textarea class="ckeditor form-control" name="mapa" id="mapa"><{{ $tour->mapa }}</textarea>
-                        
-                        {{-- <input type="file" id="mapa" name="mapa" class="form-control" accept="image/*">
-                        @error('mapa')
-                            <div class="alert alert-danger mt-2">{{ $message }}</div>
-                        @enderror
-
-                        <img id="mapaPreview" src="{{ asset($tour->mapa) }}" alt="Vista previa"
-                            style="width: 100%; height: 220px; object-fit: cover"> --}}
-                    </div>
+                    
 
                     <div class="col-lg-12 mt-3">
                         <label for="presentacion" class="form-label">Contenido Inicial:</label>

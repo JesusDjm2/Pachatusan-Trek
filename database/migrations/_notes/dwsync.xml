@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<dwsync>
+<file name="2014_10_12_000000_create_users_table.php" server="216.246.47.134" local="133701182857952792" remote="133724446800000000" Dst="0" />
+<file name="2019_12_14_000001_create_personal_access_tokens_table.php" server="216.246.47.134" local="133701182859133293" remote="133724446800000000" Dst="0" />
+<file name="2022_12_02_191709_create_categorias_table.php" server="216.246.47.134" local="133701182858943300" remote="133724446800000000" Dst="0" />
+<file name="2014_10_12_100000_create_password_resets_table.php" server="216.246.47.134" local="133701182860863969" remote="133724446800000000" Dst="0" />
+<file name="2019_08_19_000000_create_failed_jobs_table.php" server="216.246.47.134" local="133701182858127096" remote="133724446800000000" Dst="0" />
+<file name="2022_12_02_191752_create_proveedors_table.php" server="216.246.47.134" local="133701182860504056" remote="133724446800000000" Dst="0" />
+<file name="2023_07_06_011110_create_tours_table.php" server="216.246.47.134" local="133724408677974861" remote="133724446800000000" Dst="0" />
+<file name="2023_07_06_011210_create_estours_table.php" server="216.246.47.134" local="133705590685190564" remote="133724446800000000" Dst="0" />
+<file name="2023_07_06_013543_create_categories_table.php" server="216.246.47.134" local="133701182858743252" remote="133724446800000000" Dst="0" />
+<file name="2023_07_06_013639_create_tour_category_table.php" server="216.246.47.134" local="133701182859826783" remote="133724446800000000" Dst="0" />
+<file name="2023_07_06_014102_create_escategorias_table.php" server="216.246.47.134" local="133701182859604226" remote="133724446800000000" Dst="0" />
+<file name="2023_07_06_014226_create_estour_categoria_table.php" server="216.246.47.134" local="133701182860302054" remote="133724446800000000" Dst="0" />
+<file name="2023_07_31_122310_create_enblogs_table.php" server="216.246.47.134" local="133701182857725459" remote="133724446800000000" Dst="0" />
+<file name="2023_07_31_122342_create_esblogs_table.php" server="216.246.47.134" local="133701182861070987" remote="133724446800000000" Dst="0" />
+<file name="2023_07_31_122601_create_entags_table.php" server="216.246.47.134" local="133701182859378953" remote="133724446800000000" Dst="0" />
+<file name="2023_07_31_122734_create_enblogs_tags_table.php" server="216.246.47.134" local="133701182861260922" remote="133724446800000000" Dst="0" />
+<file name="2023_07_31_122931_create_estags_table.php" server="216.246.47.134" local="133701182860057202" remote="133724446800000000" Dst="0" />
+<file name="2023_07_31_123010_create_esblogs_tags_table.php" server="216.246.47.134" local="133701182860675555" remote="133724446800000000" Dst="0" />
+<file name="2023_08_22_025507_create_imagenes_table.php" server="216.246.47.134" local="133701182858546030" remote="133724446800000000" Dst="0" />
+</dwsync>

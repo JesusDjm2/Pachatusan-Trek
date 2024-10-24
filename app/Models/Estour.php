@@ -13,14 +13,12 @@ class Estour extends Model
         'nombre',
         'recorrido',
         'dias',
-        'precio',
         'imgThumb',
         'imgFull',
         'descripcionCorta',
         'presentacion',
         'itinerario',
         'incluye',
-        'mapa',
         'importante',
         'slug',
         'keywords',
@@ -30,6 +28,7 @@ class Estour extends Model
     {
         return $this->belongsTo(Tour::class, 'relacionado_id');
     }
+
     public function categorias()
     {
         return $this->belongsToMany(EsCategoria::class, 'estour_categoria', 'tour_id', 'categoria_id');

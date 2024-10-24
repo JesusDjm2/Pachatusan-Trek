@@ -1,54 +1,53 @@
 <!-----Booking---------->
 <div class="fondo-book">
-    <h3 class="text-center">Request Info!</h3>
+    <h3 class="text-center mb-3">Request Info</h3>
     <form action="{{ route('mensaje01') }}" method="post" role="form" class="book1">
         @csrf
-        <div class="form-row">
-            <br>
-            <div class="form-group col-lg-6">
+        <div class="row">
+            <div class="col-lg-6 mb-2">
                 <span class="form-label">Name:</span>
-                <input type="text" name="name" required class="form-control" placeholder="Required*"
+                <input type="text" name="name" required class="form-control form-control-sm" placeholder="Required*"
                     data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
             </div>
-            <div class="form-group col-lg-6">
+            <div class="col-lg-6 mb-2">
                 <span class="form-label">E-Mail:</span>
-                <input type="email" class="form-control" required name="email" id="email"
+                <input type="email" class="form-control form-control-sm" required name="email" id="email"
                     placeholder="Required*" data-rule="email" data-msg="Please enter a valid email" />
                 <div class="validation"></div>
             </div>
-            <div class="form-group col-lg-6">
+            <div class="col-lg-6 mb-2">
                 <span class="form-label">Adults:</span>
-                <input class="form-control" name="adultos" id="adultos" type="number" placeholder="0"
+                <input class="form-control form-control-sm" name="adultos" id="adultos" type="number" placeholder="0"
                     data-error="Valid email is required.">
                 <div class="validation"></div>
             </div>
-            <div class="form-group col-lg-6">
+            <div class="col-lg-6 mb-2">
                 <span class="form-label">Children:</span>
-                <input class="form-control" name="child" id="child" type="number" placeholder="0"
+                <input class="form-control form-control-sm" name="child" id="child" type="number" placeholder="0"
                     data-error="Valid email is required.">
                 <div class="validation"></div>
             </div>
-            <div class="form-group col-lg-6">
+            <div class="col-lg-6 mb-2">
                 <span class="form-label">Date Arrive:</span>
-                <input class="form-control" name="da" id="da" type="date">
+                <input class="form-control form-control-sm" name="da" id="da" type="date">
                 <div class="validation"></div>
             </div>
-            <div class="form-group col-lg-6">
+            <div class="col-lg-6 mb-2">
                 <span class="form-label">Tour:</span>
-                <input type="text" name="tour" required class="form-control" value="{{ $tour->nombre }}" readonly>
+                <input type="text" name="tour" required class="form-control form-control-sm" value="{{ $tour->nombre }}" readonly>
             </div>
-            <div class="form-group col-lg-12">
+            <div class="col-lg-12 mb-2">
                 <span class="form-label">Send us a message:</span>
-                <textarea class="form-control" name="mensaje" id="mensaje" rows="3" data-rule="required"
+                <textarea class="form-control form-control-sm" name="mensaje" id="mensaje" rows="3" data-rule="required"
                     data-msg="Write here your message." placeholder="Message"></textarea>
                 <div class="validation"></div>
             </div>
-            <div class="form-group col-lg-12">
+            <div class="col-lg-12">
                 <p id="checkmark" style="color:#fff;display: none; text-align:center; transition: opacity 0.5s ease">
                     Correct answer! &#10004;</p>
-                <div id="captcha" style="opacity: 1; transition: opacity 0.5s ease;">
-                    <span for="suma">Solve the Captcha before submitting:</span><br>
-                    <span id="num1"></span> + <span id="num2"></span> =
+                <div id="captcha" class="text-center" style="opacity: 1; transition: opacity 0.5s ease;">
+                    <span for="suma"><i> Solve the Captcha before submitting:</i></span><br>
+                    <span id="num1"></span> <span>+</span> <span id="num2"></span> <span>=</span>
                     <span>
                         <input type="number" id="respuesta" name="respuesta" required style="width: 120px; color:#000">
                     </span>
@@ -59,14 +58,13 @@
                     <input type="hidden" id="valorCorrecto" name="valorCorrecto">
                 </div>
             </div>
-            <div class="text-center">
-                <input id="botondjm2" type="submit" name="submit" value="Send" disabled />
+            <div class="text-center mt-2">
+                <input class="btn btn-sm btn-info" type="submit" name="submit" value="Send" disabled />
             </div>
         </div>
     </form>
     <script>
         var intentos = 0;
-
         function generarSumaAleatoria() {
             var num1 = Math.floor(Math.random() * 12) + 3;
             var num2 = Math.floor(Math.random() * (15 - num1)) + num1;

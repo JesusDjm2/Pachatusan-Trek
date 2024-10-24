@@ -9,7 +9,7 @@
     <link rel="icon" type="image/png" href="{{ asset('img/logoico.png') }}">
     <link href="{{ asset('admin/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('admin/css/sb-admin-2.min.css') }}" rel="stylesheet">
-    <link rel="icon" href="{{ asset('img/thumb/favicon-admin.png') }}" />
+    <link rel="icon" type="image/png" href="{{ asset('img/pachatusan-icon.png') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
 </head>
@@ -20,8 +20,8 @@
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('index') }}">
                 <img src="{{ asset('img/logo-pachatusan-trek.png') }}" width="100%" style="padding: 0.6em">
             </a>
-            <hr class="sidebar-divider">
-            <div class="sidebar-heading">
+            <hr style="height: 1px; width: 100%;  background-color: white">
+            <div class="sidebar-heading" style="color:rgb(255 255 255 / 86%)">
                 Inglés
             </div>
             <li class="nav-item">
@@ -40,7 +40,7 @@
                     </div>
                 </div>
             </li>
-            <hr class="sidebar-divider">
+           {{--  <hr class="sidebar-divider">
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#blogsEn" aria-expanded="false" aria-controls="blogsEn">
                     <i class="fas fa-fw fa-language"></i>
@@ -56,9 +56,9 @@
                          </a>
                     </div>
                 </div>
-            </li>
-            <hr class="sidebar-divider">
-            <div class="sidebar-heading">
+            </li> --}}
+            <hr style="height: 1px; width: 100%;  background-color: white">
+            <div class="sidebar-heading" style="color:rgb(255 255 255 / 86%)">
                 Español
             </div>
             <li class="nav-item">
@@ -77,7 +77,7 @@
                     </div>
                 </div>
             </li>
-            <hr class="sidebar-divider">
+            {{-- <hr class="sidebar-divider">
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#blogsEs" aria-expanded="false" aria-controls="blogsEs">
                     <i class="fas fa-fw fa-language"></i>
@@ -93,47 +93,24 @@
                          </a>
                     </div>
                 </div>
-            </li>
-            {{-- <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#ingles" aria-expanded="false" aria-controls="ingles">
-                    <i class="fas fa-fw fa-language"></i>
-                    <span>English</span>
-                </a>
-                <div id="ingles" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="{{ route('toursen.index') }}">
-                            English tours
-                        </a>
-                        <a class="collapse-item" href="{{ route('blogen.index') }}">
-                            Blog categories
-                        </a>
-                        <a class="collapse-item" href="{{ route('blogsens.index') }}">
-                            English Blogs
-                        </a>
-                    </div>
-                </div>
             </li> --}}
-            <hr class="sidebar-divider">
+            
+            <hr style="height: 1px; width: 100%;  background-color: white">
             <li class="nav-item">
                 <a class="nav-link" href="{{route('imagenes.index')}}">
                     <i class="fas fa-fw fa-images"></i>
                     <span>Imágenes</span>
                 </a>
             </li>
-            <hr class="sidebar-divider d-none d-md-block">
+            <hr style="height: 1px; width: 100%;  background-color: white">
             <li class="nav-item">
                 <a class="nav-link" href="{{route('users.index')}}">
                     <i class="fas fa-fw fa-user"></i>
                     <span>Usuarios</span>
                 </a>
             </li>
-            <hr class="sidebar-divider d-none d-md-block">
-            {{-- <li class="nav-item">
-                <a class="nav-link" href="{{ route('home') }}">
-                    <i class="fas fa-fw fa-user"></i>
-                    <span>Home</span>
-                </a>
-            </li> --}}
+            <hr style="height: 1px; width: 100%;  background-color: white">
+            
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('home') }}">
                     <i class="fas fa-fw fa-home"></i>
@@ -185,7 +162,7 @@
                                 </form>
                             </div>
                         </li>                                                
-                        {{-- <li class="nav-item no-arrow mx-1">
+                        <li class="nav-item no-arrow mx-1">
                             <ul class="navbar-nav ms-auto">
                                 <li class="nav-item dropdown">
                                     <a class="nav-link mr-4" href="#" role="button" data-bs-toggle="dropdown"
@@ -195,9 +172,8 @@
                                 </li>
                                 <li>
                                     <a class="btn btn-danger mt-3 btn-sm" href="{{ route('logout') }}"
-                                        onclick="event.preventDefault();
-                                                             document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                        {{ __('Salir') }}
                                     </a>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                         class="d-none">
@@ -205,7 +181,7 @@
                                     </form>
                                 </li>
                             </ul>
-                        </li> --}}
+                        </li>
                     </ul>
                 </nav>
                 <div class="container-fluid">
@@ -224,7 +200,8 @@
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
-    <script src="//cdn.ckeditor.com/4.14.1/full/ckeditor.js"></script>
+    {{-- <script src="//cdn.ckeditor.com/4.14.1/full/ckeditor.js"></script> --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ckeditor/4.9.2/ckeditor.js"></script>
     
     <script src="{{ asset('admin/vendor/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('admin/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>

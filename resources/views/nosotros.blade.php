@@ -1,394 +1,555 @@
-@extends('layouts.general-es')
-@section('metas')
-    <title>Conoce más sobre Andean Exclusive Tours. </title>
-    <meta name="keywords"
-        content="Cusco tours,Cusco de Lujo, Agencia de Viajes Perú, Peru viajes, Tours en Perú, Tours en Cusco, Agencia de Viajes Cusco." />
-    <meta name="description"
-        content="Agencia de viajes de lujo en Cusco - Perú. ✅ Disfrute de la magia de de esta increible tierra.">
-    <meta property="og:url" content="https://www.andeanexclusive.com/nosotros" />
-    <meta property="og:title" content="Conóce más sobre nuestra agencia de viajes: Andean Exclusive Tours.">
-    <meta property="og:type" content="webside">
-    <meta property="og:image" content="https://www.andeanexclusive.com/img/cusco-de-noche.jpg" />
-    <meta name="author" content="Web Masters DJM2" />
-    <link rel="canonical" href="https://www.andeanexclusive.com/nosotros" />
-@endsection
+@extends('layouts.admines')
 @section('contenido')
-    <div class="wrapper">
-        <header id="header">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="header-wrapper">
-                            <div class="site-branding">
-                                <a href="/" rel="home" class="logo-text-link">
-                                    <div class="logo2"></div>
-                                </a>
-                            </div>
-                            <nav class="main-nav">
-                                <ul class="one-page-menu">
-                                    @include('layouts.menu-castellano')
-                                    <li id="display" class="menu-has-children">
-                                        <a href={{ route('about') }}>
-                                            <button type="button" class="btn botondjm">English</button>
-                                        </a>
-                                    </li>
-                                    <li id="wasanum" class='menu-item'><a href='https://bit.ly/3kYXpXr'
-                                            target="_blank">+51 979 721 194</a></li>
-                                    <li id="display2" class="menu-has-children">
-                                        <a href={{ route('about') }}>
-                                            <button type="button" class="btn botondjm">English</button>
-                                        </a>
-                                    </li>
-                                </ul>
-                                <a href="javascript:;" id="mobile-menu"><span></span></a>
-                                <a href="javascript:;" id="close-menu"></a>
-                            </nav>
+    <section class="banner-about">
+        <div class="banner-content">
+            <h1>¿Qué es la Pachatusan?</h1>
+            {{-- <h5>Live unforgettable experiences, have surprising adventures, and meet places full of magic and mysticism.
+            </h5> --}}
+            <a href="#empezar" class="scroll-down-btn">
+                <i class="fas fa-chevron-down"></i>
+                <i class="fas fa-chevron-down additional-arrow"></i>
+                <i class="fas fa-chevron-down third-arrow"></i>
+            </a>
+        </div>
+    </section>
+    <section id="empezar" class="decorative-box d-flex align-items-center py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7 text-start align-self-center">
+                    <h5>About Us</h5>
+                    <h3 style="font-family: 'Dancing Script', cursive;">Con el permiso de los Apus</h3>
+                    <p>
+                        En la cosmovisión andina, el concepto de Pacha no se refiere únicamente a la Madre Tierra. El otro
+                        significado está ligado al concepto de tiempo y espacio representado por la serpiente llamada
+                        Chocora. El término original Tusay significa apuntalar o apoyar. Pachatusan, por lo tanto, puede
+                        interpretarse como el concepto de la permanencia del tiempo y el espacio en el infinito. El Apu
+                        Pachatusan es una de las montañas sagradas o guardianas de la ciudad del Cusco, ubicada al oriente
+                        (en la zona del Antisuyo).
 
+                        Según los cronistas de la invasión española, este monte era venerado con muchas ofrendas, lo que
+                        indica que el lugar era de gran importancia. En la base del Pachatusan se encuentra el complejo
+                        arqueológico de Tipón, que se cree fue principalmente un lugar de culto al agua y la fertilidad.
+                    </p>
+                </div>
+                <div class="col-lg-5">
+                    <img src="{{ asset('img/staff/about-us-pachatusan.jpg') }}" alt="Staff Pachatusan Trek"
+                        class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="parallax-about">
+        <div class="overlay"></div>
+        <div class="content mt-5 mb-5">
+            <div class="row">
+                <div class="col-lg-4">
+                    <h3>MOTIVACIÓN</h3>
+                    <p>
+                        Nuestra pasión y vocación de servicio nos ha llevado a desarrollar nuestras actividades
+                        profesionales en diferentes parajes naturales de nuestro país. Estos sentimientos y habilidades han
+                        sido la principal motivación para iniciar Pachatusantrek.
+                    </p>
+                </div>
+                <div class="col-lg-4">
+                    <h3>VISIÓN</h3>
+                    <p>
+                        A lo largo de este período nuestra empresa buscará liderar en el mercado de turismo de aventura en
+                        trekking de montaña y turismo tradicional en la región Cusco. Nuestro énfasis está en los aspectos
+                        sociales, económicos y ambientales combinados con el desarrollo del turismo sostenible.
+                    </p>
+                </div>
+                <div class="col-lg-4">
+                    <h3>MISIÓN</h3>
+                    <p>
+                        La misión de nuestra organización es liderar en el desarrollo del turismo sostenible en la región
+                        Cusco, así como a nivel nacional, buscando siempre cumplir con las expectativas de nuestros clientes
+                        y colaboradores cumpliendo con estándares de calidad y sostenibilidad.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="our-values">
+        <div class="container">
+            <div class="row justify-content-center text-center">
+                <div class="col-12">
+                    <h3 class="text-secondary">Servicios</h3>
+                    <h2>Te ofrecemos:</h2>
+                </div>
+                <div class="col-lg-2 card p-3">
+                    <h4>Consultores de viajes</h4>
+                    <p>Te acercamos las mejores opciones de servicios turísticos para que tu viaje supere tus expectativas.
+                    </p>
+                </div>
+                <div class="col-lg-2 card p-3">
+                    <h4>Operaciones de oficina y de campo</h4>
+                    <p>Ofrecemos la opción de viajes tradicionales y de aventura, todos con transporte, guía, personal de
+                        oficina y de campo.</p>
+                </div>
+                <div class="col-lg-2 card p-3">
+                    <h4>Guías tradicionales y de trekking</h4>
+                    <p>
+                        Te traemos guías calificados, con amplios conocimientos, que te llevarán a un fantástico viaje por
+                        la historia y geografía de los Andes.
+                    </p>
+                </div>
+                <div class="col-lg-2 card p-3">
+                    <h4>Viajes a medida</h4>
+                    <p>Adaptamos nuestros servicios a su horario, presupuesto, destino y planificación del viaje.</p>
+                </div>
+                <div class="col-lg-2 card p-3">
+                    <h4>Reservas</h4>
+                    <p>Puede reservar vuelos, hoteles, traslados, restaurantes y excursiones con la seguridad de que
+                        obtendrá el servicio acordado.</p>
+                </div>
+                <div class="col-lg-12 mt-5">
+                    <h2 class="">Nuestros Valores:</h2>
+                    <div class="values-list">
+                        <div class="value-item">Respeto</div>
+                        <div class="value-item">Honestidad</div>
+                        <div class="value-item">Compromiso</div>
+                        <div class="value-item">Responsibilidad</div>
+                        <div class="value-item">Calidad de servicio</div>
+                        <div class="value-item">Empatía</div>
+                        <div class="value-item">Trabajoen equuipo</div>
+                        <div class="value-item">Confianza</div>
+                    </div>
+                </div>
+
+                <div class="col-12 mt-5">
+                    <h3 class="text-secondary">¡Por qué elegirnos?</h3>
+                    <h2>Grandes Razones</h2>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="bg-light">
+        <div class="container">
+            <div class="accordion company-info-accordion pb-2" id="companyAccordion">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            SOMOS UNA EMPRESA REGISTRADA
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                        data-bs-parent="#companyAccordion">
+                        <div class="accordion-body">
+                            Somos una empresa legal y formalmente constituida, registrada en todas las instancias requeridas
+                            por las leyes peruanas en la materia. Pachatusantrek desarrolla sus caminatas de acuerdo a la
+                            Ley de Turismo Aventura promulgada por el Gobierno Peruano.
                         </div>
-
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            SOMOS UNA OPERADORA CON LICENCIA EN LAS RUTAS INCAS
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                        data-bs-parent="#companyAccordion">
+                        <div class="accordion-body">
+                            Somos operadores autorizados por el Gobierno Peruano para desarrollar nuestro Proyecto
+                            Turístico: “Gestión Turística Sostenible en la Operación de Caminatas en la Red de Caminos Inca
+                            del Santuario Histórico de Machu Picchu”. Al desarrollar nosotros mismos nuestra operación
+                            turística sustentable en la Red de Caminos Incas del Santuario Histórico de Machu Picchu,
+                            podemos garantizar la calidad del servicio que ofrecemos ya que nuestras caminatas son
+                            supervisadas en el campo, durante las caminatas.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            PRACTICAMOS EL TURISMO SOSTENIBLE
+                        </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                        data-bs-parent="#companyAccordion">
+                        <div class="accordion-body">
+                            Somos operadores autorizados por el Gobierno Peruano para desarrollar nuestro Proyecto
+                            Turístico: “Gestión Turística Sostenible en la Operación de Caminatas en la Red de Caminos Inca
+                            del Santuario Histórico de Machu Picchu”. Al desarrollar nosotros mismos nuestra operación
+                            turística sustentable en la Red de Caminos Incas del Santuario Histórico de Machu Picchu,
+                            podemos garantizar la calidad del servicio que ofrecemos ya que nuestras caminatas son
+                            supervisadas en el campo, durante las caminatas.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFour">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                            PERSONAL CAPACITADO PROFESIONALMENTE
+                        </button>
+                    </h2>
+                    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+                        data-bs-parent="#companyAccordion">
+                        <div class="accordion-body">
+                            Nuestro personal de campo cuenta con varios años de experiencia desarrollando caminatas de
+                            montaña, y en Pachatusantrek capacitamos periódicamente a nuestro personal de campo y oficina
+                            para el óptimo desarrollo de nuestras actividades.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFive">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                            EQUIPO DE CAMPING DE PRIMERA CALIDAD
+                        </button>
+                    </h2>
+                    <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
+                        data-bs-parent="#companyAccordion">
+                        <div class="accordion-body">
+                            El equipo de campamento que utilizamos es de la más alta calidad, ofreciendo a nuestros
+                            caminantes la comodidad necesaria para enfrentar el desafío físico de nuestra actividad. carpas
+                            de 4 estaciones; sacos de dormir diseñados para soportar temperaturas de -10 °C/14 °F; sábanas
+                            polares para una mayor retención térmica o sábanas de algodón para climas más cálidos;
+                            Colchonetas inflables que brindan un mejor descanso. Todos estos productos son de las marcas más
+                            conocidas en actividades al aire libre.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingSix">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                            MENÚ FRESCO BIEN EQUILIBRADO
+                        </button>
+                    </h2>
+                    <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix"
+                        data-bs-parent="#companyAccordion">
+                        <div class="accordion-body">
+                            La comida que proporcionamos es de primera calidad utilizando suministros frescos y orgánicos.
+                            Asimismo, los menús que ofrecemos han sido diseñados por un nutricionista, equilibrando la dieta
+                            con el esfuerzo físico a realizar. Ofrecemos opciones vegetarianas a requerimiento de nuestros
+                            clientes, sin costo adicional. Ven y disfruta de nuestros paseos con el más delicioso y
+                            nutritivo servicio de comida con vista a maravillosos paisajes.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingSeven">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                            GUÍAS DE SENDERISMO EXPERIMENTADOS
+                        </button>
+                    </h2>
+                    <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven"
+                        data-bs-parent="#companyAccordion">
+                        <div class="accordion-body">
+                            Nuestro equipo de guías de trekking cuenta con una amplia experiencia y están altamente
+                            capacitados en diferentes aspectos, como cultura, historia, geografía, primeros auxilios y otras
+                            materias. Queremos asegurar un excelente tiempo de aprendizaje y recreación.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingEight">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+                            SALUD Y SEGURIDAD
+                        </button>
+                    </h2>
+                    <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight"
+                        data-bs-parent="#companyAccordion">
+                        <div class="accordion-body">
+                            Nuestro botiquín de primeros auxilios está supervisado por un especialista en mal de altura y
+                            marcha. Contamos con tanque de oxígeno, botiquín de primeros auxilios, inmovilizadores de
+                            fracturas, tensiómetro, estetoscopio; siguiendo los estándares establecidos por las autoridades
+                            competentes. De acuerdo a las necesidades de los clientes, tenemos convenios con las mejores
+                            clínicas especializadas en mal de altura y medicina general.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingNine">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
+                            INFORMACIÓN PRECISA Y ACTUALIZADA SOBRE NUESTRAS CAMINATAS
+                        </button>
+                    </h2>
+                    <div id="collapseNine" class="accordion-collapse collapse" aria-labelledby="headingNine"
+                        data-bs-parent="#companyAccordion">
+                        <div class="accordion-body">
+                            Todas las rutas que ofrecemos han sido georreferenciadas y reconocidas por Pachatusantrek SAC.
+                            Por lo tanto, podemos responder a cualquier pregunta que tenga sobre ellos, y podemos ampliar la
+                            información proporcionada para cualquier ruta solicitada. Al conocer todas las rutas podemos
+                            asesorar a nuestros compañeros de aventura de la mejor manera.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTen">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseTen" aria-expanded="false" aria-controls="collapseTen">
+                            TAMAÑOS DE GRUPOS LIMITADOS
+                        </button>
+                    </h2>
+                    <div id="collapseTen" class="accordion-collapse collapse" aria-labelledby="headingTen"
+                        data-bs-parent="#companyAccordion">
+                        <div class="accordion-body">
+                            El tamaño de nuestros grupos en servicios compartidos es de 4 a 10 personas, garantizando un
+                            servicio personalizado, con guía asistente para 8 pasajeros o más.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingEleven">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseEleven" aria-expanded="false" aria-controls="collapseEleven">
+                            AMENIDADES CINCO ESTRELLAS
+                        </button>
+                    </h2>
+                    <div id="collapseEleven" class="accordion-collapse collapse" aria-labelledby="headingEleven"
+                        data-bs-parent="#companyAccordion">
+                        <div class="accordion-body">
+                            En caminatas privadas ofrecemos servicios como ducha solar, bolsas de agua caliente, almohadas y
+                            kit de aseo personal biodegradable elaborado con hierbas andinas.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwelve">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseTwelve" aria-expanded="false" aria-controls="collapseTwelve">
+                            TRANSPORTE SEGURO Y CONFIABLE
+                        </button>
+                    </h2>
+                    <div id="collapseTwelve" class="accordion-collapse collapse" aria-labelledby="headingTwelve"
+                        data-bs-parent="#companyAccordion">
+                        <div class="accordion-body">
+                            Utilizamos transporte turístico amplio y cómodo, con conductores profesionales experimentados.
+                            Todos los vehículos cuentan con tanque de oxígeno y botiquín de primeros auxilios. También
+                            tienen la documentación necesaria para las autoridades locales.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThirteen">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseThirteen" aria-expanded="false" aria-controls="collapseThirteen">
+                            SERVICIOS DE NIVEL PREMIER
+                        </button>
+                    </h2>
+                    <div id="collapseThirteen" class="accordion-collapse collapse" aria-labelledby="headingThirteen"
+                        data-bs-parent="#companyAccordion">
+                        <div class="accordion-body">
+                            Nuestros servicios están al nivel de los mejores tour operadores de aventura en el Perú. Le
+                            aseguramos que al elegir nuestros servicios, sus expectativas y las de sus clientes serán
+                            superadas.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFourteen">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseFourteen" aria-expanded="false" aria-controls="collapseFourteen">
+                            CONCIENCIA AMBIENTAL
+                        </button>
+                    </h2>
+                    <div id="collapseFourteen" class="accordion-collapse collapse" aria-labelledby="headingFourteen"
+                        data-bs-parent="#companyAccordion">
+                        <div class="accordion-body">
+                            Porque tenemos como filosofía de trabajo el respeto y amor por la naturaleza, contando siempre
+                            con… “La protección de la Pachamama (Madre Tierra) y el permiso de los Apus (Montañas Sagradas)
+                        </div>
                     </div>
                 </div>
             </div>
-        </header>
-        <section class="section-content no-padding">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <article class="blog-item blog-single">
-                            <div class="entry-excerpt">
-                                <div data-vc-full-width="true" data-vc-full-width-init="false" data-onepage-title="Home"
-                                    data-onepage-slug="home"
-                                    class="vc_row wpb_row vc_row-fluid about vc_row-has-fill vc_row-o-full-height vc_row-o-columns-middle vc_row-o-content-middle vc_row-flex">
-                                    <div class="wpb_column vc_column_container vc_col-sm-12">
-                                        <div class="vc_column-inner vc_custom_1461317698190">
-                                            <div class="wpb_wrapper">
-                                                <div class='carousel-headings '>
-                                                    <div class='swiper-container'>
-                                                        <div class='swiper-wrapper'>
-                                                            <div class='swiper-slide'>
-                                                                <div class='cover-text ph5 text-light text-center pv8 pvb0'>
-                                                                    <h2>NOSOTROS</h2>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="vc_row-full-width vc_clearfix"></div>
+        </div>
+    </section>
+    <section class="team-section bg-light">
+        <div class="container">
+            <h2 class="section-title">Conóce nuestro equipo</h2>
+            <div class="team-member">
+                <div class="team-photo m-auto">
+                    <img src="{{ asset('img/staff/Jessica.jpg') }}" alt="Jessica Llontop">
+                </div>
+                <div class="team-info p-3">
+                    <h3 class="team-name">Jessica Llontop</h3>
+                    <p class="team-position"> CONSULTORA DE VIAJES</p>
+                    <p class="team-description">
+                        Desde muy joven siempre le interesó viajar, y sintiendo que era su vocación, decidió estudiar y
+                        trabajar en turismo. Esta actividad la llevó a conocer muchos lugares del Perú, y algunos del
+                        exterior, ya formarse una adecuada percepción de los servicios turísticos que se ofrecen a nuestros
+                        visitantes.<br>
 
-                                <div data-vc-full-width="true" data-vc-full-width-init="false"
-                                    data-onepage-title="Hot Tours" data-onepage-slug="hot-tours"
-                                    class="vc_row wpb_row vc_row-fluid vc_custom_1523936007189 vc_row-has-fill">
-                                    <div class="wpb_column vc_column_container vc_col-sm-12">
-                                        <div class="vc_column-inner ">
-                                            <div class="wpb_wrapper">
-                                                <div class='heading  text-center '>
-                                                    <img src="img/logo2.png">
-                                                    <div id="separador"></div>
-                                                    <div class="row">
-                                                        <div class="col-lg-12">
-                                                            <H3>Sobre Andean Exclusive</H3>
-                                                            <div class='seperator'></div>
-                                                            <p>Andean Exclusive es un equipo con experiencia en el sector
-                                                                turístico y muy comprometido con nuestros clientes.
-                                                                Desarrollamos vacaciones a medida, adaptándonos
-                                                                perfectamente a las necesidades y requerimientos. Si la
-                                                                prioridad es la comodidad, la aventura, la educación o una
-                                                                combinación de todo lo anterior, nos esforzamos por superar
-                                                                todas las expectativas. Nuestro estilo se caracteriza por la
-                                                                amabilidad, la honestidad y la sensibilidad a los deseos y
-                                                                las necesidades individuales.
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="vc_row-full-width vc_clearfix"></div>
+                        Ha trabajado en el aeropuerto de Lima, agencias de viajes y operadores turísticos líderes en Lima,
+                        Cusco y Puerto Maldonado.<br>
 
-                                <div data-onepage-title="Blog" data-onepage-slug="press"
-                                    class="vc_row wpb_row vc_row-fluid vc_custom_1461248495411">
-                                    <div class="wpb_column vc_column_container vc_col-sm-12">
-                                        <div class="vc_column-inner ">
-                                            <div class="wpb_wrapper">
-                                                <div class='heading mv8 mvt0 text-center '>
-                                                    <div class="row justify">
-                                                        <div class="col-lg-6">
-                                                            <h3 class="text-center">Nuestra ciudad</h3>
-                                                            <p>Cuzco, Perú, es una joya ambientada en un entorno místico y
-                                                                mágico, que es el corazón de nuestra empresa. Aunque se
-                                                                describe como una ciudad colonial española, los cimientos de
-                                                                muchos de los impresionantes edificios fueron construidos
-                                                                por pueblos indígenas hace más de 600 años, pero también la
-                                                                ancestral cultura inca que implica tradiciones, arquitectura
-                                                                y misterios de una maravillosa civilización. Exploramos las
-                                                                montañas que rodean la ciudad, elevándose otros diez a
-                                                                catorce mil pies. Mientras interactuamos con los turistas
-                                                                internacionales durante nuestra juventud, nos animaron a
-                                                                compartir nuestra cultura. Esto nos inspiró a adquirir más
-                                                                conocimiento de la historia y el valor del Perú para el
-                                                                mundo. Al mismo tiempo, desarrollamos interés en otras
-                                                                naciones y culturas, y en personas motivadas para viajar
-                                                                cientos de miles de millas a nuestra patria. El orgullo y la
-                                                                curiosidad fueron rasgos desarrollados por nuestra
-                                                                interacción con personas de otras tierras y los cimientos
-                                                                sobre los que construimos nuestra empresa.</p>
-                                                        </div>
-                                                        <div class="col-lg-6 justify">
-                                                            <h3 class="text-center">¿Cómo trabajamos?</h3>
-                                                            <p>Tus vacaciones peruanas serán inolvidables. "¡El mejor viaje
-                                                                de nuestras vidas!", Han exclamado muchos de nuestros
-                                                                clientes, y los grandes elogios nos han mantenido enfocados
-                                                                en ser consistentes para proporcionar lo mejor en
-                                                                satisfacción del cliente. Desarrollamos vacaciones a medida
-                                                                que se adaptan perfectamente a sus necesidades y
-                                                                solicitudes. Nuestro estilo característico se caracteriza
-                                                                por la amabilidad, la honestidad y la sensibilidad a los
-                                                                deseos y requisitos individuales. Además, lo "exclusivo" en
-                                                                el membrete de la empresa se refleja en la asistencia de la
-                                                                empresa desde el contacto inicial, durante todo el viaje y
-                                                                más allá. Hemos encontrado que la atención al detalle tiene
-                                                                una importancia genuina e invaluable para nuestros clientes
-                                                                de viajes.
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div data-vc-full-width="true" data-vc-full-width-init="false"
-                                    data-onepage-title="Hot Tours" data-onepage-slug="hot-tours"
-                                    class="vc_row wpb_row vc_row-fluid vc_custom_1523936007189 vc_row-has-fill">
-                                    <div class="row text-center heading">
-                                        <div class="col-lg-6">
-                                            <h3>Misión</h3>
-                                            <p>Ofrecer una experiencia de vida a todas las personas con quienes tenemos el
-                                                honor de trabajar Comprometidos con la innovación y el uso adecuado de los
-                                                recursos, creando un turismo de aprendizaje y sostenible. Nuestro trabajo es
-                                                hacer realidad los sueños de los viajeros, acercándolos a Perú, su historia
-                                                y realidad.
-                                            </p>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <h3>Visión</h3>
-                                            <p>Conviértase en uno de los operadores turísticos más importantes
-                                                especializados en la industria del turismo. Desarrollando estándares
-                                                excepcionales de satisfacción para nuestros clientes y colaboradores
-                                                externos, internos. Creando nuestra propia escuela en cuanto a la operación
-                                                y las relaciones interpersonales, convirtiéndonos en un modelo.
-                                            </p>
-                                        </div>
-                                        <div id="divdjm"></div>
-                                        <h3>Nuestros valores</h3>
-                                        <div class="col-lg-1"></div>
-                                        <div class="col-lg-10">
-                                            <img src="img/valores AET.png">
-                                        </div>
-                                        <div class="col-lg-1"></div>
-
-                                    </div>
-                                </div>
-                                <div data-onepage-title="Blog" data-onepage-slug="press"
-                                    class="vc_row wpb_row vc_row-fluid vc_custom_1461248495411">
-                                    <div class="row">
-                                        <h3 class="text-center">NUESTRO EQUIPO</h3>
-                                        <div id="separadordjm"></div>
-                                        <div id="separador"> </div>
-                                        <div class="col-lg-1"></div>
-                                        <div class="col-lg-7">
-                                            <h3 id="blue">Carmen Espejo</h3>
-                                            <p><strong>Gerente de ventas y Co-fundador</strong></p>
-                                            <p class="justify">
-                                                Tiene licencia en turismo y es una persona con muchas cualidades positivas,
-                                                es responsable y estricta con el orden de las cosas. Ella es una líder a
-                                                quien todos ven como un ejemplo. Le encanta disfrutar de su trabajo, viajar
-                                                con sus seres queridos, conocer gente nueva y aprender nuevas culturas y
-                                                costumbres. Su proyección personal con la agencia es hacer crecer todo
-                                                dentro de la agencia como una familia. <br><strong><a id="ablue"
-                                                        href="mailto:operacionesandeanexclusivetours.com">carmen.ceo@andeanexclusivetours.com</a></strong>
-                                            </p>
-                                        </div>
-                                        <div class="col-lg-3 text-center">
-                                            <img src="img/staff/carmen_espejo_miranda.jpg" id="staffimg"
-                                                alt="Carmen Espejo">
-                                        </div>
-                                        <div class="col-lg-1"></div>
-                                    </div>
-                                    <div id="lineadjm"></div>
-                                    <div class="row">
-                                        <div class="col-lg-1"></div>
-                                        <div class="col-lg-7">
-                                            <h3 id="blue">Walter Medina </h3>
-                                            <p><strong>Gerente General y Cofundador </strong></p>
-                                            <p class="justify">
-                                                Es responsable de supervisar los movimientos dentro y fuera de la agencia,
-                                                siempre buscando noticias que nuestros pasajeros puedan disfrutar. Es una
-                                                persona confiable, un padre responsable y un esposo dedicado. Le gustan los
-                                                autos y disfruta de los buenos paisajes. Es un orgulloso cusqueño de su
-                                                tierra y sus costumbres. <br><strong><a id="ablue"
-                                                        href="mailto:walter.ceo@andeanexclusivetours.com">walter.ceo@andeanexclusivetours.com</a></strong>
-                                            </p>
-                                        </div>
-                                        <div class="col-lg-3 text-center">
-                                            <img src="img/staff/Walter_medina.jpg" id="staffimg" alt="Walter Medina">
-                                        </div>
-                                        <div class="col-lg-1"></div>
-                                    </div>
-                                    <div id="lineadjm"></div>
-                                    <div class="row">
-                                        <div class="col-lg-1"></div>
-                                        <div class="col-lg-7">
-                                            <h3 id="blue">Gabriela Mora</h3>
-                                            <p><strong>Behind the scenes</strong></p>
-                                            <p class="justify">Está a cargo del área de finanzas de la compañía, su función
-                                                principal es el pago de proveedores. Estudió administración en la
-                                                universidad local. Habla inglés con fluidez. A ella le encanta viajar y
-                                                bailar.<br><strong><a id="ablue"
-                                                        href="mailto:guestrelations@andeanexclusive.com">guestrelations@andeanexclusive.com</a></strong>
-                                            </p>
-                                        </div>
-                                        <div class="col-lg-3 text-center">
-                                            <img src="img/staff/Gabriela_Mora.png" id="staffimg" alt="Gabriela Mora">
-                                        </div>
-                                        <div class="col-lg-1"></div>
-                                    </div>
-                                    <div id="lineadjm"></div>
-                                    <div class="row">
-                                        <div class="col-lg-1"></div>
-                                        <div class="col-lg-7">
-                                            <h3 id="blue">Yenny Human </h3>
-                                            <p><strong>Contabilidad </strong></p>
-                                            <p class="justify">
-                                                Su área es ser asistente de contabilidad, como trabajadora de la compañía,
-                                                su objetivo es el de un servicio de calidad y que el pasajero esté
-                                                satisfecho con los servicios que le brindamos, y dado que siempre trabajamos
-                                                en equipo, es común ver nuestro los pasajeros regresan a casa felices.
-                                                <br><strong><a id="ablue"
-                                                        href="mailto:contabilidad@andeanexclusivetours.com">contabilidad@andeanexclusive.com</a></strong>
-                                            </p>
-                                        </div>
-                                        <div class="col-lg-3 text-center">
-                                            <img src="img/staff/Yenny_chauchas.jpg" id="staffimg">
-                                        </div>
-                                        <div class="col-lg-1"></div>
-                                    </div>
-                                    <div id="lineadjm"></div>
-                                    <div class="row">
-                                        <div class="col-lg-1"></div>
-                                        <div class="col-lg-7">
-                                            <h3 id="blue">Luisa Ancaypuro </h3>
-                                            <p><strong>Operaciones</strong></p>
-                                            <p class="justify">
-                                                Ella es una guía de turismo muy entusiasta y responsable, le gusta hacer su
-                                                trabajo y le gustan los desafíos. Ella trabaja desde la oficina a cargo de
-                                                realizar todo tipo de operaciones en la agencia. Le encanta leer, cantar y
-                                                viajar. Quiere consolidar a la agencia como la mejor dentro del sector
-                                                turístico brindando servicios de calidad y brindando experiencias
-                                                inolvidables a nuestros pasajeros. <br><strong><a id="ablue"
-                                                        href="mailto:operaciones@andeanexclusivetours.com">operaciones@andeanexclusivetours.com</a></strong>
-                                            </p>
-                                        </div>
-                                        <div class="col-lg-3 text-center">
-                                            <img src="img/staff/Luisa_ancaypuro.jpeg" id="staffimg">
-                                        </div>
-                                        <div class="col-lg-1"></div>
-                                    </div>
-                                    <div id="lineadjm"></div>
-                                    <div class="row">
-                                        <div class="col-lg-1"></div>
-                                        <div class="col-lg-7">
-                                            <h3 id="blue">David Miranda </h3>
-                                            <p><strong>Diseñador web y posicionador.</strong></p>
-                                            <p class="justify">
-                                                Es una persona con objetivos fijos para sus objetivos, minorista y dispuesto
-                                                a resolver problemas. Es responsable de publicidad y marketing dentro de la
-                                                empresa. Disfruta de tu trabajo y viaja con buena compañía. Piense que
-                                                "Exclusivo Andino" está construido sobre una base grande y es un ejemplo
-                                                para proyectar siempre crecer más, ya que la agencia siempre invita a ser
-                                                mejor. <br><strong><a id="ablue"
-                                                        href="mailto:mirandadjmdjm@gmail.com">sistemas@andeanexclusivetours.com</a></strong>
-                                            </p>
-                                        </div>
-                                        <div class="col-lg-3 text-center">
-                                            <img src="img/staff/David_jesus_miranda.jpg" id="staffimg"
-                                                alt="David Miranda">
-                                        </div>
-                                        <div class="col-lg-1"></div>
-                                    </div>
-                                    <div id="lineadjm"></div>
-                                    <div class="row">
-                                        <div class="col-lg-1"></div>
-                                        <div class="col-lg-7">
-                                            <h3 id="blue">Julio Humpire </h3>
-                                            <p><strong>Servicios al cliente</strong></p>
-                                            <p class="justify">
-                                                En la compañía, su trabajo es apoyar las operaciones, también maneja
-                                                informes, completa los detalles de nuestros pasajeros y vuelve a confirmar
-                                                las reservas. Finalmente, apoye las áreas que lo necesitan.<br><strong><a
-                                                        id="ablue"
-                                                        href="mailto:costumerservice@andeanexclusive.com">costumerservice@andeanexclusive.com</a></strong>
-                                            </p>
-                                        </div>
-                                        <div class="col-lg-3 text-center">
-                                            <img src="img/staff/Julio_humpire.jpg" id="staffimg">
-                                        </div>
-                                        <div class="col-lg-1"></div>
-                                    </div>
-                                    <div id="lineadjm"></div>
-                                    <div class="row">
-                                        <div class="col-lg-1"></div>
-                                        <div class="col-lg-7">
-                                            <h3 id="blue">Edith Dueñas </h3>
-                                            <p><strong>Reservaciones</strong></p>
-                                            <p class="justify">
-                                                Edith ha estado en el turismo por más de 5 años, es una persona experta en
-                                                muchas áreas turísticas. Dentro de nuestras oficinas ella es la oficina del
-                                                área de reserva. Su objetivo es crecer con la agencia, manteniendo siempre
-                                                nuestros valores por delante. <br><strong><a id="ablue"
-                                                        href="mailto:reservas@andeanexclusivetours.com">reservas@andeanexclusive.com</a></strong>
-                                            </p>
-                                        </div>
-                                        <div class="col-lg-3 text-center">
-                                            <img src="img/staff/Edith_dueñas.png" id="staffimg">
-                                        </div>
-                                        <div class="col-lg-1"></div>
-                                    </div>
-                                    <div id="lineadjm"></div>
-                                    <div class="row">
-                                        <div class="col-lg-1"></div>
-                                        <div class="col-lg-7">
-                                            <h3 id="blue">Percy Sánchez </h3>
-                                            <p><strong>Organizador y supervisor de calidad.</strong></p>
-                                            <p class="justify">
-                                                Él es nuestro chef y guía en rutas de alta montaña. Su calidad es un orden
-                                                estricto y ordenado para dar un servicio de calidad. Es una persona muy
-                                                proactiva e innovadora y le gustan los desafíos. Le encanta jugar fútbol,
-                                                cocinar y le gusta pasar tiempo con sus hijos y mascotas desde casa. Quiere
-                                                que la agencia obtenga un gran prestigio de servicio y calidad dentro del
-                                                sector turístico.<br><strong><a id="ablue"
-                                                        href="mailto:outdoors@andeanexclusive.com">outdoors@andeanexclusive.com</a></strong>
-                                            </p>
-                                        </div>
-                                        <div class="col-lg-3 text-center">
-                                            <img src="img/staff/Percy_sanchez.jpg" id="staffimg">
-                                        </div>
-                                        <div class="col-lg-1"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="vc_row-full-width vc_clearfix"></div>
-                    </div>
-                    </article>
+                        Jessica se especializa en asesoramiento y organización de viajes, y siempre trata de brindar a
+                        nuestros clientes el alto nivel de servicio que ella misma esperaría recibir.
+                    </p>
                 </div>
             </div>
-        </section>
-    </div>
+            <div class="team-member">
+                <div class="team-photo m-auto">
+                    <img src="{{ asset('img/staff/Sergio.jpg') }}" alt="Sergio Cuba">
+                </div>
+                <div class="team-info p-3">
+                    <h3 class="team-name">Sergio Cuba</h3>
+                    <p class="team-position">GUÍA Y CONSULTOR DE TREKKING</p>
+                    <p class="team-description">
+                        Nació en la ciudad de Lima, en el hermoso distrito de Miraflores, que fuera el Curacazgo de Sulco,
+                        perteneciente al Señor de Ichsma (Pachacamaq).<br>
+
+                        Siempre ha sentido una abrumadora atracción por la naturaleza, la cual ha desarrollado en el mar, la
+                        costa, la montaña y la selva.<br>
+
+                        Sergio ha tenido la suerte de haber trabajado en varios lugares como Lima, Arequipa, Cañón del
+                        Colca, Puerto Maldonado, Lago Sandoval – Tambopata, Cuzco y sus magníficos alrededores.
+                    </p>
+                </div>
+            </div>
+            <div class="team-member">
+                <div class="team-photo m-auto">
+                    <img src="{{ asset('img/staff/Monica.jpg') }}" alt="Monica Jurado Gil">
+                </div>
+                <div class="team-info p-3">
+                    <h3 class="team-name">Monica Jurado Gil</h3>
+                    <p class="team-position"> ÁREA DE RESERVAS</p>
+                    <p class="team-description">
+                        Nació en Lima y es nuestra oficial de reservas de servicios, donde ha desarrollado sus funciones con
+                        eficiencia. Amante de la naturaleza, le gusta correr por el campo y pasar tiempo con su familia y
+                        amigos. Habiéndose enamorado de la ciudad del Cusco, la ha adoptado como su residencia permanente.
+                    </p>
+                </div>
+            </div>
+            <div class="team-member">
+                <div class="team-photo m-auto">
+                    <img src="{{ asset('img/staff/Mayling.jpg') }}" alt="Maylin La Rosa Espinoza">
+                </div>
+                <div class="team-info p-3">
+                    <h3 class="team-name">Maylin La Rosa Espinoza</h3>
+                    <p class="team-position">DEPARTAMENTO DE VENTAS</p>
+                    <p class="team-description">
+                        Amante de los viajes, nació en la ciudad de Lima, desde el 2014 forma parte del equipo de
+                        Pachatusantrek, desarrollándose como ejecutiva de ventas en mostrador y su pasión es viajar y
+                        descubrir nuevas costumbres. Ama al Perú y quiere mostrárselo al mundo.
+                    </p>
+                </div>
+            </div>
+            <div class="team-member">
+                <div class="team-photo m-auto">
+                    <img src="{{ asset('img/staff/Gloria.jpg') }}" alt="Gloria Muñoz">
+                </div>
+                <div class="team-info p-3">
+                    <h3 class="team-name">Gloria Muñoz</h3>
+                    <p class="team-position">CONTADORA</p>
+                    <p class="team-description">
+                        Nuestra contadora Gloria nació en la cálida ciudad de Santa Ana – Quillabamba – Cusco, donde
+                        disfrutó de su infancia rodeada de la maravillosa naturaleza. Vive en la ciudad del Cusco con su
+                        familia, dedica su tiempo tanto a sus compromisos familiares como a estudiar la carrera de
+                        Contabilidad en la Universidad San Antonio Abad del Cusco. Parte de su satisfacción laboral es poder
+                        desarrollarse como profesional en el sector turístico. Ella entiende la historia y la naturaleza de
+                        nuestro país y ama y disfruta todo lo que tiene para ofrecer.<br>
+
+                        Como madre y esposa comparte con su familia el sueño de poder conocer más de la naturaleza de
+                        nuestro país, como el Parque Nacional del Manu; así como otras áreas naturales protegidas alrededor
+                        del mundo.
+                    </p>
+                </div>
+            </div>
+            <div class="team-member">
+                <div class="team-photo m-auto">
+                    <img src="{{ asset('img/staff/Martha.jpg') }}" alt="Martha Orozco Castro">
+                </div>
+                <div class="team-info p-3">
+                    <h3 class="team-name">Martha Orozco Castro</h3>
+                    <p class="team-position">MANTENIMIENTO</p>
+                    <p class="team-description">
+                        Nacida en Cusco en el tradicional barrio de San Blas, Martha hace nuestra limpieza en la oficina.
+                        Debido a su comportamiento agradable, así como a su eficiencia, se ha ganado nuestro respeto y
+                        cuidado. Martha ha dedicado su esfuerzo a criar a su hija, quien tiene estudios para ser bióloga. Su
+                        pasatiempo es disfrutar de la música y pasar tiempo con su familia.
+                    </p>
+                </div>
+            </div>
+            <div class="team-member">
+                <div class="team-photo m-auto">
+                    <img src="{{ asset('img/staff/Gerardo.jpg') }}" alt="Gerardo Condori Mamani">
+                </div>
+                <div class="team-info p-3">
+                    <h3 class="team-name">Gerardo Condori Mamani</h3>
+                    <p class="team-position">CHEF DE CAMPO</p>
+                    <p class="team-description">
+                        Lucio nació en la comunidad de Qeswarani y se dedica a complacer a los pasajeros con su cocina.
+                        Hombre de familia con tres hijos vive en el Valle Sagrado de los Inkas, en Huarán donde cría
+                        pequeños animales como gallinas y cuyes. En su tiempo libre lo pasa con su familia y juega al fútbol
+                        con pasión. Conseguir una sonrisa en los pasajeros es su mayor recompensa.
+                    </p>
+                </div>
+            </div>
+            <div class="team-member">
+                <div class="team-photo m-auto">
+                    <img src="{{ asset('img/staff/Wilfred.jpg') }}" alt="Wilfredo Condori Sicus">
+                </div>
+                <div class="team-info p-3">
+                    <h3 class="team-name">Wilfredo Condori Sicus</h3>
+                    <p class="team-position">JEFE DE PORTEROS</p>
+                    <p class="team-description">
+                        Nacido en la comunidad de Cuncani, es jefe de porteadores desde hace mucho tiempo. Ha integrado a
+                        personas de su comunidad a su equipo. Casado y padre de una niña, sigue viviendo en Cuncani, cría
+                        llamas, caballos y pequeños animales. Le gusta aprender inglés y jugar al fútbol. Es un trabajador
+                        comprometido que quiere que el pasajero se sienta cómodo.
+                    </p>
+                </div>
+            </div>
+            <div class="team-member">
+                <div class="team-photo m-auto">
+                    <img src="{{ asset('img/staff/Roberto.jpg') }}" alt="Robert Condori">
+                </div>
+                <div class="team-info p-3">
+                    <h3 class="team-name">Robert Condori</h3>
+                    <p class="team-position">CHEF DE CAMPO</p>
+                    <p class="team-description">
+                        Nacido en la comunidad de Cuncani – Lares, es el tercero de 5 hermanos. Durante su infancia colabora
+                        con la familia en actividades agrícolas y de pastoreo de animales. En su adolescencia se trasladó a
+                        la ciudad de Urubamba para continuar con sus estudios secundarios. Ya en la ciudad del Cusco es que
+                        inicia sus estudios profesionales de turismo, buscando la especialización como guía. Actualmente,
+                        Robert se desempeña como ayudante de cocina, a la espera de completar sus estudios y participar en
+                        actividades guiadas.
+                    </p>
+                </div>
+            </div>
+            <div class="team-member">
+                <div class="team-photo m-auto">
+                    <img src="{{ asset('img/staff/Alex.jpg') }}" alt="Alex Jimenez Llanos">
+                </div>
+                <div class="team-info p-3">
+                    <h3 class="team-name">Alex Jimenez Llanos</h3>
+                    <p class="team-position">CAMARERO</p>
+                    <p class="team-description">
+                        Nació en la ciudad de Lima. De niño su familia se mudó al famoso Valle Sagrado de los Incas. El
+                        pueblo de Urubamba lo adoptó de inmediato como un hijo nacido en este sagrado territorio. De joven
+                        se dedicó a la agricultura y la construcción civil, descubriendo años después su pasión por el
+                        turismo. Hombre de familia y apasionado del fútbol, ​​ha desempeñado diferentes roles en el Camino
+                        Inca, donde últimamente se destaca por su habilidad en el área de la cocina.
+                    </p>
+                </div>
+            </div>
+            <div class="team-member">
+                <div class="team-photo m-auto">
+                    <img src="{{ asset('img/staff/Jeremias.jpg') }}" alt="Jeremias Sicus">
+                </div>
+                <div class="team-info p-3">
+                    <h3 class="team-name">Jeremias Sicus</h3>
+                    <p class="team-position">CAMARERO</p>
+                    <p class="team-description">
+                        Nació en el distrito de Lares, provincia de Calca. A Jeremias le encanta estar en contacto con la
+                        naturaleza y dar largas caminatas, principalmente Choquequirao. En su tiempo libre le gusta salir a
+                        jugar fútbol con sus amigos. Su vocación de servicio lo ha llevado a estudiar la carrera de guía
+                        oficial de turismo, pues quiere llevar turistas a la montaña y enseñar todo lo aprendido. Estamos
+                        seguros de que será una gran guía.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
 @endsection

@@ -12,7 +12,6 @@ use App\Http\Controllers\EstagController;
 use App\Http\Controllers\EsTourController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ImagenController;
-use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\TourController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
@@ -21,24 +20,33 @@ use Illuminate\Support\Facades\Mail;
 
 
 Route::get('sitemap', 'SitemapController@sitemap');
-Route::get('around-peru', [EnEnlacesController::class, 'around'])->name('around');
-Route::get('exclusive-tours', [EnEnlacesController::class, 'experiences'])->name('experiences');
-Route::get('adventures', [EnEnlacesController::class, 'adventures'])->name('adventures');
+Route::get('treks', [EnEnlacesController::class, 'treks'])->name('treks');
+Route::get('expeditions', [EnEnlacesController::class, 'expeditions'])->name('expeditions');
+Route::get('tours-in-peru', [EnEnlacesController::class, 'entours'])->name('entours');
 Route::get('peru-tourism-blog', [EnEnlacesController::class, 'blog'])->name('blog-en');
+
 Route::get('about',  [EnEnlacesController::class, 'about'])->name('about');
-Route::get('testimonials',  [EnEnlacesController::class, 'testimonials'])->name('testimonials');
+Route::get('contact-Pachatusan-Trek',  [EnEnlacesController::class, 'contact'])->name('contact');
+Route::get('certificates',  [EnEnlacesController::class, 'certificates'])->name('certificates');
+Route::get('social-projects',  [EnEnlacesController::class, 'social'])->name('social');
+Route::get('search-tours',  [EnEnlacesController::class, 'search'])->name('search');
+
+
+/* Route::get('testimonials',  [EnEnlacesController::class, 'testimonials'])->name('testimonials');
 Route::get('terms-conditions-aet', [EnEnlacesController::class, 'terms'])->name('terms');
-Route::get('faqs',  [EnEnlacesController::class, 'faqs'])->name('faqs');
+Route::get('faqs',  [EnEnlacesController::class, 'faqs'])->name('faqs'); */
 
 //Rutas Español
-Route::get('turismo-Peru', [EnEnlacesController::class, 'esIndex'])->name('inicio');
-Route::get('tours-exclusivos', [EnEnlacesController::class, 'experiencias'])->name('experiencias');
-Route::get('alrededor-de-peru', [EnEnlacesController::class, 'alrededor'])->name('alrededor-de-peru');
-Route::get('tours-de-aventura', [EnEnlacesController::class, 'caminatas'])->name('caminatas');
-Route::get('blog-turismo-peru', [EnEnlacesController::class, 'bloges'])->name('blog-es');
-Route::get('preguntas-frecuentes', [EnEnlacesController::class, 'preguntas'])->name('preguntas-frecuentes');
-Route::get('nosotros', [EnEnlacesController::class, 'nosotros'])->name('nosotros');
-Route::get('testimonios', [EnEnlacesController::class, 'testimonios'])->name('testimonios');
+Route::get('turismo-Peru', [EnEnlacesController::class, 'inicio'])->name('inicio');
+Route::get('Expediciones', [EnEnlacesController::class, 'expediciones'])->name('expediciones');
+Route::get('Treks-Peru', [EnEnlacesController::class, 'trekses'])->name('trekses');
+Route::get('Tours-Peru', [EnEnlacesController::class, 'tourses'])->name('tourses');
+
+Route::get('Nosotros', [EnEnlacesController::class, 'nosotros'])->name('nosotros');
+Route::get('Certificados', [EnEnlacesController::class, 'certificados'])->name('certificados');
+Route::get('Proyectos-Sociales', [EnEnlacesController::class, 'proyectos'])->name('proyectos');
+Route::get('Contacto', [EnEnlacesController::class, 'contacto'])->name('contacto');
+Route::get('buscar-tours',  [EnEnlacesController::class, 'searches'])->name('searches');
 
 Auth::routes();
 

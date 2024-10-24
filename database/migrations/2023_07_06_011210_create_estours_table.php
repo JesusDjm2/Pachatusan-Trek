@@ -18,14 +18,12 @@ class CreateEstoursTable extends Migration
             $table->string('nombre');
             $table->string('recorrido');
             $table->integer('dias');
-            $table->string('precio');
             $table->string('imgThumb');
             $table->string('imgFull');
             $table->text('descripcionCorta');
             $table->text('presentacion');
             $table->text('itinerario');
             $table->text('incluye');
-            $table->string('mapa');
             $table->text('importante');
             $table->string('slug');
             $table->string('keywords');

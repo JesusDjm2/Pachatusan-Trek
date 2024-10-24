@@ -5,4 +5,9 @@
 <file name="form.blade.php" server="15.204.142.117" local="133148990715091858" remote="133159546200000000" Dst="0" />
 <file name="index.blade.php" server="15.204.142.117" local="133145445841538041" remote="133159546200000000" Dst="0" />
 <file name="show.blade.php" server="15.204.142.117" local="133145012599722652" remote="133159546200000000" Dst="0" />
+<file name="create.blade.php" server="216.246.47.134" local="133701178950783411" remote="133742575200000000" Dst="0" />
+<file name="edit.blade.php" server="216.246.47.134" local="133701178951443839" remote="133742575200000000" Dst="0" />
+<file name="form.blade.php" server="216.246.47.134" local="133701178951273731" remote="133742575200000000" Dst="0" />
+<file name="index.blade.php" server="216.246.47.134" local="133701178951123866" remote="133742575200000000" Dst="0" />
+<file name="show.blade.php" server="216.246.47.134" local="133701178950963806" remote="133742575200000000" Dst="0" />
 </dwsync>

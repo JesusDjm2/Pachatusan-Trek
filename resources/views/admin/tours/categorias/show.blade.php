@@ -1,101 +1,61 @@
-@extends('layouts.general-es')
+@extends('layouts.admin')
 @section('metas')
     <title>{{ $categoria->nombre }}</title>
     <meta name="keywords" content="Listado de tour con la categoria: {{ $categoria->nombre }}" />
     <meta name="description" content="Listado de tour con la categoria: {{ $categoria->nombre }}" />
-    <meta property="og:url" content="https://www.andeanexclusive.com">
+    <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:title" content="{{ $categoria->nombre }}">
     <meta property="og:type" content="article">
     <meta property="og:image" content="" />
     <meta name="author" content="Web Masters DJM2" />
-    <link rel="canonical" href="https://www.andeanexclusive.com" />
+    <link rel="canonical" href="{{ url()->current() }}" />
 @endsection
 @section('contenido')
-    <div class="wrapper">
-        <header id="header">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="header-wrapper">
-                            <div class="site-branding">
-                                <a href="{{ route('index') }}" rel="home" class="logo-text-link">
-                                    <img src="{{ asset('img/andean-exclusive-logo.png') }}" id="logo"
-                                        alt="Logo Andean Exclusive Tours">
-                                </a>
-                            </div>
-                            <nav class="main-nav">
-                                <ul class="one-page-menu">
-                                    @include('layouts.menu')
-                                    <li id="display">
-                                        <a href="{{ route('inicio') }}">
-                                            <button type="button" class="botondjm">
-                                                <i class="fa fa-language"></i> Español
-                                            </button>
-                                        </a>
-                                    </li>
-                                    <li id="wasanum" class='menu-item'><a href='https://bit.ly/3kYXpXr'
-                                            target="_blank">+51 979 721 194</a></li>
-                                    <li id="display2">
-                                        <a href="{{ route('inicio') }}">
-                                            <button type="button" class="botondjm">Español</button>
-                                        </a>
-                                    </li>
-                                </ul>
-                                <a href="javascript:;" id="mobile-menu"><span></span></a>
-                                <a href="javascript:;" id="close-menu"></a>
-                            </nav>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </header>
-        <div class="blogContenedor">
-            <img src="{{ asset('img/full/Huayna-Picchu-Machu-Picchu.webp') }}" class="fullscreen-img">
-            <div class="content-overlay">
-                <h1>Category: {{ $categoria->nombre }}</h1>
-            </div>
+    {{-- @auth
+        <a href="{{ route('tours.edit', $tour->id) }}" class="boton-editar" target="_blank">Editar
+            Tour</a>
+    @endauth --}}
+    <section class="banner-contact">
+        <div class="banner-content container">
+            <h1>{{ $categoria->nombre }}</h1>
+            {{-- <h5>
+                Trek the Inca Trail but also trail on less travelled but equally impressive alternative treks & trek to
+                places like Choquequirao, a stunning Incan complex as important as Machu Picchu, or trek through Salkantay
+                mountain passes or the stunning Lares trail to continue through to Machu Picchu. Or head to the lesser known
+                trails of Ausangate & Vilcabamba to explore deeper into the middle of the Andes and trek through traditional
+                heartlands.
+            </h5> --}}
+            <a href="#empezar" class="scroll-down-btn">
+                <i class="fas fa-chevron-down"></i>
+                <i class="fas fa-chevron-down additional-arrow"></i>
+                <i class="fas fa-chevron-down third-arrow"></i>
+            </a>
         </div>
-    </div>
-    <div class="container relacionados" style="margin-top:2em; margin-bottom:2em">
-        <div class="row">
-            @foreach ($tours as $tour)
-                <div class="col-lg-4"> 
-                    <div class="card">
-                        <a href="{{ route('tour.show', $tour->slug) }}">
-                            <img class="card-img-top" src="{{asset( $tour->imgThumb )}}" alt="{{ $tour->nombre }}"
-                                loading="lazy">
-                        </a>
-                        <div class="card-body">
-                            <h5>{{ $tour->nombre }}</h5>
-                            <div class="linea"></div>
-                            <div class="recorrido">
-                                <i class="fa fa-map-marker"></i>&nbsp;
-                                <span>{{ $tour->recorrido }}</span>
-                            </div>
-                            <p class="card-text">{{ $tour->descripcionCorta }}</p>
-                            <div class="cuerpo">
-                                <div class="col-sm-6">
-                                    <p><i class="fa fa-usd"></i> {{ $tour->precio }}.00</p>
-                                </div>
-                                <div class="col-sm-6">
-                                    <p class="right"><i class="fa fa-clock-o"></i> {{ $tour->dias }} days</p>
-                                </div>
-                            </div>
-                            <div class="categorias">
-                                @foreach ($tour->categorias as $categoria)
-                                    <a href="{{ route('category.show', $categoria->slug) }}">{{ $categoria->nombre }}</a>
-                                    @if (!$loop->last)
-                                        -&nbsp;
-                                    @endif
-                                @endforeach
-                            </div>
-                            <a href="{{ route('tour.show', $tour->slug) }}" class="boton2023">
-                                Read more
+    </section>
+    <section class="bg-light contact-section" id="empezar">
+        <div class="container">
+            <div class="row">
+                @foreach ($tours as $tour)
+                    <div class="col-lg-4 tours mb-3">
+                        <div class="contImg">
+                            <a href='{{ route('tour.show', $tour->slug) }}' class='entry-link'>
+                                <img src="{{ asset($tour->imgThumb) }}" class="attachment-post-grid-s size-post-grid-s"
+                                    alt="{{ $tour->nombre }}" loading="lazy" style="height: 245px!important" />
                             </a>
                         </div>
+                        <div class='info'>
+                            <h3>{{ $tour->nombre }}</h3>
+                            <p> {{ $tour->descripcionCorta }} </p>
+                            <div style="width: 100%;  padding-bottom:50px">
+                                <span style="float: left"><i class="fa fa-clock-o"></i>
+                                    {{ $tour->dias }} {{ $tour->dias == 1 ? 'day' : 'days' }}</span>
+                                <span style="float: right"><i class="fa fa-map-marker"></i> {{ $tour->recorrido }}</span>
+                            </div>
+                            <a href="{{ route('tour.show', $tour->slug) }}" class='button'>More info</a>
+                        </div>
                     </div>
-                </div>
-            @endforeach
+                @endforeach
+            </div>
         </div>
-    </div>
+    </section>
 @endsection

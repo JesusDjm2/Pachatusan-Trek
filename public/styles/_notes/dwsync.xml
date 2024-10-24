@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <dwsync>
 <file name="bootstrap.minbb49.css" server="ftp.fatcow.com" local="132820149559944051" remote="132820149600000000" Dst="0" />
-<file name="estilo.css" server="ftp.fatcow.com" local="132852934092454073" remote="132852957600000000" Dst="0" />
-<file name="estilo.css" server="157.245.81.162" local="132997834851601782" remote="132998070000000000" Dst="0" />
 <file name="bootstrap.min.css" server="157.245.81.162" local="132819404500000000" remote="132938784600000000" Dst="0" />
 <file name="bootstrap.minbb49.css" server="157.245.81.162" local="132991071249885255" remote="132991258200000000" Dst="0" />
 <file name="font-awesome.min5243.css" server="157.245.81.162" local="132819404500000000" remote="132938785200000000" Dst="0" />
@@ -10,9 +8,19 @@
 <file name="js_composer.min5243.css" server="157.245.81.162" local="132819404540000000" remote="132938785200000000" Dst="0" />
 <file name="bootstrap.min.css" server="15.204.142.117" local="132819404500000000" remote="133046365800000000" Dst="0" />
 <file name="bootstrap.minbb49.css" server="15.204.142.117" local="133016984288300312" remote="133046365800000000" Dst="0" />
-<file name="estilo.css" server="15.204.142.117" local="133046331320020649" remote="133049074200000000" Dst="0" />
 <file name="font-awesome.min5243.css" server="15.204.142.117" local="132819404500000000" remote="133046365800000000" Dst="0" />
 <file name="font-awesome.minbb49.css" server="15.204.142.117" local="132819404500000000" remote="133046365800000000" Dst="0" />
 <file name="js_composer.min5243.css" server="15.204.142.117" local="132819404540000000" remote="133046365800000000" Dst="0" />
 <file name="nuevo-boot.css" server="15.204.142.117" local="133048869496441999" remote="133049074200000000" Dst="0" />
+<file name="bootstrap.min.css" server="216.246.47.134" local="133701182675095269" remote="133704663600000000" Dst="0" />
+<file name="bootstrap.minbb49.css" server="216.246.47.134" local="133701182675831616" remote="133704663600000000" Dst="0" />
+<file name="estilos.css" server="216.246.47.134" local="133717481991377480" remote="133717540200000000" Dst="0" />
+<file name="font-awesome.min5243.css" server="216.246.47.134" local="133701182676373893" remote="133704663600000000" Dst="0" />
+<file name="estilos.css.map" server="216.246.47.134" local="133717481991367468" remote="133717540200000000" Dst="0" />
+<file name="font-awesome.minbb49.css" server="216.246.47.134" local="133704752814772068" remote="133707238800000000" Dst="0" />
+<file name="nuevo-boot.css" server="216.246.47.134" local="133701182677275276" remote="133704663600000000" Dst="0" />
+<file name="styles.scss" server="216.246.47.134" local="133717481990629301" remote="133717540200000000" Dst="0" />
+<file name="js_composer.min5243.css" server="216.246.47.134" local="133701182676153813" remote="133704663600000000" Dst="0" />
+<file name="styles.scss.map" server="216.246.47.134" local="133704549960049308" remote="133704663600000000" Dst="0" />
+<file name="styles.css" server="216.246.47.134" local="133713225535311300" remote="133717540200000000" Dst="0" />
 </dwsync>

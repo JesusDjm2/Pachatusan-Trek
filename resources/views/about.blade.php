@@ -1,401 +1,645 @@
-@extends('layouts.general-en')
-@section('metas')
-    <title>More about Andean Exclusive Tours. Travel Agency </title>
-    <meta name="description" content="Find a lot of experiences around Perú, luxury tours for enjoy each moment." />
-    <meta property="og:url" content="https://www.andeanexclusive.com/about">
-    <meta property="og:title" content="More about travel agency: Andean Exclusive Tours.">
-    <meta property="og:type" content="article">
-    <meta property="og:image" content="https://andeanexclusive.com/img/cusco-de-noche.jpg" />
-    <meta name="author" content="Web Masters DJM2" />
-    <link rel="canonical" href="https://www.andeanexclusive.com/about" />
-@endsection
+@extends('layouts.admin')
 @section('contenido')
-    <!--End Boton wasa-->
-    <div class="wrapper">
-        <header id="header">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="header-wrapper">
-                            <div class="site-branding">
-                                <a href="/" rel="home" class="logo-text-link"><img
-                                        src="img/andean-exclusive-logo.png" id="logo"></a>
-                            </div>
-                            <nav class="main-nav">
-                                <ul class="one-page-menu">
-                                    @include('layouts.menu')
-                                    <li id="display" class="menu-has-children">
-                                        <a href="{{ route('nosotros') }}">
-                                            <button type="button" class="botondjm">Español</button>
-                                        </a>
-                                    </li>
-                                    <li id="wasanum" class='menu-item'><a href='https://bit.ly/3kYXpXr'
-                                            target="_blank">+51 979 721 194</a></li>
-                                    <li id="display2" class="menu-has-children">
-                                        <a href="{{ route('nosotros') }}">
-                                            <button type="button" class="botondjm">Español</button>
-                                        </a>
-                                    </li>
-                                </ul>
-                                <a href="javascript:;" id="mobile-menu"><span></span></a>
-                                <a href="javascript:;" id="close-menu"></a>
-                            </nav>
+    <section class="banner-about">
+        <div class="banner-content">
+            <h1>What is the Pachatusan?</h1>
+            {{-- <h5>Live unforgettable experiences, have surprising adventures, and meet places full of magic and mysticism.
+            </h5> --}}
+            <a href="#empezar" class="scroll-down-btn">
+                <i class="fas fa-chevron-down"></i>
+                <i class="fas fa-chevron-down additional-arrow"></i>
+                <i class="fas fa-chevron-down third-arrow"></i>
+            </a>
+        </div>
+    </section>  
+    <section id="empezar" class="decorative-box d-flex align-items-center py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7 text-start align-self-center">
+                    <h5>About Us</h5>
+                    <h3 style="font-family: 'Dancing Script', cursive;">With the permission of the Apus</h3>
+                    <p>
+                        In Andean cosmo-vision, the concept of Pacha does not only refer to Mother Earth. The other meaning
+                        is linked to the concept of time and space represented by the serpent called Chocora. The original
+                        term Tusay means to prop-up or to support. Pachatusan, therefore, can be interpreted as the concept
+                        of the permanency of time and space in infinity. The Apu Pachatusan is one of the sacred or guardian
+                        mountains of the city of Cusco, located to the east (in the Antisuyo area).
+
+                        According to chroniclers of the Spanish invasion this mountain was worshipped with many offerings,
+                        indicating that the place was of great importance. At the base of the Pachatusan the archaeological
+                        complex of Tipon is found, which is believed to have been principally a place to worship water and
+                        fertility.
+                    </p>
+                </div>
+                <div class="col-lg-5">
+                    <img src="{{ asset('img/staff/about-us-pachatusan.jpg') }}" alt="Staff Pachatusan Trek"
+                        class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="parallax-about">
+        <div class="overlay"></div>
+        <div class="content mt-5 mb-5">
+            <div class="row">
+                <div class="col-lg-4">
+                    <h3>MOTIVATION</h3>
+                    <p>
+                        Our passion and vocation to service has led us to develop our professional activities in different
+                        natural places in our country. These feelings and abilities have been the principal motivation to
+                        start Pachatusantrek.
+                    </p>
+                </div>
+                <div class="col-lg-4">
+                    <h3>VISION</h3>
+                    <p>
+                        Throughout this period our company will seek to lead in the adventure tourism market in mountain
+                        trekking and traditional tourism in the Cusco region. Our emphasis is in the social, economic, and
+                        environmental aspects combined with the development of sustainable tourism.
+                    </p>
+                </div>
+                <div class="col-lg-4">
+                    <h3>MISION</h3>
+                    <p>
+                        The mission of our organization is to lead in the development of sustainable tourism in the Cusco
+                        region, as well as nationally, always seeking to fulfill our clients and collaborators expectations
+                        by complying with quality and sustainability standards.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="our-values">
+        <div class="container">
+            <div class="row justify-content-center text-center">
+                <div class="col-12">
+                    <h3 class="text-secondary">Services</h3>
+                    <h2>We offer you:</h2>
+                </div>
+                <div class="col-lg-2 card p-3">
+                    <h4>Travel Consultants</h4>
+                    <p>We bring you the best choices of tourist services so that your trip exceeds your expectations.</p>
+                </div>
+                <div class="col-lg-2 card p-3">
+                    <h4>Office and field operations</h4>
+                    <p>We offer the choice of traditional and adventure trips, all with transport, guide, office and field
+                        staff.</p>
+                </div>
+                <div class="col-lg-2 card p-3">
+                    <h4>Traditional and trekking guides</h4>
+                    <p>We bring you qualified guides, with extensive knowledge, who will take you on a fantastic trip
+                        through the history and geography of the Andes.</p>
+                </div>
+                <div class="col-lg-2 card p-3">
+                    <h4>Tailor-made trips</h4>
+                    <p>We adapt our services to suit your timeframe, budget, destination and trip planning.</p>
+                </div>
+                <div class="col-lg-2 card p-3">
+                    <h4>Reservations</h4>
+                    <p>You can reserve flights, hotels, transfers, restaurants and excursions with the security of knowing
+                        you will get the service agreed upon.</p>
+                </div>
+                <div class="col-lg-12 mt-5">
+                    <h2 class="">Our Values:</h2>
+                    <div class="values-list">
+                        <div class="value-item">Respect</div>
+                        <div class="value-item">Honesty</div>
+                        <div class="value-item">Commitment</div>
+                        <div class="value-item">Responsibility</div>
+                        <div class="value-item">Quality Service</div>
+                        <div class="value-item">Empathy</div>
+                        <div class="value-item">Team Work</div>
+                        <div class="value-item">Trust</div>
+                    </div>
+                </div>
+
+                <div class="col-12 mt-5">
+                    <h3 class="text-secondary">Why to choose us?</h3>
+                    <h2>Great Reasons</h2>
+                </div>
+            </div>
+        </div>
+    </section>
+    {{-- <section class="company-info">
+        <div class="container">
+            <div class="info-section">
+                <h2>We are a Registered Company</h2>
+                <p>We are a legally and formally constituted company, registered in all the instances required by the
+                    Peruvian pertinent law requirements. Pachatusantrek develops its treks according to the Adventure
+                    Tourism Law enacted by the Peruvian Government.</p>
+            </div>
+
+            <div class="info-section">
+                <h2>We are a Licensed Inca Trail Operator</h2>
+                <p>We are licensed operators by the Peruvian Government to develop our Tourism Project: “Sustainable Tourism
+                    Management in the Operation of Treks in the Inca Trail Network of the Historic Sanctuary of Machu
+                    Picchu”. By developing, ourselves, our sustainable tourist operation in the Inca Road Network of the
+                    Historic Sanctuary of Machu Picchu, we can guarantee the quality of the service we offer since our walks
+                    are supervised in the countryside, during the treks.</p>
+            </div>
+
+            <div class="info-section">
+                <h2>We Practice Sustainable Tourism</h2>
+                <p>We are licensed operators by the Peruvian Government to develop our Tourism Project: “Sustainable Tourism
+                    Management in the Operation of Treks in the Inca Trail Network of the Historic Sanctuary of Machu
+                    Picchu”. By developing, ourselves, our sustainable tourist operation in the Inca Road Network of the
+                    Historic Sanctuary of Machu Picchu, we can guarantee the quality of the service we offer since our walks
+                    are supervised in the countryside, during the treks.</p>
+            </div>
+            <div class="info-section">
+                <h2>PROFESIONALLY TRAINED STAFF</h2>
+                <p>Our field staff has several years of experience developing mountain walks, and in Pachatusantrek we
+                    regularly train our field and office personel for the optimal development of our activities.</p>
+            </div>
+            <div class="info-section">
+                <h2>FIRST QUALITY CAMPING EQUIPMENT</h2>
+                <p>The camping equipment we use is of the highest quality, offering our walkers the necessary comfort to
+                    face the physical challenge of our activity. 4 season tents; sleeping bags designed to withstand
+                    temperatures of -10 ° C / 14 ° F; polar sheets for greater thermal retention or cotton sheets for warmer
+                    climates; inflatable mats that provide a better rest. All these products are of the best known brands in
+                    outdoor activities.</p>
+            </div>
+            <div class="info-section">
+                <h2>FRESH WELL BALANCED MENU</h2>
+                <p>The food we provide is top quality using fresh and organic supplies. Likewise, the menus we offer have
+                    been designed by a nutritionist, balancing the diet with the physical effort to be made. We offer
+                    vegetarian options as required by our customers, at no additional cost. Come and enjoy our walks with
+                    the most delicious and nutritious food service overlooking wonderful landscapes.</p>
+            </div>
+
+            <div class="info-section">
+                <h2>SEASONED TREKKING GUIDES</h2>
+                <p>Our trekking guide team has extensive experience and are highly trained in different aspects, such as
+                    culture, history, geography, first aid and other matters. We want to ensure an excellent time for
+                    learning and recreation.</p>
+            </div>
+            <div class="info-section">
+                <h2>HEALTH AND SAFETY</h2>
+                <p>Our first aid kit is supervised by a specialist in altitude sickness and walking. We have an oxygen tank,
+                    first aid kit, fracture immobilizers, tensiometer, stethoscope; following the standards established by
+                    the competent authorities. According to the clients’ needs, we have agreements with the best clinics
+                    specializing in altitude sickness and general medicine.</p>
+            </div>
+            <div class="info-section">
+                <h2>ACCURATE AND UPDATED INFORMATION ABOUT OUR TREKS</h2>
+                <p>All the routes we offer have been geo-referenced and recognized by Pachatusantrek SAC. We can therefore
+                    reply to any questions you have about them, and we can expand upon the information given for any route
+                    requested. By knowing all the routes we can advise our adventure partners in the best way.</p>
+            </div>
+        </div>
+    </section> --}}
+    <section class="bg-light">
+        <div class="container">
+            <div class="accordion company-info-accordion pb-2" id="companyAccordion">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            We are a Registered Company
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                        data-bs-parent="#companyAccordion">
+                        <div class="accordion-body">
+                            We are a legally and formally constituted company, registered in all the instances required by
+                            the
+                            Peruvian pertinent law requirements. Pachatusantrek develops its treks according to the
+                            Adventure
+                            Tourism Law enacted by the Peruvian Government.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            We are a Licensed Inca Trail Operator
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                        data-bs-parent="#companyAccordion">
+                        <div class="accordion-body">
+                            We are licensed operators by the Peruvian Government to develop our Tourism Project:
+                            “Sustainable
+                            Tourism Management in the Operation of Treks in the Inca Trail Network of the Historic Sanctuary
+                            of
+                            Machu Picchu”. By developing, ourselves, our sustainable tourist operation in the Inca Road
+                            Network
+                            of
+                            the Historic Sanctuary of Machu Picchu, we can guarantee the quality of the service we offer
+                            since
+                            our
+                            walks are supervised in the countryside, during the treks.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            We Practice Sustainable Tourism
+                        </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                        data-bs-parent="#companyAccordion">
+                        <div class="accordion-body">
+                            We are licensed operators by the Peruvian Government to develop our Tourism Project:
+                            “Sustainable
+                            Tourism Management in the Operation of Treks in the Inca Trail Network of the Historic Sanctuary
+                            of
+                            Machu Picchu”. By developing, ourselves, our sustainable tourist operation in the Inca Road
+                            Network
+                            of
+                            the Historic Sanctuary of Machu Picchu, we can guarantee the quality of the service we offer
+                            since
+                            our
+                            walks are supervised in the countryside, during the treks.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFour">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                            Professionally Trained Staff
+                        </button>
+                    </h2>
+                    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+                        data-bs-parent="#companyAccordion">
+                        <div class="accordion-body">
+                            Our field staff has several years of experience developing mountain walks, and in Pachatusantrek
+                            we
+                            regularly train our field and office personnel for the optimal development of our activities.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFive">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                            First Quality Camping Equipment
+                        </button>
+                    </h2>
+                    <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
+                        data-bs-parent="#companyAccordion">
+                        <div class="accordion-body">
+                            The camping equipment we use is of the highest quality, offering our walkers the necessary
+                            comfort
+                            to face the physical challenge of our activity. 4 season tents; sleeping bags designed to
+                            withstand
+                            temperatures of -10 ° C / 14 ° F; polar sheets for greater thermal retention or cotton sheets
+                            for
+                            warmer climates; inflatable mats that provide a better rest. All these products are of the best
+                            known brands in outdoor activities.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingSix">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                            Fresh Well Balanced Menu
+                        </button>
+                    </h2>
+                    <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix"
+                        data-bs-parent="#companyAccordion">
+                        <div class="accordion-body">
+                            The food we provide is top quality using fresh and organic supplies. Likewise, the menus we
+                            offer
+                            have been designed by a nutritionist, balancing the diet with the physical effort to be made. We
+                            offer vegetarian options as required by our customers, at no additional cost. Come and enjoy our
+                            walks with the most delicious and nutritious food service overlooking wonderful landscapes.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingSeven">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                            Seasoned Trekking Guides
+                        </button>
+                    </h2>
+                    <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven"
+                        data-bs-parent="#companyAccordion">
+                        <div class="accordion-body">
+                            Our trekking guide team has extensive experience and are highly trained in different aspects,
+                            such
+                            as culture, history, geography, first aid and other matters. We want to ensure an excellent time
+                            for
+                            learning and recreation.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingEight">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+                            Health and Safety
+                        </button>
+                    </h2>
+                    <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight"
+                        data-bs-parent="#companyAccordion">
+                        <div class="accordion-body">
+                            Our first aid kit is supervised by a specialist in altitude sickness and walking. We have an
+                            oxygen
+                            tank, first aid kit, fracture immobilizers, tensiometer, stethoscope; following the standards
+                            established by the competent authorities. According to the clients’ needs, we have agreements
+                            with
+                            the best clinics specializing in altitude sickness and general medicine.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingNine">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
+                            Accurate and Updated Information About Our Treks
+                        </button>
+                    </h2>
+                    <div id="collapseNine" class="accordion-collapse collapse" aria-labelledby="headingNine"
+                        data-bs-parent="#companyAccordion">
+                        <div class="accordion-body">
+                            All the routes we offer have been geo-referenced and recognized by Pachatusantrek SAC. We can
+                            therefore reply to any questions you have about them, and we can expand upon the information
+                            given
+                            for any route requested. By knowing all the routes we can advise our adventure partners in the
+                            best
+                            way.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTen">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseTen" aria-expanded="false" aria-controls="collapseTen">
+                            Limited Group Sizes
+                        </button>
+                    </h2>
+                    <div id="collapseTen" class="accordion-collapse collapse" aria-labelledby="headingTen"
+                        data-bs-parent="#companyAccordion">
+                        <div class="accordion-body">
+                            The size of our groups in shared services is between 4 and 10 people, guaranteeing a
+                            personalized
+                            service, with an assistant guide for 8 passengers or more.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingEleven">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseEleven" aria-expanded="false" aria-controls="collapseEleven">
+                            Five Star Amenities
+                        </button>
+                    </h2>
+                    <div id="collapseEleven" class="accordion-collapse collapse" aria-labelledby="headingEleven"
+                        data-bs-parent="#companyAccordion">
+                        <div class="accordion-body">
+                            On private treks we offer services such as solar shower, hot water bottles, pillows, and
+                            biodegradable personal toiletries kit made from Andean herbs.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwelve">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseTwelve" aria-expanded="false" aria-controls="collapseTwelve">
+                            Safe and Reliable Transportation
+                        </button>
+                    </h2>
+                    <div id="collapseTwelve" class="accordion-collapse collapse" aria-labelledby="headingTwelve"
+                        data-bs-parent="#companyAccordion">
+                        <div class="accordion-body">
+                            We use spacious and comfortable tourist transport, with professional experienced drivers. All
+                            vehicles have an oxygen tank and first aid kit. They also have the necessary documentation for
+                            the
+                            local authorities.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThirteen">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseThirteen" aria-expanded="false" aria-controls="collapseThirteen">
+                            Premier Level Services
+                        </button>
+                    </h2>
+                    <div id="collapseThirteen" class="accordion-collapse collapse" aria-labelledby="headingThirteen"
+                        data-bs-parent="#companyAccordion">
+                        <div class="accordion-body">
+                            Our services are at the level of the best adventure tour operators in Peru. We assure you that
+                            by
+                            choosing our services your expectations, and those of your clients, will be surpassed.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFourteen">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseFourteen" aria-expanded="false" aria-controls="collapseFourteen">
+                            Environmentally Conscious
+                        </button>
+                    </h2>
+                    <div id="collapseFourteen" class="accordion-collapse collapse" aria-labelledby="headingFourteen"
+                        data-bs-parent="#companyAccordion">
+                        <div class="accordion-body">
+                            Because we have as work philosophy the respect and love for the nature, counting always with …
+                            “The
+                            protection of Pachamama (Mother Earth) and the permission of the Apus (Sacred Mountains).
                         </div>
                     </div>
                 </div>
             </div>
-        </header>
-        <section class="section-content no-padding">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <article class="blog-item blog-single">
-                            <div class="entry-excerpt">
-                                <div data-vc-full-width="true" data-vc-full-width-init="false" data-onepage-title="Home"
-                                    data-onepage-slug="home"
-                                    class="vc_row wpb_row vc_row-fluid about vc_row-has-fill vc_row-o-full-height vc_row-o-columns-middle vc_row-o-content-middle vc_row-flex">
-                                    <div class="wpb_column vc_column_container vc_col-sm-12">
-                                        <div class="vc_column-inner vc_custom_1461317698190">
-                                            <div class="wpb_wrapper">
-                                                <div class='carousel-headings '>
-                                                    <div class='swiper-container'>
-                                                        <div class='swiper-wrapper'>
-                                                            <div class='swiper-slide'>
-                                                                <div class='cover-text ph5 text-light text-center pv8 pvb0'>
-                                                                    <h2>ABOUT US</h2>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="vc_row-full-width vc_clearfix"></div>
-                                <div data-vc-full-width="true" data-vc-full-width-init="false"
-                                    data-onepage-title="Hot Tours" data-onepage-slug="hot-tours"
-                                    class="vc_row wpb_row vc_row-fluid vc_custom_1523936007189 vc_row-has-fill">
-                                    <div class="wpb_column vc_column_container vc_col-sm-12">
-                                        <div class="vc_column-inner ">
-                                            <div class="wpb_wrapper">
-                                                <div class='heading  text-center '>
-                                                    <img src="img/logo2.png">
-                                                    <div id="separador"></div>
-                                                    <div class="row">
-                                                        <div class="col-lg-12">
-                                                            <H3>about Andean Exclusive </H3>
-                                                            <div class='seperator'></div>
-                                                            <p>Andean Exclusive is a team with experience in the tourism
-                                                                sector and very committed to our customers. We develop
-                                                                vacations made to measure, adapting perfectly to the needs
-                                                                and requirements.
-                                                                If the priority is comfort, adventure, education, or a
-                                                                combination of all of the above, we strive for exceeding all
-                                                                expectations. Our style is characterized by kindness,
-                                                                honesty, and sensitivity to desires and individual needs.
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="vc_row-full-width vc_clearfix"></div>
-
-                                <div data-onepage-title="Blog" data-onepage-slug="press"
-                                    class="vc_row wpb_row vc_row-fluid vc_custom_1461248495411">
-                                    <div class="wpb_column vc_column_container vc_col-sm-12">
-                                        <div class="vc_column-inner ">
-                                            <div class="wpb_wrapper">
-                                                <div class='heading mv8 mvt0 text-center '>
-                                                    <div class="row justify">
-                                                        <div class="col-lg-6">
-                                                            <h3 class="text-center">Our City</h3>
-                                                            <p>Cusco, Peru, is a jewel set in a mystical and magical
-                                                                setting, which is the heart of our company. Though it is
-                                                                described as a Spanish colonial city, the foundations of
-                                                                many of the impressive buildings were built by the
-                                                                indigenous people over 600 years ago, but also the ancestral
-                                                                Inca culture that implies traditions, architecture and
-                                                                mysteries of a wonderful civilization. We explored the
-                                                                mountains that surround the city, rising another ten to
-                                                                fourteen thousand feet. While interacting with international
-                                                                tourists during our youth, we were encouraged to share our
-                                                                culture. This inspired us to acquire more knowledge of
-                                                                Peru’s history and value to the world. Concurrently, we
-                                                                developed interest in other nations and cultures, and in
-                                                                people motivated to travel hundreds to thousands of miles to
-                                                                our homeland. Pride and curiosity were traits developed by
-                                                                our interaction with people of other lands and the
-                                                                foundation on which we built our company.</p>
-                                                        </div>
-                                                        <div class="col-lg-6 justify">
-                                                            <h3 class="text-center">How we work?</h3>
-                                                            <p>Your Peruvian vacation will be unforgettable. “Best trip of
-                                                                our lives!” so many of our clients have exclaimed, and the
-                                                                high praise has kept us focused on being consistent in
-                                                                providing the very best in customer satisfaction. We develop
-                                                                tailor-made vacations that perfectly fit your needs and
-                                                                requests. Our signature style is characterized by
-                                                                amiability, honesty, and sensitivity to individual’s wishes
-                                                                and requirements. Further, the “exclusive” in the company’s
-                                                                letterhead reflects on the company’s assistance from initial
-                                                                contact, throughout the trip, and beyond. We’ve found the
-                                                                attention to detail of genuine and invaluable importance to
-                                                                our travel customers.
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div data-vc-full-width="true" data-vc-full-width-init="false"
-                                    data-onepage-title="Hot Tours" data-onepage-slug="hot-tours"
-                                    class="vc_row wpb_row vc_row-fluid vc_custom_1523936007189 vc_row-has-fill">
-                                    <div class="row text-center heading">
-                                        <div class="col-lg-6">
-                                            <h3>Mision</h3>
-                                            <p>Offer a life experience to all people we whom we have the honor to work with
-                                                Committed to innovation and the appropriate use of resources, creating a
-                                                tourism of learning and sustainable.
-                                                Our work is make traveler's dreams come true, bringing them closer to Peru,
-                                                their history and reality.
-                                            </p>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <h3>Vision</h3>
-                                            <p>Become one of the most important tour operators specialized in the Tourism
-                                                Industry.
-                                                Developing exceptional standards of satisfaction for our external, internal
-                                                customers and collaborators Creating our own school as for the operation and
-                                                relationships interpersonal turning us into a model.
-                                            </p>
-                                        </div>
-                                        <div id="divdjm"></div>
-                                        <h3>Our Values</h3>
-                                        <div class="col-lg-1"></div>
-                                        <div class="col-lg-10">
-                                            <img src="img/valores AET.png">
-                                        </div>
-                                        <div class="col-lg-1"></div>
-
-                                    </div>
-                                </div>
-                                <div data-onepage-title="Blog" data-onepage-slug="press"
-                                    class="vc_row wpb_row vc_row-fluid vc_custom_1461248495411">
-                                    <div class="row">
-                                        <h3 class="text-center">OUR STAFF</h3>
-                                        <div id="separadordjm"></div>
-                                        <div id="separador"> </div>
-                                        <div class="col-lg-1"></div>
-                                        <div class="col-lg-7">
-                                            <h3 id="blue">Carmen Espejo</h3>
-                                            <p><strong>Sales Manager & CoFounder</strong></p>
-                                            <p class="justify">
-                                                She is licensed in Tourism and a person with many positive qualities, is
-                                                responsible and strict with the order of things. She is a leader whom
-                                                everyone sees as an example. She loves to enjoy her work, travel with loved
-                                                ones, meet new people, and learn new cultures and customs. Her personal
-                                                projection with the agency is to grow up everything within the agency as a
-                                                family. <br><strong><a id="ablue"
-                                                        href="mailto:operacionesandeanexclusivetours.com">carmen.ceo@andeanexclusivetours.com</a></strong>
-                                            </p>
-                                        </div>
-                                        <div class="col-lg-3 text-center">
-                                            <img src="img/staff/carmen_espejo_miranda.jpg" id="staffimg">
-                                        </div>
-                                        <div class="col-lg-1"></div>
-                                    </div>
-                                    <div id="lineadjm"></div>
-                                    <div class="row">
-                                        <div class="col-lg-1"></div>
-                                        <div class="col-lg-7">
-                                            <h3 id="blue">Walter Medina </h3>
-                                            <p><strong>General Manager & CoFounder </strong></p>
-                                            <p class="justify">
-                                                He is responsible for supervising movements inside and outside the agency,
-                                                always looking for news that our passengers can enjoy. He is a trustworthy
-                                                person, a responsible father and a dedicated husband. He likes cars and
-                                                enjoys good landscapes. He is a proud Cusquenian of his land and his
-                                                customs. <br><strong><a id="ablue"
-                                                        href="mailto:walter.ceo@andeanexclusivetours.com">walter.ceo@andeanexclusivetours.com</a></strong>
-                                            </p>
-                                        </div>
-                                        <div class="col-lg-3 text-center">
-                                            <img src="img/staff/Walter_medina.jpg" id="staffimg">
-                                        </div>
-                                        <div class="col-lg-1"></div>
-                                    </div>
-                                    <div id="lineadjm"></div>
-                                    <div class="row">
-                                        <div class="col-lg-1"></div>
-                                        <div class="col-lg-7">
-                                            <h3 id="blue">Gabriela Mora</h3>
-                                            <p><strong>Behind the scenes</strong></p>
-                                            <p class="justify">She is in charge of the company's finance area, her main
-                                                function is the payment of suppliers. He studied administration at the local
-                                                university. He speaks English fluently. She loves to travel and
-                                                dance.<br><strong><a id="ablue"
-                                                        href="mailto:guestrelations@andeanexclusive.com">guestrelations@andeanexclusive.com</a></strong>
-                                            </p>
-                                        </div>
-                                        <div class="col-lg-3 text-center">
-                                            <img src="img/staff/Gabriela_Mora.png" id="staffimg">
-                                        </div>
-                                        <div class="col-lg-1"></div>
-                                    </div>
-                                    <div id="lineadjm"></div>
-                                    <div class="row">
-                                        <div class="col-lg-1"></div>
-                                        <div class="col-lg-7">
-                                            <h3 id="blue">Yenny Human </h3>
-                                            <p><strong>Accounting </strong></p>
-                                            <p class="justify">
-                                                Her area is to be an accounting assistant, as a company worker, her
-                                                objective is that of a quality service and that the passenger is satisfied
-                                                with the services we provide them, and since we always work as a team, it is
-                                                common to see our passengers return home happy. <br><strong><a
-                                                        id="ablue"
-                                                        href="mailto:contabilidad@andeanexclusivetours.com">contabilidad@andeanexclusive.com</a></strong>
-                                            </p>
-                                        </div>
-                                        <div class="col-lg-3 text-center">
-                                            <img src="img/staff/Yenny_chauchas.jpg" id="staffimg">
-                                        </div>
-                                        <div class="col-lg-1"></div>
-                                    </div>
-                                    <div id="lineadjm"></div>
-                                    <div class="row">
-                                        <div class="col-lg-1"></div>
-                                        <div class="col-lg-7">
-                                            <h3 id="blue">Luisa Ancaypuro </h3>
-                                            <p><strong>Operations</strong></p>
-                                            <p class="justify">
-                                                She is a very enthusiastic and responsible Tourism Guide, she enjoys doing
-                                                her job and likes challenges. She works from the office in charge of doing
-                                                all kinds of operations in the agency. She loves reading, singing and
-                                                traveling. She wants to consolidate the agency as the best within the
-                                                tourist sector providing quality services and give unforgettable experiences
-                                                to our passengers. <br><strong><a id="ablue"
-                                                        href="mailto:operaciones@andeanexclusivetours.com">operaciones@andeanexclusivetours.com</a></strong>
-                                            </p>
-                                        </div>
-                                        <div class="col-lg-3 text-center">
-                                            <img src="img/staff/Luisa_ancaypuro.jpeg" id="staffimg">
-                                        </div>
-                                        <div class="col-lg-1"></div>
-                                    </div>
-                                    <div id="lineadjm"></div>
-                                    <div class="row">
-                                        <div class="col-lg-1"></div>
-                                        <div class="col-lg-7">
-                                            <h3 id="blue">David Miranda </h3>
-                                            <p><strong>Web designer and positioner.</strong></p>
-                                            <p class="justify">
-                                                He is a person with fixed aims to his objectives, retailer and willing to
-                                                solve problems. He is responsible for advertising & marketing within the
-                                                company. Enjoy your work and travel with good company. Think that "Andean
-                                                Exclusive" is built on a large base and is an example to project always to
-                                                grow more since the agency always invites to be better. <br><strong><a
-                                                        id="ablue"
-                                                        href="mailto:mirandadjmdjm@gmail.com">sistemas@andeanexclusivetours.com</a></strong>
-                                            </p>
-                                        </div>
-                                        <div class="col-lg-3 text-center">
-                                            <img src="img/staff/David_jesus_miranda.jpg" id="staffimg">
-                                        </div>
-                                        <div class="col-lg-1"></div>
-                                    </div>
-                                    <div id="lineadjm"></div>
-                                    <div class="row">
-                                        <div class="col-lg-1"></div>
-                                        <div class="col-lg-7">
-                                            <h3 id="blue">Julio Humpire </h3>
-                                            <p><strong>Customer Services</strong></p>
-                                            <p class="justify">
-                                                In the company, its job is to support operations, he also handles reports,
-                                                filling in the details of our customers and re-confirmation of reservations.
-                                                Finally, support the areas that need it.<br><strong><a id="ablue"
-                                                        href="mailto:costumerservice@andeanexclusive.com">costumerservice@andeanexclusive.com</a></strong>
-                                            </p>
-                                        </div>
-                                        <div class="col-lg-3 text-center">
-                                            <img src="img/staff/Julio_humpire.jpg" id="staffimg">
-                                        </div>
-                                        <div class="col-lg-1"></div>
-                                    </div>
-                                    <div id="lineadjm"></div>
-                                    <div class="row">
-                                        <div class="col-lg-1"></div>
-                                        <div class="col-lg-7">
-                                            <h3 id="blue">Edith Dueñas </h3>
-                                            <p><strong>Reservations</strong></p>
-                                            <p class="justify">
-                                                Edith has been in tourism for more than 5 years, is an expert person in many
-                                                tourist areas. Within our offices she is the office of the reservation area.
-                                                It aims to grow with the agency, always keeping our values ahead.
-                                                <br><strong><a id="ablue"
-                                                        href="mailto:reservas@andeanexclusivetours.com">reservas@andeanexclusive.com</a></strong>
-                                            </p>
-                                        </div>
-                                        <div class="col-lg-3 text-center">
-                                            <img src="img/staff/Edith_dueñas.png" id="staffimg">
-                                        </div>
-                                        <div class="col-lg-1"></div>
-                                    </div>
-                                    <div id="lineadjm"></div>
-                                    <div class="row">
-                                        <div class="col-lg-1"></div>
-                                        <div class="col-lg-7">
-                                            <h3 id="blue">Percy Sánchez </h3>
-                                            <p><strong>Organizer and quality supervisor</strong></p>
-                                            <p class="justify">
-                                                He is our Chef and Guide on high mountain routes. Its quality is a strict
-                                                and orderly order to give a quality service. He is a very proactive,
-                                                innovative person and likes challenges. He loves to play soccer, cook and
-                                                like to enjoy time with her children and pets from home. He wants the agency
-                                                to obtain a great prestige of service and quality within the tourism
-                                                sector.<br><strong><a id="ablue"
-                                                        href="mailto:outdoors@andeanexclusive.com">outdoors@andeanexclusive.com</a></strong>
-                                            </p>
-                                        </div>
-                                        <div class="col-lg-3 text-center">
-                                            <img src="img/staff/Percy_sanchez.jpg" id="staffimg">
-                                        </div>
-                                        <div class="col-lg-1"></div>
-                                    </div>
-                                    <div id="lineadjm"></div>
-                                    <div class="row">
-                                        <div class="col-lg-1"></div>
-                                        <div class="col-lg-7">
-                                            <h3 id="blue">Merci Ortiz</h3>
-                                            <p><strong>Behind the scenes</strong></p>
-                                            <p class="justify">She is our tourist marketing expert. He has been dedicated
-                                                to this area for 9 years, attending to each client's requirement. She is
-                                                very creative and likes to design, she also speaks English, French and
-                                                studies German. She loves dogs, loves to travel and go for a walk breathing
-                                                fresh air.<br><strong><a id="ablue"
-                                                        href="mailto:guestrelations@andeanexclusive.com">guestrelations@andeanexclusive.com</a></strong>
-                                            </p>
-                                        </div>
-                                        <div class="col-lg-3 text-center">
-                                            <img src="img/staff/Merci_ortiz.jpg" id="staffimg">
-                                        </div>
-                                        <div class="col-lg-1"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="vc_row-full-width vc_clearfix"></div>
-
-                    </div>
-                    </article>
+        </div>
+    </section>
+    <section class="team-section bg-light">
+        <div class="container">
+            <h2 class="section-title">Get to Know Our Team</h2>
+            <div class="team-member">
+                <div class="team-photo m-auto">
+                    <img src="{{ asset('img/staff/Jessica.jpg') }}" alt="Jessica Llontop">
+                </div>
+                <div class="team-info p-3">
+                    <h3 class="team-name">Jessica Llontop</h3>
+                    <p class="team-position">Travel Consultant</p>
+                    <p class="team-description">
+                        Since she was very young she has always been interested in travel, and feeling it to be her
+                        vocation, she decided to study and work in tourism. This activity led her to get to know many places
+                        in Peru, and some abroad, and to form an adequate perception of tourist services offered to our
+                        visitors.
+                        <br>
+                        She has worked in Lima airport, travel agencies and leading tour operators in Lima, Cusco and Puerto
+                        Maldonado.
+                        <br>
+                        Jessica specializes in travel advice and organization of trips, and always tries to give our clients
+                        the high standard of service that she would expect to receive herself.
+                    </p>
                 </div>
             </div>
-        </section>
-    </div>
+            <div class="team-member">
+                <div class="team-photo m-auto">
+                    <img src="{{ asset('img/staff/Sergio.jpg') }}" alt="Sergio Cuba">
+                </div>
+                <div class="team-info p-3">
+                    <h3 class="team-name">Sergio Cuba</h3>
+                    <p class="team-position">Guide and Trekking Consultant</p>
+                    <p class="team-description">
+                        He was born in the city of Lima, in the beautiful district of Miraflores, which used to be the
+                        Curacazgo de Sulco, belonging to the Lord of Ichsma (Pachacamaq).
+                        <br><br>
+                        He has always felt an overwhelming attraction towards nature, which he has developed in the sea,
+                        coast, mountains and jungle.
+                        <br><br>
+                        Sergio has been lucky enough to have experienced working in various places including Lima, Arequipa,
+                        Colca Canyon, Puerto Maldonado, Lake Sandoval – Tambopata, Cuzco and its magnificent surroundings.
+                    </p>
+                </div>
+            </div>
+            <div class="team-member">
+                <div class="team-photo m-auto">
+                    <img src="{{ asset('img/staff/Monica.jpg') }}" alt="Monica Jurado Gil">
+                </div>
+                <div class="team-info p-3">
+                    <h3 class="team-name">Monica Jurado Gil</h3>
+                    <p class="team-position">Booking Area</p>
+                    <p class="team-description">
+                        She was born in Lima and is our service reservation officer, where she has developed her duties with
+                        efficiency. Lover of nature, she enjoys running in the country and spending time with her family and
+                        friends. Having fallen in love with the city of Cusco she has adopted it as her permanent residence.
+                    </p>
+                </div>
+            </div>
+            <div class="team-member">
+                <div class="team-photo m-auto">
+                    <img src="{{ asset('img/staff/Mayling.jpg') }}" alt="Maylin La Rosa Espinoza">
+                </div>
+                <div class="team-info p-3">
+                    <h3 class="team-name">Maylin La Rosa Espinoza</h3>
+                    <p class="team-position">Sales Department</p>
+                    <p class="team-description">
+                        A travel lover, she was born in the city of Lima, since 2014 she has been part of the Pachatusantrek
+                        team, developing as an over-the-counter sales executive and her passion is traveling and discovering
+                        new customs. She loves Peru and wants to show it to the world.
+                    </p>
+                </div>
+            </div>
+            <div class="team-member">
+                <div class="team-photo m-auto">
+                    <img src="{{ asset('img/staff/Gloria.jpg') }}" alt="Gloria Muñoz">
+                </div>
+                <div class="team-info p-3">
+                    <h3 class="team-name">Gloria Muñoz</h3>
+                    <p class="team-position">Accountant</p>
+                    <p class="team-description">
+                        Our accountant, Gloria was born in the warm city of Santa Ana – Quillabamba – Cusco, where she
+                        enjoyed her childhood surrounded by the wonderful nature. Living in the city of Cusco with her
+                        family, she dedicates her time with both her family commitments and studying for her accounting
+                        career at the San Antonio Abad University in Cusco. Part of her job satisfaction is being able to
+                        develop as a professional in the tourism sector. She understands the history and nature of our
+                        country and loves and enjoys all that it has to offer.
+                        <br><br>
+                        As a mother and wife, she shares with her family the dream of being able to learn more about the
+                        nature of our country, such as the Manu National Park; as well as other protected natural areas
+                        around the world.
+                    </p>
+                </div>
+            </div>
+            <div class="team-member">
+                <div class="team-photo m-auto">
+                    <img src="{{ asset('img/staff/Martha.jpg') }}" alt="Martha Orozco Castro">
+                </div>
+                <div class="team-info p-3">
+                    <h3 class="team-name">Martha Orozco Castro</h3>
+                    <p class="team-position">Maintenance</p>
+                    <p class="team-description">
+                        Born in Cusco in the San Blas traditional neighborhood, Martha does our cleaning in the office. Due
+                        to her agreeable demeanor as well as her efficiency she has earned our respect and care. Martha has
+                        dedicated her effort towards raising her daughter, who has studies to be a biologist. Her pastime is
+                        enjoying music and spending time with her family.
+                    </p>
+                </div>
+            </div>
+            <div class="team-member">
+                <div class="team-photo m-auto">
+                    <img src="{{ asset('img/staff/Gerardo.jpg') }}" alt="Gerardo Condori Mamani">
+                </div>
+                <div class="team-info p-3">
+                    <h3 class="team-name">Gerardo Condori Mamani</h3>
+                    <p class="team-position">Field Chef</p>
+                    <p class="team-description">
+                        Lucio was born in the community of Qeswarani, and makes it his business to please passengers with
+                        his cooking. A family man with three children, he lives in the Sacred Valley of the Incas, in
+                        Huaran, where he raises small animals such as hens and guinea pigs. In his free time, he spends it
+                        with his family and playing football with passion. To get a smile from passengers is his greatest
+                        reward.
+                    </p>
+                </div>
+            </div>
+            <div class="team-member">
+                <div class="team-photo m-auto">
+                    <img src="{{ asset('img/staff/Wilfred.jpg') }}" alt="Wilfredo Condori Sicus">
+                </div>
+                <div class="team-info p-3">
+                    <h3 class="team-name">Wilfredo Condori Sicus</h3>
+                    <p class="team-position">Chief of Porters</p>
+                    <p class="team-description">
+                        Born in the Cuncani community, he is chief of porters from way back. He has integrated people from
+                        his community into his team. Married and father of a little girl, he continues living in Cuncani,
+                        raising llamas, horses, and small animals. He likes to learn English and play football. He is a
+                        committed worker who wants to make passengers comfortable.
+                    </p>
+                </div>
+            </div>
+            <div class="team-member">
+                <div class="team-photo m-auto">
+                    <img src="{{ asset('img/staff/Roberto.jpg') }}" alt="Robert Condori">
+                </div>
+                <div class="team-info p-3">
+                    <h3 class="team-name">Robert Condori</h3>
+                    <p class="team-position">Field Chef</p>
+                    <p class="team-description">
+                        Born in the community of Cuncani – Lares, he is the third of 5 brothers. During his childhood, he
+                        collaborated with the family in agricultural and animal grazing activities. In his teens, he moved
+                        to the city of Urubamba to continue his secondary studies. He began his professional tourism studies
+                        in Cusco, seeking specialization as a guide. Currently, Robert is serving as a kitchen assistant,
+                        waiting to complete his studies and engage in guided activities.
+                    </p>
+                </div>
+            </div>
+            <div class="team-member">
+                <div class="team-photo m-auto">
+                    <img src="{{ asset('img/staff/Alex.jpg') }}" alt="Alex Jimenez Llanos">
+                </div>
+                <div class="team-info p-3">
+                    <h3 class="team-name">Alex Jimenez Llanos</h3>
+                    <p class="team-position">Waiter</p>
+                    <p class="team-description">
+                        He was born in the city of Lima. As a child, his family moved to the famous Sacred Valley of the
+                        Incas. The town of Urubamba immediately adopted him as a son born in this sacred territory. As a
+                        young man, he worked in agriculture and civil construction, discovering his passion for tourism
+                        years later. A family man and passionate about soccer, he has played different roles on the Inca
+                        Trail, where lately he stands out for his ability in the kitchen area.
+                    </p>
+                </div>
+            </div>
+            <div class="team-member">
+                <div class="team-photo m-auto">
+                    <img src="{{ asset('img/staff/Jeremias.jpg') }}" alt="Jeremias Sicus">
+                </div>
+                <div class="team-info p-3">
+                    <h3 class="team-name">Jeremias Sicus</h3>
+                    <p class="team-position">Waiter</p>
+                    <p class="team-description">
+                        He was born in the district of Lares, province of Calca. Jeremias loves to be in touch with nature
+                        and take long walks, mainly Choquequirao. In his free time, he likes to go out to play soccer with
+                        his friends. His vocation of service has led him to study the career of official tourist guide,
+                        because he wants to take tourists to the mountains and teach everything he has learned. We are sure
+                        it will be a great guide.
+                    </p>
+                </div>
+            </div>
+
+
+        </div>
+        <!-- Repeat .team-member for other staff members -->
+    </section>
 @endsection
