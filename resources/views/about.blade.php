@@ -2,7 +2,7 @@
 @section('contenido')
     <section class="banner-about">
         <div class="banner-content">
-            <h1>What is the Pachatusan?</h1>
+            <h1>What is Pachatusan?</h1>
             {{-- <h5>Live unforgettable experiences, have surprising adventures, and meet places full of magic and mysticism.
             </h5> --}}
             <a href="#empezar" class="scroll-down-btn">
@@ -508,7 +508,7 @@
                     </p>
                 </div>
             </div>
-            <div class="team-member">
+           {{--  <div class="team-member">
                 <div class="team-photo m-auto">
                     <img src="{{ asset('img/staff/Mayling.jpg') }}" alt="Maylin La Rosa Espinoza">
                 </div>
@@ -521,7 +521,7 @@
                         new customs. She loves Peru and wants to show it to the world.
                     </p>
                 </div>
-            </div>
+            </div> --}}
             <div class="team-member">
                 <div class="team-photo m-auto">
                     <img src="{{ asset('img/staff/Gloria.jpg') }}" alt="Gloria Muñoz">

@@ -18,4 +18,9 @@ class EsCategoria extends Model
         return $this->belongsToMany(Estour::class, 'estour_categoria', 'categoria_id', 'tour_id');
     }
 
+    public function subcategorias()
+    {
+        return $this->hasMany(Subcategoria::class, 'categoria_id');
+    }
+
 }

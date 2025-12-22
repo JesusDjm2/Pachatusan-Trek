@@ -18,28 +18,29 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Categoria extends Model
 {
-    
-    static $rules = [
-		'nombre' => 'required',
-    ];
 
-    protected $perPage = 20;
+  static $rules = [
+    'nombre' => 'required',
+  ];
 
-    /**
-     * Attributes that should be mass-assignable.
-     *
-     * @var array
-     */
-    protected $fillable = ['nombre'];
+  protected $table = 'categories';
 
+  protected $perPage = 20;
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function tours()
-    {
-        return $this->belongsToMany('App\Models\Tour', 'categoria_id', 'id');
-    }
-    
+  /**
+   * Attributes that should be mass-assignable.
+   *
+   * @var array
+   */
+  protected $fillable = ['nombre'];
 
+  public function tours()
+  {
+    return $this->belongsToMany(Tour::class, 'tour_category', 'categoria_id', 'tour_id');
+  }
+ 
+  public function subcategories()
+  {
+    return $this->hasMany(Subcategory::class, 'category_id');
+  }
 }

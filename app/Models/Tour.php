@@ -21,6 +21,7 @@ class Tour extends Model
         'itinerario',
         'incluye',
         'importante',
+        'galeria',
         'slug',
         'keywords',
     ];
@@ -30,6 +31,10 @@ class Tour extends Model
     }
     public function categorias()
     {
-        return $this->belongsToMany(TourCategory::class, 'tour_category', 'tour_id', 'categoria_id');
+        return $this->belongsToMany(Categoria::class, 'tour_category', 'tour_id', 'categoria_id');
+    }
+    public function subcategorias()
+    {
+        return $this->belongsToMany(Subcategory::class, 'subcategory_tour', 'tour_id', 'subcategory_id');
     }
 }

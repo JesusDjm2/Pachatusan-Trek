@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="Es">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,7 +11,8 @@
     <link href="{{ asset('admin/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('admin/css/sb-admin-2.min.css') }}" rel="stylesheet">
     <link rel="icon" type="image/png" href="{{ asset('img/pachatusan-icon.png') }}">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
 </head>
 
@@ -25,92 +27,70 @@
                 Inglés
             </div>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#espanol" aria-expanded="false" aria-controls="espanol">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#espanol"
+                    aria-expanded="false" aria-controls="espanol">
                     <i class="fas fa-fw fa-language"></i>
                     <span>Tours EN</span>
                 </a>
-                <div id="espanol" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="">
+                <div id="espanol" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar"
+                    style="">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="{{ route('tours.index') }}">
                             Tours
                         </a>
-                        <a class="collapse-item" href="{{route('categories.index')}}">
+                        <a class="collapse-item" href="{{ route('categories.index') }}">
                             Categorias
-                         </a>
+                        </a>
+                        <a class="collapse-item" href="{{ route('subcategories.index') }}">
+                            Sub-Categorias
+                        </a>
                     </div>
                 </div>
             </li>
-           {{--  <hr class="sidebar-divider">
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#blogsEn" aria-expanded="false" aria-controls="blogsEn">
-                    <i class="fas fa-fw fa-language"></i>
-                    <span>Blogs EN</span>
-                </a>
-                <div id="blogsEn" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="{{ route('entags.index') }}">
-                            Tags
-                        </a>
-                        <a class="collapse-item" href="{{route('enblogs.index')}}">
-                            Blogs
-                         </a>
-                    </div>
-                </div>
-            </li> --}}
+
             <hr style="height: 1px; width: 100%;  background-color: white">
             <div class="sidebar-heading" style="color:rgb(255 255 255 / 86%)">
                 Español
             </div>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#ingles" aria-expanded="false" aria-controls="ingles">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#ingles"
+                    aria-expanded="false" aria-controls="ingles">
                     <i class="fas fa-fw fa-language"></i>
                     <span>Tours ES</span>
                 </a>
-                <div id="ingles" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="">
+                <div id="ingles" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar"
+                    style="">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="{{ route('estours.index') }}">
-                         Tours
+                            Tours
                         </a>
-                        <a class="collapse-item" href="{{route('categorias.index')}}">
-                           Categorias
+                        <a class="collapse-item" href="{{ route('paises.index') }}">Países</a>
+                        <a class="collapse-item" href="{{ route('categorias.index') }}">
+                            Categorias
+                        </a>
+                        <a class="collapse-item" href="{{ route('subcategorias.index') }}">
+                            Sub-Categorias
                         </a>
                     </div>
                 </div>
             </li>
-            {{-- <hr class="sidebar-divider">
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#blogsEs" aria-expanded="false" aria-controls="blogsEs">
-                    <i class="fas fa-fw fa-language"></i>
-                    <span>Blogs ES</span>
-                </a>
-                <div id="blogsEs" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="{{ route('estags.index') }}">
-                            Tags
-                        </a>
-                        <a class="collapse-item" href="{{route('esblogs.index')}}">
-                            Blogs
-                         </a>
-                    </div>
-                </div>
-            </li> --}}
-            
+
             <hr style="height: 1px; width: 100%;  background-color: white">
             <li class="nav-item">
-                <a class="nav-link" href="{{route('imagenes.index')}}">
+                <a class="nav-link" href="{{ route('imagenes.index') }}">
                     <i class="fas fa-fw fa-images"></i>
                     <span>Imágenes</span>
                 </a>
             </li>
             <hr style="height: 1px; width: 100%;  background-color: white">
             <li class="nav-item">
-                <a class="nav-link" href="{{route('users.index')}}">
+                <a class="nav-link" href="{{ route('users.index') }}">
                     <i class="fas fa-fw fa-user"></i>
                     <span>Usuarios</span>
                 </a>
             </li>
             <hr style="height: 1px; width: 100%;  background-color: white">
-            
+
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('home') }}">
                     <i class="fas fa-fw fa-home"></i>
@@ -161,7 +141,7 @@
                                     </div>
                                 </form>
                             </div>
-                        </li>                                                
+                        </li>
                         <li class="nav-item no-arrow mx-1">
                             <ul class="navbar-nav ms-auto">
                                 <li class="nav-item dropdown">
@@ -191,7 +171,8 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Made by <a target="_blank" href="https://www.facebook.com/DjmWebMaster/">DJM2</a></span>
+                        <span>Copyright &copy; Made by <a target="_blank"
+                                href="https://www.facebook.com/DjmWebMaster/">DJM2</a></span>
                     </div>
                 </div>
             </footer>
@@ -202,7 +183,7 @@
     </a>
     {{-- <script src="//cdn.ckeditor.com/4.14.1/full/ckeditor.js"></script> --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ckeditor/4.9.2/ckeditor.js"></script>
-    
+
     <script src="{{ asset('admin/vendor/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('admin/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('admin/vendor/jquery-easing/jquery.easing.min.js') }}"></script>

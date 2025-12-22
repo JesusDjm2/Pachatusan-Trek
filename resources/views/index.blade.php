@@ -1,6 +1,8 @@
 @extends('layouts.admin')
 @section('contenido')
     <section class="banner-section">
+        <div class="background-layer next"></div>
+        <div class="background-layer"></div>
         <div class="banner-content">
             <h1>With the protection of Mother Earth</h1>
             <h5>Live unforgettable experiences, have surprising adventures, and meet places full of magic and mysticism.
@@ -12,6 +14,103 @@
             </a>
         </div>
     </section>
+    <style>
+        .banner-section {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .background-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .background-layer.next {
+            opacity: 1;
+        }
+
+        .banner-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: #ffffff;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const bannerSection = document.querySelector(".banner-section");
+            const backgroundLayers = bannerSection.querySelectorAll(".background-layer");
+
+            const largeImages = [
+                "../img/carusel/Pachatusan-Trek-1.webp",
+                "../img/carusel/Pachatusan-Trek-2.webp",
+                "../img/carusel/Pachatusan-Trek-3.webp",
+                "../img/carusel/Pachatusan-Trek-4.webp",
+                "../img/carusel/Pachatusan-Trek-5.webp",
+                "../img/carusel/Pachatusan-Trek-6.webp"
+            ];
+
+            const smallImages = [
+                "../img/carusel/Pachatusan-Trek-1-thumb.webp",
+                "../img/carusel/Pachatusan-Trek-2-thumb.webp",
+                "../img/carusel/Pachatusan-Trek-3-thumb.webp",
+                "../img/carusel/Pachatusan-Trek-4-thumb.webp",
+                "../img/carusel/Pachatusan-Trek-5-thumb.webp",
+                "../img/carusel/Pachatusan-Trek-6-thumb.webp"
+            ];
+
+            let currentIndex = 0;
+            let activeLayer = 0;
+
+            function getImageSource() {
+                if (window.innerWidth <= 768) {
+                    return smallImages;
+                } else {
+                    return largeImages;
+                }
+            }
+
+            let images = getImageSource();
+            backgroundLayers[0].style.backgroundImage = `url(${images[currentIndex]})`;
+            backgroundLayers[1].style.backgroundImage = `url(${images[(currentIndex + 1) % images.length]})`;
+
+            function changeBackground() {
+                currentIndex = (currentIndex + 1) % images.length;
+                const nextLayer = (activeLayer + 1) % 2;
+
+                images = getImageSource();
+
+                backgroundLayers[nextLayer].style.backgroundImage = `url(${images[currentIndex]})`;
+
+                backgroundLayers[activeLayer].classList.remove("next");
+                backgroundLayers[nextLayer].classList.add("next");
+
+                activeLayer = nextLayer;
+            }
+
+            setTimeout(() => {
+                setInterval(changeBackground, 4000);
+            }, 1000);
+
+            window.addEventListener("resize", () => {
+                images = getImageSource();
+                backgroundLayers[0].style.backgroundImage = `url(${images[currentIndex]})`;
+                backgroundLayers[1].style.backgroundImage =
+                    `url(${images[(currentIndex + 1) % images.length]})`;
+            });
+        });
+    </script>
     <section id="empezar" class="decorative-box d-flex align-items-center py-5">
         <div class="container">
             <div class="row">
@@ -58,7 +157,7 @@
                                 forests near the Amazon plain, areas full of myths, history, flora, fauna and a
                                 surprising culture.
                             </p>
-                            <a href="{{route('expeditions')}}" class="btn btn-primary btn-sm">View Tours</a>
+                            <a href="{{ route('expeditions') }}" class="btn btn-primary btn-sm">View Tours</a>
                         </div>
                     </div>
                 </div>
@@ -71,7 +170,7 @@
                                 service guarantees an unforgettable experience on the coast, mountains and jungle. We
                                 have the best travel options to get to know Peru to the fullest.
                             </p>
-                            <a href="{{route('entours')}}" class="btn btn-primary btn-sm">View tours</a>
+                            <a href="{{ route('entours') }}" class="btn btn-primary btn-sm">View tours</a>
                         </div>
                     </div>
                 </div>
@@ -112,11 +211,9 @@
     <section class="parallax-banner">
         <div class="overlay"></div>
         <div class="content">
-            <h2 class="dancing-center">Salkantay – Machu Picchu – 5 Days </h2>
-            <p class="mt-4">Located in the Andean Vilcabamba mountain range is the Salkantay Nevada, passing through
-                stunning landscapes
-                from the cloud forest to high mountains</p>
-            <a href="#explore" class="btn">Explore Now</a>
+            <h2 class="dancing-center">Choqekiraw – Huancacalle 10 days</h2>
+            <p class="mt-4">The Inka trail used by Manco Inka II and his army, in their escape from Spanish, passes by these 2 magnificent archaeological sites in the Vilcabamba</p>
+            <a href="https://pachatusantrek.com/en/choqekiraw-huancacalle-10d-9n" class="btn">Explore Now</a>
         </div>
     </section>
     <section class="mainTours bg-light">

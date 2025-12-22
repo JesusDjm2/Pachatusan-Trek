@@ -17,6 +17,8 @@ class CreateToursTable extends Migration
             $table->id();
             $table->string('nombre');
             $table->string('recorrido')->nullable();
+            $table->string('pais')->nullable();
+            $table->string('ciudad')->nullable();
             $table->integer('dias'); 
             /* $table->string('precio'); */
             $table->string('imgThumb');
@@ -27,6 +29,7 @@ class CreateToursTable extends Migration
             $table->text('incluye');
             /* $table->string('mapa'); */
             $table->text('importante');
+            $table->text('galeria')->nullable();
             $table->string('slug');
             $table->string('keywords');
             $table->timestamps();

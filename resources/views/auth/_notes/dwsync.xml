@@ -6,4 +6,10 @@
 <file name="login.blade.php" server="216.246.47.134" local="133717487904294931" remote="133742574600000000" Dst="0" />
 <file name="register.blade.php" server="216.246.47.134" local="133701178948839912" remote="133742574600000000" Dst="0" />
 <file name="verify.blade.php" server="216.246.47.134" local="133701178949004724" remote="133742574600000000" Dst="0" />
+<file name="login.blade.php" server="199.103.62.205" local="133717487904294931" remote="133760855400000000" Dst="0" />
+<file name="register.blade.php" server="199.103.62.205" local="133701178948839912" remote="133760855400000000" Dst="0" />
+<file name="verify.blade.php" server="199.103.62.205" local="133701178949004724" remote="133760855400000000" Dst="0" />
+<file name="login.blade.php" server="ftp.pachatusantrek.com" local="133824852349861743" remote="133717667400000000" Dst="0" />
+<file name="register.blade.php" server="ftp.pachatusantrek.com" local="133824852356702877" remote="133701358800000000" Dst="0" />
+<file name="verify.blade.php" server="ftp.pachatusantrek.com" local="133824852360618849" remote="133701358800000000" Dst="0" />
 </dwsync>

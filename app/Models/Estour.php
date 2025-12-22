@@ -20,6 +20,7 @@ class Estour extends Model
         'itinerario',
         'incluye',
         'importante',
+        'galeria',
         'slug',
         'keywords',
         'relacionado_id',
@@ -33,4 +34,12 @@ class Estour extends Model
     {
         return $this->belongsToMany(EsCategoria::class, 'estour_categoria', 'tour_id', 'categoria_id');
     }
+    public function subcategorias()
+    {
+        return $this->belongsToMany(Subcategoria::class, 'subcategorias_estour', 'tour_id', 'subcategoria_id');
+    }
+   public function pais()
+{
+    return $this->belongsTo(Pais::class);
+}
 }

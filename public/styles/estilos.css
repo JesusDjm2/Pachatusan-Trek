@@ -41,17 +41,28 @@ a {
   text-decoration: none;
 }
 
+.blue {
+  color: #32659a;
+}
+
 .banner-section,
 .banner-about,
 .banner-certificate,
 .banner-social,
-.banner-contact {
+.banner-tours,
+.banner-expeditions,
+.banner-north,
+.banner-sacred,
+.banner-inca,
+.banner-treks,
+.banner-contact,
+.banner-glamping {
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 700px;
-  background-image: url(../img/full/destinations_peru-pachatusan-trek.png);
+  height: 100vh;
+  background-image: url(../img/carusel/Pachatusan-Trek-1.webp);
   background-size: cover;
   background-position: center;
   margin-top: -6em;
@@ -60,7 +71,14 @@ a {
 .banner-about::before,
 .banner-certificate::before,
 .banner-social::before,
-.banner-contact::before {
+.banner-tours::before,
+.banner-expeditions::before,
+.banner-north::before,
+.banner-sacred::before,
+.banner-inca::before,
+.banner-treks::before,
+.banner-contact::before,
+.banner-glamping::before {
   content: "";
   position: absolute;
   top: 0;
@@ -74,7 +92,14 @@ a {
 .banner-about .banner-content,
 .banner-certificate .banner-content,
 .banner-social .banner-content,
-.banner-contact .banner-content {
+.banner-tours .banner-content,
+.banner-expeditions .banner-content,
+.banner-north .banner-content,
+.banner-sacred .banner-content,
+.banner-inca .banner-content,
+.banner-treks .banner-content,
+.banner-contact .banner-content,
+.banner-glamping .banner-content {
   text-align: center;
   color: white;
   position: relative;
@@ -84,7 +109,14 @@ a {
 .banner-about .banner-content h1,
 .banner-certificate .banner-content h1,
 .banner-social .banner-content h1,
-.banner-contact .banner-content h1 {
+.banner-tours .banner-content h1,
+.banner-expeditions .banner-content h1,
+.banner-north .banner-content h1,
+.banner-sacred .banner-content h1,
+.banner-inca .banner-content h1,
+.banner-treks .banner-content h1,
+.banner-contact .banner-content h1,
+.banner-glamping .banner-content h1 {
   font-size: 2.2em;
   margin: 0.5em 0;
   text-transform: uppercase;
@@ -97,7 +129,14 @@ a {
 .banner-about .banner-content h1::after,
 .banner-certificate .banner-content h1::after,
 .banner-social .banner-content h1::after,
-.banner-contact .banner-content h1::after {
+.banner-tours .banner-content h1::after,
+.banner-expeditions .banner-content h1::after,
+.banner-north .banner-content h1::after,
+.banner-sacred .banner-content h1::after,
+.banner-inca .banner-content h1::after,
+.banner-treks .banner-content h1::after,
+.banner-contact .banner-content h1::after,
+.banner-glamping .banner-content h1::after {
   content: "";
   position: absolute;
   left: 50%;
@@ -111,7 +150,14 @@ a {
 .banner-about .banner-content h5,
 .banner-certificate .banner-content h5,
 .banner-social .banner-content h5,
-.banner-contact .banner-content h5 {
+.banner-tours .banner-content h5,
+.banner-expeditions .banner-content h5,
+.banner-north .banner-content h5,
+.banner-sacred .banner-content h5,
+.banner-inca .banner-content h5,
+.banner-treks .banner-content h5,
+.banner-contact .banner-content h5,
+.banner-glamping .banner-content h5 {
   font-size: 1.1em;
   margin: 0.5em 0;
   line-height: 1.5;
@@ -122,7 +168,14 @@ a {
 .banner-about .banner-content .scroll-down-btn,
 .banner-certificate .banner-content .scroll-down-btn,
 .banner-social .banner-content .scroll-down-btn,
-.banner-contact .banner-content .scroll-down-btn {
+.banner-tours .banner-content .scroll-down-btn,
+.banner-expeditions .banner-content .scroll-down-btn,
+.banner-north .banner-content .scroll-down-btn,
+.banner-sacred .banner-content .scroll-down-btn,
+.banner-inca .banner-content .scroll-down-btn,
+.banner-treks .banner-content .scroll-down-btn,
+.banner-contact .banner-content .scroll-down-btn,
+.banner-glamping .banner-content .scroll-down-btn {
   display: inline-block;
   margin-top: 20px;
   font-size: 24px;
@@ -136,56 +189,117 @@ a {
 .banner-about .banner-content .scroll-down-btn i,
 .banner-certificate .banner-content .scroll-down-btn i,
 .banner-social .banner-content .scroll-down-btn i,
-.banner-contact .banner-content .scroll-down-btn i {
+.banner-tours .banner-content .scroll-down-btn i,
+.banner-expeditions .banner-content .scroll-down-btn i,
+.banner-north .banner-content .scroll-down-btn i,
+.banner-sacred .banner-content .scroll-down-btn i,
+.banner-inca .banner-content .scroll-down-btn i,
+.banner-treks .banner-content .scroll-down-btn i,
+.banner-contact .banner-content .scroll-down-btn i,
+.banner-glamping .banner-content .scroll-down-btn i {
   display: block;
   font-size: 24px;
   position: absolute;
-  animation: bounceColor1 3s infinite; /* Animación para la primera flecha */
+  animation: bounceColor1 3s infinite;
+  /* Animación para la primera flecha */
 }
 .banner-section .banner-content .scroll-down-btn .additional-arrow,
 .banner-about .banner-content .scroll-down-btn .additional-arrow,
 .banner-certificate .banner-content .scroll-down-btn .additional-arrow,
 .banner-social .banner-content .scroll-down-btn .additional-arrow,
-.banner-contact .banner-content .scroll-down-btn .additional-arrow {
+.banner-tours .banner-content .scroll-down-btn .additional-arrow,
+.banner-expeditions .banner-content .scroll-down-btn .additional-arrow,
+.banner-north .banner-content .scroll-down-btn .additional-arrow,
+.banner-sacred .banner-content .scroll-down-btn .additional-arrow,
+.banner-inca .banner-content .scroll-down-btn .additional-arrow,
+.banner-treks .banner-content .scroll-down-btn .additional-arrow,
+.banner-contact .banner-content .scroll-down-btn .additional-arrow,
+.banner-glamping .banner-content .scroll-down-btn .additional-arrow {
   position: absolute;
   font-size: 24px;
-  animation: bounceColor2 3s infinite; /* Animación para la segunda flecha */
+  animation: bounceColor2 3s infinite;
+  /* Animación para la segunda flecha */
 }
 .banner-section .banner-content .scroll-down-btn .third-arrow,
 .banner-about .banner-content .scroll-down-btn .third-arrow,
 .banner-certificate .banner-content .scroll-down-btn .third-arrow,
 .banner-social .banner-content .scroll-down-btn .third-arrow,
-.banner-contact .banner-content .scroll-down-btn .third-arrow {
+.banner-tours .banner-content .scroll-down-btn .third-arrow,
+.banner-expeditions .banner-content .scroll-down-btn .third-arrow,
+.banner-north .banner-content .scroll-down-btn .third-arrow,
+.banner-sacred .banner-content .scroll-down-btn .third-arrow,
+.banner-inca .banner-content .scroll-down-btn .third-arrow,
+.banner-treks .banner-content .scroll-down-btn .third-arrow,
+.banner-contact .banner-content .scroll-down-btn .third-arrow,
+.banner-glamping .banner-content .scroll-down-btn .third-arrow {
   position: absolute;
   font-size: 24px;
-  animation: bounceColor3 3s infinite; /* Animación para la tercera flecha */
+  animation: bounceColor3 3s infinite;
+  /* Animación para la tercera flecha */
 }
 .banner-section .banner-content .scroll-down-btn:hover,
 .banner-about .banner-content .scroll-down-btn:hover,
 .banner-certificate .banner-content .scroll-down-btn:hover,
 .banner-social .banner-content .scroll-down-btn:hover,
-.banner-contact .banner-content .scroll-down-btn:hover {
+.banner-tours .banner-content .scroll-down-btn:hover,
+.banner-expeditions .banner-content .scroll-down-btn:hover,
+.banner-north .banner-content .scroll-down-btn:hover,
+.banner-sacred .banner-content .scroll-down-btn:hover,
+.banner-inca .banner-content .scroll-down-btn:hover,
+.banner-treks .banner-content .scroll-down-btn:hover,
+.banner-contact .banner-content .scroll-down-btn:hover,
+.banner-glamping .banner-content .scroll-down-btn:hover {
   color: #32659a;
 }
 
 .banner-about {
   background-image: url(../img/full/about-pachatusa-trek-background.jpg);
-  height: 500px;
+  height: 100vh;
 }
 
 .banner-certificate {
   background-image: url(../img/full/certificates.jpg);
-  height: 500px;
+  height: 100vh;
 }
 
 .banner-social {
   background-image: url(../img/full/social-projects-pachatusan-trek.jpg);
-  height: 500px;
+  height: 100vh;
 }
 
-.banner-contact {
+.banner-expeditions {
+  background-image: url(../img/full/apacheta-full.jpg);
+  height: 100vh;
+}
+
+.banner-tours {
+  background-image: url(../img/Fondos/llama-Peru-Machu-Picchu.webp);
+  height: 100vh;
+}
+
+.banner-north {
+  background-image: url(../img/Fondos/subcategoria03.webp);
+  height: 100vh;
+}
+
+.banner-sacred {
+  background-image: url(../img/Fondos/subcategoria01.webp);
+  height: 100vh;
+}
+
+.banner-glamping {
+  background-image: url(../img/Fondos/glaping-muestra.webp);
+  height: 100vh;
+}
+
+.banner-inca {
+  background-image: url(../img/Fondos/subcategoria02.webp);
+  height: 100vh;
+}
+
+.banner-treks {
   background-image: url(../img/full/activity-adventure-Pachatusan-Trek.jpg);
-  height: 500px;
+  height: 100vh;
 }
 
 /* Animaciones para las flechas */
@@ -236,21 +350,27 @@ a {
 }
 .decorative-box {
   position: relative;
-  background-color: #f3f3f3; /* Color hueso */
-  padding: 20px; /* Ajusta según el diseño */
+  background-color: #f3f3f3;
+  /* Color hueso */
+  padding: 20px;
+  /* Ajusta según el diseño */
   text-align: center;
 }
 .decorative-box::after {
   content: "";
   position: absolute;
-  bottom: -45px; /* Ajusta según el diseño para el espacio adicional */
+  bottom: -45px;
+  /* Ajusta según el diseño para el espacio adicional */
   left: 50%;
   transform: translateX(-50%);
   width: 0;
   height: 0;
-  border-left: 40px solid transparent; /* Ajusta el tamaño del triángulo */
-  border-right: 40px solid transparent; /* Ajusta el tamaño del triángulo */
-  border-top: 50px solid #f3f3f3; /* Color hueso y longitud del triángulo */
+  border-left: 40px solid transparent;
+  /* Ajusta el tamaño del triángulo */
+  border-right: 40px solid transparent;
+  /* Ajusta el tamaño del triángulo */
+  border-top: 50px solid #f3f3f3;
+  /* Color hueso y longitud del triángulo */
 }
 
 .bg-image {
@@ -258,7 +378,8 @@ a {
   background-size: cover;
   background-attachment: fixed;
   height: 100vh;
-  color: #fff; /* Color del texto blanco */
+  color: #fff;
+  /* Color del texto blanco */
   position: static;
 }
 @media (max-width: 576px) {
@@ -282,6 +403,34 @@ a {
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   transition: 0.3s ease;
   background: #fff !important;
+}
+
+.stats-box {
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  margin: 10px 0;
+}
+
+.feature-item {
+  border-left: 3px solid #0d6efd;
+  padding-left: 15px;
+  margin-bottom: 20px;
+}
+
+.commitment-card {
+  height: 100%;
+  transition: transform 0.3s ease;
+}
+
+.commitment-card:hover {
+  transform: translateY(-5px);
+}
+
+.scroll-down-btn {
+  color: white;
+  font-size: 1.5rem;
+  text-decoration: none;
 }
 
 .search-popup {
@@ -332,21 +481,25 @@ a {
 @keyframes fadeInDown {
   from {
     opacity: 0;
-    transform: translateY(-30px); /* Inicia arriba */
+    transform: translateY(-30px);
+    /* Inicia arriba */
   }
   to {
     opacity: 1;
-    transform: translateY(0); /* Llega a su posición final */
+    transform: translateY(0);
+    /* Llega a su posición final */
   }
 }
 @keyframes fadeOutUp {
   from {
     opacity: 1;
-    transform: translateY(0); /* Inicia desde su posición */
+    transform: translateY(0);
+    /* Inicia desde su posición */
   }
   to {
     opacity: 0;
-    transform: translateY(-30px); /* Desaparece hacia arriba */
+    transform: translateY(-30px);
+    /* Desaparece hacia arriba */
   }
 }
 #search-icon i {

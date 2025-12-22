@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <dwsync>
-<file name="create.blade.php" server="216.246.47.134" local="133701178952690176" remote="133742574600000000" Dst="0" />
-<file name="edit.blade.php" server="216.246.47.134" local="133701178953329815" remote="133742574600000000" Dst="0" />
-<file name="form.blade.php" server="216.246.47.134" local="133701178953150150" remote="133742574600000000" Dst="0" />
-<file name="index.blade.php" server="216.246.47.134" local="133724403964266190" remote="133742574600000000" Dst="0" />
-<file name="show.blade.php" server="216.246.47.134" local="133733924213987621" remote="133733962200000000" Dst="0" />
+<file name="create.blade.php" server="216.246.47.134" local="133701178952690176" remote="133754630400000000" Dst="0" />
+<file name="edit.blade.php" server="216.246.47.134" local="133701178953329815" remote="133754630400000000" Dst="0" />
+<file name="form.blade.php" server="216.246.47.134" local="133701178953150150" remote="133754630400000000" Dst="0" />
+<file name="index.blade.php" server="216.246.47.134" local="133724403964266190" remote="133754630400000000" Dst="0" />
+<file name="show.blade.php" server="216.246.47.134" local="133733924213987621" remote="133754630400000000" Dst="0" />
+<file name="create.blade.php" server="199.103.62.205" local="133701178952690176" remote="133760855400000000" Dst="0" />
+<file name="edit.blade.php" server="199.103.62.205" local="133701178953329815" remote="133760855400000000" Dst="0" />
+<file name="form.blade.php" server="199.103.62.205" local="133701178953150150" remote="133760855400000000" Dst="0" />
+<file name="index.blade.php" server="199.103.62.205" local="133724403964266190" remote="133760855400000000" Dst="0" />
+<file name="show.blade.php" server="199.103.62.205" local="133733924213987621" remote="133760855400000000" Dst="0" />
+<file name="create.blade.php" server="ftp.pachatusantrek.com" local="133824852327278809" remote="133967633400000000" Dst="0" />
+<file name="edit.blade.php" server="ftp.pachatusantrek.com" local="133824852328390894" remote="133967633400000000" Dst="0" />
+<file name="form.blade.php" server="ftp.pachatusantrek.com" local="133824852330398040" remote="133967633400000000" Dst="0" />
+<file name="index.blade.php" server="ftp.pachatusantrek.com" local="133824852331728663" remote="133967633400000000" Dst="0" />
+<file name="show.blade.php" server="ftp.pachatusantrek.com" local="133970656937484585" remote="133970845800000000" Dst="0" />
 </dwsync>

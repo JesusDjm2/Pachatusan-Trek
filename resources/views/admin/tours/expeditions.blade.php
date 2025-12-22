@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('contenido')
-    <section class="banner-contact">
+    <section class="banner-expeditions">
         <div class="banner-content container">
             <h1>Expeditions in Perú </h1>
             <h5>Journey less travelled routes in the Southern Andes, see and experience places rarely visited. Your

@@ -1,11 +1,36 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <dwsync>
-<file name="create.blade.php" server="216.246.47.134" local="133741693401352970" remote="133741792800000000" Dst="0" />
-<file name="edit.blade.php" server="216.246.47.134" local="133742534798070873" remote="133742570400000000" Dst="0" />
-<file name="index.blade.php" server="216.246.47.134" local="133724394902260048" remote="133724430600000000" Dst="0" />
-<file name="show.blade.php" server="216.246.47.134" local="133741704158291665" remote="133741792800000000" Dst="0" />
-<file name="expediciones.blade.php" server="216.246.47.134" local="133722689078204987" remote="133741792800000000" Dst="0" />
-<file name="tours.blade.php" server="216.246.47.134" local="133722689320171517" remote="133741792800000000" Dst="0" />
-<file name="treks.blade.php" server="216.246.47.134" local="133722688832667719" remote="133741792800000000" Dst="0" />
-<file name="buscador.blade.php" server="216.246.47.134" local="133724387710131947" remote="133724423400000000" Dst="0" />
+<file name="create.blade.php" server="216.246.47.134" local="133753850743274249" remote="133754630400000000" Dst="0" />
+<file name="edit.blade.php" server="216.246.47.134" local="133753850963615168" remote="133754630400000000" Dst="0" />
+<file name="index.blade.php" server="216.246.47.134" local="133754657138570129" remote="133754656800000000" Dst="0" />
+<file name="show.blade.php" server="216.246.47.134" local="133755500524601443" remote="133755555600000000" Dst="0" />
+<file name="expediciones.blade.php" server="216.246.47.134" local="133746910830263885" remote="133754630400000000" Dst="0" />
+<file name="tours.blade.php" server="216.246.47.134" local="133746911680871920" remote="133754630400000000" Dst="0" />
+<file name="treks.blade.php" server="216.246.47.134" local="133746910267137644" remote="133754630400000000" Dst="0" />
+<file name="buscador.blade.php" server="216.246.47.134" local="133724387710131947" remote="133754630400000000" Dst="0" />
+<file name="inca.blade.php" server="216.246.47.134" local="133755721278175904" remote="133755732000000000" Dst="0" />
+<file name="norte.blade.php" server="216.246.47.134" local="133755721447846760" remote="133755732000000000" Dst="0" />
+<file name="valle.blade.php" server="216.246.47.134" local="133755721010566409" remote="133755732000000000" Dst="0" />
+<file name="buscador.blade.php" server="199.103.62.205" local="133724387710131947" remote="133760855400000000" Dst="0" />
+<file name="create.blade.php" server="199.103.62.205" local="133753850743274249" remote="133760855400000000" Dst="0" />
+<file name="edit.blade.php" server="199.103.62.205" local="133753850963615168" remote="133760855400000000" Dst="0" />
+<file name="expediciones.blade.php" server="199.103.62.205" local="133746910830263885" remote="133760855400000000" Dst="0" />
+<file name="inca.blade.php" server="199.103.62.205" local="133755721278175904" remote="133760855400000000" Dst="0" />
+<file name="index.blade.php" server="199.103.62.205" local="133754657138570129" remote="133760855400000000" Dst="0" />
+<file name="norte.blade.php" server="199.103.62.205" local="133755721447846760" remote="133760855400000000" Dst="0" />
+<file name="show.blade.php" server="199.103.62.205" local="133765875499812450" remote="133766083800000000" Dst="0" />
+<file name="tours.blade.php" server="199.103.62.205" local="133746911680871920" remote="133760855400000000" Dst="0" />
+<file name="treks.blade.php" server="199.103.62.205" local="133746910267137644" remote="133760855400000000" Dst="0" />
+<file name="valle.blade.php" server="199.103.62.205" local="133755721010566409" remote="133760855400000000" Dst="0" />
+<file name="buscador.blade.php" server="ftp.pachatusantrek.com" local="133824852293824089" remote="133967634000000000" Dst="0" />
+<file name="create.blade.php" server="ftp.pachatusantrek.com" local="133824852303722253" remote="133967634000000000" Dst="0" />
+<file name="edit.blade.php" server="ftp.pachatusantrek.com" local="133970678143588574" remote="133970917800000000" Dst="0" />
+<file name="expediciones.blade.php" server="ftp.pachatusantrek.com" local="133825569612918317" remote="133825767600000000" Dst="0" />
+<file name="inca.blade.php" server="ftp.pachatusantrek.com" local="133825577321541180" remote="133825767600000000" Dst="0" />
+<file name="index.blade.php" server="ftp.pachatusantrek.com" local="134106394084374304" remote="134106579600000000" Dst="0" />
+<file name="norte.blade.php" server="ftp.pachatusantrek.com" local="133825591170754641" remote="133825773000000000" Dst="0" />
+<file name="tours.blade.php" server="ftp.pachatusantrek.com" local="133825586764818685" remote="133825767600000000" Dst="0" />
+<file name="treks.blade.php" server="ftp.pachatusantrek.com" local="133906758320036276" remote="133906938000000000" Dst="0" />
+<file name="valle.blade.php" server="ftp.pachatusantrek.com" local="133825570081967191" remote="133825767600000000" Dst="0" />
+<file name="show.blade.php" server="ftp.pachatusantrek.com" local="133824852318758055" remote="133967634000000000" Dst="0" />
 </dwsync>

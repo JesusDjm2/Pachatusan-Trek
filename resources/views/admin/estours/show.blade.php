@@ -43,25 +43,62 @@
         bottom: -5px;
         left: 0;
     }
+
+    .tab-content>#tab1>p>img {
+        padding: 0.5em;
+    }
+
+    .carousel-inner img {
+        width: 100%;
+        height: auto;
+    }
+
+    .carousel-indicators li {
+        list-style: none;
+        /* Elimina cualquier estilo de lista */
+    }
+
+    .carousel-indicators li::before {
+        content: '';
+        /* Elimina el contenido numérico */
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: black;
+        /* Cambia el color del punto si es necesario */
+        display: block;
+    }
+
+    @media (max-width: 768px) {
+        .carousel-inner img {
+            max-height: 300px;
+        }
+    }
+	
 </style>
 @section('contenido')
     @auth
-        <a href="{{ route('tours.edit', $tour->id) }}" class="boton-editar" target="_blank">Editar
+        <a href="{{ route('estours.edit', $tour->id) }}" class="boton-editar" target="_blank">Editar
             Tour</a>
     @endauth
     <section class="bg-light">
         <div class="wrapper">
             <div class="fullscreen-section">
-                <picture>
-                    <source srcset="{{ asset($tour->imgThumb) }}" media="(max-width: 768px)">
-                    <img src="{{ asset($tour->imgFull) }}" alt="{{ $tour->nombre }}" class="fullscreen-img"
-                        loading="lazy">
-                </picture>
+               <picture>
+                    <source srcset="{{ asset($tour->imgThumb) }}" alt="{{$tour->nombre}}" media="(max-width: 768px)">
+                    <img src="{{ asset($tour->imgFull) }}" alt="{{ $tour->nombre }}" class="fullscreen-img">
+                </picture>  
 
                 <div class="content-overlay">
                     <h1>{{ $tour->nombre }}</h1>
                     <p><i class="fa fa-clock"></i> {{ $tour->dias }} {{ $tour->dias == 1 ? 'día' : 'días' }}</p>
                     <p><i class="fa fa-map-marker"></i> {{ $tour->recorrido }}</p>
+                    @if (session('flash'))
+                        <div class="alert alert-{{ session('flash')['type'] }} alert-dismissible fade show" role="alert">
+                            {{ session('flash')['message'] }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>
@@ -82,7 +119,7 @@
                                     @endif
                                 @endforeach
                             </span><span>⮞</span>
-                            <a>{{ $tour->nombre }}</a>
+                            <a title="{{ $tour->nombre }}">{{ $tour->nombre }}</a>
                     </div>
                     <div class="col-lg-3 col-sm-2" id="display2">
                         <div class="linea"></div>
@@ -97,17 +134,21 @@
                             <h2 class="dancingShow mt-4">{{ $tour->nombre }}</h2>
                             <div id="separadordjm2"></div>
                             <p class="text-center">
-                                <i class="fa fa-clock-o"></i> {{ $tour->dias }} {{ $tour->dias == 1 ? 'día' : 'días' }}<br>
+                                <i class="fa fa-clock-o"></i> {{ $tour->dias }}
+                                {{ $tour->dias == 1 ? 'día' : 'días' }}<br>
                                 <i class="fa fa-map-marker"></i> {{ $tour->recorrido }}
                             </p>
                         </div>
                         <div class="contenidoInicial" style="margin-top: 2em">
                             {!! $tour->presentacion !!}
                         </div>
-                        <div class="tabs mt-4">
-                            <button class="tab-button active" data-tab="tab1"><i class="fa fa-list"></i> Itinerario Detallado</button>
+                        <div class="tabs mt-4 d-flex flex-wrap">
+                            <button class="tab-button active" data-tab="tab1"><i class="fa fa-list"></i> Itinerario
+                                </button>
                             <button class="tab-button" data-tab="tab2"><i class="fa fa-plus"></i> Incluye</button>
-                            {{-- <button class="tab-button" data-tab="tab3"><i class="fa fa-map-marker"></i> Map</button> --}}
+                            <button class="tab-button" data-tab="tab3">
+                                <i class="fa fa-images"></i> Galería
+                            </button>
                             <button class="tab-button" data-tab="tab4"><i class="fa fa-exclamation"></i> Importante</button>
                         </div>
 
@@ -118,11 +159,67 @@
                             <div id="tab2" class="tab-pane" style="text-align:left">
                                 {!! $tour->incluye !!}
                             </div>
-                            {{-- <div id="tab3" class="tab-pane">
-                                @if ($tour->mapa)
-                                    {!! $tour->mapa !!}
-                                @endif
-                            </div> --}}
+                            <div id="tab3" class="tab-pane">
+                                <div class="row">
+                                     @if (!empty($tour->galeria))
+    @foreach (explode(',', $tour->galeria) as $index => $imagen)
+        <div class="col-3 mb-3">
+            <a href="#galeria" data-toggle="modal" data-slide-to="{{ $index }}">
+                <img src="{{ asset($imagen) }}" 
+                     alt="{{ $tour->nombre }} {{ $index + 1 }}"
+                     class="img-thumbnail"
+                     style="width: 100%; height: 100px; object-fit: cover;" loading="lazy">
+            </a>
+        </div>
+    @endforeach
+@else
+    <p>No photo gallery</p>
+@endif
+                                </div>
+                                <div id="galeria" class="modal fade" tabindex="-1" role="dialog" aria-label="Galeria de fotos">
+                                    <div class="modal-dialog modal-lg" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-body">
+                                                <div id="carouselGaleria" class="carousel slide" data-bs-ride="carousel">
+                                                    <!-- Indicadores (puntos) -->
+                                                    <ol class="carousel-indicators">
+                                                        @foreach (explode(',', $tour->galeria) as $index => $imagen)
+                                                            <li data-bs-target="#carouselGaleria"
+                                                                data-bs-slide-to="{{ $index }}"
+                                                                class="{{ $loop->first ? 'active' : '' }}"></li>
+                                                        @endforeach
+                                                    </ol>
+                                                    <!-- Imágenes del carrusel -->
+                                                    <div class="carousel-inner">
+                                                        @foreach (explode(',', $tour->galeria) as $index => $imagen)
+                                                            <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
+                                                                <img src="{{ asset($imagen) }}"
+                                                                    alt="{{ $tour->nombre }} {{ $index + 1 }}"
+                                                                    class="d-block w-100 img-fluid"
+                                                                    style="object-fit: cover; max-height: 500px;"
+                                                                    loading="lazy">
+                                                            </div>
+                                                        @endforeach
+                                                    </div>
+                                                    <!-- Controles con flechas de FontAwesome -->
+                                                    <button class="carousel-control-prev" type="button"
+                                                        data-bs-target="#carouselGaleria" data-bs-slide="prev">
+                                                        <i class="fas fa-chevron-left"
+                                                            style="color: black; font-size: 30px;"></i>
+                                                        <span class="visually-hidden">Anterior</span>
+                                                    </button>
+                                                    <button class="carousel-control-next" type="button"
+                                                        data-bs-target="#carouselGaleria" data-bs-slide="next">
+                                                        <i class="fas fa-chevron-right"
+                                                            style="color: black; font-size: 30px;"></i>
+                                                        <span class="visually-hidden">Siguiente</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <div id="tab4" class="tab-pane">
                                 {!! $tour->importante !!}
                             </div>
@@ -166,9 +263,9 @@
                         @include('layouts.booking-castellano')
 
                         <div class="similares">
-                            <h3 class="category-title">Categories of tours</h3>
+                            <h3 class="category-title">Categorias de tours</h3>
                             @foreach ($categorias as $categoria)
-                                <a class="categorias" href="{{ route('category.show', $categoria->slug) }}">
+                                <a class="categorias" href="{{ route('categoria.show', $categoria->slug) }}">
                                     {{ $categoria->nombre }}</a>
                             @endforeach
                         </div>
@@ -180,11 +277,11 @@
         </div>
         <div class="container">
             <div class="row relacionados">
-                <h2 class="mt-5">Popular tours</h2>
-                @foreach ($tours as $tour)
+                <h2 class="mt-5">Vea más tours</h2>
+                @foreach ($tours->random(4) as $tour)
                     <div class="col-lg-3 tours mb-3">
                         <div class="contImg">
-                            <a href='{{ route('tour.show', $tour->slug) }}' class='entry-link'>
+                            <a href='{{ route('estour.show', $tour->slug) }}' class='entry-link'>
                                 <img src="{{ asset($tour->imgThumb) }}" class="attachment-post-grid-s size-post-grid-s"
                                     alt="{{ $tour->nombre }}" loading="lazy" style="height: 245px!important" />
                             </a>
@@ -194,11 +291,11 @@
                             <p> {{ $tour->descripcionCorta }} </p>
                             <div style="width: 100%;  padding-bottom:50px">
                                 <span style="float: left"><i class="fa fa-clock-o"></i>
-                                    {{ $tour->dias }} days</span>
+                                    {{ $tour->dias }} {{ $tour->dias == 1 ? 'día' : 'días' }}</span>
                                 <span style="float: right"><i class="fa fa-map-marker"></i>
                                     {{ $tour->recorrido }}</span>
                             </div>
-                            <a href="{{ route('tour.show', $tour->slug) }}" class='button'>More info</a>
+                            <a href="{{ route('estour.show', $tour->slug) }}" class='button'>Más info</a>
                         </div>
                     </div>
                 @endforeach
@@ -215,6 +312,17 @@
                 const tabId = button.getAttribute('data-tab');
                 button.classList.add('active');
                 document.getElementById(tabId).classList.add('active');
+            });
+        });
+    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.querySelectorAll('a[data-slide-to]').forEach(item => {
+            item.addEventListener('click', function() {
+                const slideTo = this.getAttribute('data-slide-to');
+                $('#carouselGaleria').carousel(parseInt(slideTo));
+                $('#galeria').modal('show');
             });
         });
     </script>

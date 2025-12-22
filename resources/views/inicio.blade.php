@@ -1,6 +1,20 @@
 @extends('layouts.admines')
 @section('contenido')
+    {{-- <section class="banner-section">
+        <div class="banner-content">
+            <h1>Con la protección de la Madre Tierra</h1>
+            <h5>Vive experiencias inolvidables, vive aventuras sorprendentes y conoce lugares llenos de magia y misticismo.
+            </h5>
+            <a href="#empezar" class="scroll-down-btn">
+                <i class="fas fa-chevron-down"></i>
+                <i class="fas fa-chevron-down additional-arrow"></i>
+                <i class="fas fa-chevron-down third-arrow"></i>
+            </a>
+        </div>
+    </section> --}}
     <section class="banner-section">
+        <div class="background-layer next"></div>
+        <div class="background-layer"></div>
         <div class="banner-content">
             <h1>Con la protección de la Madre Tierra</h1>
             <h5>Vive experiencias inolvidables, vive aventuras sorprendentes y conoce lugares llenos de magia y misticismo.
@@ -12,6 +26,103 @@
             </a>
         </div>
     </section>
+    <style>
+        .banner-section {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .background-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .background-layer.next {
+            opacity: 1;
+        }
+
+        .banner-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: #ffffff;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const bannerSection = document.querySelector(".banner-section");
+            const backgroundLayers = bannerSection.querySelectorAll(".background-layer");
+
+            const largeImages = [
+                "../img/carusel/Pachatusan-Trek-1.webp",
+                "../img/carusel/Pachatusan-Trek-2.webp",
+                "../img/carusel/Pachatusan-Trek-3.webp",
+                "../img/carusel/Pachatusan-Trek-4.webp",
+                "../img/carusel/Pachatusan-Trek-5.webp",
+                "../img/carusel/Pachatusan-Trek-6.webp"
+            ];
+
+            const smallImages = [
+                "../img/carusel/Pachatusan-Trek-1-thumb.webp",
+                "../img/carusel/Pachatusan-Trek-2-thumb.webp",
+                "../img/carusel/Pachatusan-Trek-3-thumb.webp",
+                "../img/carusel/Pachatusan-Trek-4-thumb.webp",
+                "../img/carusel/Pachatusan-Trek-5-thumb.webp",
+                "../img/carusel/Pachatusan-Trek-6-thumb.webp"
+            ];
+
+            let currentIndex = 0;
+            let activeLayer = 0;
+
+            function getImageSource() {
+                if (window.innerWidth <= 768) {
+                    return smallImages;
+                } else {
+                    return largeImages;
+                }
+            }
+
+            let images = getImageSource();
+            backgroundLayers[0].style.backgroundImage = `url(${images[currentIndex]})`;
+            backgroundLayers[1].style.backgroundImage = `url(${images[(currentIndex + 1) % images.length]})`;
+
+            function changeBackground() {
+                currentIndex = (currentIndex + 1) % images.length;
+                const nextLayer = (activeLayer + 1) % 2;
+
+                images = getImageSource();
+
+                backgroundLayers[nextLayer].style.backgroundImage = `url(${images[currentIndex]})`;
+
+                backgroundLayers[activeLayer].classList.remove("next");
+                backgroundLayers[nextLayer].classList.add("next");
+
+                activeLayer = nextLayer;
+            }
+
+            setTimeout(() => {
+                setInterval(changeBackground, 4000);
+            }, 1000);
+
+            window.addEventListener("resize", () => {
+                images = getImageSource();
+                backgroundLayers[0].style.backgroundImage = `url(${images[currentIndex]})`;
+                backgroundLayers[1].style.backgroundImage =
+                    `url(${images[(currentIndex + 1) % images.length]})`;
+            });
+        });
+    </script>
     <section id="empezar" class="decorative-box d-flex align-items-center py-5">
         <div class="container">
             <div class="row">
@@ -81,10 +192,10 @@
     <section class="mainTours bg-light">
         <div class="container pt-4 pb-5">
             <div class="row">
-                <div class="col-lg-12 mb-5"> 
+                <div class="col-lg-12 mb-5">
                     <h2 class="dancing">Tours más populares:</h2>
                 </div>
-                @foreach ($tours as $tour)
+                @foreach ($firstTours as $tour)
                     <div class="col-lg-4 tours mb-3">
                         <div class="contImg">
                             <a href='{{ route('estour.show', $tour->slug) }}' class='entry-link'>
@@ -97,10 +208,10 @@
                             <p> {{ $tour->descripcionCorta }} </p>
                             <div style="width: 100%;  padding-bottom:50px">
                                 <span style="float: left"><i class="fa fa-clock-o"></i>
-                                    {{ $tour->dias }} days</span>
+                                    {{ $tour->dias }} {{ $tour->dias == 1 ? 'día' : 'días' }}</span>
                                 <span style="float: right"><i class="fa fa-map-marker"></i> {{ $tour->recorrido }}</span>
                             </div>
-                            <a href="{{ route('estour.show', $tour->slug) }}" class='button'>More info</a>
+                            <a href="{{ route('estour.show', $tour->slug) }}" class='button'>Más info</a>
                         </div>
                     </div>
                 @endforeach
@@ -110,12 +221,11 @@
     <section class="parallax-banner">
         <div class="overlay"></div>
         <div class="content">
-            <h2 class="dancing-center">Salkantay – Machu Picchu – 5 Días </h2>
+            <h2 class="dancing-center">Choqekiraw – Huancacalle 10 Días </h2>
             <p class="mt-4">
-                Ubicado en la cordillera andina de Vilcabamba se encuentra la Nevada de Salkantay, pasando por
-                impresionantes paisajes desde el bosque nuboso hasta altas montañas.
+                El camino Inka utilizado por Manco Inka II y su ejército, en su huida de los españoles, pasa por estos 2 magníficos sitios arqueológicos en el Vilcabamba.
             </p>
-            <a href="#explore" class="btn">Explorar ahora</a>
+            <a href="https://pachatusantrek.com/Choqekiraw-Huancacalle-10d" class="btn">Explorar ahora</a>
         </div>
     </section>
     <section class="mainTours bg-light">
@@ -124,10 +234,10 @@
                 <div class="col-lg-12 mb-5">
                     <h2 class="dancing">Tours más populares:</h2>
                 </div>
-                {{-- @foreach ($nextTours as $tour)
+                @foreach ($nextTours as $tour)
                     <div class="col-lg-3 tours mb-3">
                         <div class="contImg">
-                            <a href='{{ route('tour.show', $tour->slug) }}' class='entry-link'>
+                            <a href='{{ route('estour.show', $tour->slug) }}' class='entry-link'>
                                 <img src="{{ asset($tour->imgThumb) }}" class="attachment-post-grid-s size-post-grid-s"
                                     alt="{{ $tour->nombre }}" loading="lazy" style="height: 245px!important" />
                             </a>
@@ -138,14 +248,14 @@
                             <div style="width: 100%;  padding-bottom:50px">
                                 <p class="text-center"><i class="fa fa-map-marker"></i> {{ $tour->recorrido }}</p>
                                 <span style="float: left"><i class="fa fa-clock-o"></i>
-                                    {{ $tour->dias }} days</span>
+                                    {{ $tour->dias }} {{ $tour->dias == 1 ? 'día' : 'días' }}</span>
                                 <span style="float: right"><i class="fa fa-usd"></i>
                                     {{ $tour->precio }}.00</span>
                             </div>
-                            <a href="{{ route('tour.show', $tour->slug) }}" class='button'>More info</a>
+                            <a href="{{ route('estour.show', $tour->slug) }}" class='button'>More info</a>
                         </div>
                     </div>
-                @endforeach --}}
+                @endforeach
             </div>
         </div>
     </section>

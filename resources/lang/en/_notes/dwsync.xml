@@ -4,4 +4,8 @@
 <file name="validation.php" server="15.204.142.117" local="132846412480000000" remote="133050885600000000" Dst="0" />
 <file name="pagination.php" server="15.204.142.117" local="132846412480000000" remote="133050885600000000" Dst="0" />
 <file name="passwords.php" server="15.204.142.117" local="132846412480000000" remote="133050885600000000" Dst="0" />
+<file name="auth.php" server="199.103.62.205" local="133701178926191926" remote="133760855400000000" Dst="0" />
+<file name="pagination.php" server="199.103.62.205" local="133701178926021938" remote="133760855400000000" Dst="0" />
+<file name="passwords.php" server="199.103.62.205" local="133701178926331862" remote="133760855400000000" Dst="0" />
+<file name="validation.php" server="199.103.62.205" local="133701178926491850" remote="133760855400000000" Dst="0" />
 </dwsync>

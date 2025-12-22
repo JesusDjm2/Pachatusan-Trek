@@ -18,6 +18,7 @@ class CreateEstoursTable extends Migration
             $table->string('nombre');
             $table->string('recorrido');
             $table->integer('dias');
+            $table->string('ciudad')->nullable();
             $table->string('imgThumb');
             $table->string('imgFull');
             $table->text('descripcionCorta');
@@ -25,10 +26,12 @@ class CreateEstoursTable extends Migration
             $table->text('itinerario');
             $table->text('incluye');
             $table->text('importante');
+            $table->text('galeria')->nullable();
             $table->string('slug');
             $table->string('keywords');
             $table->unsignedBigInteger('relacionado_id')->nullable();
             $table->foreign('relacionado_id')->references('id')->on('tours') ->onDelete('cascade');
+            $table->foreignId('pais_id')->after('id')->constrained('paises')->cascadeOnDelete();
             $table->timestamps();
         });
     }

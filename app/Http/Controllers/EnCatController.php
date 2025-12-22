@@ -53,7 +53,7 @@ class EnCatController extends Controller
     public function show($slug)
     {
         $categoria = TourCategory::where('slug', $slug)->firstOrFail();
-        $tours = $categoria->tours;
+        $tours = $categoria->tours->sortBy('dias');
         $categorias= TourCategory::all();
         return view('admin.tours.categorias.show', compact('categoria', 'tours', 'categorias'));
     }

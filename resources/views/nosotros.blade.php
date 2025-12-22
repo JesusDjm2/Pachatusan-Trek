@@ -2,7 +2,7 @@
 @section('contenido')
     <section class="banner-about">
         <div class="banner-content">
-            <h1>¿Qué es la Pachatusan?</h1>
+            <h1>¿Qué es Pachatusan?</h1>
             {{-- <h5>Live unforgettable experiences, have surprising adventures, and meet places full of magic and mysticism.
             </h5> --}}
             <a href="#empezar" class="scroll-down-btn">
@@ -16,7 +16,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-7 text-start align-self-center">
-                    <h5>About Us</h5>
+                    <h5>Nosotros</h5>
                     <h3 style="font-family: 'Dancing Script', cursive;">Con el permiso de los Apus</h3>
                     <p>
                         En la cosmovisión andina, el concepto de Pacha no se refiere únicamente a la Madre Tierra. El otro
@@ -421,7 +421,7 @@
                     </p>
                 </div>
             </div>
-            <div class="team-member">
+            {{-- <div class="team-member">
                 <div class="team-photo m-auto">
                     <img src="{{ asset('img/staff/Mayling.jpg') }}" alt="Maylin La Rosa Espinoza">
                 </div>
@@ -434,7 +434,7 @@
                         descubrir nuevas costumbres. Ama al Perú y quiere mostrárselo al mundo.
                     </p>
                 </div>
-            </div>
+            </div> --}}
             <div class="team-member">
                 <div class="team-photo m-auto">
                     <img src="{{ asset('img/staff/Gloria.jpg') }}" alt="Gloria Muñoz">

@@ -2,12 +2,16 @@
 
 namespace App\Providers;
 
+use App\Models\Categoria;
 use App\Models\EsCategoria;
 use App\Models\Estour;
+use App\Models\Pais;
 use App\Models\TourCategory;
 use Illuminate\Support\Facades\View;
 use App\Models\Tour;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Str;
 
 class ViewServiceProvider extends ServiceProvider
 {
@@ -20,74 +24,122 @@ class ViewServiceProvider extends ServiceProvider
     {
         //
     }
+    function normalizeUrl($url)
+    {
+        return mb_strtolower(trim($url), 'UTF-8');
+    }
 
     public function boot()
     {
-        // Obtener categorías
-        $treksCategory = TourCategory::where('nombre', 'Treks')->first();
-        $expeditionsCategory = TourCategory::where('nombre', 'Expeditions')->first();
-        $toursCategory = TourCategory::where('nombre', 'Tours')->first();
-        // Obtener categorías en español
-        $treksEsCategory = EsCategoria::where('nombre', 'Caminatas')->first();
-        $expeditionsEsCategory = EsCategoria::where('nombre', 'Expediciones')->first();
-        $toursEsCategory = EsCategoria::where('nombre', 'Tours')->first();
-
-        // Inicializar variables
-        $treks = collect();
-        $expeditions = collect();
-        $toursEn = collect();
-        // Inicializar variables en español
-        $caminatas = collect();
-        $expediciones = collect();
-        $toursEs = collect();
-
-
-        // Obtener tours para cada categoría si la categoría existe
-        if ($treksCategory) {
-            $treks = Tour::whereHas('categorias', function ($query) use ($treksCategory) {
-                $query->where('tour_category.categoria_id', $treksCategory->id);
-            })->get();
+        // Slug maps
+        $slugMapEnToEs = [
+            'SubCategories-English/cusco-sacred-valley-of-the-incas' => 'SubCategorias-Espanol/cusco-y-valle-sagrado',
+            'SubCategories-English/inca-trail-to-machu-picchu' => 'SubCategorias-Espanol/camino-inca-a-machu-picchu',
+            'SubCategories-English/north-and-south' => 'SubCategorias-Espanol/norte-y-sur',
+            'category/Treks' => 'categoria/Caminatas',
+            'category/Expeditions' => 'categoria/Expediciones',
+            'category/Tours' => 'categoria/Tours',
+        ];
+        $slugMapEsToEn = [];
+        foreach ($slugMapEnToEs as $en => $es) {
+            $slugMapEsToEn[strtolower($es)] = $en;
         }
 
-        if ($expeditionsCategory) {
-            $expeditions = Tour::whereHas('categorias', function ($query) use ($expeditionsCategory) {
-                $query->where('tour_category.categoria_id', $expeditionsCategory->id);
-            })->get();
-        }
+        // Route maps
+        $routeMapEnToEs = [
+            'index' => 'inicio',
+            'about' => 'nosotros',
+            'contact' => 'contacto',
+            'certificates' => 'certificados',
+            'social' => 'proyectos',
+            'treks' => 'trekses',
+            'expeditions' => 'expediciones',
+            'cusco' => 'valle',
+            'inca' => 'incaes',
+            'south' => 'sur',
+        ];
+        $routeMapEsToEn = array_flip($routeMapEnToEs);
 
-        if ($toursCategory) {
-            $toursEn = Tour::whereHas('categorias', function ($query) use ($toursCategory) {
-                $query->where('tour_category.categoria_id', $toursCategory->id);
-            })->get();
-        }
+        // Inglés → Español
+        View::composer('layouts.admin', function ($view) use ($routeMapEnToEs, $slugMapEnToEs) {
+            /*  $categoriasConSubcategorias = Categoria::with('subcategories')
+                 ->orderByRaw("FIELD(id, 3, 1, 2)")
+                 ->get(); */
+            $categoriasConSubcategorias = Categoria::with([
+                'subcategories',
+                'tours' => function ($q) {
+                    $q->orderBy('dias', 'asc');
+                }
+            ])
+                ->orderByRaw("FIELD(id, 3, 1, 2)")
+                ->get();
 
-        // Obtener tours en español para cada categoría si la categoría existe
-        if ($treksEsCategory) {
-            $caminatas = Estour::whereHas('categorias', function ($query) use ($treksEsCategory) {
-                $query->where('escategorias.id', $treksEsCategory->id); // Usar el campo correcto
-            })->get();
-        }
+            $currentUrl = request()->path();
+            $currentRoute = Route::currentRouteName();
+            $params = request()->route()?->parameters() ?? [];
 
-        if ($expeditionsEsCategory) {
-            $expediciones = Estour::whereHas('categorias', function ($query) use ($expeditionsEsCategory) {
-                $query->where('escategorias.id', $expeditionsEsCategory->id);
-            })->get();
-        }
+            $translatedSlug = $slugMapEnToEs[$currentUrl] ?? null;
 
-        if ($toursEsCategory) {
-            $toursEs = Estour::whereHas('categorias', function ($query) use ($toursEsCategory) {
-                $query->where('escategorias.id', $toursEsCategory->id);
-            })->get();
-        }
+            $targetRoute = $translatedSlug
+                ? url($translatedSlug)
+                : (isset($routeMapEnToEs[$currentRoute])
+                    ? route($routeMapEnToEs[$currentRoute], $params)
+                    : route('inicio'));
 
-        // Compartir datos con todas las vistas
-        View::share('globalTreks', $treks);
-        View::share('globalExpeditions', $expeditions);
-        View::share('globalTours', $toursEn);
+            $view->with([
+                'categoriasConSubcategorias' => $categoriasConSubcategorias,
+                'routeToOtherLang' => $targetRoute,
+            ]);
+        });
 
-        // Compartir datos con todas las vistas (español)
-        View::share('globalTreksEs', $caminatas);
-        View::share('globalExpeditionsEs', $expediciones);
-        View::share('globalToursEs', $toursEs);
+        // Español → Inglés
+       
+        View::composer('layouts.admines', function ($view) use ($routeMapEsToEn, $slugMapEsToEn) {
+            $categoriasConSubcategorias = EsCategoria::with([
+                'subcategorias',
+                'tours' => function ($q) {
+                    $q->orderBy('dias', 'asc');
+                }
+            ])->get();
+
+            $paisesConTours = Pais::with([
+                'estours' => fn ($q) => $q->orderBy('dias', 'asc')])->has('estours')->get();
+
+            $normalizedUrl = strtolower(request()->path());
+            $currentRoute = Route::currentRouteName();
+            $params = request()->route()?->parameters() ?? [];
+
+            $translatedSlug = $slugMapEsToEn[$normalizedUrl] ?? null;
+
+            $targetRoute = $translatedSlug
+                ? url($translatedSlug)
+                : (isset($routeMapEsToEn[$currentRoute])
+                    ? route($routeMapEsToEn[$currentRoute], $params)
+                    : route('index'));
+
+            $view->with([
+                'categoriasConSubcategorias' => $categoriasConSubcategorias,
+                'paisesConTours' => $paisesConTours,
+                'routeToOtherLang' => $targetRoute,
+            ]);
+        });
+
+        // Compartir Tours globales
+        $mapTourData = fn($model, $nameField, $relationTable, $catTableField) => $model::where('nombre', $nameField)->first()
+            ? Tour::whereHas('categorias', fn($q) => $q->where("tour_category.categoria_id", $model::where('nombre', $nameField)->first()->id))->get()
+            : collect();
+
+        $mapEsTourData = fn($model, $nameField, $relationTable, $catTableField) => $model::where('nombre', $nameField)->first()
+            ? Estour::whereHas('categorias', fn($q) => $q->where("escategorias.id", $model::where('nombre', $nameField)->first()->id))->get()
+            : collect();
+
+        View::share('globalTreks', $mapTourData(TourCategory::class, 'Treks', 'tour_category', 'categoria_id'));
+        View::share('globalExpeditions', $mapTourData(TourCategory::class, 'Expeditions', 'tour_category', 'categoria_id'));
+        View::share('globalTours', $mapTourData(TourCategory::class, 'Tours', 'tour_category', 'categoria_id'));
+
+        View::share('globalTreksEs', $mapEsTourData(EsCategoria::class, 'Caminatas', 'escategorias', 'id'));
+        View::share('globalExpeditionsEs', $mapEsTourData(EsCategoria::class, 'Expediciones', 'escategorias', 'id'));
+        View::share('globalToursEs', $mapEsTourData(EsCategoria::class, 'Tours', 'escategorias', 'id'));
     }
+
 }

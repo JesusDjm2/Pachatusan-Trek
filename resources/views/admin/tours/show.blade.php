@@ -27,7 +27,8 @@
         position: relative;
         margin-top: 1em;
     }
-    .tab-content>#tab1>h3{
+
+    .tab-content>#tab1>h3 {
         font-size: 1.2em;
         font-weight: bold;
     }
@@ -42,28 +43,47 @@
         bottom: -5px;
         left: 0;
     }
+
+    .tab-content>#tab1>p>img {
+        padding: 0.5em;
+    }
+
+    .carousel-inner img {
+        width: 100%;
+        height: auto;
+    }
+
+
+
+    @media (max-width: 768px) {
+        .carousel-inner img {
+            max-height: 300px;
+        }
+    }
 </style>
 @section('contenido')
     @auth
-        <a href="{{ route('tours.edit', $tour->id) }}" class="boton-editar" target="_blank">Editar
-            Tour</a>
+        <a href="{{ route('tours.edit', $tour->id) }}" class="boton-editar" target="_blank">
+            Editar Tour
+        </a>
     @endauth
     <section class="bg-light">
         <div class="wrapper">
             <div class="fullscreen-section">
-                {{-- <img src="{{ asset($tour->imgFull) }}" alt="{{ $tour->nombre }}" class="fullscreen-img" loading="lazy" alt="{{ $tour->nombre }}"> --}}
                 <picture>
-                    <!-- Imagen miniatura para pantallas pequeñas -->
-                    <source srcset="{{ asset($tour->imgThumb) }}" media="(max-width: 768px)">
-                    
-                    <!-- Imagen de tamaño completo para pantallas más grandes con la clase y loading lazy -->
-                    <img src="{{ asset($tour->imgFull) }}" alt="{{ $tour->nombre }}" class="fullscreen-img" loading="lazy">
+                    <source srcset="{{ asset($tour->imgThumb) }}" alt="{{ $tour->nombre }}" media="(max-width: 768px)">
+                    <img src="{{ asset($tour->imgFull) }}" alt="{{ $tour->nombre }}" class="fullscreen-img">
                 </picture>
-                
                 <div class="content-overlay">
                     <h1>{{ $tour->nombre }}</h1>
                     <p><i class="fa fa-clock"></i> {{ $tour->dias }} days</p>
                     <p><i class="fa fa-map-marker"></i> {{ $tour->recorrido }}</p>
+                    @if (session('flash'))
+                        <div class="alert alert-{{ session('flash')['type'] }} alert-dismissible fade show" role="alert">
+                            {{ session('flash')['message'] }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>
@@ -84,7 +104,7 @@
                                     @endif
                                 @endforeach
                             </span><span>⮞</span>
-                            <a>{{ $tour->nombre }}</a>
+                            <a title="{{ $tour->nombre }}">{{ $tour->nombre }}</a>
                     </div>
                     <div class="col-lg-3 col-sm-2" id="display2">
                         <div class="linea"></div>
@@ -106,14 +126,18 @@
                         <div class="contenidoInicial" style="margin-top: 2em">
                             {!! $tour->presentacion !!}
                         </div>
-                        <div class="tabs mt-4">
-                            <button class="tab-button active" data-tab="tab1"><i class="fa fa-list"></i> Detailed
-                                Itinerary</button>
-                            <button class="tab-button" data-tab="tab2"><i class="fa fa-plus"></i> Includes</button>
-                            {{-- <button class="tab-button" data-tab="tab3"><i class="fa fa-map-marker"></i> Map</button> --}}
-                            <button class="tab-button" data-tab="tab4"><i class="fa fa-exclamation"></i> Important</button>
+                        <div class="tabs mt-4 d-flex flex-wrap">
+                            <button class="tab-button active m-1" data-tab="tab1"> <i class="fa fa-list"></i> Detailed
+                                Itinerary
+                            </button>
+                            <button class="tab-button btn m-1" data-tab="tab2"> <i class="fa fa-plus"></i> Includes
+                            </button>
+                            <button class="tab-button btn m-1" data-tab="tab3">
+                                <i class="fa fa-images"></i> Galery
+                            </button>
+                            <button class="tab-button btn m-1" data-tab="tab4"> <i class="fa fa-exclamation"></i> Important
+                            </button>
                         </div>
-
                         <div class="tab-content">
                             <div id="tab1" class="tab-pane active">
                                 {!! $tour->itinerario !!}
@@ -121,11 +145,71 @@
                             <div id="tab2" class="tab-pane" style="text-align:left">
                                 {!! $tour->incluye !!}
                             </div>
-                            {{-- <div id="tab3" class="tab-pane">
-                                @if ($tour->mapa)
-                                    {!! $tour->mapa !!}
-                                @endif
-                            </div> --}}
+                            <div id="tab3" class="tab-pane">
+                                <div class="row">
+                                    @if (!empty($tour->galeria))
+                                        @foreach (explode(',', $tour->galeria) as $index => $imagen)
+                                            <div class="col-3 mb-3">
+                                                <a href="#galeria" data-toggle="modal" data-slide-to="{{ $index }}">
+                                                    <img src="{{ asset($imagen) }}"
+                                                        alt="{{ $tour->nombre }} {{ $index + 1 }}"
+                                                        class="img-thumbnail"
+                                                        style="width: 100%; height: 100px; object-fit: cover;"
+                                                        loading="lazy">
+                                                </a>
+                                            </div>
+                                        @endforeach
+                                    @else
+                                        <p>No photo gallery</p>
+                                    @endif
+                                </div>
+                                <div id="galeria" class="modal fade" tabindex="-1" role="dialog"
+                                    aria-label="Galeria de fotos">
+                                    <div class="modal-dialog modal-lg" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-body">
+                                                <div id="carouselGaleria" class="carousel slide" data-bs-ride="carousel">
+                                                    <!-- Indicadores (puntos) -->
+                                                    <ol class="carousel-indicators">
+                                                        @foreach (explode(',', $tour->galeria) as $index => $imagen)
+                                                            <li data-bs-target="#carouselGaleria"
+                                                                data-bs-slide-to="{{ $index }}"
+                                                                class="{{ $loop->first ? 'active' : '' }}"></li>
+                                                        @endforeach
+                                                    </ol>
+                                                    <!-- Imágenes del carrusel -->
+                                                    <div class="carousel-inner">
+                                                        @foreach (explode(',', $tour->galeria) as $index => $imagen)
+                                                            <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
+                                                                <img src="{{ asset($imagen) }}"
+                                                                    alt="{{ $tour->nombre }} {{ $index + 1 }}"
+                                                                    class="d-block w-100 img-fluid"
+                                                                    style="object-fit: cover; max-height: 500px;"
+                                                                    loading="lazy">
+                                                            </div>
+                                                        @endforeach
+                                                    </div>
+                                                    <!-- Controles con flechas de FontAwesome -->
+                                                    <button class="carousel-control-prev" type="button"
+                                                        data-bs-target="#carouselGaleria" data-bs-slide="prev">
+                                                        <i class="fas fa-chevron-left"
+                                                            style="color: white; font-size: 30px;"></i>
+                                                        <span class="visually-hidden">Anterior</span>
+                                                    </button>
+                                                    <button class="carousel-control-next" type="button"
+                                                        data-bs-target="#carouselGaleria" data-bs-slide="next">
+                                                        <i class="fas fa-chevron-right"
+                                                            style="color: white; font-size: 30px;"></i>
+                                                        <span class="visually-hidden">Siguiente</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
                             <div id="tab4" class="tab-pane">
                                 {!! $tour->importante !!}
                             </div>
@@ -218,6 +302,19 @@
                 const tabId = button.getAttribute('data-tab');
                 button.classList.add('active');
                 document.getElementById(tabId).classList.add('active');
+            });
+        });
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        document.querySelectorAll('a[data-slide-to]').forEach(item => {
+            item.addEventListener('click', function() {
+                const slideTo = this.getAttribute('data-slide-to');
+                $('#carouselGaleria').carousel(parseInt(slideTo));
+                $('#galeria').modal('show');
             });
         });
     </script>

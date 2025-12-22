@@ -12,66 +12,42 @@
     </script>
     <title>Notificaciones</title>
 </head>
-<style>
-    #boton {
-        background: #2d9cf5;
-        color: #fff;
-        font-size: 14px;
-        border-radius: 5px;
-        border-style: solid;
-        border-color: #2d9cf5;
-        height: 40px;
-    }
-
-    #boton:hover {
-        background: #fff;
-        color: #2d9cf5;
-        font-weight: 700;
-        border-width: 2px;
-    }
-</style>
 
 <body>
     <section>
         <div style="margin-top: 50px;"></div>
-        <center><img src="https://andeanexclusive.com/img/andean-exclusive-logo.png" width="200px" </center>
-            <center>
-                <div style="background: #000; width: 70%; height: 3px; margin-top:8px;margin-bottom:2px;"></div>
-            </center>
-            <div style="text-align: left; padding: 20px 50px 0px 50px;">Hola Carmen: <br>
-                <p style="text-align: justify;">Andean Exclusive Tours acaba de recibir un nuevo mensaje desde la pagina
-                    de inicio.</p>
-                <table style="border: 1px solid grey;">
-                    <thead>
-                        <tr>
-                            <th colspan="2">Detalles del formulario:</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">Nombre:</th>
-                            <th>{{ $nombre }}</th>
-                        </tr>
-                        <tr>
-                            <th scope="row">Email:</th>
-                            <td>{{ $email }}</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Teléfono:</th>
-                            <td>{{ $telefono }}</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Mensaje:</th>
-                            <td>{{ $mensaje }}</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <br>
-                <div style="width: 100%: background:#000;">
-                    <p style="text-align:center; color:#fff; padding:1em 2em">Copyright© 2023 Andean Exclusive Tours | Todos
-                        los derechos reservados | Hecho por DJM2</p>
-                </div>
+        <center><img src="https://pachatusantrek.com/img/logo-pachatusan-trek.png" width="200px"></center>
+        <center>
+            <div style="background: #4d4d4dc0; width: 140px; height: 1px; margin-top:8px;margin-bottom:2px;"></div>
+        </center>
+        <div class="col-lg-6" style="text-align: left; padding: 20px 50px 0px 50px;">Hola Pachatusan Trek: <br>
+            <p style="text-align: justify;">La página web acaba de recibir un nuevo mensaje desde la pagina web, a
+                continuación los detalles:</p>
+            <p style="text-align: justify;"></p>
+            <table class="table table-bordered">
+                <tr>
+                    <th>Name</th>
+                    <td>{{ $name }}</td>
+                </tr>
+                <tr>
+                    <th>Email</th>
+                    <td>{{ $email }}</td>
+                </tr>
+                <tr>
+                    <th>Phone</th>
+                    <td>{{ $phone }}</td>
+                </tr>
+                <tr>
+                    <th>Mensaje</th>
+                    <td>{{ $mensaje }}</td>
+                </tr>
+            </table>
+            <br>
+            <div style="width: 100%: background:#000;">
+                <p style="text-align:center; color:#fff; padding:1em 2em">Copyright© 2024 Pachatusan Trek | Todos
+                    los derechos reservados </p>
             </div>
+        </div>
     </section>
 
 </body>

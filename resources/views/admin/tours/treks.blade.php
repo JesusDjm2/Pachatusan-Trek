@@ -1,12 +1,12 @@
 @extends('layouts.admin')
 @section('contenido')
-    <section class="banner-contact">
+    <section class="banner-treks">
         <div class="banner-content container">
             <h1>Treks in Perú </h1>
             <h5>
                 Trek the Inca Trail but also trail on less travelled but equally impressive alternative treks & trek to
-                places like Choquequirao, a stunning Incan complex as important as Machu Picchu, or trek through Salkantay
-                mountain passes or the stunning Lares trail to continue through to Machu Picchu. Or head to the lesser known
+                places like Choquequirao, a stunning Incan complex as important as Machu Picchu, or trek through the mountains
+                passes or the stunning Lares trail to continue through to Machu Picchu. Or head to the lesser known
                 trails of Ausangate & Vilcabamba to explore deeper into the middle of the Andes and trek through traditional
                 heartlands.
             </h5>

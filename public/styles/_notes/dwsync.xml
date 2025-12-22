@@ -14,7 +14,7 @@
 <file name="nuevo-boot.css" server="15.204.142.117" local="133048869496441999" remote="133049074200000000" Dst="0" />
 <file name="bootstrap.min.css" server="216.246.47.134" local="133701182675095269" remote="133704663600000000" Dst="0" />
 <file name="bootstrap.minbb49.css" server="216.246.47.134" local="133701182675831616" remote="133704663600000000" Dst="0" />
-<file name="estilos.css" server="216.246.47.134" local="133717481991377480" remote="133717540200000000" Dst="0" />
+<file name="estilos.css" server="216.246.47.134" local="133758122487596038" remote="133758132600000000" Dst="0" />
 <file name="font-awesome.min5243.css" server="216.246.47.134" local="133701182676373893" remote="133704663600000000" Dst="0" />
 <file name="estilos.css.map" server="216.246.47.134" local="133717481991367468" remote="133717540200000000" Dst="0" />
 <file name="font-awesome.minbb49.css" server="216.246.47.134" local="133704752814772068" remote="133707238800000000" Dst="0" />
@@ -23,4 +23,16 @@
 <file name="js_composer.min5243.css" server="216.246.47.134" local="133701182676153813" remote="133704663600000000" Dst="0" />
 <file name="styles.scss.map" server="216.246.47.134" local="133704549960049308" remote="133704663600000000" Dst="0" />
 <file name="styles.css" server="216.246.47.134" local="133713225535311300" remote="133717540200000000" Dst="0" />
+<file name="estilos.css" server="ftp.pachatusantrek.com" local="134092503968412992" remote="134106551400000000" Dst="0" />
+<file name="estilos.css.map" server="ftp.pachatusantrek.com" local="134092503968412992" remote="134106552000000000" Dst="0" />
+<file name="bootstrap.min.css" server="ftp.pachatusantrek.com" local="133824841499975015" remote="133970845800000000" Dst="0" />
+<file name="bootstrap.minbb49.css" server="ftp.pachatusantrek.com" local="133824841503676789" remote="133970845800000000" Dst="0" />
+<file name="font-awesome.min5243.css" server="ftp.pachatusantrek.com" local="133824841507198096" remote="133970845800000000" Dst="0" />
+<file name="font-awesome.minbb49.css" server="ftp.pachatusantrek.com" local="133824841513763287" remote="133970845800000000" Dst="0" />
+<file name="styles.css" server="ftp.pachatusantrek.com" local="134092470278519861" remote="134106552000000000" Dst="0" />
+<file name="nuevo-boot.css" server="ftp.pachatusantrek.com" local="133824841530476108" remote="133970845800000000" Dst="0" />
+<file name="styles.scss" server="ftp.pachatusantrek.com" local="134092503966227413" remote="134106552000000000" Dst="0" />
+<file name="styles.scss.map" server="ftp.pachatusantrek.com" local="133824841536387720" remote="133970845800000000" Dst="0" />
+<file name="js_composer.min5243.css" server="ftp.pachatusantrek.com" local="133824841538800370" remote="133970845800000000" Dst="0" />
+<file name="styles.css.map" server="ftp.pachatusantrek.com" local="134092470278510238" remote="134106552000000000" Dst="0" />
 </dwsync>

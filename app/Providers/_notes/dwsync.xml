@@ -6,4 +6,16 @@
 <file name="RouteServiceProvider.php" server="216.246.47.134" local="133701179538853056" remote="133742574600000000" Dst="0" />
 <file name="AuthServiceProvider.php" server="216.246.47.134" local="133701179539276032" remote="133742574600000000" Dst="0" />
 <file name="BroadcastServiceProvider.php" server="216.246.47.134" local="133701179539070614" remote="133742574600000000" Dst="0" />
+<file name="AppServiceProvider.php" server="199.103.62.205" local="133701179539469675" remote="133760854200000000" Dst="0" />
+<file name="AuthServiceProvider.php" server="199.103.62.205" local="133701179539276032" remote="133760854200000000" Dst="0" />
+<file name="BroadcastServiceProvider.php" server="199.103.62.205" local="133701179539070614" remote="133760854200000000" Dst="0" />
+<file name="EventServiceProvider.php" server="199.103.62.205" local="133701179538632032" remote="133760854200000000" Dst="0" />
+<file name="RouteServiceProvider.php" server="199.103.62.205" local="133701179538853056" remote="133760854200000000" Dst="0" />
+<file name="ViewServiceProvider.php" server="199.103.62.205" local="133741749807207030" remote="133760854200000000" Dst="0" />
+<file name="AppServiceProvider.php" server="ftp.pachatusantrek.com" local="133967390929481373" remote="133967628000000000" Dst="0" />
+<file name="AuthServiceProvider.php" server="ftp.pachatusantrek.com" local="133701179540000000" remote="133967628000000000" Dst="0" />
+<file name="BroadcastServiceProvider.php" server="ftp.pachatusantrek.com" local="133701179540000000" remote="133967628000000000" Dst="0" />
+<file name="EventServiceProvider.php" server="ftp.pachatusantrek.com" local="133701179540000000" remote="133967628000000000" Dst="0" />
+<file name="RouteServiceProvider.php" server="ftp.pachatusantrek.com" local="133701179540000000" remote="133967628000000000" Dst="0" />
+<file name="ViewServiceProvider.php" server="ftp.pachatusantrek.com" local="134009628401570861" remote="134009808600000000" Dst="0" />
 </dwsync>

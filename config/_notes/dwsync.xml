@@ -1,4 +1,22 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <dwsync>
 <file name="app.php" server="216.246.47.134" local="133709784419547860" remote="133711540200000000" Dst="0" />
+<file name="app.php" server="199.103.62.205" local="133711511975335342" remote="133760854800000000" Dst="0" />
+<file name="auth.php" server="199.103.62.205" local="133701184447571398" remote="133760854800000000" Dst="0" />
+<file name="broadcasting.php" server="199.103.62.205" local="133701184448971707" remote="133760854800000000" Dst="0" />
+<file name="cache.php" server="199.103.62.205" local="133701184447383278" remote="133760854800000000" Dst="0" />
+<file name="cors.php" server="199.103.62.205" local="133701184446508229" remote="133760854800000000" Dst="0" />
+<file name="crud.php" server="199.103.62.205" local="133701184447232907" remote="133760854800000000" Dst="0" />
+<file name="database.php" server="199.103.62.205" local="133701184449535005" remote="133760854800000000" Dst="0" />
+<file name="filesystems.php" server="199.103.62.205" local="133701184448362475" remote="133760854800000000" Dst="0" />
+<file name="hashing.php" server="199.103.62.205" local="133701184449151733" remote="133760854800000000" Dst="0" />
+<file name="logging.php" server="199.103.62.205" local="133701184446871291" remote="133760854800000000" Dst="0" />
+<file name="mail.php" server="199.103.62.205" local="133701184446698219" remote="133760854800000000" Dst="0" />
+<file name="queue.php" server="199.103.62.205" local="133701184448754789" remote="133760854800000000" Dst="0" />
+<file name="recaptcha.php" server="199.103.62.205" local="133701184448011157" remote="133760854800000000" Dst="0" />
+<file name="sanctum.php" server="199.103.62.205" local="133701184447051248" remote="133760854800000000" Dst="0" />
+<file name="services.php" server="199.103.62.205" local="133701184449704990" remote="133760854800000000" Dst="0" />
+<file name="session.php" server="199.103.62.205" local="133701184449341747" remote="133760854800000000" Dst="0" />
+<file name="sitemap.php" server="199.103.62.205" local="133701184448191097" remote="133760854800000000" Dst="0" />
+<file name="view.php" server="199.103.62.205" local="133701184448543547" remote="133760854800000000" Dst="0" />
 </dwsync>

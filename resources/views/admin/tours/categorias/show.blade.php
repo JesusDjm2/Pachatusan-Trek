@@ -15,16 +15,33 @@
         <a href="{{ route('tours.edit', $tour->id) }}" class="boton-editar" target="_blank">Editar
             Tour</a>
     @endauth --}}
-    <section class="banner-contact">
+    @php
+        switch ($categoria->id) {
+            case 1:
+                $bannerClass = 'banner-expeditions';
+                $text =
+                    'Journey less travelled routes in the Southern Andes, see and experience places rarely visited. Your expedition is accompanied by Muleteers, Cooks, Tentmen and guides. These become an integral part of your crew and you bond over the expedition becoming a team and developing friendships that will endure.';
+                break;
+            case 2:
+                $bannerClass = 'banner-tours';
+                $text =
+                    'Tour many of the important places in Cusco and the surrounding Sacred Valley. Visit places that have significant religious importance to the Incas and the local communities that still exist there. Take in Cusco, Sacsayhuaman, the Sacred Valley – Pisac, Ollantaytambo, Yucay and many more of the beautiful towns that exist here.';
+                break;
+            case 3:
+                $bannerClass = 'banner-treks';
+                $text =
+                    'Trek the Inca Trail but also trail on less travelled but equally impressive alternative treks & trek to places like Choquequirao, a stunning Incan complex as important as Machu Picchu, or trek through the mountains passes or the stunning Lares trail to continue through to Machu Picchu. Or head to the lesser known trails of Ausangate & Vilcabamba to explore deeper into the middle of the Andes and trek through traditional heartlands.';
+                break;
+            default:
+                $bannerClass = 'banner-contact';
+                break;
+        }
+    @endphp
+
+    <section class="{{ $bannerClass }}">
         <div class="banner-content container">
             <h1>{{ $categoria->nombre }}</h1>
-            {{-- <h5>
-                Trek the Inca Trail but also trail on less travelled but equally impressive alternative treks & trek to
-                places like Choquequirao, a stunning Incan complex as important as Machu Picchu, or trek through Salkantay
-                mountain passes or the stunning Lares trail to continue through to Machu Picchu. Or head to the lesser known
-                trails of Ausangate & Vilcabamba to explore deeper into the middle of the Andes and trek through traditional
-                heartlands.
-            </h5> --}}
+            <h5> {{ $text }} </h5>
             <a href="#empezar" class="scroll-down-btn">
                 <i class="fas fa-chevron-down"></i>
                 <i class="fas fa-chevron-down additional-arrow"></i>

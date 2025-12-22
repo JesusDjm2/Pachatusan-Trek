@@ -8,7 +8,6 @@
                     {{ session('status') }}
                 </div>
             @endif
-
             <!-- Mostrar errores de validación -->
             @if ($errors->any())
                 <div class="alert alert-danger">
@@ -32,7 +31,7 @@
             <form action="{{ route('estours.store') }}" method="post" enctype="multipart/form-data" class="bg-light">
                 @csrf
                 <div class="row">
-                    <div class="col-lg-5 mt-3">
+                    <div class="col-lg-4 mt-3">
                         <label for="nombre" class="form-label">Nombre del Tour:</label>
                         <input type="text" id="nombre" name="nombre" class="form-control form-control-sm" required
                             value="{{ old('nombre') }}">
@@ -40,7 +39,7 @@
                             <div class="alert alert-danger mt-2">{{ $message }}</div>
                         @enderror
                     </div>
-                    <div class="col-lg-4 mt-3">
+                    <div class="col-lg-3 mt-3">
                         <label for="recorrido" class="form-label">Recorrido:</label>
                         <input type="text" id="recorrido" name="recorrido" class="form-control form-control-sm" required
                             value="{{ old('recorrido') }}">
@@ -48,11 +47,27 @@
                             <div class="alert alert-danger mt-2">{{ $message }}</div>
                         @enderror
                     </div>
-                    <div class="col-lg-3 mt-3">
+                    <div class="col-lg-2 mt-3">
                         <label for="dias" class="form-label">Días:</label>
                         <input type="number" id="dias" name="dias" class="form-control form-control-sm" required
                             value="{{ old('dias') }}">
                         @error('dias')
+                            <div class="alert alert-danger mt-2">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+                    <div class="col-lg-3 mt-3">
+                        <label for="pais_id" class="form-label">País:</label>
+                        <select name="pais_id" id="pais_id" class="form-control form-control-sm" required>
+                            <option disabled selected>Seleccione un país</option>
+                            @foreach ($paises as $pais)
+                                <option value="{{ $pais->id }}" {{ old('pais_id') == $pais->id ? 'selected' : '' }}>
+                                    {{ $pais->nombre }}
+                                </option>
+                            @endforeach
+                        </select>
+
+                        @error('pais_id')
                             <div class="alert alert-danger mt-2">{{ $message }}</div>
                         @enderror
                     </div>
@@ -128,7 +143,7 @@
                             }
                         });
                     </script>
-                    
+
 
                     <div class="col-lg-6 mt-3">
                         <label for="incluye" class="form-label">Incluye:</label>
@@ -137,7 +152,7 @@
                             <div class="alert alert-danger mt-2">{{ $message }}</div>
                         @enderror
                     </div>
-                    
+
                     <div class="col-lg-6 mt-3">
                         <label for="importante" class="form-label">Importante: <small>Solo listas</small></label>
                         <textarea class="ckeditor form-control" name="importante" id="importante">{{ old('importante') }}</textarea>
@@ -145,7 +160,15 @@
                             <div class="alert alert-danger mt-2">{{ $message }}</div>
                         @enderror
                     </div>
-                    
+                    <div class="col-lg-12 mt-3">
+                        <label for="galeria">Galería de imgs:</label>
+                        <input type="file" class="form-control form-control-sm" name="galeria[]" id="galeria"
+                            multiple>
+                        @error('galeria')
+                            <div>{{ $message }}</div>
+                        @enderror
+                    </div>
+
                     <div class="col-lg-12 mt-3">
                         <label for="categorias">Categorías:</label><br>
                         <div class="checkbox-inline">
@@ -226,7 +249,6 @@
         document.getElementById('imgFull').addEventListener('change', function() {
             showPreview(this, document.getElementById('imgFullPreview'));
         });
-
     </script>
 
 @endsection

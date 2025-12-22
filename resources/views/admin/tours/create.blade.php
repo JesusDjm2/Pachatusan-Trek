@@ -34,7 +34,7 @@
                     <div class="col-lg-4 mt-3">
                         <label for="recorrido" class="form-label">Recorrido:</label>
                         <input type="text" id="recorrido" name="recorrido" class="form-control form-control-sm" required
-                            value="{{ old('recorrido') }}"> 
+                            value="{{ old('recorrido') }}">
                         @error('recorrido')
                             <div class="alert alert-danger mt-2">{{ $message }}</div>
                         @enderror
@@ -81,11 +81,9 @@
                             style="display: none; max-width: 100%; margin-top: 10px; width: 100%; object-fit: cover">
                     </div>
 
-
                     <div class="col-lg-12 mt-3">
                         <label for="presentacion" class="form-label">Contenido Inicial:</label>
                         <textarea class="ckeditor form-control" name="presentacion" id="presentacion" value="{{ old('presentacion') }}">
-
                         </textarea>
                         @error('presentacion')
                             <div class="alert alert-danger mt-2">{{ $message }}</div>
@@ -119,8 +117,16 @@
                         @enderror
                     </div>
 
-
                     <div class="col-lg-12 mt-3">
+                        <label for="galeria">Galería de imgs:</label>
+                        <input type="file" class="form-control form-control-sm" name="galeria[]" id="galeria"
+                            multiple>
+                        @error('galeria')
+                            <div>{{ $message }}</div>
+                        @enderror
+                    </div>
+
+                    {{-- <div class="col-lg-12 mt-3">
                         <label for="categorias">Categorías:</label><br>
                         <div class="checkbox-inline">
                             @foreach ($categorias as $id => $nombre)
@@ -137,6 +143,136 @@
                             <div class="alert alert-danger mt-2">{{ $message }}</div>
                         @enderror
                     </div>
+
+                    <div class="col-lg-12 mt-3">
+                        <label>Subcategorías:</label>
+                        <div id="subcategorias-container" class="checkbox-inline"></div>
+                    </div>
+
+                    <script>
+                        const subcategoriasPorCategoria = @json($subcategorias);
+
+                        const categoriasCheckboxes = document.querySelectorAll('input[name="categorias[]"]');
+                        const subcategoriasContainer = document.getElementById('subcategorias-container');
+
+                        function renderSubcategorias() {
+                            subcategoriasContainer.innerHTML = ''; // limpia
+
+                            categoriasCheckboxes.forEach(categoria => {
+                                if (categoria.checked) {
+                                    const catId = categoria.value;
+
+                                    if (subcategoriasPorCategoria[catId]) {
+                                        subcategoriasPorCategoria[catId].forEach(sub => {
+                                            const wrapper = document.createElement('div');
+                                            wrapper.className = 'form-check form-check-inline';
+
+                                            const checkbox = document.createElement('input');
+                                            checkbox.type = 'checkbox';
+                                            checkbox.name = 'subcategorias[]';
+                                            checkbox.value = sub.id;
+                                            checkbox.id = 'subcategoria' + sub.id;
+                                            checkbox.className = 'form-check-input';
+
+                                            const label = document.createElement('label');
+                                            label.className = 'form-check-label';
+                                            label.htmlFor = 'subcategoria' + sub.id;
+                                            label.innerText = sub.nombre;
+
+                                            wrapper.appendChild(checkbox);
+                                            wrapper.appendChild(label);
+                                            subcategoriasContainer.appendChild(wrapper);
+                                        });
+                                    }
+                                }
+                            });
+                        }
+
+                        categoriasCheckboxes.forEach(cb => cb.addEventListener('change', renderSubcategorias));
+                        document.addEventListener('DOMContentLoaded', renderSubcategorias);
+                    </script> --}}
+
+                    <div class="col-lg-12 mt-3">
+    <label for="categorias">Categorías:</label><br>
+    <div class="checkbox-inline">
+        @foreach ($categorias as $id => $nombre)
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="categoria{{ $id }}"
+                    name="categorias[]" value="{{ $id }}"
+                    @if (is_array(old('categorias')) && in_array($id, old('categorias'))) checked @endif>
+                <label class="form-check-label" for="categoria{{ $id }}">{{ $nombre }}</label>
+            </div>
+        @endforeach
+    </div>
+    @error('categorias')
+        <div class="alert alert-danger mt-2">{{ $message }}</div>
+    @enderror
+</div>
+
+<div class="col-lg-12 mt-3">
+    <label>Subcategorías:</label>
+    <div id="subcategorias-container" class="checkbox-inline"></div>
+</div>
+
+@php
+    $subcategoriasSeleccionadas = old('subcategorias', []);
+@endphp
+
+<script>
+    const subcategoriasPorCategoria = @json($subcategorias);
+    const subcategoriasSeleccionadas = @json($subcategoriasSeleccionadas);
+
+    const categoriasCheckboxes = document.querySelectorAll('input[name="categorias[]"]');
+    const subcategoriasContainer = document.getElementById('subcategorias-container');
+
+    function renderSubcategorias() {
+        subcategoriasContainer.innerHTML = '';
+
+        categoriasCheckboxes.forEach(categoria => {
+            if (categoria.checked) {
+                const catId = categoria.value;
+
+                if (subcategoriasPorCategoria[catId]) {
+                    // 🏷️ Título de categoría
+                    const catHeader = document.createElement('div');
+                    catHeader.className = 'mt-2 mb-1 fw-bold text-primary';
+                    catHeader.innerText = subcategoriasPorCategoria[catId][0]?.category?.nombre || 'Categoría';
+
+                    subcategoriasContainer.appendChild(catHeader);
+
+                    subcategoriasPorCategoria[catId].forEach(sub => {
+                        const wrapper = document.createElement('div');
+                        wrapper.className = 'form-check form-check-inline';
+
+                        const checkbox = document.createElement('input');
+                        checkbox.type = 'checkbox';
+                        checkbox.name = 'subcategorias[]';
+                        checkbox.value = sub.id;
+                        checkbox.id = 'subcategoria' + sub.id;
+                        checkbox.className = 'form-check-input';
+
+                        if (subcategoriasSeleccionadas.includes(sub.id)) {
+                            checkbox.checked = true;
+                        }
+
+                        const label = document.createElement('label');
+                        label.className = 'form-check-label';
+                        label.htmlFor = 'subcategoria' + sub.id;
+                        label.innerText = sub.nombre;
+
+                        wrapper.appendChild(checkbox);
+                        wrapper.appendChild(label);
+                        subcategoriasContainer.appendChild(wrapper);
+                    });
+                }
+            }
+        });
+    }
+
+    categoriasCheckboxes.forEach(cb => cb.addEventListener('change', renderSubcategorias));
+    document.addEventListener('DOMContentLoaded', renderSubcategorias);
+</script>
+
 
                     <div class="col-lg-12 mt-3">
                         <label for="keywords" class="form-label">Keywords: <small class="text-success">(Separar cada

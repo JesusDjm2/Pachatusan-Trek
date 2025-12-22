@@ -1,13 +1,13 @@
 <!-----Booking---------->
 <div class="fondo-book">
     <h3 class="text-center mb-3">Solicitar información</h3>
-    <form action="{{ route('mensaje01') }}" method="post" role="form" class="book1">
+    <form action="{{ route('mensaje02') }}" method="post" role="form" class="book1">
         @csrf
         <div class="row">
             <div class="col-lg-6 mb-2">
                 <span class="form-label">Nombre:</span>
-                <input type="text" name="name" required class="form-control form-control-sm" placeholder="Required*"
-                    data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                <input type="text" name="name" required class="form-control form-control-sm"
+                    placeholder="Required*" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
             </div>
             <div class="col-lg-6 mb-2">
                 <span class="form-label">E-Mail:</span>
@@ -28,16 +28,17 @@
                 <div class="validation"></div>
             </div>
             <div class="col-lg-6 mb-2">
-                <span class="form-label">Fecha de llegada:</span>
+                <label for="da" class="form-label text-white">Fecha de llegada:</label>
                 <input class="form-control form-control-sm" name="da" id="da" type="date">
                 <div class="validation"></div>
             </div>
             <div class="col-lg-6 mb-2">
-                <span class="form-label">Tour:</span>
-                <input type="text" name="tour" required class="form-control form-control-sm" value="{{ $tour->nombre }}" readonly>
+                <label for="tour" class="form-label text-white">Tour:</label>
+                <input id="tour" type="text" name="tour" required class="form-control form-control-sm"
+                    value="{{ $tour->nombre }}" readonly>
             </div>
             <div class="col-lg-12 mb-2">
-                <span class="form-label">Mensaje:</span>
+                <label for="mensaje" class="form-label text-white">Mensaje:</label>
                 <textarea class="form-control form-control-sm" name="mensaje" id="mensaje" rows="3" data-rule="required"
                     data-msg="Write here your message." placeholder="Mensaje..."></textarea>
                 <div class="validation"></div>
@@ -59,12 +60,14 @@
                 </div>
             </div>
             <div class="text-center mt-2">
-                <input class="btn btn-sm btn-info" type="submit" name="submit" value="Enviar" disabled />
+                <input id="botonEnviar" class="btn btn-sm btn-info" type="submit" name="submit" value="Send"
+                    disabled />
             </div>
         </div>
     </form>
     <script>
         var intentos = 0;
+
         function generarSumaAleatoria() {
             var num1 = Math.floor(Math.random() * 12) + 3;
             var num2 = Math.floor(Math.random() * (15 - num1)) + num1;
@@ -87,11 +90,10 @@
                 setTimeout(function() {
                     captchaDiv.style.display = "none";
                 }, 500);
-                document.getElementById("botondjm2").disabled = false;
+                document.getElementById("botonEnviar").disabled = false; // Corregido aquí
                 document.getElementById('checkmark').style.display = 'block';
                 setTimeout(function() {
-                    document.getElementById('checkmark').style.display =
-                        'none';
+                    document.getElementById('checkmark').style.display = 'none';
                 }, 1200);
             } else {
                 intentos++;

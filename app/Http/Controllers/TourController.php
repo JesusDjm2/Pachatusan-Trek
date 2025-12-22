@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Categoria;
 use App\Models\Estour;
+use App\Models\Subcategory;
 use App\Models\Tour;
 use App\Models\TourCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 class TourController extends Controller
 {
@@ -19,7 +21,9 @@ class TourController extends Controller
     public function create()
     {
         $categorias = TourCategory::pluck('nombre', 'id');
-        return view('admin.tours.create', compact('categorias'));
+        /* $subcategorias = Subcategory::all(); */
+        $subcategorias = Subcategory::with('category')->get()->groupBy('category_id');
+        return view('admin.tours.create', compact('categorias', 'subcategorias'));
     }
     public function store(Request $request)
     {
@@ -34,6 +38,11 @@ class TourController extends Controller
             'itinerario' => 'required',
             'incluye' => 'required',
             'importante' => 'required',
+
+            //Galeria
+            'galeria' => 'nullable|array',
+            'galeria.*' => 'image|mimes:jpeg,jpg,png,gif,bmp,svg,webp|max:2048',
+
             'slug' => 'required|unique:tours',
             'keywords' => 'required',
         ]);
@@ -60,6 +69,25 @@ class TourController extends Controller
             $tour->imgFull = 'img/Fondos/' . $imgFull;
         }
 
+        if ($request->has('galeria')) {
+            $galeriaFiles = $request->file('galeria');
+            $galeriaNames = [];
+            $galeriaPath = 'img/galeriaTours/';
+
+            if (!File::exists(public_path($galeriaPath))) {
+                File::makeDirectory(public_path($galeriaPath), 0755, true);
+            }
+
+            foreach ($galeriaFiles as $galeriaFile) {
+                if ($galeriaFile->isValid() && in_array($galeriaFile->extension(), ['jpg', 'jpeg', 'png', 'webp'])) {
+                    $galeriaName = time() . '_' . $galeriaFile->getClientOriginalName();
+                    $galeriaFile->move(public_path($galeriaPath), $galeriaName);
+                    $galeriaNames[] = asset($galeriaPath . $galeriaName);
+                }
+            }
+            $tour->galeria = implode(',', $galeriaNames);
+        }
+
         $tour->descripcionCorta = $request->input('descripcionCorta');
         $tour->presentacion = $request->input('presentacion');
         $tour->itinerario = $request->input('itinerario');
@@ -72,6 +100,7 @@ class TourController extends Controller
 
         $categorias = $request->input('categorias');
         $tour->categorias()->attach($categorias);
+        $tour->subcategorias()->sync($request->input('subcategorias', []));
 
         return redirect()->route('tours.index')->with('success', 'Tour creado exitosamente!');
     }
@@ -79,7 +108,8 @@ class TourController extends Controller
     {
         $tour = Tour::findOrFail($id);
         $categorias = TourCategory::pluck('nombre', 'id');
-        return view('admin.tours.edit', compact('tour', 'categorias'));
+        $subcategorias = Subcategory::with('category')->get()->groupBy('category_id');
+        return view('admin.tours.edit', compact('tour', 'categorias', 'subcategorias'));
     }
 
     public function update(Request $request, $id)
@@ -95,6 +125,8 @@ class TourController extends Controller
             'itinerario' => 'required',
             'incluye' => 'required',
             'importante' => 'required',
+            'galeria' => 'nullable|array',
+            'galeria.*' => 'image|mimes:jpeg,jpg,png,gif,bmp,svg,webp|max:2048',
             'slug' => 'required|unique:tours,slug,' . $id,
             'keywords' => 'required',
         ]);
@@ -112,12 +144,35 @@ class TourController extends Controller
             $tour->imgThumb = 'img/Thumbs/' . $imgThumb;
         }
 
-        if ($request->hasFile('imgFull')) {
-            $img = $request->file('imgFull');
-            $rutaImg = public_path('img/Fondos');
-            $imgFull = $img->getClientOriginalName();
-            $img->move($rutaImg, $imgFull);
-            $tour->imgFull = 'img/Fondos/' . $imgFull;
+        if ($request->has('galeria')) {
+            // Elimina las imágenes existentes si las hay
+            if ($tour->galeria) {
+                $existingImages = explode(',', $tour->galeria);
+                foreach ($existingImages as $image) {
+                    $imagePath = public_path(str_replace(url('/'), '', $image));
+                    if (file_exists($imagePath)) {
+                        unlink($imagePath);
+                    }
+                }
+            }
+        
+            $galeriaFiles = $request->file('galeria');
+            $galeriaNames = [];
+            $galeriaPath = 'img/galeriaTours/';
+        
+            if (!File::exists(public_path($galeriaPath))) {
+                File::makeDirectory(public_path($galeriaPath), 0755, true);
+            }
+        
+            foreach ($galeriaFiles as $galeriaFile) {
+                if ($galeriaFile->isValid() && in_array($galeriaFile->extension(), ['jpg', 'jpeg', 'png', 'webp'])) {
+                    $galeriaName = time() . '_' . $galeriaFile->getClientOriginalName();
+                    $galeriaFile->move(public_path($galeriaPath), $galeriaName);
+                    $galeriaNames[] = asset($galeriaPath . $galeriaName);
+                }
+            }
+        
+            $tour->galeria = implode(',', $galeriaNames);
         }
 
         $tour->descripcionCorta = $request->input('descripcionCorta');
@@ -130,25 +185,24 @@ class TourController extends Controller
 
         $tour->save();
 
-        $categorias = $request->input('categorias');
-        $tour->categorias()->sync($categorias);
+        $tour->categorias()->sync($request->input('categorias'));
+        $tour->subcategorias()->sync($request->input('subcategorias', []));
 
         return redirect()->route('tours.index')->with('success', 'Tour actualizado exitosamente!');
     }
     public function show($slug)
-{
-    $tour = Tour::where('slug', $slug)->firstOrFail();
-    // Obtener tours aleatorios, excluyendo el tour actual
-    $tours = Tour::where('id', '!=', $tour->id)
-                ->inRandomOrder() // Ordena aleatoriamente
-                ->take(4) // Limita a 4 resultados
-                ->get();
-    
-    $estour = $tour->estour;
-    $categorias = TourCategory::all();
-    
-    return view('admin.tours.show', compact('tour', 'tours', 'estour', 'categorias'));
-}
+    {
+        $tour = Tour::where('slug', $slug)->firstOrFail();
+        $tours = Tour::where('id', '!=', $tour->id)
+            ->inRandomOrder()
+            ->take(4)
+            ->get();
+
+        $estour = $tour->estour;
+        $categorias = TourCategory::all();
+
+        return view('admin.tours.show', compact('tour', 'tours', 'estour', 'categorias'));
+    }
     public function destroy($id)
     {
         $tour = Tour::findOrFail($id);

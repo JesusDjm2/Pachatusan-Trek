@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('contenido')
-    <section class="banner-contact">
+    <section class="banner-tours">
         <div class="banner-content container">
             <h1>Tours around Perú </h1>
             <h5>
