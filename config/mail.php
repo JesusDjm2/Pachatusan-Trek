@@ -98,6 +98,19 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Nuevo review (formulario web)
+    |--------------------------------------------------------------------------
+    */
+    'review_notify_address' => env('REVIEW_NOTIFY_EMAIL', 'jessica@pachatusantrek.com'),
+
+    /*
+    | URL del panel de reviews en el correo (botón "Ir al Panel").
+    | Si está vacío, se usa APP_URL + /admin/reviews
+    */
+    'review_admin_url' => env('REVIEW_ADMIN_URL'),
+
+    /*
+    |--------------------------------------------------------------------------
     | Markdown Mail Settings
     |--------------------------------------------------------------------------
     |

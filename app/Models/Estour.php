@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Estour extends Model
@@ -25,6 +24,7 @@ class Estour extends Model
         'keywords',
         'relacionado_id',
     ];
+
     public function tour()
     {
         return $this->belongsTo(Tour::class, 'relacionado_id');
@@ -34,12 +34,14 @@ class Estour extends Model
     {
         return $this->belongsToMany(EsCategoria::class, 'estour_categoria', 'tour_id', 'categoria_id');
     }
+
     public function subcategorias()
     {
         return $this->belongsToMany(Subcategoria::class, 'subcategorias_estour', 'tour_id', 'subcategoria_id');
     }
-   public function pais()
-{
-    return $this->belongsTo(Pais::class);
-}
+
+    public function pais()
+    {
+        return $this->belongsTo(Pais::class, 'pais_id');
+    }
 }

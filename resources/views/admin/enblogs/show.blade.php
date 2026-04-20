@@ -64,7 +64,7 @@
             </div>
         </header>
         <div class="blogContenedor">
-            <img src="{{ asset('img/full/' . $blog->imgFull) }}" alt="{{ $blog->nombre }}"
+            <img src="{{ asset($blog->imgFull) }}" alt="{{ $blog->nombre }}"
                 class="fullscreen-img zoom-infinite">
             <div class="content-overlay">
                 <h1>{{ $blog->nombre }}</h1>
@@ -100,7 +100,7 @@
                     class="vc_row-fluid vc_custom_1461248392126">
                     <div class="">
                         <h2 class="tituloBlog text-center">{{ $blog->nombre }}</h2>
-                        <img src="{{ asset('img/full/' . $blog->imgFull) }}" alt="{{ $blog->nombre }}" loading="lazy"
+                        <img src="{{ asset($blog->imgFull) }}" alt="{{ $blog->nombre }}" loading="lazy"
                             width="100%">
                         <div class="contenidoBLogs">
                             {!! $blog->descripcion !!}
@@ -143,7 +143,7 @@
                     <div class="blogsRelacionados">
                         <div class="div">
                             <a href="{{ route('enblog.show', $item->slug) }}">
-                                <img src="{{ asset('img/thumb/' . $item->imgThumb) }}" alt="{{ $item->nombre }}">
+                                <img src="{{ asset($item->imgThumb) }}" alt="{{ $item->nombre }}">
                             </a>
                             <a href="{{ route('enblog.show', $item->slug) }}">
                                 <h3>{{ $item->nombre }}</h3>

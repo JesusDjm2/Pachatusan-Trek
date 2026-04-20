@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\CountryController;
 use App\Http\Controllers\EnblogController;
 use App\Http\Controllers\EnCatController;
 use App\Http\Controllers\EnEnlacesController;
@@ -13,14 +14,14 @@ use App\Http\Controllers\EsTourController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ImagenController;
 use App\Http\Controllers\PaisController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\SubcategoriaController;
 use App\Http\Controllers\SubcategoryController;
 use App\Http\Controllers\TourController;
 use App\Http\Controllers\UserController;
-use App\Models\Subcategory;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Route;
 
 Route::get('sitemap', 'SitemapController@sitemap');
 Route::get('treks', [EnEnlacesController::class, 'treks'])->name('treks');
@@ -42,7 +43,7 @@ Route::get('search-tours', [EnEnlacesController::class, 'search'])->name('search
 
 Route::get('faqs',  [EnEnlacesController::class, 'faqs'])->name('faqs'); */
 
-//Rutas Español
+// Rutas Español
 Route::get('turismo-Peru', [EnEnlacesController::class, 'inicio'])->name('inicio');
 Route::get('Expediciones', [EnEnlacesController::class, 'expediciones'])->name('expediciones');
 Route::get('Treks-Peru', [EnEnlacesController::class, 'trekses'])->name('trekses');
@@ -60,6 +61,8 @@ Route::get('buscar-tours', [EnEnlacesController::class, 'searches'])->name('sear
 
 Route::get('glamping-español', [EnEnlacesController::class, 'glamping'])->name('glamping');
 Route::get('glamping-english', [EnEnlacesController::class, 'glampingen'])->name('glampingen');
+Route::get('glamping-reviews', [EnEnlacesController::class, 'glampingReviews'])->name('glamping.reviews');
+Route::get('glamping-resenas', [EnEnlacesController::class, 'glampingReviewsEs'])->name('glamping.reviews.es');
 Route::get('terminos-y-condiciones', [EnEnlacesController::class, 'terminos'])->name('terminos');
 Route::get('terms-y-conditions', [EnEnlacesController::class, 'terms'])->name('terms');
 
@@ -70,10 +73,10 @@ Route::middleware('auth')->group(function () {
     Route::resource('tours-en-ingles', TourController::class)->names('tours');
     Route::resource('categorias-en-ingles', EnCatController::class)->names('categories');
 
-    //Subcategorias Inglés
+    // Subcategorias Inglés
     Route::resource('subcategorias-ingles', SubcategoriaController::class)->parameters(['subcategorias-ingles' => 'subcategoria'])->names('subcategories');
-    //Subcategorias Español
-    Route::resource('subcategorias-español', SubcategoryController::class)->parameters(['subcategorias-espanol' => 'subcategoria'])->names('subcategorias');
+    // Subcategorias Español
+    Route::resource('subcategorias-espanol', SubcategoryController::class)->parameters(['subcategorias-espanol' => 'subcategoria'])->names('subcategorias');
 
     Route::resource('tours-espanol', EsTourController::class)->names('estours');
     Route::resource('categorias-espanol', EsCatController::class)->names('categorias');
@@ -83,11 +86,13 @@ Route::middleware('auth')->group(function () {
     Route::resource('esblogs', EsblogController::class)->names('esblogs');
     Route::resource('imagenes', ImagenController::class)->names('imagenes');
     Route::resource('admin/estours/pais', PaisController::class)->names('paises');
+    Route::resource('tours/countries', CountryController::class)->names('countries');
+    Route::resource('admin/reviews', ReviewController::class)->except(['create', 'store', 'show', 'edit'])->names('admin.reviews');
     Route::get('/home', [HomeController::class, 'index'])->name('home');
 });
-//Mostrar Subcategorias sin Auth
+// Mostrar Subcategorias sin Auth
 Route::get('SubCategories-English/{slug}', [SubcategoriaController::class, 'show'])->name('subcategories.show');
-//Mostrar Subcategorias sin Auth
+// Mostrar Subcategorias sin Auth
 Route::get('SubCategorias-Espanol/{slug}', [SubcategoryController::class, 'show'])->name('subcategorias.show');
 
 Route::post('/forgot-password', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
@@ -100,26 +105,41 @@ Route::get('en/blog/{slug}', [EnblogController::class, 'show'])->name('enblog.sh
 Route::get('es/blog/{slug}', [EsblogController::class, 'show'])->name('esblog.show');
 Route::get('en/tag/{slug}', [EntagController::class, 'show'])->name('entag.show');
 Route::get('es/tag/{slug}', [EstagController::class, 'show'])->name('estag.show');
+Route::get('country/{country:slug}', [CountryController::class, 'show'])->name('country.show');
+Route::get('pais/{pais:slug}', [PaisController::class, 'show'])->name('pais.show');
 
-//Rutas en Ingles
-/* Route::get('/', function () {return view('index');})->name('index'); */
+// Rutas en Ingles
 Route::get('/', [EnEnlacesController::class, 'index'])->name('index');
+Route::post('/reviews', [ReviewController::class, 'store'])->name('reviews.store');
 
-//Formularios en inglés
+Route::get('/test-email-error', function() {
+    try {
+        \Illuminate\Support\Facades\Mail::raw('Test email from localhost', function($msg) {
+            $msg->to('mirandadjmdjm@gmail.com')->subject('Testing Mail Laravel');
+        });
+        return 'Email sent without exceptions!';
+    } catch (\Exception $e) {
+        return 'Email failed with: ' . $e->getMessage();
+    }
+});
+
+
+// Formularios en inglés
 Route::post('mensaje01', function () {
     $datos = request()->all();
     // Validación del CAPTCHA en el backend
     if ((int) request('respuesta') !== (int) request('valorCorrecto')) {
         abort(400, 'Invalid request.');
     }
-    Mail::send("emails.mensaje1", $datos, function ($message) use ($datos) {
+    Mail::send('emails.mensaje1', $datos, function ($message) use ($datos) {
         $message->from($datos['email'], $datos['name'])
             ->to('mirandadjmdjm@gmail.com', 'Pachatusan Trek')
             ->subject('Envio de formulario desde la página web.');
     });
+
     return back()->with('flash', [
         'type' => 'success', // Tipo de alerta: success, danger, warning, info
-        'message' => 'Your message was sent successfully!'
+        'message' => 'Your message was sent successfully!',
     ]);
 })->name('mensaje01');
 
@@ -129,31 +149,33 @@ Route::post('mensaje02', function () {
     if ((int) request('respuesta') !== (int) request('valorCorrecto')) {
         abort(400, 'Invalid request.');
     }
-    Mail::send("emails.mensaje1", $datos, function ($message) use ($datos) {
+    Mail::send('emails.mensaje1', $datos, function ($message) use ($datos) {
         $message->from($datos['email'], $datos['name'])
             ->to('mirandadjmdjm@gmail.com', 'DJM2')
             ->subject('Envio de contacto desde página web.');
     });
+
     return back()->with('flash', [
         'type' => 'success',
-        'message' => 'Su mensaje fué enviado con éxito!'
+        'message' => 'Su mensaje fué enviado con éxito!',
     ]);
 })->name('mensaje02');
 
 Route::post('bookindex2', function () {
     $datos = request()->all();
-    if (!empty(request('honeypot'))) {
+    if (! empty(request('honeypot'))) {
         return back()->withErrors(['honeypot' => 'Spam detected.']);
     }
 
     if ((int) request('respuesta') !== session('captcha_sum')) {
         return back()->withErrors(['captcha' => 'Invalid CAPTCHA. Please try again.'])->withInput();
     }
-    Mail::send("emails.bookindex2", $datos, function ($emailMessage) use ($datos) {
+    Mail::send('emails.bookindex2', $datos, function ($emailMessage) use ($datos) {
         $emailMessage->from($datos['email'], $datos['name'])
             ->to('mirandadjmdjm@gmail.com', 'DJM2')
             ->subject('Envio de contacto desde página web.');
     });
+
     return back()->with('flash', [
         'type' => 'success',
         'message' => 'Your message was sent successfully!',
@@ -162,24 +184,23 @@ Route::post('bookindex2', function () {
 
 Route::post('bookes', function () {
     $datos = request()->all();
-    if (!empty(request('honeypot'))) {
+    if (! empty(request('honeypot'))) {
         return back()->withErrors(['honeypot' => 'Spam detected.']);
     }
     if ((int) request('respuesta') !== session('captcha_sum')) {
         return back()->withErrors(['captcha' => 'CAPTCHA inválido. Intente nuevamente.'])->withInput();
     }
-    Mail::send("emails.bookindex2", $datos, function ($emailMessage) use ($datos) {
+    Mail::send('emails.bookindex2', $datos, function ($emailMessage) use ($datos) {
         $emailMessage->from($datos['email'], $datos['name'])
             ->to('mirandadjmdjm@gmail.com', 'DJM2')
             ->subject('Envio de contacto desde página web.');
     });
+
     return back()->with('flash', [
         'type' => 'success',
         'message' => 'Su mensaje fué enviado con éxito!',
     ]);
 })->name('bookes');
-
-
 
 Route::get('/{sendTitulo}/{prueba2}', function ($titulo = null, $pruebaVariable = null) {
     return view('emails.reserva', compact('titulo', 'pruebaVariable'));

@@ -145,14 +145,16 @@ class EsblogController extends Controller
         $blog = Esblog::findOrFail($id);
 
         if ($blog->imgThumb) {
-            if (file_exists(public_path('img/thumb/' . $blog->imgThumb))) {
-                unlink(public_path('img/thumb/' . $blog->imgThumb));
+            $path = public_path($blog->imgThumb);
+            if (File::exists($path)) {
+                File::delete($path);
             }
         }
 
         if ($blog->imgFull) {
-            if (file_exists(public_path('img/full/' . $blog->imgFull))) {
-                unlink(public_path('img/full/' . $blog->imgFull));
+            $path = public_path($blog->imgFull);
+            if (File::exists($path)) {
+                File::delete($path);
             }
         }
 

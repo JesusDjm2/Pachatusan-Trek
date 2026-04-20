@@ -80,44 +80,8 @@
                             <div class="current-menu-title"></div>
                             <div class="mobile-menu-close">&times;</div>
                         </div>
-                        <style>
-                            .country-item {
-                                position: relative;
-                            }
-
-                            /* oculto por defecto */
-                            .country-tours {
-                                position: absolute;
-                                top: 100%;
-                                left: 0;
-                                width: 100%;
-                                background: #fff;
-                                padding: 10px;
-                                display: none;
-                                z-index: 100;
-                                box-shadow: 0 8px 20px rgba(0, 0, 0, .15);
-                            }
-
-                            /* mostrar en hover */
-                            .country-item:hover .country-tours {
-                                display: block;
-                            }
-
-                            /* links */
-                            .tour-link {
-                                display: flex;
-                                justify-content: space-between;
-                                padding: 6px 8px;
-                                font-size: 13px;
-                                border-radius: 4px;
-                            }
-
-                            .tour-link:hover {
-                                background: #f0f0f0;
-                            }
-                        </style>
                         <ul class="menu-main">
-                            @foreach ($categoriasConSubcategorias as $categoria)
+                            @foreach ($categoriasConSubcategorias as $categoria)                               
                                 <li class="menu-item-has-children">
                                     <a href="{{ route('categoria.show', $categoria->slug) }}"
                                         title="{{ $categoria->nombre }}">
@@ -138,29 +102,62 @@
                                                 </div>
                                             @endforeach
                                         @else
-                                            @foreach ($paisesConTours as $pais)
-                                                <div class="list-item text-center country-item">
-                                                    <div class="country-img">
-                                                        <img src="{{ asset($pais->imagen ?? 'img/default.jpg') }}"
-                                                            alt="{{ $pais->nombre }}" loading="lazy">
+                                            @php
+                                                $isExpediciones = strtolower($categoria->slug) === 'expediciones';
+                                            @endphp
+
+                                            @if ($isExpediciones)
+                                                @foreach ($categoria->tours as $tour)
+                                                    <div class="list-item text-center">
+                                                        <a href="{{ route('estour.show', $tour->slug) }}">
+                                                            <div style="width: 100%; overflow: hidden; height:110px">
+                                                                <img src="{{ asset($tour->imgThumb ?? 'img/default.jpg') }}"
+                                                                    alt="{{ $tour->nombre }}" loading="lazy">
+                                                            </div>
+                                                            <h4 class="title">{{ $tour->nombre }}</h4>
+                                                        </a>
                                                     </div>
-                                                    <h4 class="title country-title">{{ $pais->nombre }}</h4>
-                                                    <div class="country-tours">
-                                                        @foreach ($pais->estours as $tour)
-                                                            <a href="{{ route('estour.show', $tour->slug) }}"
-                                                                class="tour-link">
-                                                                <span>{{ $tour->nombre }}</span>
-                                                                <strong>{{ $tour->dias }}d</strong>
+                                                @endforeach
+                                            @else
+                                                @php
+                                                    $toursPorPais = $categoria->tours->groupBy('pais_id');
+                                                    $paisesIds = $toursPorPais->keys();
+                                                    $paises = \App\Models\Pais::whereIn('id', $paisesIds)
+                                                        ->get()
+                                                        ->keyBy('id');
+                                                @endphp
+
+                                                @foreach ($toursPorPais as $paisId => $toursDelPais)
+                                                    @php $pais = $paises[$paisId] ?? null; @endphp
+                                                    @if ($pais)
+                                                        <div class="list-item text-center country-item">
+                                                            <a href="#">
+                                                                <div class="country-img"
+                                                                    style="width: 100%; overflow: hidden; height:110px">
+                                                                    <img src="{{ asset($pais->imagen ?? 'img/default.jpg') }}"
+                                                                        alt="{{ $pais->nombre }}" loading="lazy">
+                                                                </div>
+                                                                <h4 class="title country-title">{{ $pais->nombre }}
+                                                                </h4>
                                                             </a>
-                                                        @endforeach
-                                                    </div>
-                                                </div>
-                                            @endforeach
+                                                            <div class="country-tours">
+                                                                @foreach ($toursDelPais->sortBy('dias') as $tour)
+                                                                    <a href="{{ route('estour.show', $tour->slug) }}"
+                                                                        class="tour-link">
+                                                                        <span
+                                                                            style="color:#000">{{ $tour->nombre }}</span>
+                                                                        <strong>{{ $tour->dias }} días</strong>
+                                                                    </a>
+                                                                @endforeach
+                                                            </div>
+                                                        </div>
+                                                    @endif
+                                                @endforeach
+                                            @endif
                                         @endif
                                     </div>
                                 </li>
                             @endforeach
-
 
                             <li class="menu-item-has-children">
                                 <a title="About Us" href="{{ route('nosotros') }}">Nosotros<i
@@ -196,24 +193,24 @@
                                 </div>
                             </li>
                             <li class="menu-item-has-children">
-                                <a title="About Us" href="">Gampling <i class="fas fa-angle-down"></i></a>
+                                <a title="Glamping" href="{{ route('glamping') }}">Glamping <i class="fas fa-angle-down"></i></a>
                                 <div class="sub-menu mega-menu mega-menu-column-4">
                                     <div class="list-item text-center">
-                                        <a href="{{ route('glamping') }}" title="Cusco">
+                                        <a href="{{ route('glamping') }}" title="Servicio de Glamping">
                                             <div style="width: 100%; overflow: hidden; height:110px">
                                                 <img src="{{ asset('img/thumbnail/saced-valley-cusco.webp') }}"
-                                                    alt="Tours Cusco" loading="lazy">
+                                                    alt="Servicio de Glamping" loading="lazy">
                                             </div>
                                             <h4 class="title">Servicio de Glamping</h4>
                                         </a>
                                     </div>
                                     <div class="list-item text-center">
-                                        <a href="{{ route('certificates') }}" title="Inca trails">
+                                        <a href="{{ route('glamping.reviews.es') }}" title="Reseñas">
                                             <div style="width: 100%; overflow: hidden; height:110px">
                                                 <img src="{{ asset('img/certificados/sernanp.jpg') }}"
-                                                    alt="Inca trail tours" loading="lazy">
+                                                    alt="Reseñas de Glamping" loading="lazy">
                                             </div>
-                                            <h4 class="title">Reviews</h4>
+                                            <h4 class="title">Reseñas</h4>
                                         </a>
                                     </div>
                                 </div>
@@ -386,7 +383,7 @@
                     <img src="{{ asset('img/logo-Pachatusan-Trek-blanco.png') }}" alt="Logo Pachatusan trek"
                         class="img-fluid mb-2" width="220px">
                     <p class="text-justify" style="text-align: justify">
-                        PachatusanTrek es el operador turístico de lujo galardonado que está detrás de su experiencia
+                        Pachatusantrek es el operador turístico de lujo galardonado que está detrás de su experiencia
                         en Sudamérica. Con sede en Cusco, contribuimos a las economías locales, preservando la cultura y
                         el patrimonio y devolviendo algo a la naturaleza.
                     </p>
@@ -448,6 +445,30 @@
             }
         });
     </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            @if(session('flash'))
+                Swal.fire({
+                    icon: '{{ session('flash')['type'] ?? 'success' }}',
+                    title: '{{ session('flash')['type'] == 'success' ? '¡Éxito!' : 'Oops...' }}',
+                    text: '{{ session('flash')['message'] }}',
+                    confirmButtonColor: '#0c8178'
+                });
+            @endif
+
+            @if($errors->any())
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error de validación',
+                    html: '<ul style="text-align: left; margin: 0; padding: 0 1.2rem;">@foreach($errors->all() as $error)<li>{{ $error }}</li>@endforeach</ul>',
+                    confirmButtonColor: '#0c8178'
+                });
+            @endif
+        });
+    </script>
+    @stack('scripts')
 </body>
 
 </html>

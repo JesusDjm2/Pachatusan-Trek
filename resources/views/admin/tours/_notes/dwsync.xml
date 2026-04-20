@@ -33,4 +33,15 @@
 <file name="south.blade.php" server="ftp.pachatusantrek.com" local="133906749644603415" remote="133906929600000000" Dst="0" />
 <file name="treks.blade.php" server="ftp.pachatusantrek.com" local="133906757433172808" remote="133906937400000000" Dst="0" />
 <file name="show.blade.php" server="ftp.pachatusantrek.com" local="133970646650323403" remote="133970845800000000" Dst="0" />
+<file name="buscador.blade.php" server="ftp.andeanexclusivetours.com" local="133824852320000000" remote="134208267600000000" Dst="0" />
+<file name="create.blade.php" server="ftp.andeanexclusivetours.com" local="133967238720000000" remote="134208267600000000" Dst="0" />
+<file name="edit.blade.php" server="ftp.andeanexclusivetours.com" local="134140129960000000" remote="134208267600000000" Dst="0" />
+<file name="expeditions.blade.php" server="ftp.andeanexclusivetours.com" local="133825567780000000" remote="134208267600000000" Dst="0" />
+<file name="inca-trail.blade.php" server="ftp.andeanexclusivetours.com" local="133864356020000000" remote="134208267600000000" Dst="0" />
+<file name="index.blade.php" server="ftp.andeanexclusivetours.com" local="134202244037325753" remote="134208267600000000" Dst="0" />
+<file name="sacred-valley.blade.php" server="ftp.andeanexclusivetours.com" local="133824877420000000" remote="134208267600000000" Dst="0" />
+<file name="show.blade.php" server="ftp.andeanexclusivetours.com" local="133970610640000000" remote="134208267600000000" Dst="0" />
+<file name="south.blade.php" server="ftp.andeanexclusivetours.com" local="133906713640000000" remote="134208267600000000" Dst="0" />
+<file name="tours.blade.php" server="ftp.andeanexclusivetours.com" local="134177262617370854" remote="134208267600000000" Dst="0" />
+<file name="treks.blade.php" server="ftp.andeanexclusivetours.com" local="133906721420000000" remote="134208267600000000" Dst="0" />
 </dwsync>

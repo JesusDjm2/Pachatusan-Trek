@@ -30,7 +30,7 @@
                                 <label for="imgThumb">Imagen (thumbnail):</label>
                                 <input type="file" id="imgThumb" name="imgThumb" class="form-control form-control-sm"
                                     accept="image/*" onchange="previewImage(event, 'thumbPreview')">
-                                <img id="thumbPreview" src="{{ asset('img/thumb/' . $blog->imgThumb) }}"
+                                <img id="thumbPreview" src="{{ asset($blog->imgThumb) }}"
                                     style="width: 100%; height: 300px; object-fit: cover; margin-top:0.5em">
                             </div>
 
@@ -38,7 +38,7 @@
                                 <label for="imgFull">Imagen (completa):</label>
                                 <input type="file" id="imgFull" name="imgFull" class="form-control form-control-sm"
                                     accept="image/*" onchange="previewImage(event, 'fullPreview')">
-                                <img id="fullPreview" src="{{ asset('img/full/' . $blog->imgFull) }}"
+                                <img id="fullPreview" src="{{ asset($blog->imgFull) }}"
                                     style="width: 100%; height: 300px; object-fit: cover; margin-top: 0.5em">
                             </div>
                             <div class="col-lg-12">

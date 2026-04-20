@@ -38,4 +38,21 @@
 <file name="TourCategory.php" server="ftp.pachatusantrek.com" local="133701179540000000" remote="133967628000000000" Dst="0" />
 <file name="User.php" server="ftp.pachatusantrek.com" local="133701179540000000" remote="133967628000000000" Dst="0" />
 <file name="Subcategoria.php" server="ftp.pachatusantrek.com" local="133969848962583059" remote="133970035200000000" Dst="0" />
+<file name="Pais.php" server="ftp.andeanexclusivetours.com" local="134177267564421227" remote="134205938400000000" Dst="0" />
+<file name="Categoria.php" server="ftp.andeanexclusivetours.com" local="133967408160000000" remote="134205938400000000" Dst="0" />
+<file name="Country.php" server="ftp.andeanexclusivetours.com" local="134177267449087104" remote="134205938400000000" Dst="0" />
+<file name="Enblog.php" server="ftp.andeanexclusivetours.com" local="133701143540000000" remote="134205938400000000" Dst="0" />
+<file name="Entag.php" server="ftp.andeanexclusivetours.com" local="133701143540000000" remote="134205938400000000" Dst="0" />
+<file name="Esblog.php" server="ftp.andeanexclusivetours.com" local="133701143540000000" remote="134205938400000000" Dst="0" />
+<file name="EsCategoria.php" server="ftp.andeanexclusivetours.com" local="133969795560000000" remote="134205938400000000" Dst="0" />
+<file name="Estag.php" server="ftp.andeanexclusivetours.com" local="133701143540000000" remote="134205938400000000" Dst="0" />
+<file name="Estour.php" server="ftp.andeanexclusivetours.com" local="134140038180000000" remote="134205938400000000" Dst="0" />
+<file name="Imagen.php" server="ftp.andeanexclusivetours.com" local="133701143540000000" remote="134205938400000000" Dst="0" />
+<file name="Proveedor.php" server="ftp.andeanexclusivetours.com" local="133701143540000000" remote="134205938400000000" Dst="0" />
+<file name="Review.php" server="ftp.andeanexclusivetours.com" local="134205685873153394" remote="134205938400000000" Dst="0" />
+<file name="Subcategoria.php" server="ftp.andeanexclusivetours.com" local="133969812960000000" remote="134205938400000000" Dst="0" />
+<file name="Subcategory.php" server="ftp.andeanexclusivetours.com" local="133969727620000000" remote="134205938400000000" Dst="0" />
+<file name="Tour.php" server="ftp.andeanexclusivetours.com" local="134140043260000000" remote="134205938400000000" Dst="0" />
+<file name="TourCategory.php" server="ftp.andeanexclusivetours.com" local="133701143540000000" remote="134205938400000000" Dst="0" />
+<file name="User.php" server="ftp.andeanexclusivetours.com" local="133701143540000000" remote="134205938400000000" Dst="0" />
 </dwsync>

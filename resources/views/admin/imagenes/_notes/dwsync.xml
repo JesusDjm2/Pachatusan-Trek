@@ -12,4 +12,8 @@
 <file name="edit.blade.php" server="ftp.pachatusantrek.com" local="133824852318439703" remote="133700724000000000" Dst="0" />
 <file name="index.blade.php" server="ftp.pachatusantrek.com" local="133824852322856466" remote="133967634000000000" Dst="0" />
 <file name="show.blade.php" server="ftp.pachatusantrek.com" local="133824852320453649" remote="133700724000000000" Dst="0" />
+<file name="create.blade.php" server="ftp.andeanexclusivetours.com" local="133824852320000000" remote="134208267600000000" Dst="0" />
+<file name="edit.blade.php" server="ftp.andeanexclusivetours.com" local="133824852300000000" remote="133824276000000000" Dst="0" />
+<file name="index.blade.php" server="ftp.andeanexclusivetours.com" local="134202244325728210" remote="134208267600000000" Dst="0" />
+<file name="show.blade.php" server="ftp.andeanexclusivetours.com" local="133824852320000000" remote="133824276000000000" Dst="0" />
 </dwsync>

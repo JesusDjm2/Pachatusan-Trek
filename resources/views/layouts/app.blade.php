@@ -7,12 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="robots" content="nofollow">
     <title>@yield('titulo')</title>
-    <link rel="icon" type="image/png" href="{{ asset('img/logoico.png') }}">
+    <link rel="icon" type="image/png" href="{{ asset('img/pachatusan-icon.png') }}">
     <link href="{{ asset('admin/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('admin/css/sb-admin-2.min.css') }}" rel="stylesheet">
-    <link rel="icon" type="image/png" href="{{ asset('img/pachatusan-icon.png') }}">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="{{ asset('css/admin-custom.css') }}" rel="stylesheet">
 
 </head>
 
@@ -22,8 +20,7 @@
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('index') }}">
                 <img src="{{ asset('img/logo-pachatusan-trek.png') }}" width="100%" style="padding: 0.6em">
             </a>
-            <hr style="height: 1px; width: 100%;  background-color: white">
-            <div class="sidebar-heading" style="color:rgb(255 255 255 / 86%)">
+            <div class="sidebar-heading">
                 Inglés
             </div>
             <li class="nav-item">
@@ -38,6 +35,7 @@
                         <a class="collapse-item" href="{{ route('tours.index') }}">
                             Tours
                         </a>
+                        <a class="collapse-item" href="{{ route('countries.index') }}">Countries</a>
                         <a class="collapse-item" href="{{ route('categories.index') }}">
                             Categorias
                         </a>
@@ -48,8 +46,8 @@
                 </div>
             </li>
 
-            <hr style="height: 1px; width: 100%;  background-color: white">
-            <div class="sidebar-heading" style="color:rgb(255 255 255 / 86%)">
+            <div class="sidebar-divider"></div>
+            <div class="sidebar-heading">
                 Español
             </div>
             <li class="nav-item">
@@ -75,21 +73,28 @@
                 </div>
             </li>
 
-            <hr style="height: 1px; width: 100%;  background-color: white">
+            <div class="sidebar-divider"></div>
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('imagenes.index') }}">
                     <i class="fas fa-fw fa-images"></i>
                     <span>Imágenes</span>
                 </a>
             </li>
-            <hr style="height: 1px; width: 100%;  background-color: white">
+            <div class="sidebar-divider"></div>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('admin.reviews.index') }}">
+                    <i class="fas fa-fw fa-star"></i>
+                    <span>Reseñas</span>
+                </a>
+            </li>
+            <div class="sidebar-divider"></div>
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('users.index') }}">
                     <i class="fas fa-fw fa-user"></i>
                     <span>Usuarios</span>
                 </a>
             </li>
-            <hr style="height: 1px; width: 100%;  background-color: white">
+            <div class="sidebar-divider"></div>
 
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('home') }}">

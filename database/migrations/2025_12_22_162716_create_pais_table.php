@@ -6,17 +6,13 @@ use Illuminate\Support\Facades\Schema;
 
 class CreatePaisTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('paises', function (Blueprint $table) {
             $table->id();
             $table->string('nombre')->unique();
             $table->string('imagen')->nullable();
+            $table->string('slug')->unique()->nullable();
             $table->timestamps();
         });
     }

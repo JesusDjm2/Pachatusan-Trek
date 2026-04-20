@@ -46,6 +46,23 @@
             text-align: center;
             color: #ffffff;
         }
+
+        .btn-branding {
+            background-color: #0c8178;
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .btn-branding:hover {
+            background-color: #09ccbd;
+            color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transform: translateY(-2px);
+        }
     </style>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -212,7 +229,8 @@
         <div class="overlay"></div>
         <div class="content">
             <h2 class="dancing-center">Choqekiraw – Huancacalle 10 days</h2>
-            <p class="mt-4">The Inka trail used by Manco Inka II and his army, in their escape from Spanish, passes by these 2 magnificent archaeological sites in the Vilcabamba</p>
+            <p class="mt-4">The Inka trail used by Manco Inka II and his army, in their escape from Spanish, passes by
+                these 2 magnificent archaeological sites in the Vilcabamba</p>
             <a href="https://pachatusantrek.com/en/choqekiraw-huancacalle-10d-9n" class="btn">Explore Now</a>
         </div>
     </section>
@@ -245,8 +263,6 @@
             </div>
         </div>
     </section>
-
-
     <section class="review-section">
         <div class="overlay d-flex align-items-center justify-content-center">
             <div class="container">
@@ -256,160 +272,43 @@
                     </div>
                     <div id="carouselReviews" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-inner">
-                            <!-- Slide 1 -->
-                            <div class="carousel-item active">
-                                <div class="review text-center text-white">
-                                    <div class="d-flex align-items-center justify-content-center">
-                                        <img src="{{ asset('img/Thumbs/Anaka.jpg') }}" alt="Client Image"
-                                            class="rounded-circle">
-                                        <div class="ms-3 text-start">
-                                            <h5 class="mb-0">Anaka Aiyar</h5>
-                                            <div class="text-warning">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
+                            @foreach ($reviews as $key => $review)
+                                <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
+                                    <div class="review text-center text-white px-3 px-md-5">
+                                        <div class="mb-3">
+                                            @if ($review->image)
+                                                <img src="{{ asset($review->image) }}" alt="Client Image"
+                                                    class="rounded-circle mx-auto d-block" style="width: 80px; height: 80px; object-fit: cover;">
+                                            @else
+                                                <div class="rounded-circle bg-secondary d-flex align-items-center justify-content-center text-white mx-auto"
+                                                    style="width: 80px; height: 80px;">
+                                                    <i class="fas fa-user fa-2x"></i>
+                                                </div>
+                                            @endif
+                                            <h5 class="mt-3 mb-1">{{ $review->name }}</h5>
+                                            <div class="text-warning mb-1">
+                                                @for ($i = 0; $i < 5; $i++)
+                                                    <i class="fa{{ $i < $review->rating ? 's' : 'r' }} fa-star"></i>
+                                                @endfor
                                             </div>
+                                            <small class="text-white-50 d-block">
+                                                <i class="far fa-calendar-alt me-1"></i>
+                                                Travel Date: {{ $review->travel_date ? $review->travel_date->format('M Y') : 'N/A' }}
+                                            </small>
                                         </div>
+                                        <p class="mt-3 review-text" style="max-width: 800px; margin: 0 auto; font-style: italic;">
+                                            "{{ $review->comment }}"
+                                        </p>
                                     </div>
-                                    <p class="mt-3">
-                                        This company was great! Jessica was a really great coordinator. Right from the get
-                                        go
-                                        she
-                                        was quick to answer questions, and alleviate concerns with appropriate information
-                                        and
-                                        options (when we were planning). She also worked with constraints I faced and was
-                                        very
-                                        flexible on last minute change requests or inputs. When we reached Cusco, every
-                                        Morning
-                                        we
-                                        received detailed information on what to expect for the day. This included ideas on
-                                        clothes,
-                                        food, weather in addition to the itinerary. This was useful as it allowed us to
-                                        focus on
-                                        the
-                                        trip and enjoying ourselves instead of worrying about transitions or food etc.
-                                        Jessica
-                                        also
-                                        organized things outside of the itinerary that we require - like a laundry service
-                                        that
-                                        we
-                                        needed help with and the service provider offered us pick up and drop off at the
-                                        hotel.
-                                        Jessica gave us great suggestions for food, shopping and things to do beyond our
-                                        itinerary.
-                                        She was quick to respond to messages and respond to any concerns or questions that I
-                                        had. We
-                                        really enjoyed meeting her recommended guides - they were very knowledgeable! We
-                                        could
-                                        not
-                                        have asked for a better experience! Thanks Jessica!
-                                    </p>
                                 </div>
-                            </div>
-                            <!-- Slide 2 -->
-                            <div class="carousel-item">
-                                <div class="review text-center text-white">
-                                    <div class="d-flex align-items-center justify-content-center">
-                                        <img src="{{ asset('img/Thumbs/Michael-Thompson.jpg') }}"
-                                            alt="Client Pachatusan trek" class="rounded-circle">
-                                        <div class="ms-3 text-start">
-                                            <h5 class="mb-0">Michael Thompson</h5>
-                                            <div class="text-warning">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star-half-alt"></i>
-                                            </div>
-                                        </div>
+                            @endforeach
+                            @if ($reviews->isEmpty())
+                                <div class="carousel-item active">
+                                    <div class="review text-center text-white">
+                                        <p class="mt-3">No reviews available yet. Be the first to leave one!</p>
                                     </div>
-                                    <p class="mt-3">
-                                        We have just returned from our classic 4 day Inca Trail trek. Rolfi &amp; Percy were
-                                        our
-                                        very knowledgeable &amp; entertaining guides. They kept the group going with
-                                        encouragement &amp; fascinating tales of the trail discovery &amp; Inca
-                                        civilization.
-                                        The food was so good and the porters that carried all of our food, tents &amp;
-                                        supplies
-                                        were amazing. We couldn't believe that they could provide the quality of food and
-                                        small
-                                        comforts like a toilet tent, morning coca tea, hot water bottles for sleeping bag
-                                        warmth
-                                        &amp; notes with a good night candy on our sleeping bag at night.
-                                        It was an experience of a lifetime &amp; a physical challenge. I highly recommend
-                                        Pachatusantrek Touring Company!!
-                                    </p>
                                 </div>
-                            </div>
-                            <div class="carousel-item">
-                                <div class="review text-center text-white">
-                                    <div class="d-flex align-items-center justify-content-center">
-                                        <img src="{{ asset('img/Thumbs/Stewart-Wyatt.jpg') }}"
-                                            alt="Client Pachatusan trek" class="rounded-circle">
-                                        <div class="ms-3 text-start">
-                                            <h5 class="mb-0">Stewart Wyatt</h5>
-                                            <div class="text-warning">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star-half-alt"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <p class="mt-3">
-                                        We took the Cusco Cultural Tour from Pachatusantrek. Jessica was extremely helpful
-                                        and flexible in rescheduling our reservation after the pandemic and working around
-                                        our changing schedules. They were really well organized and we felt very comfortable
-                                        traveling with them. Sergio met us at the airport and kept in contact with us to
-                                        ensure things went well. Rolfi and Vilma were exceptionally good guides, being
-                                        knowledgeable and communicated well. Oscar was an awesome driver. The tours were
-                                        amazing, but we were very surprised at how good the food was – some of the best
-                                        meals I have had in my life, especially the meals in locations arranged by
-                                        Pachatusantrek. Our guides provided recommendations for meals and places to visit on
-                                        our own that were very helpful. We felt like our agenda had an excellent mix of
-                                        guided tour time in Cusco Sacred Valley, and Machu Picchu versus personal time to
-                                        explore downtown Cusco.
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <div class="review text-center text-white">
-                                    <div class="d-flex align-items-center justify-content-center">
-                                        <img src="{{ asset('img/Thumbs/Mariella-Pajuelo.jpg') }}"
-                                            alt="Client Pachatusan trek" class="rounded-circle">
-                                        <div class="ms-3 text-start">
-                                            <h5 class="mb-0">Mariella pajuelo</h5>
-                                            <div class="text-warning">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star-half-alt"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <p class="mt-3">
-                                        Pachatusan Trek provided a very well organized, very easy going tour of all the
-                                        major
-                                        hot spots around the Valle Sagrado, Cusco and Machu Picchu. This included very nice
-                                        and private meals in spectacular locations. They were able to acoomodate a
-                                        relatively large group of people (19) that consisted of all ages, from 2 to 77 years
-                                        old. Initially, there was a miscommunication about organization but they more than
-                                        compensated for this very slight initial problem, and likewise it was understood
-                                        dealing with a group so large. Our tour guides, Manuel and Elena, were very patient,
-                                        knowledgable, and very accomodating when it came to hikingand touring each
-                                        archeological site. Overall, we were happy to see that Pachatusantrek put a lot of
-                                        thought into making our visit to Cusco a memorable one. Details such as making
-                                        everybody seat together in the train to and from Machu Picchu or providing water
-                                        during the tours speaks about how they strive to make you feel comfortable and
-                                        relaxed. This was an unforgetable trip. We definitely recommend them !!
-                                    </p>
-                                </div>
-                            </div>
-                            <!-- Add more slides as needed -->
+                            @endif
                         </div>
                         <!-- Carousel Controls -->
                         <button class="carousel-control-prev" type="button" data-bs-target="#carouselReviews"
@@ -423,8 +322,75 @@
                             <span class="visually-hidden">Next</span>
                         </button>
                     </div>
-                </div>
+                    <div class="col-12 text-center mt-4">
+                        <button type="button" class="btn btn-branding" data-bs-toggle="modal"
+                            data-bs-target="#reviewModal">
+                            Leave a Review
+                        </button>
+                    </div>
 
+                    <!-- Modal -->
+                    <div class="modal fade" id="reviewModal" tabindex="-1" aria-labelledby="reviewModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <form action="{{ route('reviews.store') }}" method="POST"
+                                    enctype="multipart/form-data">
+                                    @csrf
+                                    <div class="modal-header">
+                                        <h5 class="modal-title text-dark" id="reviewModalLabel">Leave your review</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body text-start text-dark">
+                                        <div class="row">
+                                            <div class="col-md-6 mb-3">
+                                                <label for="name" class="form-label">Full Name</label>
+                                                <input type="text" class="form-control" id="name" name="name"
+                                                    required>
+                                            </div>
+                                            <div class="col-md-6 mb-3">
+                                                <label for="travel_date" class="form-label">Travel Date</label>
+                                                <input type="date" class="form-control" id="travel_date"
+                                                    name="travel_date" required>
+                                            </div>
+                                            <div class="col-md-6 mb-3">
+                                                <label for="travel_with" class="form-label">With whom did you
+                                                    travel?</label>
+                                                <input type="text" class="form-control" id="travel_with"
+                                                    name="travel_with" placeholder="Family, friends, couple..." required>
+                                            </div>
+                                            <div class="col-md-6 mb-3">
+                                                <label for="rating" class="form-label">Rating</label>
+                                                <select class="form-select" id="rating" name="rating" required>
+                                                    <option value="5">5 Stars</option>
+                                                    <option value="4">4 Stars</option>
+                                                    <option value="3">3 Stars</option>
+                                                    <option value="2">2 Stars</option>
+                                                    <option value="1">1 Star</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-12 mb-3">
+                                                <label for="comment" class="form-label">Your Comment</label>
+                                                <textarea class="form-control" id="comment" name="comment" rows="4" required></textarea>
+                                            </div>
+                                            <div class="col-12 mb-3">
+                                                <label for="image" class="form-label">Photo (Optional)</label>
+                                                <input type="file" class="form-control" id="image" name="image"
+                                                    accept="image/*">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-branding">Submit Review</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>

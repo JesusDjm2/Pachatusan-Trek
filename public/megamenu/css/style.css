@@ -230,6 +230,10 @@ a {
 	margin-top: 3.2em !important;
 	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 	transform: translateX(-50%);
+
+	overflow: visible !important;
+	/* Importante */
+	z-index: 9999;
 }
 
 .header .menu>ul>li .sub-menu.mega-menu-column-4>.list-item {
@@ -238,7 +242,12 @@ a {
 	width: 150px;
 	height: 160px;
 	overflow: hidden;
+
+	overflow: visible !important;
+	position: relative;
+	z-index: 10000;
 }
+
 
 .header .menu>ul>li .sub-menu.mega-menu-column-4>.list-item a {
 	text-decoration: none;
@@ -604,5 +613,124 @@ footer .linkKantu:hover {
 	.menu-overlay.active {
 		visibility: visible;
 		opacity: 1;
+	}
+}
+
+.country-item {
+	position: relative;
+	overflow: visible;
+	/* Asegurar que tenga suficiente altura */
+	min-height: 180px;
+}
+
+.country-item:hover .country-tours {
+	display: block;
+	opacity: 1;
+	visibility: visible;
+}
+
+/* oculto por defecto */
+.country-tours {
+	display: none;
+	position: absolute;
+	top: 75%;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 350px;
+	background: white;
+	padding: 15px;
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+	z-index: 10001;
+	border-radius: 5px;
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 0.3s ease, visibility 0.3s ease;
+	margin-top: 10px;
+}
+
+.country-tours:before {
+	content: '';
+	position: absolute;
+	top: -10px;
+	left: 50%;
+	transform: translateX(-50%);
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent;
+	border-bottom: 10px solid white;
+}
+
+/* HOVER EXACTO SOBRE EL <a> */
+.country-item>a:hover+.country-tours,
+.country-tours:hover {
+	display: block;
+}
+
+/* tours */
+.country-tours .tour-link {
+	display: flex;
+	justify-content: space-between;
+	font-size: 13px;
+	color: #333;
+	text-decoration: none;
+	border-bottom: 1px solid #eee;
+}
+
+.country-tours .tour-link:last-child {
+	border-bottom: none;
+}
+
+.country-tours .tour-link strong {
+	color: #39536d;
+	font-weight: 600;
+}
+
+@media (max-width: 767px) {
+	.country-tours {
+		width: 95% !important;
+		max-width: 350px !important;
+		padding: 15px 10px;
+		/* CORRECCIÓN: Cambiar a posición fija y centrar en pantalla */
+		position: fixed !important;
+		top: 30% !important;
+		left: 50% !important;
+		transform: translate(-50%, -50%) !important;
+		/* Eliminar left: 9em */
+	}
+
+	.country-tours .tour-link {
+		font-size: 13px;
+		padding: 8px 0;
+		/* Esto ya está bien - los links están centrados dentro del contenedor */
+	}
+
+	.country-tours .tour-link span {
+		padding-right: 10px;
+	}
+
+	.country-tours .tour-link strong {
+		font-size: 12px;
+	}
+
+	/* Botón de cerrar para móvil */
+	.country-tours .close-tours {
+		position: absolute;
+		top: 10px;
+		right: 10px;
+		background: none;
+		border: none;
+		font-size: 20px;
+		color: #666;
+		cursor: pointer;
+		z-index: 10;
+		width: 30px;
+		height: 30px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 50%;
+	}
+
+	.country-tours .close-tours:hover {
+		background: #f0f0f0;
 	}
 }

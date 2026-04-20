@@ -3,15 +3,15 @@
 namespace App\Providers;
 
 use App\Models\Categoria;
+use App\Models\Country;
 use App\Models\EsCategoria;
 use App\Models\Estour;
 use App\Models\Pais;
-use App\Models\TourCategory;
-use Illuminate\Support\Facades\View;
 use App\Models\Tour;
+use App\Models\TourCategory;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Str;
 
 class ViewServiceProvider extends ServiceProvider
 {
@@ -24,7 +24,8 @@ class ViewServiceProvider extends ServiceProvider
     {
         //
     }
-    function normalizeUrl($url)
+
+    public function normalizeUrl($url)
     {
         return mb_strtolower(trim($url), 'UTF-8');
     }
@@ -57,54 +58,91 @@ class ViewServiceProvider extends ServiceProvider
             'cusco' => 'valle',
             'inca' => 'incaes',
             'south' => 'sur',
+            'terms' => 'terminos',
         ];
         $routeMapEsToEn = array_flip($routeMapEnToEs);
 
         // Inglés → Español
         View::composer('layouts.admin', function ($view) use ($routeMapEnToEs, $slugMapEnToEs) {
-            /*  $categoriasConSubcategorias = Categoria::with('subcategories')
-                 ->orderByRaw("FIELD(id, 3, 1, 2)")
-                 ->get(); */
-            $categoriasConSubcategorias = Categoria::with([
-                'subcategories',
-                'tours' => function ($q) {
-                    $q->orderBy('dias', 'asc');
-                }
-            ])
-                ->orderByRaw("FIELD(id, 3, 1, 2)")
-                ->get();
 
-            $currentUrl = request()->path();
-            $currentRoute = Route::currentRouteName();
-            $params = request()->route()?->parameters() ?? [];
+    $categoriasConSubcategorias = Categoria::with([
+        'subcategories',
+        'tours' => function ($q) {
+            $q->orderBy('dias', 'asc')
+                ->select(
+                    'tours.id',
+                    'tours.nombre',
+                    'tours.slug',
+                    'tours.dias',
+                    'tours.country_id',
+                    'tours.imgThumb'
+                );
+        },
+    ])
+    ->orderByRaw('FIELD(id, 3, 1, 2)')
+    ->get();
 
-            $translatedSlug = $slugMapEnToEs[$currentUrl] ?? null;
+    // CORREGIDO: Cargar TODOS los países, tengan o no tours
+    $countriesConTours = Country::with([
+        'tours' => fn ($q) => $q->orderBy('dias', 'asc')
+            ->select(
+                'tours.id',
+                'tours.nombre',
+                'tours.slug',
+                'tours.dias',
+                'tours.country_id'
+            ),
+    ])->get(); // <--- QUITADO EL ->has('tours')
 
-            $targetRoute = $translatedSlug
-                ? url($translatedSlug)
-                : (isset($routeMapEnToEs[$currentRoute])
-                    ? route($routeMapEnToEs[$currentRoute], $params)
-                    : route('inicio'));
+    $currentUrl = request()->path();
+    $currentRoute = Route::currentRouteName();
+    $params = request()->route()?->parameters() ?? [];
 
-            $view->with([
-                'categoriasConSubcategorias' => $categoriasConSubcategorias,
-                'routeToOtherLang' => $targetRoute,
-            ]);
-        });
+    $translatedSlug = $slugMapEnToEs[$currentUrl] ?? null;
 
-        // Español → Inglés
-       
+    $targetRoute = $translatedSlug
+        ? url($translatedSlug)
+        : (isset($routeMapEnToEs[$currentRoute])
+            ? route($routeMapEnToEs[$currentRoute], $params)
+            : route('inicio'));
+
+    $view->with([
+        'categoriasConSubcategorias' => $categoriasConSubcategorias,
+        'countriesConTours' => $countriesConTours, // AHORA CONTIENE TODOS LOS PAÍSES
+        'routeToOtherLang' => $targetRoute,
+    ]);
+});
+
         View::composer('layouts.admines', function ($view) use ($routeMapEsToEn, $slugMapEsToEn) {
+            // Cargar categorías con sus tours
             $categoriasConSubcategorias = EsCategoria::with([
                 'subcategorias',
                 'tours' => function ($q) {
-                    $q->orderBy('dias', 'asc');
-                }
+                    $q->orderBy('dias', 'asc')
+                        ->select(
+                            'estours.id',
+                            'estours.nombre',
+                            'estours.slug',
+                            'estours.dias',
+                            'estours.pais_id',
+                            'estours.imgThumb'
+                        );
+                },
             ])->get();
 
+            // Cargar países con todos sus tours
             $paisesConTours = Pais::with([
-                'estours' => fn ($q) => $q->orderBy('dias', 'asc')])->has('estours')->get();
+                'estours' => fn ($q) => $q->orderBy('dias', 'asc')
+                    ->select(
+                        'estours.id',
+                        'estours.nombre',
+                        'estours.slug',
+                        'estours.dias',
+                        'estours.pais_id'
+                    ),
+            ])->has('estours')->get();
 
+            // Resto del código...
             $normalizedUrl = strtolower(request()->path());
             $currentRoute = Route::currentRouteName();
             $params = request()->route()?->parameters() ?? [];
@@ -125,12 +163,12 @@ class ViewServiceProvider extends ServiceProvider
         });
 
         // Compartir Tours globales
-        $mapTourData = fn($model, $nameField, $relationTable, $catTableField) => $model::where('nombre', $nameField)->first()
-            ? Tour::whereHas('categorias', fn($q) => $q->where("tour_category.categoria_id", $model::where('nombre', $nameField)->first()->id))->get()
+        $mapTourData = fn ($model, $nameField, $relationTable, $catTableField) => $model::where('nombre', $nameField)->first()
+            ? Tour::whereHas('categorias', fn ($q) => $q->where('tour_category.categoria_id', $model::where('nombre', $nameField)->first()->id))->get()
             : collect();
 
-        $mapEsTourData = fn($model, $nameField, $relationTable, $catTableField) => $model::where('nombre', $nameField)->first()
-            ? Estour::whereHas('categorias', fn($q) => $q->where("escategorias.id", $model::where('nombre', $nameField)->first()->id))->get()
+        $mapEsTourData = fn ($model, $nameField, $relationTable, $catTableField) => $model::where('nombre', $nameField)->first()
+            ? Estour::whereHas('categorias', fn ($q) => $q->where('escategorias.id', $model::where('nombre', $nameField)->first()->id))->get()
             : collect();
 
         View::share('globalTreks', $mapTourData(TourCategory::class, 'Treks', 'tour_category', 'categoria_id'));
@@ -141,5 +179,4 @@ class ViewServiceProvider extends ServiceProvider
         View::share('globalExpeditionsEs', $mapEsTourData(EsCategoria::class, 'Expediciones', 'escategorias', 'id'));
         View::share('globalToursEs', $mapEsTourData(EsCategoria::class, 'Tours', 'escategorias', 'id'));
     }
-
 }

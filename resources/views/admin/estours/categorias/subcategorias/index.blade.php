@@ -48,14 +48,16 @@
                                             <a href="{{ route('subcategorias.edit', $subcategoria->id) }}"
                                                 class="btn btn-warning btn-sm">Editar</a>
                                             <a class="btn btn-sm btn-primary "
-                                                href="{{ route('subcategorias.show', $subcategoria->slug) }}" target="_blank"><i
-                                                    class="fa fa-fw fa-eye"></i> Show</a>
-                                            <form action="{{ route('subcategorias.destroy', $subcategoria) }}"
+                                                href="{{ route('subcategorias.show', $subcategoria->slug) }}"
+                                                target="_blank"><i class="fa fa-fw fa-eye"></i> Show</a>
+                                            <form action="{{ route('subcategorias.destroy', $subcategoria->id) }}"
                                                 method="POST" style="display: inline">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger btn-sm"
-                                                    onclick="return confirm('¿Eliminar esta subcategoría?')">Eliminar</button>
+                                                    onclick="return confirm('¿Eliminar esta subcategoría?')">
+                                                    Eliminar
+                                                </button>
                                             </form>
                                         </td>
                                     </tr>

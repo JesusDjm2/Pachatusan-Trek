@@ -40,8 +40,8 @@ class EnblogController extends Controller
 
         $enblog = Enblog::create([
             'nombre' => $request->input('nombre'),
-            'imgThumb' => $imageNameThumb,
-            'imgFull' => $imageNameFull,
+            'imgThumb' => 'img/thumb/' . $imageNameThumb,
+            'imgFull' => 'img/full/' . $imageNameFull,
             'descripcionCorta' => $request->input('descripcionCorta'),
             'descripcion' => $request->input('descripcion'),
             'slug' => $request->input('slug'),
@@ -76,13 +76,13 @@ class EnblogController extends Controller
         if ($request->hasFile('imgThumb')) {
             $imageNameThumb = $request->file('imgThumb')->getClientOriginalName();
             $request->file('imgThumb')->move(public_path('img/thumb'), $imageNameThumb);
-            $enblog->imgThumb = $imageNameThumb;
+            $enblog->imgThumb = 'img/thumb/' . $imageNameThumb;
         }
 
         if ($request->hasFile('imgFull')) {
             $imageNameFull = $request->file('imgFull')->getClientOriginalName();
             $request->file('imgFull')->move(public_path('img/full'), $imageNameFull);
-            $enblog->imgFull = $imageNameFull;
+            $enblog->imgFull = 'img/full/' . $imageNameFull;
         }
 
         $enblog->nombre = $request->input('nombre');

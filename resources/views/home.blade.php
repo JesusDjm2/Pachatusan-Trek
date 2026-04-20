@@ -16,40 +16,7 @@
 
                         <!-- ====== DASHBOARD MENÚ PRINCIPAL ====== -->
 
-                        <style>
-                            .dash-section-title {
-                                font-weight: bold;
-                                font-size: 1.2rem;
-                                margin-top: 1.5rem;
-                                color: #0d6efd;
-                            }
 
-                            .dash-card {
-                                border: 1px solid #dcdcdc;
-                                padding: 1rem;
-                                border-radius: 10px;
-                                transition: 0.2s;
-                                text-align: center;
-                                background: white;
-                                text-decoration: none;
-                                color:#636363
-                            }
-
-                            .dash-card:hover {
-                                transform: translateY(-3px);
-                                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-                                text-decoration: none
-                            }
-
-                            .dash-card i {
-                                font-size: 1.8rem;
-                                margin-bottom: 0.3rem;
-                                color: #636363;
-                            }
-                            .dash-card:hover i{
-                                color: #0d6efd;
-                            }
-                        </style>
 
                         <div class="container">
                             <div class="dash-section-title">Inglés</div>
@@ -106,6 +73,12 @@
                                     <a href="{{ route('imagenes.index') }}" class="dash-card d-block">
                                         <i class="fas fa-images"></i>
                                         <div>Imágenes</div>
+                                    </a>
+                                </div>
+                                <div class="col-md-4 mt-3">
+                                    <a href="{{ route('admin.reviews.index') }}" class="dash-card d-block">
+                                        <i class="fas fa-star"></i>
+                                        <div>Reseñas</div>
                                     </a>
                                 </div>
                                 <div class="col-md-4 mt-3">

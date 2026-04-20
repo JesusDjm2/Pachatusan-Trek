@@ -91,6 +91,7 @@
                                     </a>
                                     <div class="sub-menu mega-menu mega-menu-column-4">
                                         @if ($categoria->subcategories->count() > 2)
+                                            <!-- Mostrar subcategorías -->
                                             @foreach ($categoria->subcategories as $sub)
                                                 <div class="list-item text-center">
                                                     <a href="{{ route('subcategories.show', $sub->slug) }}"
@@ -98,27 +99,67 @@
                                                         <div style="width: 100%; overflow: hidden; height:110px">
                                                             <img src="{{ asset($sub->imgThumb ?? 'img/default.jpg') }}"
                                                                 alt="{{ $sub->nombre }}" loading="lazy">
+                                                            <div style="display:none;">
+                                                                Ruta en BD: {{ $sub->imgThumb }}<br>
+                                                                Ruta completa: {{ asset($sub->imgThumb) }}<br>
+                                                                ¿Archivo existe?:
+                                                                {{ File::exists(public_path($sub->imgThumb)) ? 'Sí' : 'No' }}
+                                                            </div>
                                                         </div>
                                                         <h4 class="title">{{ $sub->nombre }}</h4>
                                                     </a>
                                                 </div>
                                             @endforeach
                                         @else
-                                            @foreach ($categoria->tours as $tour)
-                                                <div class="list-item text-center">
-                                                    <a href="{{ route('tour.show', $tour->slug) }}">
-                                                        <div style="width: 100%; overflow: hidden; height:110px">
-                                                            <img src="{{ asset($tour->imgThumb) }}"
-                                                                alt="{{ $tour->nombre }}" loading="lazy">
+                                            @php
+                                                $isExpediciones = strtolower($categoria->slug) === 'expeditions';
+                                            @endphp
+
+                                            @if ($isExpediciones)
+                                                <!-- Mostrar tours de la categoría "expeditions" -->
+                                                @foreach ($categoria->tours as $tour)
+                                                    <div class="list-item text-center">
+                                                        <a href="{{ route('tour.show', $tour->slug) }}">
+                                                            <div style="width: 100%; overflow: hidden; height:110px">
+                                                                <img src="{{ asset($tour->imgThumb ?? 'img/default.jpg') }}"
+                                                                    alt="{{ $tour->nombre }}" loading="lazy">
+                                                            </div>
+                                                            <h4 class="title">{{ $tour->nombre }}</h4>
+                                                        </a>
+                                                    </div>
+                                                @endforeach
+                                            @else
+                                                @php
+                                                    $paisesParaMostrar = $countriesConTours;
+                                                    $paisesParaMostrar = $paisesParaMostrar->sortBy('nombre');
+                                                @endphp
+                                                @if ($paisesParaMostrar->count() > 0)
+                                                    @foreach ($paisesParaMostrar as $country)
+                                                        <div class="list-item text-center country-item">
+                                                            <a
+                                                                href="{{ route('country.show', $country->slug ?? $country->id) }}">
+                                                                <div class="country-img"
+                                                                    style="width: 100%; overflow: hidden; height:110px">
+                                                                    <img src="{{ asset($country->imagen ?? 'img/default.jpg') }}"
+                                                                        alt="{{ $country->nombre }}" loading="lazy">
+                                                                </div>
+                                                                <h4 class="title country-title">{{ $country->nombre }}
+                                                                </h4>
+                                                            </a>
                                                         </div>
-                                                        <h4 class="title">{{ $tour->nombre }}</h4>
-                                                    </a>
-                                                </div>
-                                            @endforeach
+                                                    @endforeach
+                                                @else
+                                                    <div class="text-center"
+                                                        style="grid-column: 1 / -1; padding: 20px;">
+                                                        <p>No hay países disponibles</p>
+                                                    </div>
+                                                @endif
+                                            @endif
                                         @endif
                                     </div>
                                 </li>
                             @endforeach
+
                             <li class="menu-item-has-children">
                                 <a title="About Us" href="{{ route('about') }}">About Us <i
                                         class="fas fa-angle-down"></i></a>
@@ -152,48 +193,24 @@
                                     </div>
                                 </div>
                             </li>
-
-                            {{-- <li class="menu-item-has-children">
-                                <a title="About Us" href="{{ route('about') }}">Gampling <i
-                                        class="fas fa-angle-down"></i></a>
-                                <div class="sub-menu mega-menu mega-menu-column-4">
-                                    <div class="list-item text-center">
-                                        <a href="{{ route('about') }}" title="Cusco">
-                                            <div style="width: 100%; overflow: hidden; height:110px">
-                                                <img src="{{ asset('img/thumbnail/saced-valley-cusco.webp') }}"
-                                                    alt="Tours Cusco" loading="lazy">
-                                            </div>
-                                            <h4 class="title">The Gampling Service</h4>
-                                        </a>
-                                    </div>
-                                    <div class="list-item text-center">
-                                        <a href="{{ route('certificates') }}" title="Inca trails">
-                                            <div style="width: 100%; overflow: hidden; height:110px">
-                                                <img src="{{ asset('img/certificados/sernanp.jpg') }}"
-                                                    alt="Inca trail tours" loading="lazy">
-                                            </div>
-                                            <h4 class="title">Reviews</h4>
-                                        </a>
-                                    </div>
-                                </div>
-                            </li> --}}
+                           
                             <li class="menu-item-has-children">
-                                <a title="About Us" href="">Gampling <i class="fas fa-angle-down"></i></a>
+                                <a title="Glamping" href="{{ route('glampingen') }}">Glamping <i class="fas fa-angle-down"></i></a>
                                 <div class="sub-menu mega-menu mega-menu-column-4">
                                     <div class="list-item text-center">
-                                        <a href="{{ route('glampingen') }}" title="Cusco">
+                                        <a href="{{ route('glampingen') }}" title="Glamping Service">
                                             <div style="width: 100%; overflow: hidden; height:110px">
                                                 <img src="{{ asset('img/thumbnail/saced-valley-cusco.webp') }}"
-                                                    alt="Tours Cusco" loading="lazy">
+                                                    alt="Glamping Service" loading="lazy">
                                             </div>
-                                            <h4 class="title">Servicio de Glamping</h4>
+                                            <h4 class="title">Glamping Service</h4>
                                         </a>
                                     </div>
                                     <div class="list-item text-center">
-                                        <a href="{{ route('certificates') }}" title="Inca trails">
+                                        <a href="{{ route('glamping.reviews') }}" title="Reviews">
                                             <div style="width: 100%; overflow: hidden; height:110px">
                                                 <img src="{{ asset('img/certificados/sernanp.jpg') }}"
-                                                    alt="Inca trail tours" loading="lazy">
+                                                    alt="Glamping Reviews" loading="lazy">
                                             </div>
                                             <h4 class="title">Reviews</h4>
                                         </a>
@@ -209,7 +226,7 @@
                 <div class="header-item item-right" style="flex: 0 0 16%;">
                     <a href="#" id="search-icon" title="Buscar tours"><i class="fas fa-search"></i></a>
                     @php
-                        $isTour = isset($estour); // o cualquier otra lógica que uses para identificar si es una página de tour
+                        $isTour = isset($estour); 
                     @endphp
                     <a href="{{ $isTour ? route('estour.show', $estour->slug) : $routeToOtherLang }}"
                         class="translate-button">
@@ -359,7 +376,7 @@
                     <img src="{{ asset('img/logo-Pachatusan-Trek-blanco.png') }}" alt="Logo Pachatusan trek"
                         class="img-fluid mb-2" width="220px">
                     <p class="text-justify" style="text-align: justify">
-                        PachatusanTrek is the award-winning luxury tour operator behind your South American experience.
+                        Pachatusantrek is the award-winning luxury tour operator behind your South American experience.
                         Based in Cusco, we contribute to local economies, preserving culture and heritage, and giving
                         back to nature.
                     </p>
@@ -418,6 +435,29 @@
             }
         });
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            @if(session('flash'))
+                Swal.fire({
+                    icon: '{{ session('flash')['type'] ?? 'success' }}',
+                    title: '{{ session('flash')['type'] == 'success' ? 'Success!' : 'Oops...' }}',
+                    text: '{{ session('flash')['message'] }}',
+                    confirmButtonColor: '#0c8178'
+                });
+            @endif
+
+            @if($errors->any())
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Validation Error',
+                    html: '<ul style="text-align: left; margin: 0; padding: 0 1.2rem;">@foreach($errors->all() as $error)<li>{{ $error }}</li>@endforeach</ul>',
+                    confirmButtonColor: '#0c8178'
+                });
+            @endif
+        });
+    </script>
+    @stack('scripts')
 </body>
 
 </html>

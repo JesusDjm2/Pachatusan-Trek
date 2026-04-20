@@ -83,7 +83,7 @@ class EsTourController extends Controller
 
                     $galeriaFile->move(public_path($galeriaPath), $galeriaName);
 
-                    $galeriaNames[] = asset($galeriaPath . $galeriaName);
+                    $galeriaNames[] = $galeriaPath . $galeriaName;
                 }
             }
             $tour->galeria = implode(',', $galeriaNames);
@@ -168,9 +168,9 @@ class EsTourController extends Controller
             if ($tour->galeria) {
                 $existingImages = explode(',', $tour->galeria);
                 foreach ($existingImages as $image) {
-                    $imagePath = public_path(str_replace(url('/'), '', $image));
-                    if (file_exists($imagePath)) {
-                        unlink($imagePath);
+                    $imagePath = public_path($image);
+                    if (File::exists($imagePath)) {
+                        File::delete($imagePath);
                     }
                 }
             }
@@ -188,7 +188,7 @@ class EsTourController extends Controller
                 if ($galeriaFile->isValid() && in_array($galeriaFile->extension(), ['jpg', 'jpeg', 'png', 'webp'])) {
                     $galeriaName = time() . '_' . $galeriaFile->getClientOriginalName();
                     $galeriaFile->move(public_path($galeriaPath), $galeriaName);
-                    $galeriaNames[] = asset($galeriaPath . $galeriaName);
+                    $galeriaNames[] = $galeriaPath . $galeriaName;
                 }
             }
 

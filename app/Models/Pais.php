@@ -8,11 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Pais extends Model
 {
     use HasFactory;
-    protected $table = 'paises';
-    protected $fillable = ['nombre', 'imagen'];
 
-   public function estours()
-{
-    return $this->hasMany(Estour::class);
-}
+    protected $table = 'paises';
+
+    protected $fillable = ['nombre', 'imagen', 'slug'];
+
+    public function estours()
+    {
+        return $this->hasMany(Estour::class, 'pais_id');
+    }
 }

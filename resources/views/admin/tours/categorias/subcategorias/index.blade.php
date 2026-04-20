@@ -7,7 +7,7 @@
 
                 <div class="row mb-2">
                     <div class="col-lg-6">
-                        <h3 class="text-primary">Lista de Sub-Categorías</h3>
+                        <h3 class="text-primary">Lista de Sub-Categorías en inglés</h3>
                     </div>
                     <div class="col-lg-6">
                         <a href="{{ route('subcategories.create') }}" class="btn btn-primary btn-sm float-right">

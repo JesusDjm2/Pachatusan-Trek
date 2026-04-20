@@ -1,6 +1,15 @@
 @extends('layouts.app')
 @section('titulo', 'Editar Tour en inglés')
 @section('contenido')
+    <style>
+        .btn-save-floating {
+            position: fixed;
+            right: 0px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1050;
+        }
+    </style>
     <div class="row">
         <div class="col-lg-12">
             @if (session('status'))
@@ -14,7 +23,7 @@
         <div class="col-12 mt-2">
             <div class="row" style="padding: 1em">
                 <div class="col-lg-6 float-left">
-                    <h3>Editar Tour en Inglés</h3>
+                    <h4 class="text-primary"> <small class="text-dark">Editar Tour:</small> {{ $tour->nombre }}</h4>
                 </div>
                 <div class="col-lg-6">
                     <a href="{{ route('tours.index') }}" class="btn btn-primary float-right">Volver</a>
@@ -22,34 +31,59 @@
             </div>
             <div class="row" style="padding: 1em">
                 <div class="col-lg-12">
-                    <form action="{{ route('tours.update', $tour->id) }}" method="post" enctype="multipart/form-data"
+                    <form action="{{ route('tours.update', $tour->id) }}" method="post" id="form-tour" enctype="multipart/form-data"
                         class="bg-light">
                         @csrf
                         @method('PUT')
                         <div class="row">
-                            <div class="col-lg-5 mt-3">
+                            <div class="col-lg-7 mt-3">
                                 <label for="nombre" class="form-label font-weight-bold">Nombre del Tour:</label>
-                                <input type="text" id="nombre" name="nombre" class="form-control" required
-                                    value="{{ old('nombre', $tour->nombre) }}">
+                                <input type="text" id="nombre" name="nombre" class="form-control form-control-sm"
+                                    required value="{{ old('nombre', $tour->nombre) }}">
                                 @error('nombre')
                                     <div class="alert alert-danger mt-2">{{ $message }}</div>
                                 @enderror
                             </div>
-                            <div class="col-lg-4 mt-3">
+                            <div class="col-lg-5 mt-3">
                                 <label for="recorrido" class="form-label font-weight-bold">Recorrido:</label>
-                                <input type="text" id="recorrido" name="recorrido" class="form-control" required
-                                    value="{{ old('recorrido', $tour->recorrido) }}">
-
+                                <input type="text" id="recorrido" name="recorrido" class="form-control form-control-sm"
+                                    required value="{{ old('recorrido', $tour->recorrido) }}">
                                 @error('recorrido')
                                     <div class="alert alert-danger mt-2">{{ $message }}</div>
                                 @enderror
                             </div>
 
-                            <div class="col-lg-1 mt-3">
-                                <label for="dias" class="form-label font-weight-bold">Días:</label>
-                                <input type="number" id="dias" name="dias" class="form-control" required
-                                    value="{{ old('dias', $tour->dias) }}">
+                            <div class="col-lg-4 mt-3">
+                                <label for="country_id" class="form-label font-weight-bold">País:</label>
+                                <select name="country_id" id="country_id" class="form-control form-control-sm" required>
+                                    <option value="">Seleccione un país</option>
 
+                                    @foreach ($countries as $country)
+                                        <option value="{{ $country->id }}"
+                                            {{ old('country_id', $tour->country_id) == $country->id ? 'selected' : '' }}>
+                                            {{ $country->nombre }}
+                                        </option>
+                                    @endforeach
+                                </select>
+
+                                @error('country_id')
+                                    <div class="alert alert-danger mt-2">{{ $message }}</div>
+                                @enderror
+                            </div>
+
+                            <div class="col-lg-4 mt-3">
+                                <label for="ciudad" class="form-label font-weight-bold">Ciudad:</label>
+                                <input type="text" id="ciudad" name="ciudad" class="form-control form-control-sm"
+                                    value="{{ old('ciudad', $tour->ciudad) }}">
+                                @error('ciudad')
+                                    <div class="alert alert-danger mt-2">{{ $message }}</div>
+                                @enderror
+                            </div>
+
+                            <div class="col-lg-4 mt-3">
+                                <label for="dias" class="form-label font-weight-bold">Días:</label>
+                                <input type="number" id="dias" name="dias" class="form-control form-control-sm"
+                                    required value="{{ old('dias', $tour->dias) }}">
                                 @error('dias')
                                     <div class="alert alert-danger mt-2">{{ $message }}</div>
                                 @enderror
@@ -60,14 +94,15 @@
                                         class="text-success">(Max. 25
                                         palabras)</small></label>
                                 <input type="text" id="descripcionCorta" name="descripcionCorta" class="form-control"
-                                    required maxlength="255" value="{{ old('descripcionCorta', $tour->descripcionCorta) }}">
+                                    required maxlength="255"
+                                    value="{{ old('descripcionCorta', $tour->descripcionCorta) }}">
                                 @error('descripcionCorta')
                                     <div class="alert alert-danger mt-2">{{ $message }}</div>
                                 @enderror
                             </div>
 
 
-                            <div class="col-lg-4 mt-3">
+                            <div class="col-lg-6 mt-3">
                                 <label for="imgThumb" class="form-label font-weight-bold">Imagen Thumb: <small
                                         class="text-success">(420x280)</small></label>
                                 <input type="file" id="imgThumb" name="imgThumb" class="form-control" accept="image/*">
@@ -76,10 +111,10 @@
                                 @enderror
 
                                 <img id="imgThumbPreview" src="{{ asset($tour->imgThumb) }}" alt="Vista previa"
-                                    style="width: 100%; height: 220px; object-fit: cover">
+                                    style="width: 300px; height: auto; object-fit: cover; margin-top: 5px;">
                             </div>
 
-                            <div class="col-lg-4 mt-3">
+                            <div class="col-lg-6 mt-3">
                                 <label for="imgFull" class="form-label font-weight-bold">Imagen Full: <small
                                         class="text-success">(1920x1080)</small></label>
                                 <input type="file" id="imgFull" name="imgFull" class="form-control" accept="image/*">
@@ -88,7 +123,7 @@
                                 @enderror
 
                                 <img id="imgFullPreview" src="{{ asset($tour->imgFull) }}" alt="Vista previa"
-                                    style="width: 100%; height: 220px; object-fit: cover">
+                                    style="width: 500px; height: auto; object-fit: cover; margin-top: 5px;">
                             </div>
 
 
@@ -115,7 +150,8 @@
                                 @enderror
                             </div>
                             <div class="col-lg-6 mt-3">
-                                <label for="importante" class="form-label font-weight-bold">Importante: <small>Solo listas</small></label>
+                                <label for="importante" class="form-label font-weight-bold">Importante: <small>Solo
+                                        listas</small></label>
                                 <textarea class="ckeditor form-control" name="importante" id="importante" required>{{ $tour->importante }}</textarea> {{-- Mostrar valor actual --}}
                                 @error('importante')
                                     <div class="alert alert-danger mt-2">{{ $message }}</div>
@@ -149,7 +185,7 @@
                                 @enderror
                             </div>
 
-                            <div class="col-lg-6 mt-3"> 
+                            <div class="col-lg-6 mt-3">
                                 <label for="categorias" class="font-weight-bold">Categorías:</label><br>
                                 <div class="checkbox-inline">
                                     @foreach ($categorias as $id => $nombre)
@@ -262,8 +298,8 @@
 
 
                         </div>
-                        <button class="btn btn-primary mt-4" type="submit">Guardar</button>
-                        <a href="{{ route('tours.index') }}" class="btn btn-secondary mt-4 float-right">Cancelar</a>
+                        <button form="form-tour" class="btn btn-primary btn-lg mt-4 btn-save-floating" type="submit">Guardar</button>
+                        {{-- <a href="{{ route('tours.index') }}" class="btn btn-secondary mt-4 float-right">Cancelar</a> --}}
                     </form>
                 </div>
             </div>

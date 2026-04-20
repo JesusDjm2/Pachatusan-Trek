@@ -6,11 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateSubcategoryTourTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('subcategory_tour', function (Blueprint $table) {
@@ -23,12 +18,7 @@ class CreateSubcategoryTourTable extends Migration
             $table->foreign('subcategory_id')->references('id')->on('subcategories')->onDelete('cascade');
         });
     }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
+    
     public function down()
     {
         Schema::dropIfExists('subcategory_tour');

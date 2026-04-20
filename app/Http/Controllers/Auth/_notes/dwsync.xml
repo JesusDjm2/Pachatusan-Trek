@@ -18,4 +18,10 @@
 <file name="RegisterController.php" server="ftp.pachatusantrek.com" local="133701179540000000" remote="133967634600000000" Dst="0" />
 <file name="ResetPasswordController.php" server="ftp.pachatusantrek.com" local="133701179540000000" remote="133967634600000000" Dst="0" />
 <file name="VerificationController.php" server="ftp.pachatusantrek.com" local="133701179540000000" remote="133967634600000000" Dst="0" />
+<file name="ConfirmPasswordController.php" server="ftp.andeanexclusivetours.com" local="133701143540000000" remote="134207625600000000" Dst="0" />
+<file name="ForgotPasswordController.php" server="ftp.andeanexclusivetours.com" local="133701143540000000" remote="134207625600000000" Dst="0" />
+<file name="LoginController.php" server="ftp.andeanexclusivetours.com" local="133701143540000000" remote="134207625600000000" Dst="0" />
+<file name="RegisterController.php" server="ftp.andeanexclusivetours.com" local="133701143540000000" remote="134207625600000000" Dst="0" />
+<file name="ResetPasswordController.php" server="ftp.andeanexclusivetours.com" local="133701143540000000" remote="134207625600000000" Dst="0" />
+<file name="VerificationController.php" server="ftp.andeanexclusivetours.com" local="133701143540000000" remote="134207625600000000" Dst="0" />
 </dwsync>

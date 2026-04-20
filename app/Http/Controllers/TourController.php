@@ -2,35 +2,41 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Categoria;
-use App\Models\Estour;
+use App\Models\Country;
 use App\Models\Subcategory;
 use App\Models\Tour;
 use App\Models\TourCategory;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class TourController extends Controller
 {
     public function index()
     {
-        $tours = Tour::all();
+        $tours = Tour::with('country')->get();
         return view('admin.tours.index', compact('tours'));
     }
+
     public function create()
     {
         $categorias = TourCategory::pluck('nombre', 'id');
         /* $subcategorias = Subcategory::all(); */
         $subcategorias = Subcategory::with('category')->get()->groupBy('category_id');
+
         return view('admin.tours.create', compact('categorias', 'subcategorias'));
     }
+
     public function store(Request $request)
     {
         $request->validate([
             'nombre' => 'required',
             'recorrido' => 'nullable',
             'dias' => 'required|integer',
+            'ciudad' => 'nullable',
+
+            'country_id' => 'nullable|exists:countries,id',
+
             'imgThumb' => 'required|max:2048',
             'imgFull' => 'required|max:2048',
             'descripcionCorta' => 'required',
@@ -39,7 +45,7 @@ class TourController extends Controller
             'incluye' => 'required',
             'importante' => 'required',
 
-            //Galeria
+            // Galeria
             'galeria' => 'nullable|array',
             'galeria.*' => 'image|mimes:jpeg,jpg,png,gif,bmp,svg,webp|max:2048',
 
@@ -47,26 +53,26 @@ class TourController extends Controller
             'keywords' => 'required',
         ]);
 
-        $tour = new Tour();
+        $tour = new Tour;
         $tour->nombre = $request->input('nombre');
         $tour->recorrido = $request->input('recorrido');
         $tour->dias = $request->input('dias');
+        $tour->ciudad = $request->input('ciudad');
 
         if ($request->hasFile('imgThumb')) {
             $img = $request->file('imgThumb');
             $rutaImg = public_path('img/Thumbs');
             $imgThumb = $img->getClientOriginalName();
             $img->move($rutaImg, $imgThumb);
-            $tour->imgThumb = 'img/Thumbs/' . $imgThumb;
+            $tour->imgThumb = 'img/Thumbs/'.$imgThumb;
         }
-
 
         if ($request->hasFile('imgFull')) {
             $img = $request->file('imgFull');
             $rutaImg = public_path('img/Fondos');
             $imgFull = $img->getClientOriginalName();
             $img->move($rutaImg, $imgFull);
-            $tour->imgFull = 'img/Fondos/' . $imgFull;
+            $tour->imgFull = 'img/Fondos/'.$imgFull;
         }
 
         if ($request->has('galeria')) {
@@ -74,15 +80,15 @@ class TourController extends Controller
             $galeriaNames = [];
             $galeriaPath = 'img/galeriaTours/';
 
-            if (!File::exists(public_path($galeriaPath))) {
+            if (! File::exists(public_path($galeriaPath))) {
                 File::makeDirectory(public_path($galeriaPath), 0755, true);
             }
 
             foreach ($galeriaFiles as $galeriaFile) {
                 if ($galeriaFile->isValid() && in_array($galeriaFile->extension(), ['jpg', 'jpeg', 'png', 'webp'])) {
-                    $galeriaName = time() . '_' . $galeriaFile->getClientOriginalName();
+                    $galeriaName = time().'_'.$galeriaFile->getClientOriginalName();
                     $galeriaFile->move(public_path($galeriaPath), $galeriaName);
-                    $galeriaNames[] = asset($galeriaPath . $galeriaName);
+                    $galeriaNames[] = $galeriaPath.$galeriaName;
                 }
             }
             $tour->galeria = implode(',', $galeriaNames);
@@ -95,6 +101,7 @@ class TourController extends Controller
         $tour->importante = $request->input('importante');
         $tour->keywords = $request->input('keywords');
         $tour->slug = $request->input('slug');
+        $tour->country_id = $request->country_id;
 
         $tour->save();
 
@@ -104,12 +111,15 @@ class TourController extends Controller
 
         return redirect()->route('tours.index')->with('success', 'Tour creado exitosamente!');
     }
+
     public function edit($id)
     {
         $tour = Tour::findOrFail($id);
         $categorias = TourCategory::pluck('nombre', 'id');
         $subcategorias = Subcategory::with('category')->get()->groupBy('category_id');
-        return view('admin.tours.edit', compact('tour', 'categorias', 'subcategorias'));
+        $countries = Country::orderBy('nombre')->get();
+
+        return view('admin.tours.edit', compact('tour', 'categorias', 'subcategorias', 'countries'));
     }
 
     public function update(Request $request, $id)
@@ -118,6 +128,10 @@ class TourController extends Controller
             'nombre' => 'required',
             'recorrido' => 'required',
             'dias' => 'required|integer',
+            'ciudad' => 'nullable',
+
+            'country_id' => 'nullable|exists:countries,id',
+
             'imgThumb' => 'nullable|max:2048',
             'imgFull' => 'nullable|max:2048',
             'descripcionCorta' => 'required',
@@ -127,7 +141,7 @@ class TourController extends Controller
             'importante' => 'required',
             'galeria' => 'nullable|array',
             'galeria.*' => 'image|mimes:jpeg,jpg,png,gif,bmp,svg,webp|max:2048',
-            'slug' => 'required|unique:tours,slug,' . $id,
+            'slug' => 'required|unique:tours,slug,'.$id,
             'keywords' => 'required',
         ]);
 
@@ -135,43 +149,44 @@ class TourController extends Controller
         $tour->nombre = $request->input('nombre');
         $tour->recorrido = $request->input('recorrido');
         $tour->dias = $request->input('dias');
+        $tour->ciudad = $request->input('ciudad');
+        $tour->country_id = $request->country_id;
 
         if ($request->hasFile('imgThumb')) {
             $img = $request->file('imgThumb');
             $rutaImg = public_path('img/Thumbs');
             $imgThumb = $img->getClientOriginalName();
             $img->move($rutaImg, $imgThumb);
-            $tour->imgThumb = 'img/Thumbs/' . $imgThumb;
+            $tour->imgThumb = 'img/Thumbs/'.$imgThumb;
         }
 
         if ($request->has('galeria')) {
-            // Elimina las imágenes existentes si las hay
             if ($tour->galeria) {
                 $existingImages = explode(',', $tour->galeria);
                 foreach ($existingImages as $image) {
-                    $imagePath = public_path(str_replace(url('/'), '', $image));
-                    if (file_exists($imagePath)) {
-                        unlink($imagePath);
+                    $imagePath = public_path($image);
+                    if (File::exists($imagePath)) {
+                        File::delete($imagePath);
                     }
                 }
             }
-        
+
             $galeriaFiles = $request->file('galeria');
             $galeriaNames = [];
             $galeriaPath = 'img/galeriaTours/';
-        
-            if (!File::exists(public_path($galeriaPath))) {
+
+            if (! File::exists(public_path($galeriaPath))) {
                 File::makeDirectory(public_path($galeriaPath), 0755, true);
             }
-        
+
             foreach ($galeriaFiles as $galeriaFile) {
                 if ($galeriaFile->isValid() && in_array($galeriaFile->extension(), ['jpg', 'jpeg', 'png', 'webp'])) {
-                    $galeriaName = time() . '_' . $galeriaFile->getClientOriginalName();
+                    $galeriaName = time().'_'.$galeriaFile->getClientOriginalName();
                     $galeriaFile->move(public_path($galeriaPath), $galeriaName);
-                    $galeriaNames[] = asset($galeriaPath . $galeriaName);
+                    $galeriaNames[] = $galeriaPath.$galeriaName;
                 }
             }
-        
+
             $tour->galeria = implode(',', $galeriaNames);
         }
 
@@ -190,6 +205,7 @@ class TourController extends Controller
 
         return redirect()->route('tours.index')->with('success', 'Tour actualizado exitosamente!');
     }
+
     public function show($slug)
     {
         $tour = Tour::where('slug', $slug)->firstOrFail();
@@ -203,6 +219,7 @@ class TourController extends Controller
 
         return view('admin.tours.show', compact('tour', 'tours', 'estour', 'categorias'));
     }
+
     public function destroy($id)
     {
         $tour = Tour::findOrFail($id);

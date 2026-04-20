@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Enblog;
 use App\Models\Esblog;
 use App\Models\Estour;
+use App\Models\Review;
 use App\Models\Subcategory;
 use App\Models\Tour;
 use Illuminate\Http\Request;
@@ -24,7 +25,9 @@ class EnEnlacesController extends Controller
             ->select('id', 'nombre', 'slug', 'imgThumb')
             ->get();
 
-        return view('index', compact('firstTours', 'nextTours', 'subcategoriasMenu'));
+        $reviews = Review::where('is_public', true)->get();
+
+        return view('index', compact('firstTours', 'nextTours', 'subcategoriasMenu', 'reviews'));
     }
     public function treks()
     {
@@ -105,7 +108,8 @@ class EnEnlacesController extends Controller
             ->get();
         $firstTours = $tours->take(3);
         $nextTours = $tours->slice(3, 8);
-        return view('inicio', compact('firstTours', 'nextTours'));
+        $reviews = Review::where('is_public', true)->get();
+        return view('inicio', compact('firstTours', 'nextTours', 'reviews'));
     }
     public function expediciones()
     {
@@ -209,6 +213,18 @@ class EnEnlacesController extends Controller
     }
     public function terminos(){
         return view('terminos');
+    }
+
+    public function glampingReviews()
+    {
+        $reviews = Review::where('is_public', true)->latest()->get();
+        return view('glamping-reviews', compact('reviews'));
+    }
+
+    public function glampingReviewsEs()
+    {
+        $reviews = Review::where('is_public', true)->latest()->get();
+        return view('glamping-reviews-es', compact('reviews'));
     }
 
 }

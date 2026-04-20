@@ -24,4 +24,12 @@
 <file name="TrustHosts.php" server="ftp.pachatusantrek.com" local="133701179540000000" remote="133967636400000000" Dst="0" />
 <file name="TrustProxies.php" server="ftp.pachatusantrek.com" local="133701179540000000" remote="133967636400000000" Dst="0" />
 <file name="VerifyCsrfToken.php" server="ftp.pachatusantrek.com" local="133701179540000000" remote="133967636400000000" Dst="0" />
+<file name="Authenticate.php" server="ftp.andeanexclusivetours.com" local="133701143540000000" remote="134207625600000000" Dst="0" />
+<file name="EncryptCookies.php" server="ftp.andeanexclusivetours.com" local="133701143540000000" remote="134207625600000000" Dst="0" />
+<file name="PreventRequestsDuringMaintenance.php" server="ftp.andeanexclusivetours.com" local="133701143540000000" remote="134207625600000000" Dst="0" />
+<file name="RedirectIfAuthenticated.php" server="ftp.andeanexclusivetours.com" local="133701143540000000" remote="134207625600000000" Dst="0" />
+<file name="TrimStrings.php" server="ftp.andeanexclusivetours.com" local="133701143540000000" remote="134207625600000000" Dst="0" />
+<file name="TrustProxies.php" server="ftp.andeanexclusivetours.com" local="133701143540000000" remote="134207625600000000" Dst="0" />
+<file name="VerifyCsrfToken.php" server="ftp.andeanexclusivetours.com" local="133701143540000000" remote="134207625600000000" Dst="0" />
+<file name="TrustHosts.php" server="ftp.andeanexclusivetours.com" local="133701143540000000" remote="134207625600000000" Dst="0" />
 </dwsync>

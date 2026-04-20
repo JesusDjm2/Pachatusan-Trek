@@ -12,4 +12,7 @@
 <file name="login.blade.php" server="ftp.pachatusantrek.com" local="133824852349861743" remote="133717667400000000" Dst="0" />
 <file name="register.blade.php" server="ftp.pachatusantrek.com" local="133824852356702877" remote="133701358800000000" Dst="0" />
 <file name="verify.blade.php" server="ftp.pachatusantrek.com" local="133824852360618849" remote="133701358800000000" Dst="0" />
+<file name="login.blade.php" server="ftp.andeanexclusivetours.com" local="133824852340000000" remote="134208267600000000" Dst="0" />
+<file name="register.blade.php" server="ftp.andeanexclusivetours.com" local="133824852340000000" remote="134208267600000000" Dst="0" />
+<file name="verify.blade.php" server="ftp.andeanexclusivetours.com" local="133824852360000000" remote="134208267600000000" Dst="0" />
 </dwsync>
