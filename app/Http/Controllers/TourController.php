@@ -101,7 +101,7 @@ class TourController extends Controller
         $tour->importante = $request->input('importante');
         $tour->keywords = $request->input('keywords');
         $tour->slug = $request->input('slug');
-        $tour->country_id = $request->country_id;
+        $tour->country_id = $request->filled('country_id') ? $request->country_id : null;
 
         $tour->save();
 
@@ -150,7 +150,7 @@ class TourController extends Controller
         $tour->recorrido = $request->input('recorrido');
         $tour->dias = $request->input('dias');
         $tour->ciudad = $request->input('ciudad');
-        $tour->country_id = $request->country_id;
+        $tour->country_id = $request->filled('country_id') ? $request->country_id : null;
 
         if ($request->hasFile('imgThumb')) {
             $img = $request->file('imgThumb');

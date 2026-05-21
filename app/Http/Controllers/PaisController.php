@@ -43,6 +43,17 @@ class PaisController extends Controller
         return view('admin.estours.pais.show', compact('pais'));
     }
 
+    /** Vista pública del país (tours dentro de la página), sin auth. */
+    public function publicShow(string $slug)
+    {
+        $query = Pais::with(['estours' => fn ($q) => $q->orderBy('dias', 'asc')]);
+        $pais = is_numeric($slug)
+            ? $query->findOrFail((int) $slug)
+            : $query->where('slug', $slug)->firstOrFail();
+
+        return view('admin.estours.pais.show', compact('pais'));
+    }
+
     public function edit(Pais $pai)
     {
         return view('admin.estours.pais.edit', compact('pai'));

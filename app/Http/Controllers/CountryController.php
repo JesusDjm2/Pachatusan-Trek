@@ -50,6 +50,17 @@ class CountryController extends Controller
         return view('admin.tours.country.show', compact('country'));
     }
 
+    /** Vista pública del país (tours en la misma página), sin auth. */
+    public function publicShow(string $slug)
+    {
+        $query = Country::with(['tours' => fn ($q) => $q->orderBy('dias', 'asc')]);
+        $country = is_numeric($slug)
+            ? $query->findOrFail((int) $slug)
+            : $query->where('slug', $slug)->firstOrFail();
+
+        return view('admin.tours.country.show', compact('country'));
+    }
+
     public function edit(Country $country)
     {
         return view('admin.tours.country.edit', compact('country'));

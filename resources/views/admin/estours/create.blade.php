@@ -57,11 +57,11 @@
                     </div>
 
                     <div class="col-lg-3 mt-3">
-                        <label for="pais_id" class="form-label">País:</label>
-                        <select name="pais_id" id="pais_id" class="form-control form-control-sm" required>
-                            <option disabled selected>Seleccione un país</option>
+                        <label for="pais_id" class="form-label">País <span class="text-muted fw-normal">(opcional)</span>:</label>
+                        <select name="pais_id" id="pais_id" class="form-control form-control-sm">
+                            <option value="" {{ old('pais_id') === null || old('pais_id') === '' ? 'selected' : '' }}>— Sin país —</option>
                             @foreach ($paises as $pais)
-                                <option value="{{ $pais->id }}" {{ old('pais_id') == $pais->id ? 'selected' : '' }}>
+                                <option value="{{ $pais->id }}" {{ (string) old('pais_id') === (string) $pais->id ? 'selected' : '' }}>
                                     {{ $pais->nombre }}
                                 </option>
                             @endforeach

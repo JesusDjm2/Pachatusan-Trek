@@ -7,7 +7,7 @@ use App\Models\Estour;
 use App\Models\Pais;
 use App\Models\Subcategoria;
 use App\Models\Tour;
-use File;
+use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
@@ -32,7 +32,7 @@ class EsTourController extends Controller
             'nombre' => 'required|unique:estours',
             'recorrido' => 'required',
             'dias' => 'required|integer',
-            'pais_id' => 'required|exists:paises,id', 
+            'pais_id' => 'nullable|exists:paises,id',
             'imgThumb' => 'required|image|mimes:jpg,jpeg,png,webp|max:2048',
             'imgFull' => 'required|image|mimes:jpg,jpeg,png,webp|max:2048',
             'descripcionCorta' => 'required',
@@ -77,7 +77,7 @@ class EsTourController extends Controller
             }
 
             foreach ($galeriaFiles as $galeriaFile) {
-                if ($galeriaFile->isValid() && in_array($galeriaFile->extension(), ['jpg', 'jpeg', 'png', 'webp'])) {
+                 if ($galeriaFile->isValid() && in_array($galeriaFile->extension(), ['jpg', 'jpeg', 'png', 'webp'])) {
 
                     $galeriaName = time() . '_' . $galeriaFile->getClientOriginalName();
 
@@ -98,7 +98,7 @@ class EsTourController extends Controller
         $tour->keywords = $request->input('keywords');
         $tour->slug = $request->input('slug');
         $tour->relacionado_id = $request->input('relacionado_id');
-        $tour->pais_id = $request->input('pais_id');
+        $tour->pais_id = $request->filled('pais_id') ? $request->input('pais_id') : null;
         $tour->save();
 
         $categorias = $request->input('categorias');
@@ -122,7 +122,7 @@ class EsTourController extends Controller
         $request->validate([
             'nombre' => 'required',
             'recorrido' => 'required',
-            'pais_id' => 'required|exists:paises,id',
+            'pais_id' => 'nullable|exists:paises,id',
             'ciudad' => 'nullable',
             'dias' => 'required|integer',
             'imgThumb' => 'sometimes|image|mimes:jpg,jpeg,png,webp|max:2048',
@@ -146,7 +146,7 @@ class EsTourController extends Controller
         $tour->recorrido = $request->input('recorrido');
         $tour->ciudad = $request->input('ciudad');
         $tour->dias = $request->input('dias');
-        $tour->pais_id = $request->input('pais_id');
+        $tour->pais_id = $request->filled('pais_id') ? $request->input('pais_id') : null;
 
         if ($request->hasFile('imgThumb')) {
             $img = $request->file('imgThumb');

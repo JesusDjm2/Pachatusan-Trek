@@ -193,7 +193,7 @@ a {
 }
 
 .banner-glamping {
-    background-image: url(../img/Fondos/glaping-muestra.webp);
+    background-image: url(../img/Fondos/banner-glamping-2.webp);
     height: 100vh;
 }
 
@@ -594,20 +594,23 @@ a {
     background-image: url("../img/full/destinations_cusco_banner.jpg");
     background-size: cover;
     background-attachment: fixed;
-    height: 80vh;
+    min-height: 80vh;
+    height: auto;
     width: 100%;
 
     @media (max-width: 576px) {
-        height: 900px;
+        min-height: 70vh;
     }
 
     .overlay {
         background-color: rgba(0, 0, 0, 0.5);
-        height: 100%;
+        min-height: inherit;
         width: 100%;
         display: flex;
         align-items: center;
         justify-content: center;
+        padding: 2.5rem 0 3rem;
+        box-sizing: border-box;
     }
 
     .carousel-item {
@@ -618,29 +621,18 @@ a {
                 object-fit: cover;
             }
 
-            p {
-                text-align: justify;
-                padding-left: 10em;
-                padding-right: 10em;
+            .review-text-body {
+                text-align: center;
+                padding-left: 1rem;
+                padding-right: 1rem;
+                white-space: pre-line;
+                word-break: break-word;
+                overflow-wrap: anywhere;
+                line-height: 1.65;
 
-                @media (max-width: 1200px) {
-                    padding-left: 5em;
-                    padding-right: 5em;
-                }
-
-                @media (max-width: 768px) {
-                    padding-left: 2em;
-                    padding-right: 2em;
-                }
-
-                @media (max-width: 576px) {
-                    padding-left: 1em;
-                    padding-right: 1em;
-                }
-
-                @media (max-width: 400px) {
-                    padding-left: 0.5em;
-                    padding-right: 0.5em;
+                @media (min-width: 768px) {
+                    padding-left: 2.5rem;
+                    padding-right: 2.5rem;
                 }
             }
         }

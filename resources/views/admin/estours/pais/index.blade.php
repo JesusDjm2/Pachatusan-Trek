@@ -102,7 +102,7 @@
                                                 @endif
                                             </td>
                                             <td class="px-4 py-3 text-center">
-                                                <a href="{{ route('pais.show', $pais->slug ?? $pais->id) }}"
+                                                <a href="{{ route('public.pais.show', $pais->slug ?? $pais->id) }}"
                                                     class="btn btn-sm btn-outline-info" target="_blank"
                                                     data-bs-toggle="tooltip" title="Ver vista pública">
                                                     <i class="fa fa-eye me-1"></i> Ver

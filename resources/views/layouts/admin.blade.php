@@ -90,8 +90,25 @@
                                         {{ $categoria->nombre }} <i class="fa fa-angle-down"></i>
                                     </a>
                                     <div class="sub-menu mega-menu mega-menu-column-4">
-                                        @if ($categoria->subcategories->count() > 2)
-                                            <!-- Mostrar subcategorías -->
+                                        @php
+                                            $isToursCategory = strtolower(trim($categoria->nombre)) === 'tours';
+                                            $hasSubcategories = $categoria->subcategories->count() > 0;
+                                        @endphp
+
+                                        @if ($isToursCategory)
+                                            @foreach ($countriesConTours as $country)
+                                                <div class="list-item text-center">
+                                                    <a href="{{ route('public.country.show', $country->slug ?? $country->id) }}"
+                                                        title="{{ $country->nombre }}">
+                                                        <div style="width: 100%; overflow: hidden; height:110px">
+                                                            <img src="{{ asset($country->imagen ?? 'img/default.jpg') }}"
+                                                                alt="{{ $country->nombre }}" loading="lazy">
+                                                        </div>
+                                                        <h4 class="title">{{ $country->nombre }}</h4>
+                                                    </a>
+                                                </div>
+                                            @endforeach
+                                        @elseif ($hasSubcategories)
                                             @foreach ($categoria->subcategories as $sub)
                                                 <div class="list-item text-center">
                                                     <a href="{{ route('subcategories.show', $sub->slug) }}"
@@ -99,67 +116,28 @@
                                                         <div style="width: 100%; overflow: hidden; height:110px">
                                                             <img src="{{ asset($sub->imgThumb ?? 'img/default.jpg') }}"
                                                                 alt="{{ $sub->nombre }}" loading="lazy">
-                                                            <div style="display:none;">
-                                                                Ruta en BD: {{ $sub->imgThumb }}<br>
-                                                                Ruta completa: {{ asset($sub->imgThumb) }}<br>
-                                                                ¿Archivo existe?:
-                                                                {{ File::exists(public_path($sub->imgThumb)) ? 'Sí' : 'No' }}
-                                                            </div>
                                                         </div>
                                                         <h4 class="title">{{ $sub->nombre }}</h4>
                                                     </a>
                                                 </div>
                                             @endforeach
                                         @else
-                                            @php
-                                                $isExpediciones = strtolower($categoria->slug) === 'expeditions';
-                                            @endphp
-
-                                            @if ($isExpediciones)
-                                                <!-- Mostrar tours de la categoría "expeditions" -->
-                                                @foreach ($categoria->tours as $tour)
-                                                    <div class="list-item text-center">
-                                                        <a href="{{ route('tour.show', $tour->slug) }}">
-                                                            <div style="width: 100%; overflow: hidden; height:110px">
-                                                                <img src="{{ asset($tour->imgThumb ?? 'img/default.jpg') }}"
-                                                                    alt="{{ $tour->nombre }}" loading="lazy">
-                                                            </div>
-                                                            <h4 class="title">{{ $tour->nombre }}</h4>
-                                                        </a>
-                                                    </div>
-                                                @endforeach
-                                            @else
-                                                @php
-                                                    $paisesParaMostrar = $countriesConTours;
-                                                    $paisesParaMostrar = $paisesParaMostrar->sortBy('nombre');
-                                                @endphp
-                                                @if ($paisesParaMostrar->count() > 0)
-                                                    @foreach ($paisesParaMostrar as $country)
-                                                        <div class="list-item text-center country-item">
-                                                            <a
-                                                                href="{{ route('country.show', $country->slug ?? $country->id) }}">
-                                                                <div class="country-img"
-                                                                    style="width: 100%; overflow: hidden; height:110px">
-                                                                    <img src="{{ asset($country->imagen ?? 'img/default.jpg') }}"
-                                                                        alt="{{ $country->nombre }}" loading="lazy">
-                                                                </div>
-                                                                <h4 class="title country-title">{{ $country->nombre }}
-                                                                </h4>
-                                                            </a>
+                                            @foreach ($categoria->tours as $tour)
+                                                <div class="list-item text-center">
+                                                    <a href="{{ route('tour.show', $tour->slug) }}"
+                                                        title="{{ $tour->nombre }}">
+                                                        <div style="width: 100%; overflow: hidden; height:110px">
+                                                            <img src="{{ asset($tour->imgThumb ?? 'img/default.jpg') }}"
+                                                                alt="{{ $tour->nombre }}" loading="lazy">
                                                         </div>
-                                                    @endforeach
-                                                @else
-                                                    <div class="text-center"
-                                                        style="grid-column: 1 / -1; padding: 20px;">
-                                                        <p>No hay países disponibles</p>
-                                                    </div>
-                                                @endif
-                                            @endif
+                                                        <h4 class="title">{{ $tour->nombre }}</h4>
+                                                    </a>
+                                                </div>
+                                            @endforeach
                                         @endif
                                     </div>
                                 </li>
                             @endforeach
-
                             <li class="menu-item-has-children">
                                 <a title="About Us" href="{{ route('about') }}">About Us <i
                                         class="fas fa-angle-down"></i></a>
@@ -191,26 +169,59 @@
                                             <h4 class="title">Social Projects</h4>
                                         </a>
                                     </div>
+                                    <div class="list-item text-center">
+                                        <a href="{{ route('guidelines') }}" title="Inca Trail Guidelines">
+                                            <div style="width: 100%; overflow: hidden; height:110px">
+                                                <img src="{{ asset('img/thumb/Inca-Trail-Reglas.jpg') }}"
+                                                    alt="Inca Trail Guidelines" loading="lazy">
+                                            </div>
+                                            <h4 class="title">Inca Trail Guidelines</h4>
+                                        </a>
+                                    </div>
                                 </div>
                             </li>
-                           
-                            <li class="menu-item-has-children">
-                                <a title="Glamping" href="{{ route('glampingen') }}">Glamping <i class="fas fa-angle-down"></i></a>
+
+                            {{-- <li class="menu-item-has-children">
+                                <a title="About Us" href="{{ route('about') }}">Gampling <i
+                                        class="fas fa-angle-down"></i></a>
                                 <div class="sub-menu mega-menu mega-menu-column-4">
                                     <div class="list-item text-center">
-                                        <a href="{{ route('glampingen') }}" title="Glamping Service">
+                                        <a href="{{ route('about') }}" title="Cusco">
                                             <div style="width: 100%; overflow: hidden; height:110px">
                                                 <img src="{{ asset('img/thumbnail/saced-valley-cusco.webp') }}"
-                                                    alt="Glamping Service" loading="lazy">
+                                                    alt="Tours Cusco" loading="lazy">
                                             </div>
-                                            <h4 class="title">Glamping Service</h4>
+                                            <h4 class="title">The Gampling Service</h4>
                                         </a>
                                     </div>
                                     <div class="list-item text-center">
-                                        <a href="{{ route('glamping.reviews') }}" title="Reviews">
+                                        <a href="{{ route('certificates') }}" title="Inca trails">
                                             <div style="width: 100%; overflow: hidden; height:110px">
                                                 <img src="{{ asset('img/certificados/sernanp.jpg') }}"
-                                                    alt="Glamping Reviews" loading="lazy">
+                                                    alt="Inca trail tours" loading="lazy">
+                                            </div>
+                                            <h4 class="title">Reviews</h4>
+                                        </a>
+                                    </div>
+                                </div>
+                            </li> --}}
+                            <li class="menu-item-has-children">
+                                <a title="About Us" href="">Gampling <i class="fas fa-angle-down"></i></a>
+                                <div class="sub-menu mega-menu mega-menu-column-4">
+                                    <div class="list-item text-center">
+                                        <a href="{{ route('glampingen') }}" title="Cusco">
+                                            <div style="width: 100%; overflow: hidden; height:110px">
+                                                <img src="{{ asset('img/thumbnail/saced-valley-cusco.webp') }}"
+                                                    alt="Tours Cusco" loading="lazy">
+                                            </div>
+                                            <h4 class="title">Servicio de Glamping</h4>
+                                        </a>
+                                    </div>
+                                    <div class="list-item text-center">
+                                        <a href="{{ route('certificates') }}" title="Inca trails">
+                                            <div style="width: 100%; overflow: hidden; height:110px">
+                                                <img src="{{ asset('img/certificados/sernanp.jpg') }}"
+                                                    alt="Inca trail tours" loading="lazy">
                                             </div>
                                             <h4 class="title">Reviews</h4>
                                         </a>
@@ -226,7 +237,7 @@
                 <div class="header-item item-right" style="flex: 0 0 16%;">
                     <a href="#" id="search-icon" title="Buscar tours"><i class="fas fa-search"></i></a>
                     @php
-                        $isTour = isset($estour); 
+                        $isTour = isset($estour); // o cualquier otra lógica que uses para identificar si es una página de tour
                     @endphp
                     <a href="{{ $isTour ? route('estour.show', $estour->slug) : $routeToOtherLang }}"
                         class="translate-button">
@@ -435,29 +446,6 @@
             }
         });
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            @if(session('flash'))
-                Swal.fire({
-                    icon: '{{ session('flash')['type'] ?? 'success' }}',
-                    title: '{{ session('flash')['type'] == 'success' ? 'Success!' : 'Oops...' }}',
-                    text: '{{ session('flash')['message'] }}',
-                    confirmButtonColor: '#0c8178'
-                });
-            @endif
-
-            @if($errors->any())
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Validation Error',
-                    html: '<ul style="text-align: left; margin: 0; padding: 0 1.2rem;">@foreach($errors->all() as $error)<li>{{ $error }}</li>@endforeach</ul>',
-                    confirmButtonColor: '#0c8178'
-                });
-            @endif
-        });
-    </script>
-    @stack('scripts')
 </body>
 
 </html>

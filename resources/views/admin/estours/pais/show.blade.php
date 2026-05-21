@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.admines')
 
 @section('metas')
     <title>{{ $pais->nombre }} - Destinos en PachatusanTrek</title>

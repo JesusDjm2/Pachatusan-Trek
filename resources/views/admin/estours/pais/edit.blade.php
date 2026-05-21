@@ -43,8 +43,8 @@
                         </small>
                         @if ($pai->slug)
                             <small class="text-muted d-block mt-1">
-                                URL pública: <a href="{{ route('pais.show', $pai->slug) }}" target="_blank">
-                                    {{ route('pais.show', $pai->slug) }}
+                                URL pública: <a href="{{ route('public.pais.show', $pai->slug ?? $pai->id) }}" target="_blank">
+                                    {{ route('public.pais.show', $pai->slug ?? $pai->id) }}
                                 </a>
                             </small>
                         @endif

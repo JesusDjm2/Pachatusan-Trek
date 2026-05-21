@@ -53,6 +53,9 @@
             color: #555;
             line-height: 1.7;
             font-size: 0.95rem;
+            white-space: pre-line;
+            word-break: break-word;
+            overflow-wrap: anywhere;
         }
         .review-meta {
             font-size: 0.82rem;
@@ -102,6 +105,7 @@
         $avgRating = $total > 0 ? round($reviews->avg('rating'), 1) : 0;
         $fiveStar  = $reviews->where('rating', 5)->count();
     @endphp
+    
     <section class="stats-strip">
         <div class="container">
             <div class="row text-center g-4">
@@ -164,7 +168,7 @@
                                 </div>
 
                                 {{-- Comentario --}}
-                                <p class="review-comment mb-3">"{{ $review->comment }}"</p>
+                                <p class="review-comment mb-3">&ldquo;{{ trim($review->comment) }}&rdquo;</p>
 
                                 {{-- Meta --}}
                                 <div class="review-meta d-flex flex-wrap gap-3 pt-3 border-top">

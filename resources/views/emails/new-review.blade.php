@@ -104,13 +104,14 @@
             margin-top: 8px;
             font-style: italic;
         }
+        /* .cta: los estilos críticos van en línea en el HTML; muchos clientes ignoran <style> */
         .cta {
             text-align: center;
             margin-bottom: 32px;
         }
         .cta a {
             display: inline-block;
-            background: linear-gradient(135deg, #2e7d52, #1a3c34);
+            background-color: #2e7d52;
             color: #ffffff;
             text-decoration: none;
             padding: 14px 36px;
@@ -188,9 +189,14 @@
             </div>
         </div>
 
-        <!-- CTA: REVIEW_ADMIN_URL en .env; si no, APP_URL + /admin/reviews -->
-        <div class="cta">
-            <a href="{{ config('mail.review_admin_url') ?: rtrim((string) config('app.url', ''), '/') . '/admin/reviews' }}">
+        <!-- CTA: estilos inline — los clientes de correo suelen eliminar <style> -->
+        <div class="cta" style="text-align:center;margin:0 0 32px 0;">
+            <a
+                href="{{ config('mail.review_admin_url') ?: rtrim((string) config('app.url', ''), '/') . '/admin/reviews' }}"
+                target="_blank"
+                rel="noopener noreferrer"
+                style="display:inline-block;background-color:#2e7d52;color:#ffffff;text-decoration:none;padding:14px 36px;border-radius:8px;font-size:15px;font-weight:600;letter-spacing:0.3px;font-family:'Segoe UI',Arial,sans-serif;line-height:1.2;mso-line-height-rule:exactly;"
+            >
                 Ir al Panel de Reviews →
             </a>
         </div>

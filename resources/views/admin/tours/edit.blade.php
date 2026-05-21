@@ -54,13 +54,13 @@
                             </div>
 
                             <div class="col-lg-4 mt-3">
-                                <label for="country_id" class="form-label font-weight-bold">País:</label>
-                                <select name="country_id" id="country_id" class="form-control form-control-sm" required>
-                                    <option value="">Seleccione un país</option>
+                                <label for="country_id" class="form-label font-weight-bold">País <span class="text-muted font-weight-normal">(opcional)</span>:</label>
+                                <select name="country_id" id="country_id" class="form-control form-control-sm">
+                                    <option value="" {{ old('country_id', $tour->country_id) === null || old('country_id', $tour->country_id) === '' ? 'selected' : '' }}>— Sin país —</option>
 
                                     @foreach ($countries as $country)
                                         <option value="{{ $country->id }}"
-                                            {{ old('country_id', $tour->country_id) == $country->id ? 'selected' : '' }}>
+                                            {{ (string) old('country_id', $tour->country_id) === (string) $country->id ? 'selected' : '' }}>
                                             {{ $country->nombre }}
                                         </option>
                                     @endforeach

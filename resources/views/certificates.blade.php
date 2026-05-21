@@ -104,20 +104,29 @@
                             </div>
 
                         </div>
+
                     </div>
+
                 </div>
+
                 <div class="col-lg-6 mb-3">
+
                     <div class="card m-3 p-4">
+
                         <div class="row">
+
                             <div class="col-lg-6 d-flex align-items-center justify-content-center">
 
                                 <img src="{{ asset('img/certificados/sernanp.jpg') }}" class="certificate-image">
 
                             </div>
+
                             <div class="col-lg-6 d-flex flex-column align-items-center justify-content-center">
 
                                 <h4>Senanp – Inca Trail</h4>
+
                                 <p class="text-center">
+
                                     Pachatusantrek SAC is proud to be an authorized operator for the Peruvian tate, of the
 
                                     Inca road network, with our approved project “Sustainable Tourism Management in the
@@ -129,22 +138,33 @@
                                     the Historic Sanctuary of Machu Picchu.
 
                                 </p>
+
                             </div>
+
                         </div>
+
                     </div>
+
                 </div>
+
                 <div class="col-lg-6 mb-3">
+
                     <div class="card m-3 p-4">
+
                         <div class="row">
+
                             <div class="col-lg-6 d-flex align-items-center justify-content-center">
 
                                 <img src="{{ asset('img/certificados/sernanp2.jpg') }}" class="certificate-image">
 
                             </div>
+
                             <div class="col-lg-6 d-flex flex-column align-items-center justify-content-center">
 
                                 <h4>Senarp</h4>
+
                                 <p class="text-center">
+
                                     SERNANP has recognized us for our good operational practices within the Inca Road
 
                                     Network of the Historic Sanctuary of Machu Picchu. This recognition motivates us to

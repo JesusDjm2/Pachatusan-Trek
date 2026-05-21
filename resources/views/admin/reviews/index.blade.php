@@ -91,10 +91,9 @@
                                             @endfor
                                         </div>
                                     </td>
-                                    <td class="px-4 comentario">
-                                        <div class="text-truncate" style="max-width: 300px;" title="{{ $review->comment }}">
-                                            {{ $review->comment }}
-                                        </div>
+                                    <td class="px-4 comentario align-top">
+                                        <div class="review-admin-comment p-2 bg-light rounded border small text-dark"
+                                            style="max-width: 40rem; max-height: 22rem; overflow-y: auto; white-space: pre-line; word-break: break-word; line-height: 1.5;">{{ trim($review->comment) }}</div>
                                     </td>
                                     <td class="px-4">
                                         {{ $review->travel_date ? $review->travel_date->format('d/m/Y') : 'N/A' }}
