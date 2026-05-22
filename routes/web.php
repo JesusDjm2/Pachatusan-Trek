@@ -64,6 +64,8 @@ Route::get('buscar-tours', [EnEnlacesController::class, 'searches'])->name('sear
 
 Route::get('glamping-español', [EnEnlacesController::class, 'glamping'])->name('glamping');
 Route::get('glamping-english', [EnEnlacesController::class, 'glampingen'])->name('glampingen');
+Route::get('glamping-reviews', [EnEnlacesController::class, 'glampingReviews'])->name('glamping-reviews-en');
+Route::get('glamping-opiniones', [EnEnlacesController::class, 'glampingReviewsEs'])->name('glamping-reviews-es');
 Route::get('terminos-y-condiciones', [EnEnlacesController::class, 'terminos'])->name('terminos');
 Route::get('terms-y-conditions', [EnEnlacesController::class, 'terms'])->name('terms');
 

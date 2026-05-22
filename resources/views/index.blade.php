@@ -338,7 +338,7 @@
                                     enctype="multipart/form-data">
                                     @csrf
                                     <div class="modal-header">
-                                        <h5 class="modal-title text-dark" id="reviewModalLabel">Leave your review</h5>
+                                        <h5 class="modal-title text-dark" id="reviewModalLabel">Write your review</h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                     </div>

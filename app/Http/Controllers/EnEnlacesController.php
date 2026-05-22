@@ -227,4 +227,14 @@ class EnEnlacesController extends Controller
         return view('glamping-reviews-es', compact('reviews'));
     }
 
+    public function guidelines()
+    {
+        return view('inca-trail-guidelines');
+    }
+
+    public function reglamento()
+    {
+        return view('reglamento-camino-inca');
+    }
+
 }

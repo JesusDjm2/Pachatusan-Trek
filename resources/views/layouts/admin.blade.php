@@ -214,7 +214,7 @@
                                                 <img src="{{ asset('img/thumbnail/saced-valley-cusco.webp') }}"
                                                     alt="Tours Cusco" loading="lazy">
                                             </div>
-                                            <h4 class="title">Servicio de Glamping</h4>
+                                            <h4 class="title">Glamping Service</h4>
                                         </a>
                                     </div>
                                     <div class="list-item text-center">

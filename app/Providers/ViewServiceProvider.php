@@ -58,6 +58,8 @@ class ViewServiceProvider extends ServiceProvider
             'cusco' => 'valle',
             'inca' => 'incaes',
             'south' => 'sur',
+            'glampingen' => 'glamping',
+            'glamping-reviews-en' => 'glamping-reviews-es',
         ];
         $routeMapEsToEn = array_flip($routeMapEnToEs);
 
