@@ -7,6 +7,7 @@ use App\Models\Country;
 use App\Models\EsCategoria;
 use App\Models\Estour;
 use App\Models\Pais;
+use App\Models\Review;
 use App\Models\TourCategory;
 use Illuminate\Support\Facades\View;
 use App\Models\Tour;
@@ -31,6 +32,13 @@ class ViewServiceProvider extends ServiceProvider
 
     public function boot()
     {
+        View::composer('layouts.app', function ($view) {
+            $view->with(
+                'pendingReviewsCount',
+                auth()->check() ? Review::where('is_public', false)->count() : 0
+            );
+        });
+
         // Slug maps
         $slugMapEnToEs = [
             'SubCategories-English/cusco-sacred-valley-of-the-incas' => 'SubCategorias-Espanol/cusco-y-valle-sagrado',

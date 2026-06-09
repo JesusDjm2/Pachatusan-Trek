@@ -1,45 +1,18 @@
 @extends('layouts.app')
 @section('titulo', 'Listado de blog en inglés')
-@section('contenido')
+@push('styles')
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css">
-    <div class="container-fluid py-4">
-        {{-- Header con título y botón de nuevo --}}
-        <div class="row mb-4 align-items-center">
-            <div class="col-12 col-md-6">
-                <div class="d-flex align-items-center">
-                    <div class="bg-primary bg-gradient rounded-3 p-3 me-3 shadow-sm">
-                        <i class="fas fa-blog text-white" style="font-size: 1.8rem;"></i>
-                    </div>
-                    <div>
-                        <h1 class="fw-bold text-primary mb-1 display-6">
-                            Blog <small class="text-muted">(ES)</small>
-                        </h1>
-                        <p class="text-muted mb-0">
-                            <i class="fas fa-pen-nib me-1"></i>
-                            Gestión de artículos en español
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-md-6 text-md-end mt-3 mt-md-0 d-flex justify-content-md-end gap-2">
-                <a href="{{ route('esblogs.create') }}" class="btn btn-primary shadow-sm hover-up">
-                    <i class="fas fa-plus-circle me-1"></i> Nuevo Blog
-                </a>
-            </div>
-        </div>
+@endpush
 
-        {{-- Alertas --}}
-        @if (session('success'))
-            <div class="alert alert-success alert-dismissible fade show shadow-sm border-0 mb-4" role="alert">
-                <div class="d-flex align-items-center">
-                    <i class="fas fa-check-circle me-2 fs-4"></i>
-                    <div>{{ session('success') }}</div>
-                </div>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-        @endif
+@section('contenido')
+    <div class="container-fluid py-4">
+        @include('partials.admin.page-header', [
+            'icon' => 'fa-blog',
+            'title' => 'Blog',
+            'badge' => 'ES',
+            'subtitle' => 'Gestión de artículos en español',
+            'actions' => '<a href="' . route('esblogs.create') . '" class="btn btn-primary shadow-sm hover-up"><i class="fas fa-plus-circle me-1"></i> Nuevo Blog</a>',
+        ])
 
         {{-- Buscador y Tabla --}}
         <div class="card shadow-sm border-0 overflow-hidden">

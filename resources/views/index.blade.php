@@ -394,4 +394,6 @@
             </div>
         </div>
     </section>
+
+    @include('partials.review-flash-alert', ['locale' => 'en'])
 @endsection

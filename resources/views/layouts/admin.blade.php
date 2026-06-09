@@ -180,7 +180,6 @@
                                     </div>
                                 </div>
                             </li>
-
                             {{-- <li class="menu-item-has-children">
                                 <a title="About Us" href="{{ route('about') }}">Gampling <i
                                         class="fas fa-angle-down"></i></a>
@@ -218,10 +217,10 @@
                                         </a>
                                     </div>
                                     <div class="list-item text-center">
-                                        <a href="{{ route('certificates') }}" title="Inca trails">
+                                        <a href="{{ route('glamping-reviews-en') }}" title="Glamping reviews">
                                             <div style="width: 100%; overflow: hidden; height:110px">
                                                 <img src="{{ asset('img/certificados/sernanp.jpg') }}"
-                                                    alt="Inca trail tours" loading="lazy">
+                                                    alt="Glamping reviews" loading="lazy">
                                             </div>
                                             <h4 class="title">Reviews</h4>
                                         </a>
@@ -446,6 +445,7 @@
             }
         });
     </script>
+    @stack('scripts')
 </body>
 
 </html>

@@ -10,10 +10,30 @@ use Illuminate\Support\Facades\Mail;
 
 class ReviewController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $reviews = Review::latest()->get();
-        return view('admin.reviews.index', compact('reviews'));
+        $status = $request->get('status', 'all');
+
+        $query = Review::query();
+
+        if ($status === 'pending') {
+            $query->where('is_public', false);
+        } elseif ($status === 'approved') {
+            $query->where('is_public', true);
+        }
+
+        $reviews = $query
+            ->orderBy('is_public')
+            ->orderByDesc('created_at')
+            ->get();
+
+        $stats = [
+            'total' => Review::count(),
+            'pending' => Review::where('is_public', false)->count(),
+            'approved' => Review::where('is_public', true)->count(),
+        ];
+
+        return view('admin.reviews.index', compact('reviews', 'stats', 'status'));
     }
 
     public function update(Request $request, Review $review)
@@ -23,7 +43,9 @@ class ReviewController extends Controller
 
         return back()->with('flash', [
             'type' => 'success',
-            'message' => 'Review status updated successfully!',
+            'message' => $review->is_public
+                ? 'Reseña aprobada y publicada en la web.'
+                : 'Reseña ocultada de la web.',
         ]);
     }
 
@@ -37,7 +59,7 @@ class ReviewController extends Controller
 
         return back()->with('flash', [
             'type' => 'success',
-            'message' => 'Review deleted successfully!',
+            'message' => 'Reseña eliminada correctamente.',
         ]);
     }
 
@@ -53,6 +75,7 @@ class ReviewController extends Controller
         ]);
 
         $reviewData = $request->except('image');
+        $reviewData['is_public'] = false;
 
         if ($request->hasFile('image')) {
             $image = $request->file('image');
@@ -84,7 +107,7 @@ class ReviewController extends Controller
 
         return back()->with('flash', [
             'type' => 'success',
-            'message' => 'Review submitted successfully! It will be reviewed by our team.',
+            'message' => '¡Gracias! Tu reseña fue enviada y será revisada por nuestro equipo antes de publicarse.',
         ]);
     }
 }

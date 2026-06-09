@@ -261,24 +261,5 @@
         </div>
     </div>
 
-@push('scripts')
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    @if(session('flash') && session('flash.type') === 'success')
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            Swal.fire({
-                icon: 'success',
-                title: '\uD83C\uDF89 \u00a1Gracias!',
-                html: '<p style="font-size:1rem;color:#444;line-height:1.7">\u00a1Tu rese\u00f1a fue enviada con \u00e9xito!<br><strong>Nuestro equipo la revisar\u00e1</strong> y pronto estar\u00e1 visible en nuestra p\u00e1gina.<br><br><em>\u00a1Gracias por tu aportaci\u00f3n! \uD83C\uDFD4\uFE0F</em></p>',
-                confirmButtonText: '\u00a1Entendido!',
-                confirmButtonColor: '#0c8178',
-                background: '#fff',
-                width: '480px',
-                padding: '2.5rem',
-                showClass: { popup: 'swal2-show' },
-                hideClass: { popup: 'swal2-hide' }
-            });
-        });
-    <\/script>
-    @endif
-@endpush
+    @include('partials.review-flash-alert', ['locale' => 'es', 'modalId' => 'reviewModalEs'])
+@endsection

@@ -257,24 +257,5 @@
         </div>
     </div>
 
-@push('scripts')
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    @if(session('flash') && session('flash.type') === 'success')
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            Swal.fire({
-                icon: 'success',
-                title: '\uD83C\uDF89 Thank you!',
-                html: '<p style="font-size:1rem;color:#444;line-height:1.7">Your review has been submitted successfully!<br><strong>Our team will review it</strong> and it will soon be visible on our page.<br><br><em>Thank you for your contribution! \uD83C\uDFD4\uFE0F</em></p>',
-                confirmButtonText: 'Got it!',
-                confirmButtonColor: '#0c8178',
-                background: '#fff',
-                width: '480px',
-                padding: '2.5rem',
-                showClass: { popup: 'swal2-show' },
-                hideClass: { popup: 'swal2-hide' }
-            });
-        });
-    <\/script>
-    @endif
-@endpush
+    @include('partials.review-flash-alert', ['locale' => 'en'])
+@endsection
