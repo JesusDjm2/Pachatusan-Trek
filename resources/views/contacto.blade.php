@@ -21,7 +21,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <h3>Contáctenos</h3>
-                    <form action="{{ route('bookes') }}" method="post" role="form">
+                    <form action="{{ route('bookes') }}" method="post" role="form" data-recaptcha="submit">
                         @csrf
                         <div class="form-group">
                             <label for="name">Nombre:</label>

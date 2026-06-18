@@ -167,12 +167,12 @@
                 <div class="col-lg-4 mb-3">
                     <div class="card border-0 text-white">
                         <div class="card-body">
-                            <h5 class="card-title text-dark mb-2">TREKKING</h5>
+                            <h5 class="card-title text-dark mb-2">CAMINATAS</h5>
                             <p class="card-text text-dark">Recorreremos los senderos ancestrales de la cordillera de los
                                 Andes, donde la historia, la flora, la fauna y la geografía llenarán nuestros sentidos.
                                 Caminaremos entre las divinidades andinas que serán testigos silenciosos de nuestras propias
                                 historias en las montañas..</p>
-                            <a href="{{ route('treks') }}" class="btn btn-primary btn-sm">Ver Tours</a>
+                            <a href="{{ route('treks') }}" class="btn btn-primary btn-sm">Ver Caminatas</a>
                         </div>
                     </div>
                 </div>
@@ -186,7 +186,7 @@
                                 cercanos a la llanura amazónica, zonas llenas de mitos, historia, flora, fauna y una cultura
                                 sorprendente.
                             </p>
-                            <a href="{{ route('expeditions') }}" class="btn btn-primary btn-sm">Ver Tours</a>
+                            <a href="{{ route('expeditions') }}" class="btn btn-primary btn-sm">Ver Expediciones</a>
                         </div>
                     </div>
                 </div>
@@ -199,7 +199,7 @@
                                 Perú. Nuestro servicio te garantiza una experiencia inolvidable en la costa, sierra y selva.
                                 Contamos con las mejores opciones de viaje para que conozcas el Perú al máximo.
                             </p>
-                            <a href="{{ route('entours') }}" class="btn btn-primary btn-sm">View tours</a>
+                            <a href="{{ route('entours') }}" class="btn btn-primary btn-sm">Ver tours</a>
                         </div>
                     </div>
                 </div>
@@ -350,7 +350,7 @@
                         <div class="modal-dialog modal-lg">
                             <div class="modal-content">
                                 <form action="{{ route('reviews.store') }}" method="POST"
-                                    enctype="multipart/form-data">
+                                    enctype="multipart/form-data" data-recaptcha="submit">
                                     @csrf
                                     <div class="modal-header">
                                         <h5 class="modal-title text-dark" id="reviewModalLabel">Deja tu reseña</h5>

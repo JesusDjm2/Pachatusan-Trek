@@ -120,6 +120,9 @@ Route::post('reviews', [ReviewController::class, 'store'])->name('reviews.store'
 
 //Formularios en inglés
 Route::post('mensaje01', function () {
+    if (!\App\Services\RecaptchaService::verify(request('g-recaptcha-response'))) {
+        abort(400, 'Invalid request.');
+    }
     $datos = request()->all();
     // Validación del CAPTCHA en el backend
     if ((int) request('respuesta') !== (int) request('valorCorrecto')) {
@@ -137,6 +140,9 @@ Route::post('mensaje01', function () {
 })->name('mensaje01');
 
 Route::post('mensaje02', function () {
+    if (!\App\Services\RecaptchaService::verify(request('g-recaptcha-response'))) {
+        abort(400, 'Invalid request.');
+    }
     $datos = request()->all();
     // Validación del CAPTCHA en el backend
     if ((int) request('respuesta') !== (int) request('valorCorrecto')) {
@@ -154,6 +160,9 @@ Route::post('mensaje02', function () {
 })->name('mensaje02');
 
 Route::post('bookindex2', function () {
+    if (!\App\Services\RecaptchaService::verify(request('g-recaptcha-response'))) {
+        return back()->withErrors(['captcha' => 'Invalid CAPTCHA. Please try again.'])->withInput();
+    }
     $datos = request()->all();
     if (!empty(request('honeypot'))) {
         return back()->withErrors(['honeypot' => 'Spam detected.']);
@@ -174,6 +183,9 @@ Route::post('bookindex2', function () {
 })->name('bookindex2');
 
 Route::post('bookes', function () {
+    if (!\App\Services\RecaptchaService::verify(request('g-recaptcha-response'))) {
+        return back()->withErrors(['captcha' => 'CAPTCHA inválido. Intente nuevamente.'])->withInput();
+    }
     $datos = request()->all();
     if (!empty(request('honeypot'))) {
         return back()->withErrors(['honeypot' => 'Spam detected.']);

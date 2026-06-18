@@ -160,7 +160,7 @@
                             <p class="card-text text-dark">We travel the ancestral trails in the Andes mountain range;
                                 where history, flora, fauna and geography will fill our senses. We will walk among the
                                 Andean divinities who will be silent witnesses of our own stories in the mountains.</p>
-                            <a href="{{ route('treks') }}" class="btn btn-primary btn-sm">View Tours</a>
+                            <a href="{{ route('treks') }}" class="btn btn-primary btn-sm">View Treks</a>
                         </div>
                     </div>
                 </div>
@@ -174,7 +174,7 @@
                                 forests near the Amazon plain, areas full of myths, history, flora, fauna and a
                                 surprising culture.
                             </p>
-                            <a href="{{ route('expeditions') }}" class="btn btn-primary btn-sm">View Tours</a>
+                            <a href="{{ route('expeditions') }}" class="btn btn-primary btn-sm">View Expeditions</a>
                         </div>
                     </div>
                 </div>
@@ -325,7 +325,7 @@
                     <div class="col-12 text-center mt-4">
                         <button type="button" class="btn btn-branding" data-bs-toggle="modal"
                             data-bs-target="#reviewModal">
-                            Leave a Review
+                            Write a Review
                         </button>
                     </div>
 
@@ -335,7 +335,7 @@
                         <div class="modal-dialog modal-lg">
                             <div class="modal-content">
                                 <form action="{{ route('reviews.store') }}" method="POST"
-                                    enctype="multipart/form-data">
+                                    enctype="multipart/form-data" data-recaptcha="submit">
                                     @csrf
                                     <div class="modal-header">
                                         <h5 class="modal-title text-dark" id="reviewModalLabel">Write your review</h5>

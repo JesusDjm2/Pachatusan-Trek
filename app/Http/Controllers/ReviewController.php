@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Mail\NewReviewNotification;
 use App\Models\Review;
+use App\Services\RecaptchaService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
@@ -65,6 +66,10 @@ class ReviewController extends Controller
 
     public function store(Request $request)
     {
+        if (!RecaptchaService::verify($request->input('g-recaptcha-response'))) {
+            return back()->withErrors(['captcha' => 'No pudimos verificar que eres humano. Intenta nuevamente.'])->withInput();
+        }
+
         $request->validate([
             'name' => 'required|string|max:255',
             'travel_date' => 'required|date',

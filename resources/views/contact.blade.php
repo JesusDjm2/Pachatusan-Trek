@@ -21,7 +21,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <h3>Contact Us</h3>
-                    {{-- <form action="{{ route('bookindex2') }}" method="post" role="form">
+                    {{-- <form action="{{ route('bookindex2') }}" method="post" role="form" data-recaptcha="submit">
                         @csrf
                         <div class="form-group">
                             <label for="name">Name:</label>
@@ -111,7 +111,7 @@
                             }
                         });
                     </script> --}}
-                    <form action="{{ route('bookindex2') }}" method="post" role="form">
+                    <form action="{{ route('bookindex2') }}" method="post" role="form" data-recaptcha="submit">
                         @csrf
                         <div class="form-group">
                             <label for="name">Name:</label>

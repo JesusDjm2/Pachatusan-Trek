@@ -1,7 +1,7 @@
 <!-----Booking---------->
 <div class="fondo-book">
     <h3 class="text-center mb-3">Solicitar información</h3>
-    <form action="{{ route('mensaje02') }}" method="post" role="form" class="book1">
+    <form action="{{ route('mensaje02') }}" method="post" role="form" class="book1" data-recaptcha="submit">
         @csrf
         <div class="row">
             <div class="col-lg-6 mb-2">

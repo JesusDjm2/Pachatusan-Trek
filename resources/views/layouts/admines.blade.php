@@ -15,6 +15,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&amp;display=swap" rel="stylesheet">
     @yield('metas')
+    @include('layouts.recaptcha')
 </head>
 
 <body>
@@ -180,28 +181,8 @@
                                     </div>
                                 </div>
                             </li>
-                            <li class="menu-item-has-children">
-                                <a title="About Us" href="">Gampling <i class="fas fa-angle-down"></i></a>
-                                <div class="sub-menu mega-menu mega-menu-column-4">
-                                    <div class="list-item text-center">
-                                        <a href="{{ route('glamping') }}" title="Cusco">
-                                            <div style="width: 100%; overflow: hidden; height:110px">
-                                                <img src="{{ asset('img/thumbnail/saced-valley-cusco.webp') }}"
-                                                    alt="Tours Cusco" loading="lazy">
-                                            </div>
-                                            <h4 class="title">Servicio de Glamping</h4>
-                                        </a>
-                                    </div>
-                                    <div class="list-item text-center">
-                                        <a href="{{ route('glamping-reviews-es') }}" title="Opiniones de glamping">
-                                            <div style="width: 100%; overflow: hidden; height:110px">
-                                                <img src="{{ asset('img/certificados/sernanp.jpg') }}"
-                                                    alt="Opiniones de glamping" loading="lazy">
-                                            </div>
-                                            <h4 class="title">Opiniones</h4>
-                                        </a>
-                                    </div>
-                                </div>
+                            <li>
+                                <a title="Glamping" href="{{ route('glamping') }}">Glamping</a>
                             </li>
                             <li>
                                 <a href="{{ route('contacto') }}" title="Contactenos">Contacto</a>

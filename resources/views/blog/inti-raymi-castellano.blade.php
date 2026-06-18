@@ -97,7 +97,7 @@
                             <div>
                                 <a href="#close" title="Close" class="close"><i class="fa fa-close"></i></a>
                                 <form action="{{ route('mensaje02') }}" method="post" role="form"
-                                    class="book1 text-center">
+                                    class="book1 text-center" data-recaptcha="submit">
                                     @csrf
                                     <div class="form-row">
                                         <br>

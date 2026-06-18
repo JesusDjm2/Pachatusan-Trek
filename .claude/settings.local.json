@@ -2,7 +2,17 @@
   "permissions": {
     "allow": [
       "Bash(php artisan *)",
-      "Bash(php -r \"echo 'Blade syntax check' . PHP_EOL;\")"
+      "Bash(php -r \"echo 'Blade syntax check' . PHP_EOL;\")",
+      "Bash(grep -rl \"route\\('mensaje01'\\)\\\\|route\\('mensaje02'\\)\\\\|route\\('bookindex2'\\)\\\\|route\\('bookes'\\)\\\\|route\\('reviews.store'\\)\" resources/views)",
+      "Read(//tmp/**)",
+      "Bash(node scripts/tmp-add-recaptcha-attr.js /tmp/recaptcha_files.txt)",
+      "Bash(php -r 'require '\\\\''vendor/autoload.php'\\\\''; $app = require '\\\\''bootstrap/app.php'\\\\''; $kernel = $app->make\\(Illuminate\\\\Contracts\\\\Console\\\\Kernel::class\\); $kernel->bootstrap\\(\\); echo get_class\\(app\\('\\\\''recaptcha'\\\\''\\)\\) . PHP_EOL; echo config\\('\\\\''recaptcha.version'\\\\''\\) . PHP_EOL; echo config\\('\\\\''recaptcha.api_site_key'\\\\''\\) . PHP_EOL;')",
+      "Bash(php -r ' *)",
+      "Bash(git check-ignore *)",
+      "Bash(rm resources/views/layouts/main.blade.php)"
+    ],
+    "additionalDirectories": [
+      "C:\\xampp\\htdocs\\Pachatusantrek\\resources\\views\\layouts"
     ]
   }
 }

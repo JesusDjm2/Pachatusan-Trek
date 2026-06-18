@@ -201,7 +201,7 @@
     <div class="modal fade" id="reviewModal" tabindex="-1" aria-labelledby="reviewModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
-                <form action="{{ route('reviews.store') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('reviews.store') }}" method="POST" enctype="multipart/form-data" data-recaptcha="submit">
                     @csrf
                     <div class="modal-header">
                         <h5 class="modal-title" id="reviewModalLabel">
