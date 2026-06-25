@@ -25,7 +25,7 @@
             case 2:
                 $bannerClass = 'banner-tours';
                 $text =
-                    'Tour many of the important places in Cusco and the surrounding Sacred Valley. Visit places that have significant religious importance to the Incas and the local communities that still exist there. Take in Cusco, Sacsayhuaman, the Sacred Valley – Pisac, Ollantaytambo, Yucay and many more of the beautiful towns that exist here.';
+                    'Discover the most iconic tourist destinations in Peru and neighboring countries such as Bolivia, Brazil, Chile, and Argentina. We design unique travel experiences through Patagonia, the Brazilian Amazon, and the majestic Uyuni Salt Flats, combining adventure, culture, and nature with outstanding service.';
                 break;
             case 3:
                 $bannerClass = 'banner-treks';

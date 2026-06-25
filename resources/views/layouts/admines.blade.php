@@ -90,7 +90,7 @@
                                     </a>
                                     <div class="sub-menu mega-menu mega-menu-column-4">
                                         @php
-                                            $isToursCategory = strtolower(trim($categoria->nombre)) === 'tours';
+                                            $isToursCategory = in_array(strtolower(trim($categoria->nombre)), ['tours', 'viajes']);
                                             $hasSubcategories = $categoria->subcategorias->count() > 0;
                                         @endphp
 
@@ -182,7 +182,7 @@
                                 </div>
                             </li>
                             <li>
-                                <a title="Glamping" href="{{ route('glamping') }}">Glamping</a>
+                                <a title="Glamping" href="{{ route('glamping') }}">De lujo</a>
                             </li>
                             <li>
                                 <a href="{{ route('contacto') }}" title="Contactenos">Contacto</a>
@@ -256,7 +256,7 @@
                                 </a>
                             </div>
                             <div class="col-md-1 col-4 mb-2">
-                                <a
+                               <a target="_blank"
                                     href="https://www.gob.pe/15106-ministerio-de-comercio-exterior-y-turismo-prevencion-de-la-explotacion-sexual-de-ninas-ninos-y-adolescentes-en-el-ambito-del-turismo-esnna">
                                     <img src="{{ asset('img/codigoesssna.png') }}" class="img-fluid" loading="lazy"
                                         alt="Código ESSSNA">
@@ -282,7 +282,7 @@
                                 </a>
                             </div>
                             <div class="col-md-1 col-4 mb-2">
-                                <a href="https://www.packforapurpose.org/">
+                                <a href="https://www.packforapurpose.org" target="_blank">
                                     <img src="{{ asset('img/pfp.png') }}" class="img-fluid" loading="lazy"
                                         alt="PFP">
                                 </a>
@@ -335,10 +335,10 @@
                                     <i class="fab fa-youtube fa-1x"></i>
                                 </a>
                             </li>
-                            <h4 class="text-white mt-4">Terminos & Condiciones</h4>
+                            <h4 class="text-white mt-4">Términos & Condiciones</h4>
                             <a href="{{ route('terminos') }}" class="text-white"
                                 style="text-decoration: none; font-size: 14px;">
-                                Terminos y Condiciones
+                                Ver Términos y Condiciones
                             </a>
                         </div>
                         <div class="col-6">

@@ -182,10 +182,11 @@
                     <div class="card border-0 text-white">
                         <div class="card-body">
                             <h5 class="card-title text-dark mb-2">TOURS</h5>
-                            <p class="card-text text-dark">
-                                Enjoy and know the main tourist destinations of the most important regions of Peru. Our
-                                service guarantees an unforgettable experience on the coast, mountains and jungle. We
-                                have the best travel options to get to know Peru to the fullest.
+                            <p class="card-text text-dark text-justify">
+                                Discover the most iconic tourist destinations in Peru and neighboring countries such as
+                                Bolivia, Brazil, Chile, and Argentina. We design unique travel experiences through
+                                Patagonia, the Brazilian Amazon, and the majestic Uyuni Salt Flats, combining adventure,
+                                culture, and nature with outstanding service.
                             </p>
                             <a href="{{ route('entours') }}" class="btn btn-primary btn-sm">View tours</a>
                         </div>
@@ -234,12 +235,9 @@
             <a href="https://pachatusantrek.com/en/choqekiraw-huancacalle-10d-9n" class="btn">Explore Now</a>
         </div>
     </section>
-    <section class="mainTours bg-light">
+    {{-- <section class="mainTours bg-light">
         <div class="container pt-4 pb-5">
-            <div class="row">
-                <div class="col-lg-12 mb-5">
-                    <h2 class="dancing">Most popular tours:</h2>
-                </div>
+            <div class="row">               
                 @foreach ($nextTours as $tour)
                     <div class="col-lg-3 tours mb-3">
                         <div class="contImg">
@@ -262,7 +260,7 @@
                 @endforeach
             </div>
         </div>
-    </section>
+    </section> --}}
     <section class="review-section">
         <div class="overlay d-flex align-items-center justify-content-center">
             <div class="container">
@@ -278,7 +276,8 @@
                                         <div class="mb-3">
                                             @if ($review->image)
                                                 <img src="{{ asset($review->image) }}" alt="Client Image"
-                                                    class="rounded-circle mx-auto d-block" style="width: 80px; height: 80px; object-fit: cover;">
+                                                    class="rounded-circle mx-auto d-block"
+                                                    style="width: 80px; height: 80px; object-fit: cover;">
                                             @else
                                                 <div class="rounded-circle bg-secondary d-flex align-items-center justify-content-center text-white mx-auto"
                                                     style="width: 80px; height: 80px;">
@@ -293,10 +292,12 @@
                                             </div>
                                             <small class="text-white-50 d-block">
                                                 <i class="far fa-calendar-alt me-1"></i>
-                                                Travel Date: {{ $review->travel_date ? $review->travel_date->format('M Y') : 'N/A' }}
+                                                Travel Date:
+                                                {{ $review->travel_date ? $review->travel_date->format('M Y') : 'N/A' }}
                                             </small>
                                         </div>
-                                        <p class="mt-3 review-text" style="max-width: 800px; margin: 0 auto; font-style: italic;">
+                                        <p class="mt-3 review-text"
+                                            style="max-width: 800px; margin: 0 auto; font-style: italic;">
                                             "{{ $review->comment }}"
                                         </p>
                                     </div>
@@ -334,8 +335,8 @@
                         aria-hidden="true">
                         <div class="modal-dialog modal-lg">
                             <div class="modal-content">
-                                <form action="{{ route('reviews.store') }}" method="POST"
-                                    enctype="multipart/form-data" data-recaptcha="submit">
+                                <form action="{{ route('reviews.store') }}" method="POST" enctype="multipart/form-data"
+                                    data-recaptcha="submit">
                                     @csrf
                                     <div class="modal-header">
                                         <h5 class="modal-title text-dark" id="reviewModalLabel">Write your review</h5>

@@ -166,8 +166,8 @@
 ═══════════════════════════════════════════════════════════ --}}
 <section class="banner-glamping">
     <div class="banner-content container">
-        <h1>Equipo de Campamento</h1>
-        <p>Servicio de Lujo — Comodidad en el Corazón de los Andes</p>
+        <h1>Servicio De Lujo</h1>
+        <p>Lujo y comodidad en el corazón de los Andes</p>
         <a href="#intro" class="scroll-down-btn" aria-label="Bajar al contenido">
             <i class="fas fa-chevron-down"></i>
             <i class="fas fa-chevron-down additional-arrow"></i>

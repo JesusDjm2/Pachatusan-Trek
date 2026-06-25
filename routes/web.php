@@ -89,6 +89,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('esblogs', EsblogController::class)->names('esblogs');
     Route::resource('imagenes', ImagenController::class)->names('imagenes');
     Route::resource('admin/estours/pais', PaisController::class)->names('paises');
+    Route::resource('admin/estours/country', CountryController::class)->names('countries');
     Route::get('admin/reviews', [ReviewController::class, 'index'])->name('admin.reviews.index');
     Route::put('admin/reviews/{review}', [ReviewController::class, 'update'])->name('admin.reviews.update');
     Route::delete('admin/reviews/{review}', [ReviewController::class, 'destroy'])->name('admin.reviews.destroy');

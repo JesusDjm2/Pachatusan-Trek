@@ -72,14 +72,14 @@
 <file name="suscribete.blade.php" server="ftp.pachatusantrek.com" local="133824852507649822" remote="133967628000000000" Dst="0" />
 <file name="wasa-blog.blade.php" server="ftp.pachatusantrek.com" local="133824852508385988" remote="133967628000000000" Dst="0" />
 <file name="wasa.blade.php" server="ftp.pachatusantrek.com" local="133824852510009564" remote="133967628000000000" Dst="0" />
-<file name="admin.blade.php" server="ftp.andeanexclusivetours.com" local="134260334970558732" remote="134260371000000000" Dst="0" />
-<file name="admines.blade.php" server="ftp.andeanexclusivetours.com" local="134260334981757914" remote="134260371000000000" Dst="0" />
+<file name="admin.blade.php" server="ftp.andeanexclusivetours.com" local="134268757572944988" remote="134268793200000000" Dst="0" />
+<file name="admines.blade.php" server="ftp.andeanexclusivetours.com" local="134268757878106185" remote="134268793800000000" Dst="0" />
 <file name="analitycs.blade.php" server="ftp.andeanexclusivetours.com" local="134223867780842866" remote="134221592400000000" Dst="0" />
-<file name="app.blade.php" server="ftp.andeanexclusivetours.com" local="134254973776106477" remote="134255017800000000" Dst="0" />
-<file name="booking-castellano.blade.php" server="ftp.andeanexclusivetours.com" local="134223867789373272" remote="134221592400000000" Dst="0" />
-<file name="booking.blade.php" server="ftp.andeanexclusivetours.com" local="134223867795153242" remote="134221592400000000" Dst="0" />
+<file name="app.blade.php" server="ftp.andeanexclusivetours.com" local="134263896849585794" remote="134263947000000000" Dst="0" />
+<file name="booking-castellano.blade.php" server="ftp.andeanexclusivetours.com" local="134262750662141032" remote="134263888800000000" Dst="0" />
+<file name="booking.blade.php" server="ftp.andeanexclusivetours.com" local="134262750662151038" remote="134263888800000000" Dst="0" />
 <file name="ingles.blade.php" server="ftp.andeanexclusivetours.com" local="134223867795853886" remote="134221592400000000" Dst="0" />
-<file name="links.blade.php" server="ftp.andeanexclusivetours.com" local="134223867797303250" remote="134221592400000000" Dst="0" />
+<file name="links.blade.php" server="ftp.andeanexclusivetours.com" local="134262764077573451" remote="134263888800000000" Dst="0" />
 <file name="menu-blog-castellano.blade.php" server="ftp.andeanexclusivetours.com" local="134223867802324041" remote="134221592400000000" Dst="0" />
 <file name="menu-blog.blade.php" server="ftp.andeanexclusivetours.com" local="134223867803635005" remote="134221592400000000" Dst="0" />
 <file name="menu-castellano.blade.php" server="ftp.andeanexclusivetours.com" local="134223867804523329" remote="134221592400000000" Dst="0" />
@@ -88,4 +88,5 @@
 <file name="suscribete.blade.php" server="ftp.andeanexclusivetours.com" local="134223867812187915" remote="134221592400000000" Dst="0" />
 <file name="wasa-blog.blade.php" server="ftp.andeanexclusivetours.com" local="134223867817560692" remote="134221592400000000" Dst="0" />
 <file name="wasa.blade.php" server="ftp.andeanexclusivetours.com" local="134223867818649886" remote="134221592400000000" Dst="0" />
+<file name="recaptcha.blade.php" server="ftp.andeanexclusivetours.com" local="134262763848808693" remote="134263888800000000" Dst="0" />
 </dwsync>

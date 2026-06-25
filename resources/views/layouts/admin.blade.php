@@ -125,7 +125,7 @@
                                         @else
                                             @foreach ($categoria->tours as $tour)
                                                 <div class="list-item text-center">
-                                                    <a href="{{ route('tour.show', $tour->slug) }}"
+                                                    <a href="{{ route('tour.show', $tour ->slug) }}"
                                                         title="{{ $tour->nombre }}">
                                                         <div style="width: 100%; overflow: hidden; height:110px">
                                                             <img src="{{ asset($tour->imgThumb ?? 'img/default.jpg') }}"
@@ -271,7 +271,7 @@
                                 </a>
                             </div>
                             <div class="col-md-1 col-4 mb-2">
-                                <a
+                                <a target="_blank"
                                     href="https://www.gob.pe/15106-ministerio-de-comercio-exterior-y-turismo-prevencion-de-la-explotacion-sexual-de-ninas-ninos-y-adolescentes-en-el-ambito-del-turismo-esnna">
                                     <img src="{{ asset('img/codigoesssna.png') }}" class="img-fluid" loading="lazy"
                                         alt="Código ESSSNA">
@@ -297,7 +297,7 @@
                                 </a>
                             </div>
                             <div class="col-md-1 col-4 mb-2">
-                                <a href="https://www.packforapurpose.org/">
+                                <a href="https://www.packforapurpose.org" target="_blank">
                                     <img src="{{ asset('img/pfp.png') }}" class="img-fluid" loading="lazy"
                                         alt="PFP">
                                 </a>
@@ -353,7 +353,7 @@
                             <h4 class="text-white mt-4">Terms & Conditions</h4>
                             <a href="{{ route('terms') }}" class="text-white"
                                 style="text-decoration: none; font-size: 14px;">
-                                Terms & Conditions
+                                View Terms & Conditions
                             </a>
                         </div>
                         <div class="col-6">

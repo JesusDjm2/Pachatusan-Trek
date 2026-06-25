@@ -9,7 +9,17 @@
       "Bash(php -r 'require '\\\\''vendor/autoload.php'\\\\''; $app = require '\\\\''bootstrap/app.php'\\\\''; $kernel = $app->make\\(Illuminate\\\\Contracts\\\\Console\\\\Kernel::class\\); $kernel->bootstrap\\(\\); echo get_class\\(app\\('\\\\''recaptcha'\\\\''\\)\\) . PHP_EOL; echo config\\('\\\\''recaptcha.version'\\\\''\\) . PHP_EOL; echo config\\('\\\\''recaptcha.api_site_key'\\\\''\\) . PHP_EOL;')",
       "Bash(php -r ' *)",
       "Bash(git check-ignore *)",
-      "Bash(rm resources/views/layouts/main.blade.php)"
+      "Bash(rm resources/views/layouts/main.blade.php)",
+      "Bash(grep -n \"RECAPTCHA\" .env)",
+      "Bash(grep -n \"RECAPTCHA\" .env.example)",
+      "Bash(grep -rn \"Biscolab\\\\|RecaptchaServiceProvider\" config/app.php composer.json)",
+      "Bash(sort -t: -k3)",
+      "Bash(uniq -c -f2)",
+      "Bash(composer show *)",
+      "Bash(git log *)",
+      "Bash(curl -s -o /tmp/contacto.html -w \"%{http_code}\\\\n\" http://127.0.0.1:8123/Contacto)",
+      "Read(//c/tmp/**)",
+      "Bash(curl -s -b cookies.txt -c cookies.txt -L -o /tmp/resp2.html http://127.0.0.1:8123/bookes -X POST --data-urlencode _token=nN4P0xenkAe2WzvEa6KEYfhatiz3QxdGsIvF0Syx --data-urlencode name=Test --data-urlencode email=test@test.com --data-urlencode telefono=999999999)"
     ],
     "additionalDirectories": [
       "C:\\xampp\\htdocs\\Pachatusantrek\\resources\\views\\layouts"

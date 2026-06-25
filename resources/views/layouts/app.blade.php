@@ -84,6 +84,8 @@
 
                         <a class="collapse-item" href="{{ route('tours.index') }}">Tours</a>
 
+                        <a class="collapse-item" href="{{ route('countries.index') }}">Countries</a>
+
                         <a class="collapse-item" href="{{ route('categories.index') }}">Categorías</a>
 
                         <a class="collapse-item" href="{{ route('subcategories.index') }}">Sub-categorías</a>

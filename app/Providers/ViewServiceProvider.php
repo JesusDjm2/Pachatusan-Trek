@@ -124,7 +124,7 @@ class ViewServiceProvider extends ServiceProvider
             // Solo países con al menos un estour en la categoría "Tours" (tabla escategorias)
             $paisesConTours = Pais::whereHas('estours', function ($q) {
                 $q->whereHas('categorias', function ($q2) {
-                    $q2->whereRaw('LOWER(escategorias.nombre) = ?', ['tours']);
+                    $q2->whereRaw('LOWER(escategorias.nombre) IN (?, ?)', ['tours', 'viajes']);
                 });
             })->orderBy('nombre')->get();
 
@@ -152,8 +152,8 @@ class ViewServiceProvider extends ServiceProvider
             ? Tour::whereHas('categorias', fn($q) => $q->where("tour_category.categoria_id", $model::where('nombre', $nameField)->first()->id))->get()
             : collect();
 
-        $mapEsTourData = fn($model, $nameField, $relationTable, $catTableField) => $model::where('nombre', $nameField)->first()
-            ? Estour::whereHas('categorias', fn($q) => $q->where("escategorias.id", $model::where('nombre', $nameField)->first()->id))->get()
+        $mapEsTourData = fn($model, $nameField, $relationTable, $catTableField) => $model::whereIn('nombre', (array) $nameField)->first()
+            ? Estour::whereHas('categorias', fn($q) => $q->where("escategorias.id", $model::whereIn('nombre', (array) $nameField)->first()->id))->get()
             : collect();
 
         View::share('globalTreks', $mapTourData(TourCategory::class, 'Treks', 'tour_category', 'categoria_id'));
@@ -162,7 +162,7 @@ class ViewServiceProvider extends ServiceProvider
 
         View::share('globalTreksEs', $mapEsTourData(EsCategoria::class, 'Caminatas', 'escategorias', 'id'));
         View::share('globalExpeditionsEs', $mapEsTourData(EsCategoria::class, 'Expediciones', 'escategorias', 'id'));
-        View::share('globalToursEs', $mapEsTourData(EsCategoria::class, 'Tours', 'escategorias', 'id'));
+        View::share('globalToursEs', $mapEsTourData(EsCategoria::class, ['Tours', 'Viajes'], 'escategorias', 'id'));
     }
 
 }

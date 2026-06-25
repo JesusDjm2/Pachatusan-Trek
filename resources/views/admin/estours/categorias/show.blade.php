@@ -50,12 +50,9 @@
                 </h5>
             @else
                 <h5>
-                    Recorra muchos de los lugares importantes de Cusco y el Valle Sagrado que lo rodea. Visite lugares
-                    que
-                    tienen una importancia religiosa significativa para los incas y las comunidades locales que aún
-                    existen
-                    allí. Visite Cusco, Sacsayhuaman, el Valle Sagrado – Pisac, Ollantaytambo, Yucay y muchos más de los
-                    hermosos pueblos que existen aquí.
+                    Descubre los destinos turísticos más emblemáticos del Perú y de países vecinos como Bolivia, Brasil,
+                    Chile y Argentina. Diseñamos experiencias de viaje únicas por la Patagonia, la Amazonía brasileña y el
+                    majestuoso Salar de Uyuni, combinando aventura, cultura y naturaleza con un servicio de excelencia.
                 </h5>
             @endif
 

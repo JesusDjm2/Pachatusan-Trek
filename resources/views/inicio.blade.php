@@ -193,11 +193,12 @@
                 <div class="col-lg-4">
                     <div class="card border-0 text-white">
                         <div class="card-body">
-                            <h5 class="card-title text-dark mb-2">TOURS</h5>
+                            <h5 class="card-title text-dark mb-2">VIAJES</h5>
                             <p class="card-text text-dark">
-                                Disfruta y conoce los principales destinos turísticos de las regiones más importantes del
-                                Perú. Nuestro servicio te garantiza una experiencia inolvidable en la costa, sierra y selva.
-                                Contamos con las mejores opciones de viaje para que conozcas el Perú al máximo.
+                                Descubre los destinos turísticos más emblemáticos del Perú y de países vecinos como Bolivia,
+                                Brasil, Chile y Argentina. Diseñamos experiencias de viaje únicas por la Patagonia, la
+                                Amazonía brasileña y el majestuoso Salar de Uyuni, combinando aventura, cultura y naturaleza
+                                con un servicio de excelencia.
                             </p>
                             <a href="{{ route('entours') }}" class="btn btn-primary btn-sm">Ver tours</a>
                         </div>
@@ -240,17 +241,15 @@
         <div class="content">
             <h2 class="dancing-center">Choqekiraw – Huancacalle 10 Días </h2>
             <p class="mt-4">
-                El camino Inka utilizado por Manco Inka II y su ejército, en su huida de los españoles, pasa por estos 2 magníficos sitios arqueológicos en el Vilcabamba.
+                El camino Inka utilizado por Manco Inka II y su ejército, en su huida de los españoles, pasa por estos 2
+                magníficos sitios arqueológicos en el Vilcabamba.
             </p>
             <a href="https://pachatusantrek.com/Choqekiraw-Huancacalle-10d" class="btn">Explorar ahora</a>
         </div>
     </section>
-    <section class="mainTours bg-light">
+    {{-- <section class="mainTours bg-light">
         <div class="container pt-4 pb-5">
-            <div class="row">
-                <div class="col-lg-12 mb-5">
-                    <h2 class="dancing">Tours más populares:</h2>
-                </div>
+            <div class="row mt-3">
                 @foreach ($nextTours as $tour)
                     <div class="col-lg-3 tours mb-3">
                         <div class="contImg">
@@ -275,7 +274,7 @@
                 @endforeach
             </div>
         </div>
-    </section>
+    </section> --}}
 
 
     <section class="review-section">
@@ -293,7 +292,8 @@
                                         <div class="mb-3">
                                             @if ($review->image)
                                                 <img src="{{ asset($review->image) }}" alt="Imagen del Cliente"
-                                                    class="rounded-circle mx-auto d-block" style="width: 80px; height: 80px; object-fit: cover;">
+                                                    class="rounded-circle mx-auto d-block"
+                                                    style="width: 80px; height: 80px; object-fit: cover;">
                                             @else
                                                 <div class="rounded-circle bg-secondary d-flex align-items-center justify-content-center text-white mx-auto"
                                                     style="width: 80px; height: 80px;">
@@ -308,10 +308,12 @@
                                             </div>
                                             <small class="text-white-50 d-block">
                                                 <i class="far fa-calendar-alt me-1"></i>
-                                                Fecha de viaje: {{ $review->travel_date ? $review->travel_date->translatedFormat('M Y') : 'N/A' }}
+                                                Fecha de viaje:
+                                                {{ $review->travel_date ? $review->travel_date->translatedFormat('M Y') : 'N/A' }}
                                             </small>
                                         </div>
-                                        <p class="mt-3 review-text" style="max-width: 800px; margin: 0 auto; font-style: italic;">
+                                        <p class="mt-3 review-text"
+                                            style="max-width: 800px; margin: 0 auto; font-style: italic;">
                                             "{{ $review->comment }}"
                                         </p>
                                     </div>
@@ -349,8 +351,8 @@
                         aria-hidden="true">
                         <div class="modal-dialog modal-lg">
                             <div class="modal-content">
-                                <form action="{{ route('reviews.store') }}" method="POST"
-                                    enctype="multipart/form-data" data-recaptcha="submit">
+                                <form action="{{ route('reviews.store') }}" method="POST" enctype="multipart/form-data"
+                                    data-recaptcha="submit">
                                     @csrf
                                     <div class="modal-header">
                                         <h5 class="modal-title text-dark" id="reviewModalLabel">Deja tu reseña</h5>
