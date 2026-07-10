@@ -192,7 +192,7 @@
                             </div>
                         @endif
 
-                        @error('galeria')
+                        @error('galeria.*')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
                     </div>
@@ -322,7 +322,7 @@
                     </script>
 
                 </div>
-                <button class="btn btn-primary mt-4" type="submit">Guardar cambios</button>
+                <button class="btn btn-primary btn-lg mt-4" type="submit">Guardar cambios</button>
                 <a href="{{ route('estours.index') }}" class="btn btn-secondary mt-4 float-right">Cancelar</a>
             </form>
         </div>

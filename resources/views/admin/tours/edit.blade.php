@@ -1,15 +1,6 @@
 @extends('layouts.app')
 @section('titulo', 'Editar Tour en inglés')
 @section('contenido')
-    <style>
-        .btn-save-floating {
-            position: fixed;
-            right: 0px;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 1050;
-        }
-    </style>
     <div class="row">
         <div class="col-lg-12">
             @if (session('status'))
@@ -180,7 +171,7 @@
                                     </div>
                                 @endif
 
-                                @error('galeria')
+                                @error('galeria.*')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
@@ -298,7 +289,7 @@
 
 
                         </div>
-                        <button form="form-tour" class="btn btn-primary btn-lg mt-4 btn-save-floating" type="submit">Guardar</button>
+                        <button form="form-tour" class="btn btn-primary btn-lg mt-4" type="submit">Guardar</button>
                         {{-- <a href="{{ route('tours.index') }}" class="btn btn-secondary mt-4 float-right">Cancelar</a> --}}
                     </form>
                 </div>

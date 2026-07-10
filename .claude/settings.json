@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(php -l resources/views/glamping-es.blade.php)",
+      "Bash(php -l resources/views/glamping.blade.php)",
+      "Bash(grep -n 'use App\\\\\\\\Models\\\\|class EsTourController\\\\|protected $table\\\\|EsTour::' c:/xampp/htdocs/Pachatusantrek/app/Http/Controllers/EsTourController.php)",
+      "Bash(/xampp/mysql/bin/mysql -u root -N -e \"SELECT id,nombre,slug,LENGTH\\(galeria\\) as gal_len,galeria FROM pachatusantrek.tours WHERE id=8\\\\G\")",
+      "Bash(mysql -u root -N -e \"SELECT id,nombre,slug,LENGTH\\(galeria\\) as gal_len,galeria FROM pachatusantrek.tours WHERE id=8\\\\G\")",
+      "Bash(/c/xampp/mysql/bin/mysql.exe -u root pachatusantrek -e \"SELECT id,nombre,slug,imgThumb,imgFull,galeria FROM tours WHERE id=8\\\\G\")",
+      "Bash(/c/xampp/mysql/bin/mysql.exe -u root pachatusantrek -e \"SELECT id,recorrido,dias,ciudad,country_id,descripcionCorta IS NULL as descNull, presentacion IS NULL as presNull, itinerario IS NULL as itiNull, incluye IS NULL as incNull, importante IS NULL as impNull, keywords IS NULL as kwNull FROM tours WHERE id=8\\\\G\")",
+      "Bash(php -i)",
+      "Bash(/c/xampp/mysql/bin/mysql.exe -u root pachatusantrek -e \"SELECT id,nombre,slug,galeria FROM estours WHERE id=8\\\\G\")"
+    ]
+  }
+}

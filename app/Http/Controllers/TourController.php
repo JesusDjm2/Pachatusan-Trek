@@ -47,7 +47,7 @@ class TourController extends Controller
 
             // Galeria
             'galeria' => 'nullable|array',
-            'galeria.*' => 'image|mimes:jpeg,jpg,png,gif,bmp,svg,webp|max:2048',
+            'galeria.*' => 'image|mimes:jpeg,jpg,png,gif,bmp,svg,webp|max:3072',
 
             'slug' => 'required|unique:tours',
             'keywords' => 'required',
@@ -140,7 +140,7 @@ class TourController extends Controller
             'incluye' => 'required',
             'importante' => 'required',
             'galeria' => 'nullable|array',
-            'galeria.*' => 'image|mimes:jpeg,jpg,png,gif,bmp,svg,webp|max:2048',
+            'galeria.*' => 'image|mimes:jpeg,jpg,png,gif,bmp,svg,webp|max:3072',
             'slug' => 'required|unique:tours,slug,'.$id,
             'keywords' => 'required',
         ]);
@@ -158,6 +158,14 @@ class TourController extends Controller
             $imgThumb = $img->getClientOriginalName();
             $img->move($rutaImg, $imgThumb);
             $tour->imgThumb = 'img/Thumbs/'.$imgThumb;
+        }
+
+        if ($request->hasFile('imgFull')) {
+            $img = $request->file('imgFull');
+            $rutaImg = public_path('img/Fondos');
+            $imgFull = $img->getClientOriginalName();
+            $img->move($rutaImg, $imgFull);
+            $tour->imgFull = 'img/Fondos/'.$imgFull;
         }
 
         if ($request->has('galeria')) {

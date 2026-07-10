@@ -55,10 +55,10 @@
                             <p> {{ $tour->descripcionCorta }} </p>
                             <div style="width: 100%;  padding-bottom:50px">
                                 <span style="float: left"><i class="fa fa-clock-o"></i>
-                                    {{ $tour->dias }} {{ $tour->dias == 1 ? 'day' : 'days' }}</span>
+                                    {{ $tour->dias }} {{ $tour->dias == 1 ? 'día' : 'días' }}</span>
                                 <span style="float: right"><i class="fa fa-map-marker"></i> {{ $tour->recorrido }}</span>
                             </div>
-                            <a href="{{ route('estour.show', $tour->slug) }}" class='button'>More info</a>
+                            <a href="{{ route('estour.show', $tour->slug) }}" class='button'>Más info</a>
                         </div>
                     </div>
                 @endforeach

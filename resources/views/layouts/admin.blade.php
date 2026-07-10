@@ -28,7 +28,7 @@
         /* Botón flotante de WhatsApp */
         .whatsapp-float {
             position: fixed;
-            bottom: 4em;
+            bottom: 90px;
             right: 20px;
             z-index: 999;
             width: 60px;
@@ -125,7 +125,7 @@
                                         @else
                                             @foreach ($categoria->tours as $tour)
                                                 <div class="list-item text-center">
-                                                    <a href="{{ route('tour.show', $tour ->slug) }}"
+                                                    <a href="{{ route('tour.show', $tour->slug) }}"
                                                         title="{{ $tour->nombre }}">
                                                         <div style="width: 100%; overflow: hidden; height:110px">
                                                             <img src="{{ asset($tour->imgThumb ?? 'img/default.jpg') }}"
@@ -207,6 +207,9 @@
                             </li> --}}
                             <li>
                                 <a title="Glamping" href="{{ route('glampingen') }}">Glamping</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('reviews') }}" title="Reviews">Reviews</a>
                             </li>
                             <li>
                                 <a href="{{ route('contact') }}" title="Contact Us">Contact</a>
@@ -400,13 +403,14 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const scrollBtn = document.querySelector('.scroll-down-btn');
-            const target = document.querySelector('#empezar');
+            if (!scrollBtn) return;
 
             scrollBtn.addEventListener('click', function(event) {
                 event.preventDefault();
+                const target = document.querySelector(scrollBtn.getAttribute('href'));
+                if (!target) return;
                 window.scrollTo({
-                    top: target.offsetTop +
-                        -70,
+                    top: target.offsetTop - 70,
                     behavior: 'smooth'
                 });
             });
@@ -426,7 +430,78 @@
             }
         });
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     @stack('scripts')
+
+    {{-- SCROLL TO TOP --}}
+    <button id="scroll-top-btn" aria-label="Back to top" title="Back to top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+    <style>
+        #scroll-top-btn {
+            position: fixed;
+            bottom: 32px;
+            right: 27px;
+            z-index: 1050;
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            border: none;
+            background: linear-gradient(135deg, #0c8178, #09ccbd);
+            color: #fff;
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 16px rgba(12,129,120,0.35);
+            opacity: 0;
+            transform: translateY(16px);
+            pointer-events: none;
+            transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+        }
+        #scroll-top-btn.visible {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+        #scroll-top-btn:hover {
+            background: linear-gradient(135deg, #09ccbd, #0c8178);
+            box-shadow: 0 8px 24px rgba(12,129,120,0.5);
+            transform: translateY(-3px);
+        }
+        #scroll-top-btn:focus-visible {
+            outline: 3px solid #09ccbd;
+            outline-offset: 3px;
+        }
+        @media (max-width: 575.98px) {
+            #scroll-top-btn {
+                bottom: 20px;
+                right: 18px;
+                width: 40px;
+                height: 40px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+    <script>
+        (function () {
+            const btn = document.getElementById('scroll-top-btn');
+            const THRESHOLD = 300;
+
+            window.addEventListener('scroll', function () {
+                if (window.scrollY > THRESHOLD) {
+                    btn.classList.add('visible');
+                } else {
+                    btn.classList.remove('visible');
+                }
+            }, { passive: true });
+
+            btn.addEventListener('click', function () {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        })();
+    </script>
 </body>
 
 </html>

@@ -150,7 +150,7 @@
                         profesionales en diferentes escenarios naturales de nuestro país. Estos sentimientos y habilidades
                         han sido la principal motivación para iniciar Pachatusantrek.
                     </p>
-                    <a href="{{ route('about') }}" class="btn btn-sm btn-success">Leer más</a>
+                    <a href="{{ route('nosotros') }}" class="btn btn-sm btn-success">Leer más</a>
                 </div>
                 <div class="col-lg-5">
                     <img src="{{ asset('img/staff/about-us-pachatusan.jpg') }}" alt="Staff Pachatusan Trek"
@@ -172,7 +172,7 @@
                                 Andes, donde la historia, la flora, la fauna y la geografía llenarán nuestros sentidos.
                                 Caminaremos entre las divinidades andinas que serán testigos silenciosos de nuestras propias
                                 historias en las montañas..</p>
-                            <a href="{{ route('treks') }}" class="btn btn-primary btn-sm">Ver Caminatas</a>
+                            <a href="{{ route('categoria.show', 'Caminatas') }}" class="btn btn-primary btn-sm">Ver Caminatas</a>
                         </div>
                     </div>
                 </div>
@@ -186,7 +186,7 @@
                                 cercanos a la llanura amazónica, zonas llenas de mitos, historia, flora, fauna y una cultura
                                 sorprendente.
                             </p>
-                            <a href="{{ route('expeditions') }}" class="btn btn-primary btn-sm">Ver Expediciones</a>
+                            <a href="{{ route('categoria.show', 'Expediciones') }}" class="btn btn-primary btn-sm">Ver Expediciones</a>
                         </div>
                     </div>
                 </div>
@@ -200,7 +200,7 @@
                                 Amazonía brasileña y el majestuoso Salar de Uyuni, combinando aventura, cultura y naturaleza
                                 con un servicio de excelencia.
                             </p>
-                            <a href="{{ route('entours') }}" class="btn btn-primary btn-sm">Ver tours</a>
+                            <a href="{{ route('categoria.show', 'Viajes') }}" class="btn btn-primary btn-sm">Ver Viajes</a>
                         </div>
                     </div>
                 </div>
@@ -268,7 +268,7 @@
                                 <span style="float: right"><i class="fa fa-usd"></i>
                                     {{ $tour->precio }}.00</span>
                             </div>
-                            <a href="{{ route('estour.show', $tour->slug) }}" class='button'>More info</a>
+                            <a href="{{ route('estour.show', $tour->slug) }}" class='button'>Más info</a>
                         </div>
                     </div>
                 @endforeach

@@ -215,6 +215,18 @@ class EnEnlacesController extends Controller
         return view('terminos');
     }
 
+    public function reviews()
+    {
+        $reviews = Review::where('is_public', true)->orderByDesc('travel_date')->orderByDesc('created_at')->get();
+        return view('reviews', compact('reviews'));
+    }
+
+    public function resenas()
+    {
+        $reviews = Review::where('is_public', true)->orderByDesc('travel_date')->orderByDesc('created_at')->get();
+        return view('resenas', compact('reviews'));
+    }
+
     public function glampingReviews()
     {
         $reviews = Review::where('is_public', true)->latest()->get();

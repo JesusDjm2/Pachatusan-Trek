@@ -7,9 +7,11 @@
     <title>{{ $meta_title ?? 'Premium Camping Equipment – Glamping in the Andes | Pachatusantrek' }}</title>
     <style>
         /* ── Header fix: always visible on glamping page ── */
+        /* No backdrop-filter here: it creates a new containing block for
+           position:fixed descendants (like #search-popup in the header),
+           breaking the full-screen search popup on this page. */
         .header {
             background-color: rgba(15, 25, 50, 0.88) !important;
-            backdrop-filter: blur(4px);
         }
 
         /* ─────────────── GLAMPING PAGE STYLES ─────────────── */
@@ -296,10 +298,12 @@
                                 class="img-glamping">
                         </div>
                         <div class="col-6">
-                            <div class="img-placeholder">[ Food & gourmet image ]</div>
+                            <img src="{{ asset('img/glamping/campamento-glamping.webp') }}" alt="Dining setup in the Andes"
+                                class="img-glamping">
                         </div>
                         <div class="col-6">
-                            <div class="img-placeholder">[ Hygiene kit image ]</div>
+                            <img src="{{ asset('img/glamping/carpa-de-banio-3.webp') }}" alt="Dining setup in the Andes"
+                                class="img-glamping">
                         </div>
                     </div>
                 </div>
@@ -325,13 +329,16 @@
                                 alt="REI Kingdom 6 tent in the Andes" class="img-glamping">
                         </div>
                         <div class="col-6">
-                            <div class="img-placeholder">[ REI Kingdom 6 exterior ]</div>
+                            <img src="{{ asset('img/glamping/campamento-01.jpg') }}" alt="REI Kingdom 6 tent in the Andes"
+                                class="img-glamping">
                         </div>
                         <div class="col-6">
-                            <div class="img-placeholder">[ Tent interior view ]</div>
+                            <img src="{{ asset('img/glamping/campamento-02.jpg') }}" alt="REI Kingdom 6 tent in the Andes"
+                                class="img-glamping">
                         </div>
                         <div class="col-6">
-                            <div class="img-placeholder">[ Tent with mountain view ]</div>
+                            <img src="{{ asset('img/glamping/campamento-03.jpg') }}" alt="REI Kingdom 6 tent in the Andes"
+                                class="img-glamping">
                         </div>
                     </div>
                 </div>
@@ -383,16 +390,19 @@
                 <div class="col-lg-7">
                     <div class="row g-3">
                         <div class="col-6">
-                            <div class="img-placeholder">[ Double bed inside tent ]</div>
+                            <img src="{{ asset('img/glamping/bed-01.jpg') }}" alt="REI Kingdom 6 tent in the Andes"
+                                class="img-glamping">
                         </div>
                         <div class="col-6">
-                            <div class="img-placeholder">[ Single folding bed ]</div>
+                            <img src="{{ asset('img/glamping/bed-02.jpg') }}" alt="REI Kingdom 6 tent in the Andes"
+                                class="img-glamping">
                         </div>
                         <div class="col-6">
-                            <div class="img-placeholder">[ Twin beds in tent ]</div>
+                            <img src="{{ asset('img/glamping/bed-03.jpg') }}" alt="Twin beds in tent" class="img-glamping">
                         </div>
                         <div class="col-6">
-                            <div class="img-placeholder">[ Inflatable mattress ]</div>
+                            <img src="{{ asset('img/glamping/campamento-glamping.webp') }}" alt="Inflatable mattress"
+                                class="img-glamping">
                         </div>
                     </div>
                 </div>
@@ -432,8 +442,8 @@
                 <div class="col-lg-7">
                     <div class="row g-3">
                         <div class="col-12">
-                            <div class="img-placeholder img-placeholder-tall">[ Luxury bed inside tent — hotel-quality linen
-                                ]</div>
+                            <img src="{{ asset('img/glamping/tiendas-de-dormir-glamping.webp') }}"
+                                alt="Inflatable mattress" class="img-fluid rounded-3">
                         </div>
                     </div>
                 </div>
@@ -449,7 +459,8 @@
                             For cold nights in the mountains, we have catalytic gas heating, which is very safe and
                             effective, providing the necessary warmth to enjoy our sleep and rest.
                         </p>
-                        <div class="img-placeholder mt-3" style="height:150px;">[ Catalytic heater ]</div>
+                        <img src="{{ asset('img/glamping/carpa-de-banio-3.webp') }}" alt="Catalytic gas heating"
+                            class="img-fluid mt-3 rounded-3">
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -461,7 +472,8 @@
                             They have sealed lids and a fleece protector to prevent burns — a very safe and
                             welcome service.
                         </p>
-                        <div class="img-placeholder mt-3" style="height:150px;">[ Hot water bags ]</div>
+                        <img src="{{ asset('img/glamping/hot-water.jpg') }}" alt="Hot water bags"
+                            class="img-fluid mt-3 rounded-3">
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -472,7 +484,8 @@
                             Each tent features a bedside table and a rug, providing warmth and comfort. We also
                             offer new slippers for each client and solar lamps for lighting.
                         </p>
-                        <div class="img-placeholder mt-3" style="height:150px;">[ Tent interior decoration ]</div>
+                        <img src="{{ asset('img/glamping/comedor-2.webp') }}" alt="Tent decoration"
+                            class="img-fluid mt-3 rounded-3">
                     </div>
                 </div>
             </div>
@@ -485,7 +498,7 @@
     <section class="glamp-section glamp-section-alt">
         <div class="container">
             <div class="row align-items-center g-5">
-                <div class="col-lg-6 order-2 order-lg-1">
+                {{-- <div class="col-lg-6 order-2 order-lg-1">
                     <div class="row g-3">
                         <div class="col-6">
                             <div class="img-placeholder img-placeholder-tall">[ Massage tent interior ]</div>
@@ -500,8 +513,8 @@
                             <div class="img-placeholder">[ Aromatherapy setup ]</div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-6 order-1 order-lg-2">
+                </div> --}}
+                <div class="col-lg-12 order-1 order-lg-2">
                     <h2 class="glamp-main-title">Massage Service</h2>
                     <hr class="glamp-divider">
                     <p class="glamp-text">
@@ -585,7 +598,7 @@
 
             {{-- Bathroom Accessories + Shower --}}
             <div class="row align-items-center g-5">
-                <div class="col-lg-6">
+                <div class="col-lg-12">
                     <p class="glamp-sub-title">Accessories in the Bathroom Tent</p>
                     <p class="glamp-text">
                         In the auxiliary table you will find a mirror and personal hygiene products of the best
@@ -600,7 +613,7 @@
                             on solar energy</strong> in a spacious and comfortable tent with a floor.
                     </p>
                 </div>
-                <div class="col-lg-6">
+                {{-- <div class="col-lg-6">
                     <div class="row g-3">
                         <div class="col-6">
                             <div class="img-placeholder">[ Bathroom accessories ]</div>
@@ -612,7 +625,7 @@
                             <div class="img-placeholder">[ Shower tent exterior ]</div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </section>
@@ -626,22 +639,6 @@
             <hr class="glamp-divider">
             <div class="row align-items-start g-5">
                 <div class="col-lg-6">
-                    <p class="glamp-sub-title">Solar Pressure Shower</p>
-                    <p class="glamp-text">
-                        The <strong>Nemo Helio LX</strong> is a portable pedal-operated shower that, when activated,
-                        provides considerable water pressure — allowing a nice and comforting hot shower. It is ideal
-                        to take a hot shower at the end of a day's walk in the mountains… like at home.
-                    </p>
-                    <div class="row g-3 mt-3">
-                        <div class="col-6">
-                            <div class="img-placeholder">[ Nemo Helio LX shower ]</div>
-                        </div>
-                        <div class="col-6">
-                            <div class="img-placeholder">[ Shower head detail ]</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
                     <p class="glamp-sub-title">Biodegradable Toilet Kit</p>
                     <p class="glamp-text">
                         We offer a personal hygiene kit that contains: liquid soap, bar soap, shampoo, body cream,
@@ -653,15 +650,32 @@
                         In this way our hikers collaborate with the care of the environment, avoiding chemical
                         products that can damage the mountains.
                     </p>
-                    <div class="row g-3 mt-3">
+                    {{-- <div class="row g-3 mt-3">
                         <div class="col-6">
                             <div class="img-placeholder">[ Biodegradable kit ]</div>
                         </div>
                         <div class="col-6">
                             <div class="img-placeholder">[ Andean herbs &amp; products ]</div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
+                <div class="col-lg-6">
+                    <p class="glamp-sub-title">Solar Pressure Shower</p>
+                    <p class="glamp-text">
+                        The <strong>Nemo Helio LX</strong> is a portable pedal-operated shower that, when activated,
+                        provides considerable water pressure — allowing a nice and comforting hot shower. It is ideal
+                        to take a hot shower at the end of a day's walk in the mountains… like at home.
+                    </p>
+                    {{-- <div class="row g-3 mt-3">
+                        <div class="col-6">
+                            <div class="img-placeholder">[ Nemo Helio LX shower ]</div>
+                        </div>
+                        <div class="col-6">
+                            <div class="img-placeholder">[ Shower head detail ]</div>
+                        </div>
+                    </div> --}}
+                </div>
+
             </div>
         </div>
     </section>
@@ -723,19 +737,20 @@
                 <div class="col-lg-7">
                     <div class="row g-3">
                         <div class="col-6">
-                            <div class="img-placeholder">[ Travel Chair tables ]</div>
+                           <img src="{{ asset('img/glamping/hot-water.jpg') }}" alt="Chairs in tent" class="img-glamping">
                         </div>
                         <div class="col-6">
-                            <div class="img-placeholder">[ Chef at table ]</div>
+                            <img src="{{ asset('img/glamping/chairs-01.jpg') }}" alt="REI Flex Lite Boss Chair" class="img-glamping">
                         </div>
                         <div class="col-6">
-                            <div class="img-placeholder">[ Big Kahuna chairs in camp ]</div>
+                            <img src="{{ asset('img/glamping/charis-02.jpg') }}" alt="Couple chair for honeymoon" class="img-glamping">
                         </div>
                         <div class="col-6">
-                            <div class="img-placeholder">[ REI Flex Lite Boss Chair ]</div>
+                            <img src="{{ asset('img/glamping/chairs-03.jpg') }}" alt="Couple chair for honeymoon" class="img-glamping">
                         </div>
                         <div class="col-12">
-                            <div class="img-placeholder">[ Couple chair — honeymoon ]</div>
+                            <img src="{{ asset('img/glamping/chairs-04.jpg') }}" alt="Couple chair for honeymoon" class="img-glamping">
+                            
                         </div>
                     </div>
                 </div>
@@ -787,10 +802,12 @@
                     </p>
                     <div class="row g-3 mt-4">
                         <div class="col-6">
-                            <div class="img-placeholder">[ Chef in kitchen tent ]</div>
+                            <img src="{{ asset('img/glamping/cocina-02.jpg') }}" alt="REI Kingdom 6 tent in the Andes"
+                                class="img-fluid">
                         </div>
                         <div class="col-6">
-                            <div class="img-placeholder">[ Kitchen staff preparing food ]</div>
+                            <img src="{{ asset('img/glamping/Cocina-03.jpg') }}" alt="REI Kingdom 6 tent in the Andes"
+                                class="img-fluid">
                         </div>
                     </div>
                 </div>
@@ -809,10 +826,12 @@
                     </p>
                     <div class="row g-3 mt-4">
                         <div class="col-6">
-                            <div class="img-placeholder">[ Storage tent with ingredients ]</div>
+                           <img src="{{ asset('img/glamping/almacen-01.jpg') }}" alt="REI Kingdom 6 tent in the Andes"
+                                class="img-fluid">
                         </div>
                         <div class="col-6">
-                            <div class="img-placeholder">[ Reusable cloth bags ]</div>
+                            <img src="{{ asset('img/glamping/almacen-02.jpg') }}" alt="REI Kingdom 6 tent in the Andes"
+                                class="img-fluid">
                         </div>
                     </div>
                 </div>

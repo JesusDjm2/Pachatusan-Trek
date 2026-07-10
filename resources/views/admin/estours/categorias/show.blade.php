@@ -31,22 +31,26 @@
             <h1>{{ $categoria->nombre }}</h1>
             @if ($categoria->nombre == 'Caminatas')
                 <h5>
-                    Camine por el Camino Inca, pero también recorra caminatas alternativas menos transitadas pero
-                    igualmente
-                    impresionantes y camine a lugares como Choquequirao, un impresionante complejo Inca tan importante
-                    como
-                    Machu Picchu, o camine a través de la montaña Salkantay o el impresionante sendero a Lares para
-                    continuar hasta Machu Picchu. Diríjase a los senderos menos conocidos de Ausangate y Vilcabamba para
-                    explorar más profundamente en el medio de los Andes y caminar a través de las tierras tradicionales.
+                    Descubre nuestra selección de las caminatas más espectaculares en las montañas del Perú. Desde
+                    experiencias cortas de aclimatación en el Valle Sagrado hasta rutas inolvidables como el Camino Inca a
+                    Machu Picchu, Choquequirao, Huarán, Lares, Huchuy Qosqo, Ancascocha y Ausangate, cada recorrido te
+                    invita a vivir la aventura andina con paisajes únicos, historia viva y una conexión auténtica con la
+                    naturaleza.
+
+                    Diseñamos cada ruta cuidadosamente para que disfrutes una experiencia segura, fluida y memorable.
+                    Consideramos la altitud, las distancias y el ritmo ideal de caminata, combinándolo con un servicio
+                    personalizado, atención al detalle y la calidad que mereces en cada momento de tu viaje por las
+                    montañas.
                 </h5>
             @elseif($categoria->nombre == 'Expediciones')
                 <h5>
-                    Viaje por rutas menos transitadas en los Andes del Sur, vea y experimente lugares poco visitados. Su
-                    expedición está acompañada por arrieros, cocineros, tenderos y guías. Estos se convierten en una
-                    parte
-                    integral de su tripulación y se unen durante la expedición convirtiéndose en un equipo y
-                    desarrollando
-                    amistades que perdurarán.
+                    Para quienes buscan una aventura auténtica y fuera de las rutas convencionales, Pachatusantrek ha
+                    diseñado una exclusiva selección de expediciones hacia destinos poco explorados del Perú. Vive la magia
+                    de Vilcabamba, recorre los paisajes sagrados del Ausangate y descubre la Montaña de Colores desde una
+                    perspectiva diferente. Adéntrate en la historia profunda de Espiritupampa, conectando Choqekiraw con
+                    Huancacalle en una travesía llena de naturaleza, cultura y misterio. Todo ello acompañado por un
+                    servicio cuidadoso, comodidad en cada etapa y altos estándares de seguridad para que disfrutes una
+                    experiencia inolvidable.
                 </h5>
             @else
                 <h5>

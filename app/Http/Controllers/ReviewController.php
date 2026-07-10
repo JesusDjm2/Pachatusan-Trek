@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Mail\NewReviewNotification;
 use App\Models\Review;
-use App\Services\RecaptchaService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
@@ -66,8 +65,16 @@ class ReviewController extends Controller
 
     public function store(Request $request)
     {
-        if (!RecaptchaService::verify($request->input('g-recaptcha-response'))) {
-            return back()->withErrors(['captcha' => 'No pudimos verificar que eres humano. Intenta nuevamente.'])->withInput();
+        if (!empty($request->input('website'))) {
+            return back()->with('flash', [
+                'type' => 'success',
+                'message' => '¡Gracias! Tu reseña fue enviada y será revisada por nuestro equipo antes de publicarse.',
+            ]);
+        }
+
+        $renderedAt = (int) $request->input('form_rendered_at');
+        if (!$renderedAt || (time() - $renderedAt) < 3) {
+            return back()->withErrors(['spam' => 'No pudimos verificar tu envío. Intenta nuevamente.'])->withInput();
         }
 
         $request->validate([
@@ -76,7 +83,7 @@ class ReviewController extends Controller
             'travel_with' => 'required|string|max:255',
             'comment' => 'required|string',
             'rating' => 'required|integer|min:1|max:5',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
         ]);
 
         $reviewData = $request->except('image');

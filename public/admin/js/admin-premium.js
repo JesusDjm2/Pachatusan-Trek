@@ -16,27 +16,31 @@
                 opacity: 0,
                 duration: 0.4,
                 stagger: 0.04,
+                clearProps: 'transform',
             });
         }
 
-        tl.from('.adm-topbar', { y: -12, opacity: 0, duration: 0.4 }, '-=0.2')
+        tl.from('.adm-topbar', { y: -12, opacity: 0, duration: 0.4, clearProps: 'transform' }, '-=0.2')
             .from('.adm-page > .adm-dashboard, .adm-page > .rv-admin, .adm-page > .container-fluid, .adm-page > .container, .adm-page > .row', {
                 y: 20,
                 opacity: 0,
                 duration: 0.45,
                 stagger: 0.06,
+                clearProps: 'transform',
             }, '-=0.15')
             .from('.adm-page .card, .adm-page .rv-panel, .adm-page .rv-stat, .adm-dash-card', {
                 y: 16,
                 opacity: 0,
                 duration: 0.4,
                 stagger: 0.05,
+                clearProps: 'transform',
             }, '-=0.2')
             .from('.adm-page table tbody tr, .adm-page .rv-card', {
                 opacity: 0,
                 y: 10,
                 duration: 0.3,
                 stagger: 0.03,
+                clearProps: 'transform',
             }, '-=0.15');
     }
 

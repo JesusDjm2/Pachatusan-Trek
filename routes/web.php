@@ -64,6 +64,8 @@ Route::get('buscar-tours', [EnEnlacesController::class, 'searches'])->name('sear
 
 Route::get('glamping-español', [EnEnlacesController::class, 'glamping'])->name('glamping');
 Route::get('glamping-english', [EnEnlacesController::class, 'glampingen'])->name('glampingen');
+Route::get('reviews', [EnEnlacesController::class, 'reviews'])->name('reviews');
+Route::get('resenas', [EnEnlacesController::class, 'resenas'])->name('resenas');
 Route::get('glamping-reviews', [EnEnlacesController::class, 'glampingReviews'])->name('glamping-reviews-en');
 Route::get('glamping-opiniones', [EnEnlacesController::class, 'glampingReviewsEs'])->name('glamping-reviews-es');
 Route::get('terminos-y-condiciones', [EnEnlacesController::class, 'terminos'])->name('terminos');
@@ -117,7 +119,7 @@ Route::get('es/tag/{slug}', [EstagController::class, 'show'])->name('estag.show'
 /* Route::get('/', function () {return view('index');})->name('index'); */
 Route::get('/', [EnEnlacesController::class, 'index'])->name('index');
 
-Route::post('reviews', [ReviewController::class, 'store'])->name('reviews.store');
+Route::post('reviews', [ReviewController::class, 'store'])->name('reviews.store')->middleware('throttle:5,1');
 
 //Formularios en inglés
 Route::post('mensaje01', function () {

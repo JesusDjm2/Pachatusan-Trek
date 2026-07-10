@@ -121,7 +121,7 @@
                         <label for="galeria">Galería de imgs:</label>
                         <input type="file" class="form-control form-control-sm" name="galeria[]" id="galeria"
                             multiple>
-                        @error('galeria')
+                        @error('galeria.*')
                             <div>{{ $message }}</div>
                         @enderror
                     </div>

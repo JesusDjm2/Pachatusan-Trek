@@ -6,9 +6,11 @@
 <title>{{ $meta_title ?? 'Equipo de Campamento Premium – Glamping en los Andes | Pachatusantrek' }}</title>
 <style>
     /* ── Header fix: siempre visible en la página de glamping ── */
+    /* Sin backdrop-filter: crea un nuevo containing block para los
+       descendientes position:fixed (como #search-popup dentro del header),
+       lo que rompe el popup de búsqueda a pantalla completa en esta página. */
     .header {
         background-color: rgba(15, 25, 50, 0.88) !important;
-        backdrop-filter: blur(4px);
     }
 
     /* ─────────────── GLAMPING PAGE STYLES ─────────────── */
@@ -223,10 +225,12 @@
                              alt="Comedor en los Andes" class="img-glamping">
                     </div>
                     <div class="col-6">
-                        <div class="img-placeholder">[ Imagen de platos gourmet ]</div>
+                        <img src="{{ asset('img/glamping/food-and-gourmet-glamping.jpg') }}"
+                             alt="Platos gourmet Pachatusantrek" class="img-glamping">
                     </div>
                     <div class="col-6">
-                        <div class="img-placeholder">[ Kit de higiene Pachatusantrek ]</div>
+                        <img src="{{ asset('img/glamping/Hygiene-kit.jpg') }}"
+                             alt="Kit de higiene Pachatusantrek" class="img-glamping">
                     </div>
                 </div>
             </div>
@@ -252,13 +256,16 @@
                              alt="Carpas dormitorio REI Kingdom 6" class="img-glamping">
                     </div>
                     <div class="col-6">
-                        <div class="img-placeholder">[ Exterior carpa REI Kingdom 6 ]</div>
+                        <img src="{{ asset('img/glamping/campamento-01.jpg') }}"
+                             alt="Exterior carpa REI Kingdom 6" class="img-glamping">
                     </div>
                     <div class="col-6">
-                        <div class="img-placeholder">[ Interior de la carpa ]</div>
+                        <img src="{{ asset('img/glamping/campamento-02.jpg') }}"
+                             alt="Interior de la carpa" class="img-glamping">
                     </div>
                     <div class="col-6">
-                        <div class="img-placeholder">[ Carpa con vista a la montaña ]</div>
+                        <img src="{{ asset('img/glamping/campamento-03.jpg') }}"
+                             alt="Carpa con vista a la montaña" class="img-glamping">
                     </div>
                 </div>
             </div>
@@ -312,16 +319,20 @@
             <div class="col-lg-7">
                 <div class="row g-3">
                     <div class="col-6">
-                        <div class="img-placeholder">[ Cama matrimonial en carpa ]</div>
+                        <img src="{{ asset('img/glamping/bed-01.jpg') }}"
+                             alt="Cama matrimonial en carpa" class="img-glamping">
                     </div>
                     <div class="col-6">
-                        <div class="img-placeholder">[ Cama simple plegable ]</div>
+                        <img src="{{ asset('img/glamping/bed-02.jpg') }}"
+                             alt="Cama simple plegable" class="img-glamping">
                     </div>
                     <div class="col-6">
-                        <div class="img-placeholder">[ Camas twin en carpa ]</div>
+                        <img src="{{ asset('img/glamping/bed-03.jpg') }}"
+                             alt="Camas twin en carpa" class="img-glamping">
                     </div>
                     <div class="col-6">
-                        <div class="img-placeholder">[ Colchón inflable ]</div>
+                        <img src="{{ asset('img/glamping/campamento-glamping.webp') }}"
+                             alt="Colchón inflable" class="img-glamping">
                     </div>
                 </div>
             </div>
@@ -362,7 +373,8 @@
             <div class="col-lg-7">
                 <div class="row g-3">
                     <div class="col-12">
-                        <div class="img-placeholder img-placeholder-tall">[ Cama con lencería hotelera dentro de la carpa ]</div>
+                        <img src="{{ asset('img/glamping/tiendas-de-dormir-glamping.webp') }}"
+                             alt="Cama con lencería hotelera dentro de la carpa" class="img-fluid rounded-3">
                     </div>
                 </div>
             </div>
@@ -379,7 +391,8 @@
                         es muy segura y efectiva, brindando la calidez necesaria para disfrutar de nuestro sueño
                         y descanso.
                     </p>
-                    <div class="img-placeholder mt-3" style="height:150px;">[ Calefactor catalítico ]</div>
+                    <img src="{{ asset('img/glamping/carpa-de-banio-3.webp') }}" alt="Calefactor catalítico"
+                         class="img-fluid mt-3 rounded-3">
                 </div>
             </div>
             <div class="col-md-4">
@@ -391,7 +404,8 @@
                         con agua caliente para descansar mejor en una noche fría. Cuentan con tapas selladas y
                         protector de polar para evitar quemaduras.
                     </p>
-                    <div class="img-placeholder mt-3" style="height:150px;">[ Bolsas de agua caliente ]</div>
+                    <img src="{{ asset('img/glamping/hot-water.jpg') }}" alt="Bolsas de agua caliente"
+                         class="img-fluid mt-3 rounded-3">
                 </div>
             </div>
             <div class="col-md-4">
@@ -403,7 +417,8 @@
                         alfombra, brindando calidez en este espacio. Ofrecemos pantuflas nuevas para cada cliente
                         e iluminación con lámparas solares.
                     </p>
-                    <div class="img-placeholder mt-3" style="height:150px;">[ Decoración interior de carpa ]</div>
+                    <img src="{{ asset('img/glamping/comedor-2.webp') }}" alt="Decoración interior de carpa"
+                         class="img-fluid mt-3 rounded-3">
                 </div>
             </div>
         </div>
@@ -416,23 +431,7 @@
 <section class="glamp-section glamp-section-alt">
     <div class="container">
         <div class="row align-items-center g-5">
-            <div class="col-lg-6 order-2 order-lg-1">
-                <div class="row g-3">
-                    <div class="col-6">
-                        <div class="img-placeholder img-placeholder-tall">[ Interior carpa de masaje ]</div>
-                    </div>
-                    <div class="col-6">
-                        <div class="img-placeholder img-placeholder-tall">[ Sesión de masaje ]</div>
-                    </div>
-                    <div class="col-6">
-                        <div class="img-placeholder">[ Aromaterapia andina ]</div>
-                    </div>
-                    <div class="col-6">
-                        <div class="img-placeholder">[ Aceites esenciales ]</div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 order-1 order-lg-2">
+            <div class="col-lg-12 order-1 order-lg-2">
                 <h2 class="glamp-main-title">Servicio de Masaje</h2>
                 <hr class="glamp-divider">
                 <p class="glamp-text">
@@ -516,7 +515,7 @@
 
         {{-- Accesorios en el baño + Carpa Ducha --}}
         <div class="row align-items-center g-5">
-            <div class="col-lg-6">
+            <div class="col-lg-12">
                 <p class="glamp-sub-title">Accesorios en el Baño</p>
                 <p class="glamp-text">
                     En la mesa auxiliar encontrarán un espejo y los productos de higiene personal que proveemos
@@ -531,19 +530,6 @@
                     <strong>ducha caliente en base a energía solar</strong> en una carpa con piso, amplia y
                     cómoda.
                 </p>
-            </div>
-            <div class="col-lg-6">
-                <div class="row g-3">
-                    <div class="col-6">
-                        <div class="img-placeholder">[ Accesorios en el baño ]</div>
-                    </div>
-                    <div class="col-6">
-                        <div class="img-placeholder">[ Espejo y kit de higiene ]</div>
-                    </div>
-                    <div class="col-12">
-                        <div class="img-placeholder">[ Carpa ducha exterior ]</div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
@@ -565,14 +551,6 @@
                     Es ideal el poder tomar una ducha caliente al finalizar una jornada de caminata en las
                     montañas… como en casa.
                 </p>
-                <div class="row g-3 mt-3">
-                    <div class="col-6">
-                        <div class="img-placeholder">[ Ducha Nemo Helio LX ]</div>
-                    </div>
-                    <div class="col-6">
-                        <div class="img-placeholder">[ Detalle del cabezal de ducha ]</div>
-                    </div>
-                </div>
             </div>
             <div class="col-lg-6">
                 <p class="glamp-sub-title">Kit Biodegradable de Aseo</p>
@@ -586,14 +564,6 @@
                     manera nuestros caminantes colaboran con el cuidado del medio ambiente, evitando productos
                     químicos que puedan dañar las montañas.
                 </p>
-                <div class="row g-3 mt-3">
-                    <div class="col-6">
-                        <div class="img-placeholder">[ Kit biodegradable de aseo ]</div>
-                    </div>
-                    <div class="col-6">
-                        <div class="img-placeholder">[ Hierbas y plantas andinas ]</div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
@@ -656,19 +626,19 @@
             <div class="col-lg-7">
                 <div class="row g-3">
                     <div class="col-6">
-                        <div class="img-placeholder">[ Mesas Travel Chair ]</div>
+                        <img src="{{ asset('img/glamping/hot-water.jpg') }}" alt="Mesas Travel Chair" class="img-glamping">
                     </div>
                     <div class="col-6">
-                        <div class="img-placeholder">[ Chef en la mesa de preparación ]</div>
+                        <img src="{{ asset('img/glamping/chairs-01.jpg') }}" alt="Silla REI Flex Lite Boss Chair" class="img-glamping">
                     </div>
                     <div class="col-6">
-                        <div class="img-placeholder">[ Sillas Big Kahuna en el campamento ]</div>
+                        <img src="{{ asset('img/glamping/charis-02.jpg') }}" alt="Silla doble para lunas de miel" class="img-glamping">
                     </div>
                     <div class="col-6">
-                        <div class="img-placeholder">[ Silla REI Flex Lite Boss Chair ]</div>
+                        <img src="{{ asset('img/glamping/chairs-03.jpg') }}" alt="Silla doble para lunas de miel" class="img-glamping">
                     </div>
                     <div class="col-12">
-                        <div class="img-placeholder">[ Silla doble para lunas de miel ]</div>
+                        <img src="{{ asset('img/glamping/chairs-04.jpg') }}" alt="Silla doble para lunas de miel" class="img-glamping">
                     </div>
                 </div>
             </div>
@@ -723,10 +693,10 @@
                 </p>
                 <div class="row g-3 mt-4">
                     <div class="col-6">
-                        <div class="img-placeholder">[ Chef en carpa cocina ]</div>
+                        <img src="{{ asset('img/glamping/cocina-02.jpg') }}" alt="Chef en carpa cocina" class="img-fluid">
                     </div>
                     <div class="col-6">
-                        <div class="img-placeholder">[ Personal de cocina preparando alimentos ]</div>
+                        <img src="{{ asset('img/glamping/Cocina-03.jpg') }}" alt="Personal de cocina preparando alimentos" class="img-fluid">
                     </div>
                 </div>
             </div>
@@ -745,10 +715,10 @@
                 </p>
                 <div class="row g-3 mt-4">
                     <div class="col-6">
-                        <div class="img-placeholder">[ Carpa almacén con ingredientes ]</div>
+                        <img src="{{ asset('img/glamping/almacen-01.jpg') }}" alt="Carpa almacén con ingredientes" class="img-fluid">
                     </div>
                     <div class="col-6">
-                        <div class="img-placeholder">[ Bolsas de tela reutilizables ]</div>
+                        <img src="{{ asset('img/glamping/almacen-02.jpg') }}" alt="Bolsas de tela reutilizables" class="img-fluid">
                     </div>
                 </div>
             </div>

@@ -68,6 +68,8 @@ class ViewServiceProvider extends ServiceProvider
             'south' => 'sur',
             'glampingen' => 'glamping',
             'glamping-reviews-en' => 'glamping-reviews-es',
+            'reviews' => 'resenas',
+            'terms' => 'terminos',
         ];
         $routeMapEsToEn = array_flip($routeMapEnToEs);
 
